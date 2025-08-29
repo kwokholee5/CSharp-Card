@@ -29,13 +29,13 @@
 
 .explanation-header--correct {
   background-color: #2f855a;
-  border: 2px solid #38a169;
+  border: 2px solid #198754;
   color: #9ae6b4;
 }
 
 .explanation-header--incorrect {
   background-color: #c53030;
-  border: 2px solid #e53e3e;
+  border: 2px solid #dc3545;
   color: #fed7d7;
 }
 
@@ -52,13 +52,13 @@
 }
 
 .explanation-header--correct .explanation-result-icon {
-  background-color: #38a169;
-  color: #1a1a1a;
+  background-color: #198754;
+  color: #ffffff;
 }
 
 .explanation-header--incorrect .explanation-result-icon {
-  background-color: #e53e3e;
-  color: #1a1a1a;
+  background-color: #dc3545;
+  color: #ffffff;
 }
 
 .explanation-result-text {
@@ -140,17 +140,17 @@
 }
 
 .explanation-option--correct {
-  border-color: #38a169;
+  border-color: #198754;
   background-color: #2f855a;
 }
 
 .explanation-option--incorrect-selected {
-  border-color: #e53e3e;
+  border-color: #dc3545;
   background-color: #c53030;
 }
 
 .explanation-option--correct-selected {
-  border-color: #38a169;
+  border-color: #198754;
   background-color: #2f855a;
   box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.2);
 }
@@ -170,18 +170,18 @@
 }
 
 .explanation-option--correct .explanation-option-indicator {
-  background-color: #38a169;
-  color: #1a1a1a;
+  background-color: #198754;
+  color: #ffffff;
 }
 
 .explanation-option--incorrect-selected .explanation-option-indicator {
-  background-color: #e53e3e;
-  color: #1a1a1a;
+  background-color: #dc3545;
+  color: #ffffff;
 }
 
 .explanation-option--correct-selected .explanation-option-indicator {
-  background-color: #38a169;
-  color: #1a1a1a;
+  background-color: #198754;
+  color: #ffffff;
 }
 
 .explanation-option-content {
@@ -308,7 +308,7 @@
 
 .explanation-button--redo {
   background-color: #718096;
-  color: #1a1a1a;
+  color: #ffffff;
   border-color: #718096;
 }
 
@@ -321,7 +321,7 @@
 
 .explanation-button--next {
   background-color: #4299e1;
-  color: #1a1a1a;
+  color: #ffffff;
   border-color: #4299e1;
 }
 

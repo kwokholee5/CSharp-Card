@@ -24,10 +24,10 @@
 .question-title {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: #f8f9fa;
   margin: 0 0 1rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #4a5568;
+  border-bottom: 2px solid #3a3f4b;
 }
 
 .question-content {
@@ -37,7 +37,7 @@
 .question-text {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: #e2e8f0;
+  color: #f8f9fa;
   margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -77,8 +77,8 @@
 }
 
 .category-badge {
-  background-color: #4a5568;
-  color: #e2e8f0;
+  background-color: #6c757d;
+  color: #f8f9fa;
 }
 
 /* Code Example Section - Constrained to fit viewport */
@@ -93,7 +93,7 @@
 .code-example-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: #f8f9fa;
   margin: 0 0 0.5rem 0;
   flex-shrink: 0;
 }
@@ -135,15 +135,15 @@
 /* Line numbers styling for better mobile experience */
 .code-example-container .linenumber {
   font-size: 12px !important;
-  color: #a0aec0 !important;
+  color: #adb5bd !important;
   min-width: 2em !important;
   padding-right: 0.5em !important;
 }
 
 /* Code Output */
 .code-output {
-  background-color: #1a202c;
-  border: 1px solid #4a5568;
+  background-color: #212529;
+  border: 1px solid #495057;
   border-radius: 8px;
   padding: 1rem;
 }
@@ -151,7 +151,7 @@
 .code-output-title {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: #f8f9fa;
   margin: 0 0 0.5rem 0;
 }
 
@@ -159,14 +159,14 @@
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.4;
-  color: #e2e8f0;
+  color: #f8f9fa;
   margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
-  background-color: #2d3748;
+  background-color: #343a40;
   padding: 0.75rem;
   border-radius: 4px;
-  border: 1px solid #4a5568;
+  border: 1px solid #495057;
 }
 
 /* Loading State */
@@ -177,7 +177,7 @@
 
 .question-loading {
   text-align: center;
-  color: #a0aec0;
+  color: #adb5bd;
 }
 
 .loading-spinner {
@@ -233,7 +233,7 @@
 
 .question-empty {
   text-align: center;
-  color: #a0aec0;
+  color: #adb5bd;
   max-width: 300px;
 }
 
