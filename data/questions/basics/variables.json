@@ -12,6 +12,7 @@
     {
       "id": "var-0001",
       "question": "What is the difference between 'var' and explicitly typing a variable in C#?",
+      "type": "flip-card",
       "answer": "'var' uses implicit typing where the compiler infers the type at compile time, while explicit typing declares the type directly. Both result in strongly-typed variables.",
       "explanation": "The 'var' keyword is compile-time syntactic sugar that doesn't affect runtime performance. The compiler determines the type based on the initializer expression. Once assigned, the type cannot change.",
       "codeExample": {
@@ -36,6 +37,7 @@
     {
       "id": "var-0002",
       "question": "What are the naming conventions for variables in C#?",
+      "type": "flip-card",
       "answer": "Local variables and parameters use camelCase, while public properties and methods use PascalCase. Private fields can use _camelCase or camelCase.",
       "explanation": "Following naming conventions improves code readability and maintainability. These conventions are widely adopted in the C# community and recommended by Microsoft.",
       "codeExample": {
@@ -54,6 +56,7 @@
     {
       "id": "var-0003",
       "question": "What is the difference between const and readonly in C#?",
+      "type": "flip-card",
       "answer": "const is compile-time constant and must be initialized at declaration, while readonly can be initialized at runtime in the constructor.",
       "explanation": "const values are replaced at compile time and can only be primitive types or strings. readonly fields are evaluated at runtime and can be any type, including reference types.",
       "codeExample": {
@@ -72,6 +75,7 @@
     {
       "id": "var-0004",
       "question": "What is variable scope in C#?",
+      "type": "flip-card",
       "answer": "Variable scope determines where a variable can be accessed in the code. Variables are accessible within the block they are declared in and any nested blocks.",
       "explanation": "C# uses block scope defined by curly braces {}. Variables declared in a block are not accessible outside of it, preventing naming conflicts and improving code organization.",
       "codeExample": {
@@ -90,6 +94,7 @@
     {
       "id": "var-0005",
       "question": "Can you declare multiple variables of the same type in one line in C#?",
+      "type": "flip-card",
       "answer": "Yes, you can declare multiple variables of the same type in one line by separating them with commas.",
       "codeExample": {
         "language": "csharp",
@@ -107,6 +112,7 @@
     {
       "id": "var-0006",
       "question": "What is a nullable type in C#?",
+      "type": "flip-card",
       "answer": "Nullable types allow value types to represent null in addition to their normal range of values, using the ? suffix or Nullable<T> generic.",
       "explanation": "Value types normally cannot be null. Nullable types are useful when dealing with databases or optional values where the absence of a value needs to be represented.",
       "codeExample": {
@@ -125,6 +131,7 @@
     {
       "id": "var-0007",
       "question": "What is the default value of uninitialized variables in C#?",
+      "type": "flip-card",
       "answer": "Class fields get default values (0 for numbers, false for bool, null for references), but local variables must be initialized before use.",
       "explanation": "The C# compiler ensures that local variables are definitely assigned before use, preventing undefined behavior. Class fields are automatically initialized to their default values.",
       "codeExample": {
@@ -143,6 +150,7 @@
     {
       "id": "var-0008",
       "question": "What is the difference between value types and reference types in variable assignment?",
+      "type": "flip-card",
       "answer": "Value types copy the actual value when assigned, while reference types copy the reference (memory address) to the object.",
       "explanation": "This fundamental difference affects how modifications to variables behave. Changes to a value type variable don't affect the original, while changes to reference type objects are visible through all references.",
       "codeExample": {
@@ -161,6 +169,7 @@
     {
       "id": "var-0009",
       "question": "What is variable shadowing in C#?",
+      "type": "flip-card",
       "answer": "Variable shadowing occurs when a variable in an inner scope has the same name as a variable in an outer scope, hiding the outer variable.",
       "explanation": "C# prevents accidental shadowing of local variables within the same method but allows it between class fields and local variables. This can lead to confusion if not handled carefully.",
       "codeExample": {
@@ -179,6 +188,7 @@
     {
       "id": "var-0010",
       "question": "What is the 'dynamic' keyword in C#?",
+      "type": "flip-card",
       "answer": "The 'dynamic' keyword bypasses compile-time type checking, deferring type resolution to runtime, enabling dynamic typing scenarios.",
       "explanation": "Unlike 'var' which is compile-time type inference, 'dynamic' actually changes how the code behaves, allowing operations that would normally require reflection or wouldn't be possible with static typing.",
       "codeExample": {

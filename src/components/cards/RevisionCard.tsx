@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import type { KeyboardEvent } from 'react';
 import type { Question } from '../../utils/types';
+import { getAnswerText } from '../../utils/types';
 import './RevisionCard.css';
 
 interface RevisionCardProps {
@@ -110,7 +111,7 @@ export const RevisionCard: React.FC<RevisionCardProps> = ({
           </div>
           
           <div className="card-content">
-            <div className="card-answer">{question.answer}</div>
+            <div className="card-answer">{getAnswerText(question)}</div>
             
             {question.explanation && (
               <div className="card-explanation">

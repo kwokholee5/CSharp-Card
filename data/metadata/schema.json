@@ -3,9 +3,9 @@
   "title": "C# Interview Questions Schema",
   "description": "Schema for C# technical interview revision card questions",
   "definitions": {
-    "question": {
+    "baseQuestion": {
       "type": "object",
-      "required": ["id", "question", "answer", "category", "difficulty", "tags"],
+      "required": ["id", "question", "type", "category", "difficulty", "tags"],
       "properties": {
         "id": {
           "type": "string",
@@ -18,10 +18,10 @@
           "maxLength": 500,
           "description": "The question text"
         },
-        "answer": {
+        "type": {
           "type": "string",
-          "minLength": 5,
-          "description": "The answer to the question"
+          "enum": ["flip-card", "multiple-choice"],
+          "description": "Type of question - discriminator for polymorphism"
         },
         "explanation": {
           "type": "string",
@@ -110,6 +110,93 @@
           "description": "Version number of the question"
         }
       }
+    },
+    "flipCardQuestion": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseQuestion"
+        },
+        {
+          "type": "object",
+          "required": ["answer"],
+          "properties": {
+            "type": {
+              "const": "flip-card"
+            },
+            "answer": {
+              "type": "string",
+              "minLength": 5,
+              "description": "The answer to the flip card question"
+            }
+          }
+        }
+      ]
+    },
+    "multipleChoiceOption": {
+      "type": "object",
+      "required": ["id", "text"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]$",
+          "description": "Option identifier (a, b, c, d)"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "The option text"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Optional explanation for this option"
+        }
+      }
+    },
+    "multipleChoiceQuestion": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseQuestion"
+        },
+        {
+          "type": "object",
+          "required": ["options", "correctAnswerIndex"],
+          "properties": {
+            "type": {
+              "const": "multiple-choice"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/multipleChoiceOption"
+              },
+              "minItems": 2,
+              "maxItems": 6,
+              "description": "Array of answer options"
+            },
+            "correctAnswerIndex": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Index of the correct answer in the options array"
+            },
+            "multiSelect": {
+              "type": "boolean",
+              "default": false,
+              "description": "Whether multiple answers can be selected (future feature)"
+            }
+          }
+        }
+      ]
+    },
+    "question": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/flipCardQuestion"
+        },
+        {
+          "$ref": "#/definitions/multipleChoiceQuestion"
+        }
+      ]
     },
     "questionFile": {
       "type": "object",

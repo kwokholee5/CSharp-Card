@@ -47,9 +47,14 @@ export const Home: React.FC = () => {
         <p className="hero-subtitle">
           Practice with interactive revision cards to ace your technical interviews
         </p>
-        <Link to="/study" className="cta-button">
-          Start Studying →
-        </Link>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link to="/study" className="cta-button">
+            Start Studying →
+          </Link>
+          <Link to="/mc-demo" className="cta-button" style={{ background: '#28a745' }}>
+            Try Multiple Choice Demo 🆕
+          </Link>
+        </div>
       </div>
 
       <div className="categories-section">
@@ -80,6 +85,11 @@ export const Home: React.FC = () => {
             <div className="feature-icon">🔄</div>
             <h3>Interactive Cards</h3>
             <p>Flip cards to reveal answers with smooth animations</p>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">☑️</div>
+            <h3>Multiple Choice</h3>
+            <p>Interactive multiple choice questions with instant feedback</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">📊</div>
