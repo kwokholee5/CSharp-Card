@@ -1,55 +1,84 @@
-/* Study Page Styles */
+/* Study Page Styles - Mobile First Design */
 
+/* Mobile First - Base styles are for mobile */
 .study-page {
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  flex-direction: column;
+  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 140px; /* Space for fixed buttons */
+  background: var(--background-secondary);
 }
 
 .study-container {
   width: 100%;
-  max-width: 800px;
+  max-width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Compact header for mobile */
 .study-header {
-  text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .study-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: #1f2937;
-  margin-bottom: 1rem;
+  margin: 0;
+  text-align: center;
 }
 
 .study-stats {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
 }
 
 .stat {
-  padding: 0.5rem 1rem;
-  background: white;
-  border-radius: 8px;
-  font-size: 0.875rem;
+  padding: 0.125rem 0.5rem;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 0.625rem;
   color: #6b7280;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+/* Session stats on mobile */
+.session-stats {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.625rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+  justify-content: center;
+}
+
+.session-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 /* Loading State */
 .loading-container {
   text-align: center;
-  padding: 4rem;
+  padding: 2rem;
 }
 
 .loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #e5e7eb;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
   border-top-color: #667eea;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -65,55 +94,52 @@
 /* Error State */
 .error-container {
   text-align: center;
-  padding: 4rem;
+  padding: 2rem 1rem;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin: 1rem;
 }
 
 .error-container h2 {
   color: #ef4444;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 /* Empty State */
 .empty-container {
   text-align: center;
-  padding: 4rem;
+  padding: 2rem 1rem;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin: 1rem;
 }
 
 .empty-container h2 {
   color: #6b7280;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 /* Completion Message */
 .completion-message {
   text-align: center;
-  padding: 2rem;
-  margin-top: 2rem;
+  padding: 1rem;
+  margin-top: 1rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
 .completion-message h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
 }
 
-.session-stats {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.session-stats p {
-  margin: 0.25rem 0;
+.completion-message p {
   font-size: 0.875rem;
   opacity: 0.9;
 }
@@ -121,100 +147,155 @@
 /* Swipe hint */
 .swipe-hint {
   text-align: center;
-  padding: 0.5rem;
-  margin-top: 1rem;
+  padding: 0.25rem;
+  margin-top: 0.5rem;
   color: #6b7280;
-  font-size: 0.75rem;
-  opacity: 0.7;
+  font-size: 0.625rem;
+  opacity: 0.6;
 }
 
-/* Mobile Responsive Design - Improved */
-@media (max-width: 768px) {
+/* Tablet styles (768px and up) */
+@media (min-width: 768px) {
   .study-page {
-    min-height: 100vh;
-    align-items: flex-start; /* Don't center vertically on mobile */
-    padding: 0.5rem;
-    padding-top: 1rem;
-    padding-bottom: 180px; /* Space for fixed buttons */
+    padding: 1rem;
+    padding-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
   }
   
   .study-container {
-    padding-top: 0;
+    max-width: 800px;
   }
   
   .study-header {
-    margin-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
   }
   
   .study-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-bottom: 0.5rem;
   }
   
   .study-stats {
-    flex-direction: row;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
   }
   
   .stat {
-    font-size: 0.75rem;
     padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .session-stats {
+    font-size: 0.875rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .swipe-hint {
+    display: none;
   }
   
   .completion-message {
-    margin-top: 1rem;
     padding: 1.5rem;
+    margin-top: 1.5rem;
   }
   
   .completion-message h2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   
-  .swipe-hint {
-    display: block;
+  .completion-message p {
+    font-size: 1rem;
   }
 }
 
-/* Small mobile devices */
-@media (max-width: 375px) {
+/* Desktop styles (1024px and up) */
+@media (min-width: 1024px) {
   .study-page {
-    padding: 0.25rem;
-    padding-top: 0.5rem;
+    padding: 2rem;
   }
   
   .study-header h1 {
-    font-size: 1.25rem;
-  }
-  
-  .stat {
-    font-size: 0.625rem;
-    padding: 0.25rem 0.5rem;
-  }
-}
-
-/* Landscape mode */
-@media (max-height: 500px) and (orientation: landscape) {
-  .study-page {
-    padding: 0.5rem;
-    padding-bottom: 80px;
-    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
   }
   
   .study-header {
-    display: none; /* Hide header in landscape to save space */
+    margin-bottom: 2rem;
+  }
+  
+  .completion-message {
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+/* Small mobile devices (max-width: 375px) */
+@media (max-width: 375px) {
+  .study-page {
+    padding: 0.25rem;
+    padding-bottom: 120px;
+  }
+  
+  .study-header {
+    padding: 0.375rem;
+    margin-bottom: 0.375rem;
+  }
+  
+  .study-header h1 {
+    font-size: 1.125rem;
+  }
+  
+  .stat {
+    font-size: 0.5625rem;
+    padding: 0.125rem 0.375rem;
+  }
+  
+  .session-stats {
+    font-size: 0.5625rem;
+  }
+}
+
+/* Landscape mode - ultra compact */
+@media (max-height: 500px) and (orientation: landscape) {
+  .study-page {
+    padding: 0.25rem;
+    padding-bottom: 60px;
+  }
+  
+  .study-header {
+    display: none; /* Hide header completely in landscape */
   }
   
   .swipe-hint {
     display: none;
   }
+  
+  .completion-message {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .completion-message h2 {
+    font-size: 1rem;
+  }
+  
+  .completion-message p {
+    font-size: 0.75rem;
+  }
 }
 
-/* Desktop and larger screens */
-@media (min-width: 769px) {
-  .swipe-hint {
-    display: none;
+/* iOS Safe Area Support */
+@supports (padding: max(0px)) {
+  .study-page {
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+    padding-bottom: max(140px, calc(140px + env(safe-area-inset-bottom)));
   }
 }
 
@@ -228,14 +309,5 @@
     bottom: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Safe area support */
-@supports (padding: max(0px)) {
-  .study-page {
-    padding-left: max(0.5rem, env(safe-area-inset-left));
-    padding-right: max(0.5rem, env(safe-area-inset-right));
-    padding-top: max(1rem, env(safe-area-inset-top));
   }
 }
