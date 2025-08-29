@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import type { KeyboardEvent } from 'react';
 import type { Question } from '../../utils/types';
 import { getAnswerText } from '../../utils/types';
@@ -18,6 +18,11 @@ export const RevisionCard: React.FC<RevisionCardProps> = ({
   onNext
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  // Reset flip state when question changes
+  useEffect(() => {
+    setIsFlipped(false);
+  }, [question?.id]);
 
   const handleFlip = useCallback(() => {
     setIsFlipped(prev => !prev);
@@ -57,13 +62,18 @@ export const RevisionCard: React.FC<RevisionCardProps> = ({
       dots.push(
         <span
           key={i}
-          className={`difficulty-dot ${i <= question.difficulty ? 'filled' : ''}`}
-          title={`Difficulty: ${question.difficulty}/10`}
+          className={`difficulty-dot ${i <= question?.difficulty ? 'filled' : ''}`}
+          title={`Difficulty: ${question?.difficulty}/10`}
         />
       );
     }
     return <div className="card-difficulty">{dots}</div>;
   };
+
+  // Guard against undefined question
+  if (!question) {
+    return null;
+  }
 
   return (
     <div

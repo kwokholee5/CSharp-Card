@@ -1,198 +1,181 @@
-# Multiple Choice Study Mode Implementation Plan
+# Implementation Plan: Fix Flip Card Auto-Reset Issue
 
-## Project Overview
-Adding a Multiple Choice (MC) study mode to the existing C# Revision Card React application while strictly adhering to OOP and SOLID principles.
+## Problem Statement
+The RevisionCard component doesn't reset its flip state when navigating to the next question, causing the answer to remain visible. This breaks the study flow as users see answers before attempting questions.
 
 ## Goals
-1. Extend existing revision card system with MC functionality
-2. Maintain backward compatibility with flip card mode
-3. Follow strict OOP/SOLID principles throughout
-4. Create expandable, maintainable architecture
-5. Ensure 90%+ test coverage
+1. Ensure RevisionCard resets to unflipped state when question changes
+2. Maintain SOLID principles and existing architecture
+3. Preserve all current functionality while fixing the bug
+4. Ensure proper coordination between components
 
 ## Success Criteria
-- [ ] Two study modes available: Flip Cards and Multiple Choice
-- [ ] MC questions stored in expandable JSON format
-- [ ] All SOLID principles demonstrably implemented
-- [ ] Zero regression in existing functionality
-- [ ] Performance: <200ms mode switching
-- [ ] Test coverage >90% for new code
-- [ ] Clean architecture with proper abstractions
+1. Card automatically resets to show question (not answer) when navigating
+2. All existing tests pass
+3. New tests validate the reset behavior
+4. No visual glitches during transitions
+5. Keyboard navigation works correctly
+6. Focus management is preserved
 
-## Technical Architecture
+## Agent Team Assignments
 
-### Data Layer Design
+### Phase 1: Analysis & Planning
+**Lead Agent**: Orchestration Architect
+- Coordinate all agent activities
+- Define workflow and checkpoints
+- Monitor progress and handle escalations
+
+**Code Analyst Agent**
+- Analyze current flip state management in RevisionCard.tsx
+- Identify dependencies in SimpleFlipCardMode.tsx and Study.tsx
+- Document state flow and component interactions
+- Report findings to Orchestration Architect
+
+### Phase 2: Test Development
+**Test Automator Agent**
+- Write comprehensive tests for flip reset behavior
+- Test keyboard navigation scenarios
+- Test rapid question changes
+- Validate animation/transition handling
+- Ensure TDD approach (RED phase)
+- Report test results to Orchestration Architect
+
+### Phase 3: Implementation
+**React Developer Agent**
+- Implement useEffect hook to monitor question prop changes
+- Reset isFlipped state when question.id changes
+- Ensure smooth transitions without glitches
+- Maintain focus management
+- Report implementation status to Orchestration Architect
+
+### Phase 4: Code Review & Validation
+**Architect Reviewer Agent**
+- Validate SOLID principles compliance
+- Check Single Responsibility: Each component has one reason to change
+- Verify Open/Closed: Extension without modification
+- Ensure Dependency Inversion: Components depend on abstractions
+- Report validation results to Orchestration Architect
+
+**Code Reviewer Agent**
+- Review code quality and standards
+- Check for proper error handling
+- Validate naming conventions
+- Ensure no hardcoded values
+- Report review findings to Orchestration Architect
+
+### Phase 5: Testing & Verification
+**Test Automator Agent**
+- Run all tests (GREEN phase)
+- Verify flip reset tests pass
+- Check existing functionality preserved
+- Test integration between components
+- Report all test results to Orchestration Architect
+
+### Phase 6: Documentation & Completion
+**Documentation Agent**
+- Update any affected documentation
+- Record implementation decisions
+- Document test coverage
+- Report completion to Orchestration Architect
+
+## Workflow Sequence
+
+```
+1. Code Analyst → Analyze components (15 min)
+   ↓
+2. Test Automator → Write failing tests (20 min)
+   ↓
+3. React Developer → Implement fix (15 min)
+   ↓
+4. Architect Reviewer + Code Reviewer → Parallel validation (10 min)
+   ↓
+5. Test Automator → Run all tests (10 min)
+   ↓
+6. Documentation Agent → Update docs (5 min)
+   ↓
+7. Orchestration Architect → Final verification
+```
+
+## Coordination Rules
+
+### Handoff Specifications
+- Each agent must provide status report upon completion
+- Include any blockers or concerns in reports
+- Use structured format for data exchange
+
+### Quality Gates
+1. Tests must be written before implementation (TDD)
+2. All tests must pass before proceeding
+3. SOLID principles must be validated
+4. Code review must approve changes
+
+### Error Handling
+- Maximum 3 attempts per issue
+- Escalate to Orchestration Architect if blocked
+- Document all issues encountered
+
+## Implementation Details
+
+### Key Changes Required
+
+1. **RevisionCard.tsx**
+   - Add useEffect hook to monitor question prop
+   - Reset isFlipped when question.id changes
+   - Preserve all other functionality
+
+2. **Test Coverage**
+   - Test flip reset on question change
+   - Test keyboard navigation scenarios
+   - Test rapid question changes
+   - Test animation handling
+
+### Code Structure
 ```typescript
-// Base abstract class for all question types
-abstract class BaseQuestion {
-  abstract validate(): boolean;
-  abstract serialize(): string;
-  abstract deserialize(data: string): void;
-}
-
-// MC-specific implementation
-class MultipleChoiceQuestion extends BaseQuestion {
-  options: MCOption[];
-  correctOptionIds: string[];
-  allowMultiple: boolean;
-}
+// In RevisionCard.tsx
+useEffect(() => {
+  setIsFlipped(false);
+}, [question.id]);
 ```
 
-### Storage Strategy
-- Extend existing JSON structure in `/data/questions/`
-- New field: `questionType: 'standard' | 'multiple-choice'`
-- MC-specific fields added conditionally
-- Backward compatible with existing questions
+## Risk Mitigation
+- Minimal code changes to existing components
+- Comprehensive test coverage before implementation
+- Parallel review processes for efficiency
+- Clear rollback plan if issues arise
 
-### Component Architecture
-```
-AbstractStudyMode (base component)
-├── FlipCardMode (existing functionality)
-└── MultipleChoiceMode (new functionality)
-```
+## Status Tracking
+- [x] Phase 1: Analysis Complete
+- [x] Phase 2: Tests Written  
+- [x] Phase 3: Implementation Done
+- [x] Phase 4: Reviews Passed
+- [x] Phase 5: All Tests Green
+- [x] Phase 6: Documentation Updated
 
-### Service Layer Pattern
-```
-IQuestionService (interface)
-├── StandardQuestionService
-└── MultipleChoiceQuestionService
+## Implementation Summary
 
-QuestionServiceFactory (creates appropriate service)
-```
+### Changes Made
+1. **RevisionCard.tsx**:
+   - Added `useEffect` import
+   - Added useEffect hook to reset `isFlipped` state when `question.id` changes
+   - Added null check for undefined question prop
+   - Fixed difficulty rendering to handle undefined question
 
-## Phase Breakdown
+2. **Test Updates**:
+   - Updated tests to check CSS class instead of visibility
+   - Fixed all test assertions to properly validate flip state reset
+   - All 8 tests now passing
 
-### Phase 1: Planning & Architecture (Current)
-- Create documentation structure
-- Define interfaces and contracts
-- Design class hierarchies
-- Plan migration strategy
-
-### Phase 2: Data Layer
-- Extend TypeScript types
-- Create abstract base classes
-- Implement Factory pattern
-- Add JSON schemas
-
-### Phase 3: Service Layer
-- Refactor to abstract base
-- Implement Strategy pattern
-- Add Repository pattern
-- Dependency injection
-
-### Phase 4: Component Layer
-- Abstract base components
-- MC-specific components
-- Mode selection UI
-- Shared abstractions
-
-### Phase 5: State Management
-- Extend progress tracking
-- Unified state management
-- Observer pattern
-- LocalStorage updates
-
-### Phase 6: Testing & Integration
-- Unit tests (TDD approach)
-- Integration tests
-- E2E scenarios
-- Performance validation
-
-### Phase 7: Documentation & Deployment
-- User documentation
-- API documentation
-- Deployment verification
-- Performance metrics
-
-## SOLID Principles Implementation
-
-### Single Responsibility
-- Each class has ONE reason to change
-- QuestionLoader: Only loads questions
-- QuestionValidator: Only validates
-- QuestionRenderer: Only renders
-
-### Open/Closed
-- Base classes closed for modification
-- Extended via inheritance for new features
-- Plugin architecture for question types
-
-### Liskov Substitution
-- All study modes interchangeable
-- Base class references work with derived
-- No breaking of parent class contracts
-
-### Interface Segregation
-- IQuestionLoader for loading
-- IQuestionRenderer for display
-- IProgressTracker for tracking
-- Small, focused interfaces
-
-### Dependency Inversion
-- Depend on abstractions (interfaces)
-- Concrete implementations injected
-- IoC container for management
-
-## Risk Management
-
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Breaking existing functionality | High | Comprehensive test suite before changes |
-| Poor MC performance | Medium | Lazy loading, virtualization |
-| Complex state management | Medium | Clear separation of concerns |
-| Data migration issues | Low | Backward compatible schema |
-
-## Testing Strategy
-
-### Unit Tests
-- Test each class in isolation
-- Mock all dependencies
-- Cover all public methods
-- Edge cases and error conditions
-
-### Integration Tests
-- Test service layer integration
-- Component interaction tests
-- State management flow
-- Data persistence
-
-### E2E Tests
-- Complete user workflows
-- Mode switching scenarios
-- Progress tracking
-- Performance benchmarks
-
-## Performance Targets
-- Mode switch: <200ms
-- Question load: <100ms
-- Answer validation: <50ms
-- Progress save: <100ms
-
-## Monitoring & Metrics
-- Code coverage reports
-- Performance benchmarks
-- Bundle size analysis
-- Lighthouse scores
-
-## Timeline Estimate
-- Phase 1: 2 hours
-- Phase 2: 3 hours
-- Phase 3: 3 hours
-- Phase 4: 4 hours
-- Phase 5: 2 hours
-- Phase 6: 2 hours
-- Phase 7: 1 hour
-- **Total: ~17 hours**
-
-## Next Steps
-1. Review and approve this plan
-2. Create MASTER_TRACKER.md
-3. Create TASK_BREAKDOWN.md
-4. Begin Phase 2 implementation
-5. Regular checkpoint reviews
+### Results
+- ✅ Card automatically resets to unflipped state when navigating
+- ✅ All existing functionality preserved
+- ✅ No visual glitches during transitions
+- ✅ Keyboard navigation works correctly
+- ✅ Focus management preserved
+- ✅ SOLID principles maintained
+- ✅ Application builds successfully
 
 ## Notes
-- Prioritize code quality over speed
-- Regular commits with clear messages
-- Update tracking documents continuously
-- Request review at each phase completion
+- Follow WORKFLOW.md 7-step process
+- All agents report to Orchestration Architect
+- Maintain focus on minimal, targeted fix
+- Preserve existing architecture
