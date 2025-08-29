@@ -17,6 +17,21 @@
   min-height: 0;
 }
 
+/* Mobile adjustments for scrollable content */
+@media (max-width: 768px) {
+  .answer-component {
+    height: auto;
+    overflow: visible;
+    min-height: 400px;
+  }
+  
+  .answer-component-content {
+    height: auto;
+    overflow: visible;
+    gap: 0.5rem;
+  }
+}
+
 /* Instructions Section */
 .answer-instructions {
   text-align: center;
@@ -24,14 +39,14 @@
 }
 
 .answer-instructions-text {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 3vw, 1.3rem);
   font-weight: 600;
   color: #f8f9fa;
   margin: 0 0 0.5rem 0;
 }
 
 .answer-selection-count {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   color: #adb5bd;
   margin: 0;
   font-style: italic;
@@ -41,19 +56,30 @@
 .answer-options-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 0.75rem;
   flex: 1;
   min-height: 0;
-  overflow: hidden;
-  /* Ensure grid fits within available space */
-  height: 100%;
+  overflow: visible;
+  /* Flexible grid that accommodates content */
+  height: auto;
+  align-items: start;
 }
 
-/* Individual Option Button - Constrained to grid cell */
+/* Mobile grid adjustments */
+@media (max-width: 768px) {
+  .answer-options-grid {
+    height: auto;
+    min-height: 280px;
+    gap: 0.5rem;
+    overflow: visible;
+  }
+}
+
+/* Individual Option Button - Clean layout without indicators */
 .answer-option {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   padding: 0.75rem;
   border: 2px solid #495057;
@@ -63,14 +89,14 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   font-family: inherit;
-  font-size: 1.1rem;
-  line-height: 1.3;
+  font-size: clamp(0.75rem, 2vw, 0.95rem);
+  line-height: 1.4;
   text-align: left;
   position: relative;
-  overflow: hidden;
-  /* Fit within grid cell */
-  height: 100%;
-  min-height: 0;
+  overflow: visible;
+  /* Flexible height to accommodate content */
+  min-height: 100px;
+  height: auto;
 }
 
 .answer-option:hover:not(:disabled) {
@@ -125,46 +151,14 @@
   color: #fca5a5;
 }
 
-/* Option Content Layout - Modified for top-left indicator */
+/* Option Content Layout - Clean layout without indicators */
 .answer-option-content {
   display: block;
-  position: relative;
   width: 100%;
-  padding-top: 1.5rem;
+  height: 100%;
 }
 
-.answer-option-indicator {
-  position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #6c757d;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease-in-out;
-  z-index: 2;
-}
-
-.answer-option--selected .answer-option-indicator {
-  background-color: #0d6efd;
-  color: #ffffff;
-}
-
-.answer-option--correct .answer-option-indicator {
-  background-color: #198754;
-  color: #ffffff;
-}
-
-.answer-option--incorrect .answer-option-indicator {
-  background-color: #dc3545;
-  color: #ffffff;
-}
+/* Removed .answer-option-indicator styles for cleaner layout */
 
 .answer-option-text {
   width: 100%;
@@ -172,6 +166,8 @@
   hyphens: auto;
   white-space: normal;
   line-height: 1.4;
+  overflow-wrap: break-word;
+  display: block;
 }
 
 .answer-option-status {
@@ -204,7 +200,7 @@
   padding: 0.75rem 2rem;
   border: none;
   border-radius: 8px;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -254,32 +250,31 @@
   
   .answer-options-grid {
     gap: 0.5rem;
+    grid-template-rows: auto auto;
   }
   
   .answer-option {
     padding: 0.5rem;
-    font-size: 0.95rem;
+    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
     border-radius: 6px;
-  }
-  
-  .answer-option-content {
-    padding-top: 1.25rem;
-  }
-  
-  .answer-option-indicator {
-    width: 22px;
-    height: 22px;
-    font-size: 0.75rem;
-    top: 0.2rem;
-    left: 0.2rem;
+    min-height: 80px;
+    height: auto;
+    align-items: flex-start;
   }
   
   .answer-instructions-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
   }
   
   .answer-selection-count {
     font-size: 0.8rem;
+  }
+  
+  .answer-submit-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -300,17 +295,7 @@
     border-radius: 4px;
   }
   
-  .answer-option-content {
-    padding-top: 1rem;
-  }
-  
-  .answer-option-indicator {
-    width: 20px;
-    height: 20px;
-    font-size: 0.7rem;
-    top: 0.15rem;
-    left: 0.15rem;
-  }
+  /* Removed landscape mobile indicator styles */
   
   .answer-instructions-text {
     font-size: 0.85rem;
@@ -346,17 +331,7 @@
     font-size: 0.7rem;
   }
   
-  .answer-option-content {
-    padding-top: 0.75rem;
-  }
-  
-  .answer-option-indicator {
-    width: 18px;
-    height: 18px;
-    font-size: 0.65rem;
-    top: 0.1rem;
-    left: 0.1rem;
-  }
+  /* Removed very small screen indicator styles */
   
   .answer-submit-section {
     padding-top: 0.5rem;

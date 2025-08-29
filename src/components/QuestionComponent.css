@@ -22,7 +22,7 @@
 }
 
 .question-title {
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 4vw, 1.4rem);
   font-weight: 600;
   color: #f8f9fa;
   margin: 0 0 1rem 0;
@@ -35,51 +35,15 @@
 }
 
 .question-text {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+  line-height: 1.5;
   color: #f8f9fa;
   margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-.question-metadata {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.difficulty-badge,
-.category-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.difficulty-badge {
-  color: white;
-}
-
-.difficulty-easy {
-  background-color: #38a169;
-}
-
-.difficulty-medium {
-  background-color: #d69e2e;
-}
-
-.difficulty-hard {
-  background-color: #e53e3e;
-}
-
-.category-badge {
-  background-color: #6c757d;
-  color: #f8f9fa;
-}
+/* Removed difficulty and category badges for cleaner layout */
 
 /* Code Example Section - Constrained to fit viewport */
 .code-example-section {

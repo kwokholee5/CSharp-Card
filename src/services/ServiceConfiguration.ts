@@ -77,7 +77,22 @@ export function configureServices(
 ): void {
   const {
     questionPaths = [
-      'data/questions/basics/data-types-mc.json'
+      // Basics (25 questions)
+      'data/questions/basics/console-output-mc.json',
+      'data/questions/basics/operators-mc.json',
+      'data/questions/basics/data-types-mc.json',
+      'data/questions/basics/variables.json',
+      
+      // Intermediate (25 questions)
+      'data/questions/intermediate/oop-fundamentals-mc.json',
+      'data/questions/intermediate/collections-mc.json',
+      
+      // Advanced (25 questions)
+      'data/questions/advanced/async-await-mc.json',
+      'data/questions/advanced/generics-mc.json',
+      
+      // Expert (25 questions)
+      'data/questions/expert/reflection-mc.json'
     ]
   } = options;
 

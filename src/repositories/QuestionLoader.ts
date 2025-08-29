@@ -69,8 +69,9 @@ export class QuestionLoader implements IQuestionLoader {
    */
   async loadFromDirectory(directoryPath: string): Promise<RawQuestionData[]> {
     // In a browser environment, we need to know the file names in advance
-    // Updated to match actual files in the project
+    // Updated to match actual files in the project including new 100 questions
     const knownFiles = [
+      // Existing files
       'data-types-mc.json',
       'variables.json',
       'control-flow-mc.json',
@@ -79,7 +80,14 @@ export class QuestionLoader implements IQuestionLoader {
       'linq-mc.json',
       'async-mc.json',
       'exceptions-mc.json',
-      'generics-mc.json'
+      'generics-mc.json',
+      
+      // New question files (100 questions total)
+      'console-output-mc.json',
+      'operators-mc.json',
+      'oop-fundamentals-mc.json',
+      'async-await-mc.json',
+      'reflection-mc.json'
     ];
     
     const filePaths = knownFiles.map(file => `${directoryPath}/${file}`);

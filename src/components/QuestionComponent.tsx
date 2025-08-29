@@ -82,14 +82,7 @@ export const QuestionComponent: React.FC<QuestionComponentProps> = ({
       <div className="question-content">
         <p className="question-text">{question.text}</p>
       </div>
-      <div className="question-metadata">
-        <span className={`difficulty-badge difficulty-${question.difficulty}`}>
-          {question.difficulty.toUpperCase()}
-        </span>
-        <span className="category-badge">
-          {question.category}
-        </span>
-      </div>
+
     </div>
   );
 

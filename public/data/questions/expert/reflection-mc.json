@@ -1,0 +1,628 @@
+{
+  "$schema": "../../metadata/schema.json",
+  "metadata": {
+    "category": "expert",
+    "subcategory": "reflection-mc",
+    "fileVersion": 1,
+    "lastUpdated": "2025-01-29T16:30:00Z",
+    "questionCount": 15,
+    "avgDifficulty": 7.5
+  },
+  "questions": [
+    {
+      "id": "ref-0001",
+      "question": "What will this C# reflection dynamic method invocation code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Static method called: 42\nInstance method called: Hello",
+          "explanation": "Correct! Reflection can invoke both static methods (with null instance) and instance methods with proper object instances."
+        },
+        {
+          "id": "b",
+          "text": "Both methods fail to invoke",
+          "explanation": "Incorrect. Reflection with proper parameters successfully invokes methods."
+        },
+        {
+          "id": "c",
+          "text": "TargetParameterCountException",
+          "explanation": "Incorrect. The parameter arrays match the method signatures."
+        },
+        {
+          "id": "d",
+          "text": "Security exception during reflection",
+          "explanation": "Incorrect. These public methods are accessible via reflection in normal contexts."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection allows dynamic method invocation at runtime. Static methods are invoked with null as the instance, while instance methods require an object instance.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class ReflectionExample\n{\n    public static void StaticMethod(int value)\n    {\n        Console.WriteLine($\"Static method called: {value}\");\n    }\n    \n    public void InstanceMethod(string text)\n    {\n        Console.WriteLine($\"Instance method called: {text}\");\n    }\n}\n\npublic static void Main()\n{\n    Type type = typeof(ReflectionExample);\n    \n    // Invoke static method\n    MethodInfo staticMethod = type.GetMethod(\"StaticMethod\");\n    staticMethod.Invoke(null, new object[] { 42 });\n    \n    // Invoke instance method\n    object instance = Activator.CreateInstance(type);\n    MethodInfo instanceMethod = type.GetMethod(\"InstanceMethod\");\n    instanceMethod.Invoke(instance, new object[] { \"Hello\" });\n}",
+        "output": "Static method called: 42\nInstance method called: Hello"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 6,
+      "tags": ["reflection", "methodinfo", "invoke", "static-methods", "instance-methods"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0002",
+      "question": "What is the output of this C# reflection attribute inspection code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Property Name has DisplayAttribute\nDisplay Name: Full Name\nIs Required: True",
+          "explanation": "Correct! Reflection can discover and inspect custom attributes, enabling metadata-driven programming patterns."
+        },
+        {
+          "id": "b",
+          "text": "No attributes found",
+          "explanation": "Incorrect. The property has custom attributes that are discoverable via reflection."
+        },
+        {
+          "id": "c",
+          "text": "Attributes are not accessible at runtime",
+          "explanation": "Incorrect. Attributes with default retention policy are available at runtime through reflection."
+        },
+        {
+          "id": "d",
+          "text": "InvalidOperationException during attribute access",
+          "explanation": "Incorrect. Attribute access through reflection works normally for properly defined attributes."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables runtime inspection of attributes, allowing frameworks to implement metadata-driven behaviors like validation, serialization, and UI generation.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "[AttributeUsage(AttributeTargets.Property)]\npublic class DisplayAttribute : Attribute\n{\n    public string Name { get; set; }\n}\n\n[AttributeUsage(AttributeTargets.Property)]\npublic class RequiredAttribute : Attribute { }\n\npublic class Person\n{\n    [Display(Name = \"Full Name\")]\n    [Required]\n    public string Name { get; set; }\n}\n\npublic static void Main()\n{\n    PropertyInfo property = typeof(Person).GetProperty(\"Name\");\n    \n    if (property.GetCustomAttribute<DisplayAttribute>() != null)\n    {\n        Console.WriteLine(\"Property Name has DisplayAttribute\");\n        var displayAttr = property.GetCustomAttribute<DisplayAttribute>();\n        Console.WriteLine($\"Display Name: {displayAttr.Name}\");\n    }\n    \n    bool isRequired = property.GetCustomAttribute<RequiredAttribute>() != null;\n    Console.WriteLine($\"Is Required: {isRequired}\");\n}",
+        "output": "Property Name has DisplayAttribute\nDisplay Name: Full Name\nIs Required: True"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "attributes", "metadata", "getcustomattribute", "runtime-inspection"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0003",
+      "question": "What will this C# reflection dynamic type creation and property setting output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dynamic instance created\nProperty set: Dynamic Value\nProperty get: Dynamic Value",
+          "explanation": "Correct! Reflection enables dynamic object creation and property manipulation at runtime without compile-time knowledge."
+        },
+        {
+          "id": "b",
+          "text": "Cannot create instance dynamically",
+          "explanation": "Incorrect. Activator.CreateInstance successfully creates instances using reflection."
+        },
+        {
+          "id": "c",
+          "text": "Property access fails",
+          "explanation": "Incorrect. Reflection provides full access to public properties for getting and setting values."
+        },
+        {
+          "id": "d",
+          "text": "Type not found exception",
+          "explanation": "Incorrect. typeof() returns a valid Type object for existing classes."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection allows complete dynamic manipulation of objects, including creation, property access, and method invocation, enabling powerful runtime programming patterns.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class DynamicClass\n{\n    public string Value { get; set; }\n    \n    public DynamicClass()\n    {\n        Console.WriteLine(\"Dynamic instance created\");\n    }\n}\n\npublic static void Main()\n{\n    // Create instance dynamically\n    Type type = typeof(DynamicClass);\n    object instance = Activator.CreateInstance(type);\n    \n    // Set property value dynamically\n    PropertyInfo property = type.GetProperty(\"Value\");\n    property.SetValue(instance, \"Dynamic Value\");\n    Console.WriteLine($\"Property set: {property.GetValue(instance)}\");\n    \n    // Get property value dynamically\n    string value = (string)property.GetValue(instance);\n    Console.WriteLine($\"Property get: {value}\");\n}",
+        "output": "Dynamic instance created\nProperty set: Dynamic Value\nProperty get: Dynamic Value"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "activator", "propertyinfo", "dynamic-creation", "property-access"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0004",
+      "question": "What is the output of this C# reflection generic type instantiation code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Generic type created: Repository`1[System.String]\nMethod called with: test data",
+          "explanation": "Correct! Reflection can instantiate generic types by providing type arguments and invoke their methods dynamically."
+        },
+        {
+          "id": "b",
+          "text": "Cannot instantiate open generic types",
+          "explanation": "Incorrect. MakeGenericType() creates closed generic types that can be instantiated."
+        },
+        {
+          "id": "c",
+          "text": "Generic method invocation fails",
+          "explanation": "Incorrect. Reflection properly handles generic type methods once the type is closed."
+        },
+        {
+          "id": "d",
+          "text": "Type argument mismatch error",
+          "explanation": "Incorrect. The string type argument properly matches the generic parameter constraints."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection can work with generic types by using MakeGenericType() to create closed generic types from open generic type definitions, enabling dynamic generic programming.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Repository<T>\n{\n    public void Save(T data)\n    {\n        Console.WriteLine($\"Method called with: {data}\");\n    }\n}\n\npublic static void Main()\n{\n    // Get open generic type\n    Type openGenericType = typeof(Repository<>);\n    \n    // Create closed generic type (Repository<string>)\n    Type closedGenericType = openGenericType.MakeGenericType(typeof(string));\n    Console.WriteLine($\"Generic type created: {closedGenericType}\");\n    \n    // Create instance and invoke method\n    object instance = Activator.CreateInstance(closedGenericType);\n    MethodInfo saveMethod = closedGenericType.GetMethod(\"Save\");\n    saveMethod.Invoke(instance, new object[] { \"test data\" });\n}",
+        "output": "Generic type created: Repository`1[System.String]\nMethod called with: test data"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 8,
+      "tags": ["reflection", "generics", "makegenerictype", "open-generics", "closed-generics"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0005",
+      "question": "What will this C# reflection assembly loading and type discovery output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assembly loaded: mscorlib\nFound type: System.String\nType is public: True",
+          "explanation": "Correct! Reflection can load assemblies and discover types at runtime, enabling plugin architectures and dynamic loading."
+        },
+        {
+          "id": "b",
+          "text": "Assembly loading requires full path",
+          "explanation": "Incorrect. System assemblies can be loaded by name using Assembly.LoadFrom or GetAssembly."
+        },
+        {
+          "id": "c",
+          "text": "Type discovery fails for system types",
+          "explanation": "Incorrect. Reflection works with all accessible types, including system types."
+        },
+        {
+          "id": "d",
+          "text": "Security restrictions prevent assembly access",
+          "explanation": "Incorrect. System assemblies are accessible for reflection in normal execution contexts."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables runtime assembly loading and type discovery, allowing applications to work with types not known at compile time, essential for plugin systems and frameworks.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public static void Main()\n{\n    // Get assembly containing String type\n    Assembly assembly = typeof(string).Assembly;\n    Console.WriteLine($\"Assembly loaded: {assembly.GetName().Name}\");\n    \n    // Find String type in assembly\n    Type stringType = assembly.GetType(\"System.String\");\n    Console.WriteLine($\"Found type: {stringType.FullName}\");\n    \n    // Check type properties\n    bool isPublic = stringType.IsPublic;\n    Console.WriteLine($\"Type is public: {isPublic}\");\n}\n\n// Common assembly operations:\n// - Assembly.LoadFrom(path) - load from file\n// - Assembly.GetExecutingAssembly() - current assembly\n// - Assembly.GetTypes() - all types in assembly\n// - Assembly.GetType(name) - specific type by name",
+        "output": "Assembly loaded: System.Private.CoreLib\nFound type: System.String\nType is public: True"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "assembly", "type-discovery", "assembly-loading", "runtime-types"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0006",
+      "question": "What is the output of this C# reflection expression tree compilation code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Expression: (x, y) => (x + y)\nCompiled result: 8",
+          "explanation": "Correct! Expression trees can be built programmatically and compiled to executable delegates at runtime."
+        },
+        {
+          "id": "b",
+          "text": "Expression compilation not supported",
+          "explanation": "Incorrect. Expression trees support compilation to delegates via the Compile() method."
+        },
+        {
+          "id": "c",
+          "text": "Type mismatch in expression parameters",
+          "explanation": "Incorrect. The expression parameters match the delegate signature for integer addition."
+        },
+        {
+          "id": "d",
+          "text": "Runtime compilation fails",
+          "explanation": "Incorrect. Expression tree compilation works correctly when the expression is well-formed."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Expression trees represent code as data structures that can be analyzed, modified, and compiled at runtime, enabling advanced scenarios like LINQ providers and dynamic query generation.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "using System.Linq.Expressions;\n\npublic static void Main()\n{\n    // Build expression tree: (x, y) => x + y\n    ParameterExpression x = Expression.Parameter(typeof(int), \"x\");\n    ParameterExpression y = Expression.Parameter(typeof(int), \"y\");\n    BinaryExpression addition = Expression.Add(x, y);\n    \n    Expression<Func<int, int, int>> expression = \n        Expression.Lambda<Func<int, int, int>>(addition, x, y);\n    \n    Console.WriteLine($\"Expression: {expression}\");\n    \n    // Compile and execute\n    Func<int, int, int> compiled = expression.Compile();\n    int result = compiled(3, 5);\n    Console.WriteLine($\"Compiled result: {result}\");\n}",
+        "output": "Expression: (x, y) => (x + y)\nCompiled result: 8"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 8,
+      "tags": ["reflection", "expression-trees", "compile", "dynamic-code", "linq-expressions"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0007",
+      "question": "What will this C# reflection delegate creation and invocation output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delegate created successfully\nDelegate invoked: Hello from delegate",
+          "explanation": "Correct! Reflection can create delegates from MethodInfo, enabling dynamic method binding and invocation patterns."
+        },
+        {
+          "id": "b",
+          "text": "Delegate signature mismatch",
+          "explanation": "Incorrect. The method signature matches the Action<string> delegate type."
+        },
+        {
+          "id": "c",
+          "text": "Cannot create delegates via reflection",
+          "explanation": "Incorrect. Delegate.CreateDelegate() allows creating delegates from MethodInfo objects."
+        },
+        {
+          "id": "d",
+          "text": "Static method binding fails",
+          "explanation": "Incorrect. Static methods can be bound to delegates using null as the target instance."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables dynamic delegate creation using Delegate.CreateDelegate(), allowing runtime method binding and event handler registration without compile-time knowledge.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class DelegateExample\n{\n    public static void PrintMessage(string message)\n    {\n        Console.WriteLine($\"Delegate invoked: {message}\");\n    }\n}\n\npublic static void Main()\n{\n    // Get method info\n    MethodInfo method = typeof(DelegateExample).GetMethod(\"PrintMessage\");\n    \n    // Create delegate from method\n    Action<string> dynamicDelegate = \n        (Action<string>)Delegate.CreateDelegate(typeof(Action<string>), method);\n    \n    Console.WriteLine(\"Delegate created successfully\");\n    \n    // Invoke delegate\n    dynamicDelegate(\"Hello from delegate\");\n}",
+        "output": "Delegate created successfully\nDelegate invoked: Hello from delegate"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "delegates", "createdelegate", "methodinfo", "dynamic-binding"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0008",
+      "question": "What is the output of this C# reflection interface implementation discovery code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Implements IDisposable: True\nImplements IEnumerable: False\nInterface methods: 1",
+          "explanation": "Correct! Reflection can discover interface implementations and analyze their methods, enabling runtime interface detection."
+        },
+        {
+          "id": "b",
+          "text": "Interface discovery not supported",
+          "explanation": "Incorrect. Reflection provides comprehensive interface inspection capabilities."
+        },
+        {
+          "id": "c",
+          "text": "Cannot check interface implementation",
+          "explanation": "Incorrect. Type.IsAssignableFrom() and GetInterfaces() provide interface checking capabilities."
+        },
+        {
+          "id": "d",
+          "text": "All types implement IDisposable",
+          "explanation": "Incorrect. Only types that explicitly implement IDisposable will return true for interface checks."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables runtime discovery of interface implementations, allowing applications to adapt behavior based on what interfaces types implement, essential for plugin architectures.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class ExampleClass : IDisposable\n{\n    public void Dispose()\n    {\n        // Cleanup code\n    }\n}\n\npublic static void Main()\n{\n    Type type = typeof(ExampleClass);\n    \n    // Check interface implementations\n    bool implementsDisposable = typeof(IDisposable).IsAssignableFrom(type);\n    bool implementsEnumerable = typeof(IEnumerable).IsAssignableFrom(type);\n    \n    Console.WriteLine($\"Implements IDisposable: {implementsDisposable}\");\n    Console.WriteLine($\"Implements IEnumerable: {implementsEnumerable}\");\n    \n    // Get interface methods\n    if (implementsDisposable)\n    {\n        MethodInfo[] methods = typeof(IDisposable).GetMethods();\n        Console.WriteLine($\"Interface methods: {methods.Length}\");\n    }\n}",
+        "output": "Implements IDisposable: True\nImplements IEnumerable: False\nInterface methods: 1"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "interfaces", "isassignablefrom", "interface-discovery", "runtime-checking"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0009",
+      "question": "What will this C# reflection private field access code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Original private value: 42\nModified private value: 100",
+          "explanation": "Correct! Reflection can access private members using appropriate BindingFlags, bypassing normal access restrictions."
+        },
+        {
+          "id": "b",
+          "text": "Cannot access private fields",
+          "explanation": "Incorrect. Reflection with BindingFlags.NonPublic can access private members."
+        },
+        {
+          "id": "c",
+          "text": "Security exception on private access",
+          "explanation": "Incorrect. Reflection allows private member access in normal trust environments."
+        },
+        {
+          "id": "d",
+          "text": "FieldInfo not found for private field",
+          "explanation": "Incorrect. GetField with appropriate binding flags can find private fields."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection can bypass access modifiers using BindingFlags, allowing access to private, protected, and internal members for testing, debugging, and framework scenarios.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class PrivateFieldExample\n{\n    private int _privateValue = 42;\n    \n    public void ShowValue()\n    {\n        Console.WriteLine($\"Private value: {_privateValue}\");\n    }\n}\n\npublic static void Main()\n{\n    PrivateFieldExample instance = new PrivateFieldExample();\n    Type type = typeof(PrivateFieldExample);\n    \n    // Access private field using reflection\n    FieldInfo privateField = type.GetField(\"_privateValue\", \n        BindingFlags.NonPublic | BindingFlags.Instance);\n    \n    // Get original value\n    int originalValue = (int)privateField.GetValue(instance);\n    Console.WriteLine($\"Original private value: {originalValue}\");\n    \n    // Modify private field\n    privateField.SetValue(instance, 100);\n    int modifiedValue = (int)privateField.GetValue(instance);\n    Console.WriteLine($\"Modified private value: {modifiedValue}\");\n}",
+        "output": "Original private value: 42\nModified private value: 100"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "private-fields", "bindingflags", "field-access", "access-modifiers"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0010",
+      "question": "What is the output of this C# reflection constructor invocation with parameters code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parameterless constructor: Default\nParameterized constructor: Custom Value",
+          "explanation": "Correct! Reflection can invoke different constructors based on parameter types, enabling flexible object creation patterns."
+        },
+        {
+          "id": "b",
+          "text": "Constructor overload resolution fails",
+          "explanation": "Incorrect. GetConstructor with parameter types correctly resolves constructor overloads."
+        },
+        {
+          "id": "c",
+          "text": "Cannot invoke constructors with parameters",
+          "explanation": "Incorrect. Reflection supports constructor invocation with any parameter combination."
+        },
+        {
+          "id": "d",
+          "text": "Activator only supports parameterless constructors",
+          "explanation": "Incorrect. Activator.CreateInstance can accept constructor parameters."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables dynamic constructor selection and invocation based on parameter types, allowing runtime object creation with flexible initialization patterns.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class ConstructorExample\n{\n    public string Value { get; }\n    \n    public ConstructorExample()\n    {\n        Value = \"Default\";\n    }\n    \n    public ConstructorExample(string value)\n    {\n        Value = value;\n    }\n}\n\npublic static void Main()\n{\n    Type type = typeof(ConstructorExample);\n    \n    // Invoke parameterless constructor\n    ConstructorInfo defaultConstructor = type.GetConstructor(Type.EmptyTypes);\n    object instance1 = defaultConstructor.Invoke(null);\n    Console.WriteLine($\"Parameterless constructor: {((ConstructorExample)instance1).Value}\");\n    \n    // Invoke parameterized constructor\n    ConstructorInfo paramConstructor = type.GetConstructor(new[] { typeof(string) });\n    object instance2 = paramConstructor.Invoke(new object[] { \"Custom Value\" });\n    Console.WriteLine($\"Parameterized constructor: {((ConstructorExample)instance2).Value}\");\n}",
+        "output": "Parameterless constructor: Default\nParameterized constructor: Custom Value"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "constructors", "constructorinfo", "overload-resolution", "object-creation"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0011",
+      "question": "What will this C# reflection event subscription and invocation output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event subscribed via reflection\nEvent fired: Test Message",
+          "explanation": "Correct! Reflection can subscribe to events and trigger them dynamically, enabling runtime event handling patterns."
+        },
+        {
+          "id": "b",
+          "text": "Cannot subscribe to events via reflection",
+          "explanation": "Incorrect. EventInfo provides AddEventHandler method for dynamic event subscription."
+        },
+        {
+          "id": "c",
+          "text": "Event invocation requires compile-time knowledge",
+          "explanation": "Incorrect. Events can be triggered through reflection using the underlying field or raise method."
+        },
+        {
+          "id": "d",
+          "text": "Event handlers must be compile-time defined",
+          "explanation": "Incorrect. Event handlers can be created dynamically using delegates and reflection."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables dynamic event subscription and invocation, allowing runtime event handling for scenarios like plugin systems and dynamic UI frameworks.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class EventExample\n{\n    public event Action<string> MessageReceived;\n    \n    public void TriggerEvent(string message)\n    {\n        MessageReceived?.Invoke(message);\n    }\n}\n\npublic static void Main()\n{\n    EventExample instance = new EventExample();\n    Type type = typeof(EventExample);\n    \n    // Subscribe to event via reflection\n    EventInfo eventInfo = type.GetEvent(\"MessageReceived\");\n    Action<string> handler = msg => Console.WriteLine($\"Event fired: {msg}\");\n    eventInfo.AddEventHandler(instance, handler);\n    \n    Console.WriteLine(\"Event subscribed via reflection\");\n    \n    // Trigger event\n    instance.TriggerEvent(\"Test Message\");\n}",
+        "output": "Event subscribed via reflection\nEvent fired: Test Message"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 8,
+      "tags": ["reflection", "events", "eventinfo", "addeventhandler", "dynamic-events"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0012",
+      "question": "What is the output of this C# reflection nullable type analysis code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Is nullable: True\nUnderlying type: System.Int32\nHas value: False",
+          "explanation": "Correct! Reflection can analyze nullable types, extract underlying types, and work with Nullable<T> structure members."
+        },
+        {
+          "id": "b",
+          "text": "Nullable analysis not supported",
+          "explanation": "Incorrect. Reflection provides full support for nullable type inspection and manipulation."
+        },
+        {
+          "id": "c",
+          "text": "Underlying type cannot be determined",
+          "explanation": "Incorrect. Nullable.GetUnderlyingType() extracts the underlying value type."
+        },
+        {
+          "id": "d",
+          "text": "Nullable types appear as regular types",
+          "explanation": "Incorrect. Nullable types have specific reflection properties and methods for analysis."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection provides specialized support for nullable types, allowing analysis of underlying types and nullable-specific properties like HasValue and Value.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public static void Main()\n{\n    int? nullableInt = null;\n    Type nullableType = typeof(int?);\n    \n    // Check if type is nullable\n    bool isNullable = Nullable.GetUnderlyingType(nullableType) != null;\n    Console.WriteLine($\"Is nullable: {isNullable}\");\n    \n    // Get underlying type\n    Type underlyingType = Nullable.GetUnderlyingType(nullableType);\n    Console.WriteLine($\"Underlying type: {underlyingType}\");\n    \n    // Check value using reflection\n    PropertyInfo hasValueProperty = nullableType.GetProperty(\"HasValue\");\n    bool hasValue = (bool)hasValueProperty.GetValue(nullableInt);\n    Console.WriteLine($\"Has value: {hasValue}\");\n}",
+        "output": "Is nullable: True\nUnderlying type: System.Int32\nHas value: False"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "nullable-types", "getunderlyingtype", "hasvalue", "nullable-analysis"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0013",
+      "question": "What will this C# reflection method overload resolution by parameter types output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Method found: ProcessData\nParameters: 2\nFirst parameter: System.String",
+          "explanation": "Correct! Reflection can resolve method overloads by matching parameter types exactly, enabling precise method selection."
+        },
+        {
+          "id": "b",
+          "text": "Ambiguous method resolution",
+          "explanation": "Incorrect. GetMethod with specific parameter types resolves to the exact matching overload."
+        },
+        {
+          "id": "c",
+          "text": "Method overloads not distinguishable",
+          "explanation": "Incorrect. Reflection distinguishes overloads by their parameter type signatures."
+        },
+        {
+          "id": "d",
+          "text": "Cannot specify parameter types in GetMethod",
+          "explanation": "Incorrect. GetMethod accepts a Type[] parameter for overload resolution."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection enables precise method overload resolution by specifying parameter types, allowing selection of specific method variations in complex type hierarchies.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class OverloadExample\n{\n    public void ProcessData(string data) { }\n    public void ProcessData(int data) { }\n    public void ProcessData(string data, bool flag) { }\n}\n\npublic static void Main()\n{\n    Type type = typeof(OverloadExample);\n    \n    // Get specific overload by parameter types\n    Type[] parameterTypes = { typeof(string), typeof(bool) };\n    MethodInfo method = type.GetMethod(\"ProcessData\", parameterTypes);\n    \n    Console.WriteLine($\"Method found: {method.Name}\");\n    Console.WriteLine($\"Parameters: {method.GetParameters().Length}\");\n    Console.WriteLine($\"First parameter: {method.GetParameters()[0].ParameterType}\");\n}\n\n// Other overload resolution options:\n// - GetMethod(name) - first match\n// - GetMethods() - all methods, then filter\n// - GetMethod(name, BindingFlags, binder, types, modifiers)",
+        "output": "Method found: ProcessData\nParameters: 2\nFirst parameter: System.String"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 7,
+      "tags": ["reflection", "method-overloads", "parameter-types", "overload-resolution", "getmethod"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0014",
+      "question": "What is the output of this C# reflection custom attribute inheritance code?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Base attributes: 1\nDerived attributes: 2\nInherited attribute found: True",
+          "explanation": "Correct! Attribute inheritance depends on the Inherited property of AttributeUsage, affecting how derived classes inherit base class attributes."
+        },
+        {
+          "id": "b",
+          "text": "Derived class doesn't inherit attributes",
+          "explanation": "Incorrect. When Inherited=true in AttributeUsage, derived classes inherit base class attributes."
+        },
+        {
+          "id": "c",
+          "text": "All attributes are always inherited",
+          "explanation": "Incorrect. Attribute inheritance is controlled by the Inherited property in AttributeUsage."
+        },
+        {
+          "id": "d",
+          "text": "Cannot detect inherited attributes",
+          "explanation": "Incorrect. GetCustomAttributes with inherit=true finds inherited attributes."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Attribute inheritance in reflection is controlled by the Inherited property in AttributeUsage. When true, derived classes inherit base class attributes, discoverable via reflection.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "[AttributeUsage(AttributeTargets.Class, Inherited = true)]\npublic class InheritableAttribute : Attribute\n{\n    public string Value { get; set; }\n}\n\n[Inheritable(Value = \"Base\")]\npublic class BaseClass { }\n\n[Inheritable(Value = \"Derived\")]\npublic class DerivedClass : BaseClass { }\n\npublic static void Main()\n{\n    // Check base class attributes\n    var baseAttrs = typeof(BaseClass).GetCustomAttributes<InheritableAttribute>(false);\n    Console.WriteLine($\"Base attributes: {baseAttrs.Count()}\");\n    \n    // Check derived class attributes (including inherited)\n    var derivedAttrs = typeof(DerivedClass).GetCustomAttributes<InheritableAttribute>(true);\n    Console.WriteLine($\"Derived attributes: {derivedAttrs.Count()}\");\n    \n    // Check if inherited attribute exists\n    bool hasInherited = derivedAttrs.Any(a => a.Value == \"Base\");\n    Console.WriteLine($\"Inherited attribute found: {hasInherited}\");\n}",
+        "output": "Base attributes: 1\nDerived attributes: 2\nInherited attribute found: True"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 8,
+      "tags": ["reflection", "attributes", "inheritance", "attributeusage", "getcustomattributes"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "ref-0015",
+      "question": "What will this C# reflection dynamic assembly creation code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dynamic assembly created\nDynamic type created: DynamicClass\nDynamic method called: Hello Dynamic World!",
+          "explanation": "Correct! Reflection.Emit enables runtime creation of assemblies, types, and methods, allowing dynamic code generation and execution."
+        },
+        {
+          "id": "b",
+          "text": "Dynamic assembly creation not supported",
+          "explanation": "Incorrect. System.Reflection.Emit provides full dynamic assembly creation capabilities."
+        },
+        {
+          "id": "c",
+          "text": "Cannot execute dynamically created methods",
+          "explanation": "Incorrect. Dynamically created methods can be invoked like any other method via reflection."
+        },
+        {
+          "id": "d",
+          "text": "Security restrictions prevent dynamic assembly creation",
+          "explanation": "Incorrect. Dynamic assembly creation works in standard trust environments."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Reflection.Emit allows runtime creation of assemblies, types, and methods using IL generation, enabling advanced scenarios like code generation and dynamic proxies.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "using System.Reflection.Emit;\n\npublic static void Main()\n{\n    // Create dynamic assembly\n    AssemblyBuilder assembly = AssemblyBuilder.DefineDynamicAssembly(\n        new AssemblyName(\"DynamicAssembly\"), AssemblyBuilderAccess.Run);\n    Console.WriteLine(\"Dynamic assembly created\");\n    \n    // Create dynamic module and type\n    ModuleBuilder module = assembly.DefineDynamicModule(\"MainModule\");\n    TypeBuilder type = module.DefineType(\"DynamicClass\", TypeAttributes.Public);\n    Console.WriteLine($\"Dynamic type created: {type.Name}\");\n    \n    // Create dynamic method\n    MethodBuilder method = type.DefineMethod(\"SayHello\", \n        MethodAttributes.Public | MethodAttributes.Static, typeof(string), null);\n    \n    // Generate IL for method body\n    ILGenerator il = method.GetILGenerator();\n    il.Emit(OpCodes.Ldstr, \"Hello Dynamic World!\");\n    il.Emit(OpCodes.Ret);\n    \n    // Create type and invoke method\n    Type createdType = type.CreateType();\n    MethodInfo createdMethod = createdType.GetMethod(\"SayHello\");\n    string result = (string)createdMethod.Invoke(null, null);\n    Console.WriteLine($\"Dynamic method called: {result}\");\n}",
+        "output": "Dynamic assembly created\nDynamic type created: DynamicClass\nDynamic method called: Hello Dynamic World!"
+      },
+      "category": "expert",
+      "subcategory": "reflection-mc",
+      "difficulty": 9,
+      "tags": ["reflection", "reflection-emit", "dynamic-assembly", "il-generation", "runtime-compilation"],
+      "createdAt": "2025-01-29T16:30:00Z",
+      "updatedAt": "2025-01-29T16:30:00Z",
+      "version": 1
+    }
+  ]
+}

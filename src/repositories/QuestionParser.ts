@@ -166,8 +166,8 @@ export class QuestionParser implements IQuestionParser {
     }
     
     // Difficulty validation
-    if (typeof rawQuestion.difficulty !== 'number' || rawQuestion.difficulty < 1 || rawQuestion.difficulty > 5) {
-      errors.push('Difficulty must be a number between 1 and 5');
+    if (typeof rawQuestion.difficulty !== 'number' || rawQuestion.difficulty < 1 || rawQuestion.difficulty > 10) {
+      errors.push('Difficulty must be a number between 1 and 10');
     }
     
     // Code example validation (if present)
@@ -261,18 +261,23 @@ export class QuestionParser implements IQuestionParser {
   
   /**
    * Maps numeric difficulty to QuestionDifficulty enum
-   * @param difficulty - Numeric difficulty (1-5)
+   * @param difficulty - Numeric difficulty (1-10)
    * @returns QuestionDifficulty enum value
    */
   private mapDifficulty(difficulty: number): QuestionDifficulty {
     switch (difficulty) {
       case 1:
       case 2:
-        return 'easy';
       case 3:
-        return 'medium';
+        return 'easy';
       case 4:
       case 5:
+      case 6:
+        return 'medium';
+      case 7:
+      case 8:
+      case 9:
+      case 10:
         return 'hard';
       default:
         return 'medium'; // Default fallback

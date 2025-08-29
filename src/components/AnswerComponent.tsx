@@ -166,9 +166,6 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
         aria-describedby={`option-${index}-description`}
       >
         <div className="answer-option-content">
-          <div className="answer-option-indicator">
-            {String.fromCharCode(65 + index)} {/* A, B, C, D */}
-          </div>
           <div className="answer-option-text">
             {option.text.split('\n').map((line, lineIndex) => (
               <React.Fragment key={lineIndex}>

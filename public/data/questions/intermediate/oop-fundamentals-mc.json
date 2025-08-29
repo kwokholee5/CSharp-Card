@@ -1,0 +1,505 @@
+{
+  "$schema": "../../metadata/schema.json",
+  "metadata": {
+    "category": "intermediate",
+    "subcategory": "oop-fundamentals-mc",
+    "fileVersion": 1,
+    "lastUpdated": "2025-01-29T15:30:00Z",
+    "questionCount": 12,
+    "avgDifficulty": 4.0
+  },
+  "questions": [
+    {
+      "id": "oop-0001",
+      "question": "What will this C# inheritance and method overriding code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Base Method\nBase Method",
+          "explanation": "Incorrect. Virtual methods enable polymorphism, so the derived class method is called."
+        },
+        {
+          "id": "b",
+          "text": "Derived Method\nDerived Method",
+          "explanation": "Correct! Virtual method dispatch calls the most derived implementation, even when accessed through base class reference."
+        },
+        {
+          "id": "c",
+          "text": "Base Method\nDerived Method",
+          "explanation": "Incorrect. Both calls use the same polymorphic dispatch mechanism."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error due to method hiding",
+          "explanation": "Incorrect. Override is the correct way to implement virtual method polymorphism."
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Virtual methods enable runtime polymorphism. When a derived class overrides a virtual method, the derived implementation is called regardless of the reference type used to access it.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Method\");\n}\n\nBase obj1 = new Derived();\nDerived obj2 = new Derived();\nobj1.Display();\nobj2.Display();",
+        "output": "Derived Method\nDerived Method"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 3,
+      "tags": ["oop", "inheritance", "polymorphism", "virtual", "override"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0002",
+      "question": "What happens when you call this C# abstract class and method implementation?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Concrete Implementation",
+          "explanation": "Correct! Abstract methods must be implemented in derived classes, and the implementation is called."
+        },
+        {
+          "id": "b",
+          "text": "Abstract Method",
+          "explanation": "Incorrect. Abstract methods have no implementation in the abstract class."
+        },
+        {
+          "id": "c",
+          "text": "Runtime exception",
+          "explanation": "Incorrect. Properly implemented abstract methods work normally."
+        },
+        {
+          "id": "d",
+          "text": "Cannot instantiate abstract class",
+          "explanation": "Incorrect. While you can't instantiate abstract classes directly, you can instantiate concrete derived classes."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Abstract classes cannot be instantiated directly, but their concrete derived classes can be. Abstract methods must be implemented in the first concrete derived class.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public abstract class Shape\n{\n    public abstract void Draw();\n}\n\npublic class Circle : Shape\n{\n    public override void Draw() => Console.WriteLine(\"Concrete Implementation\");\n}\n\nShape shape = new Circle();  // Valid - instantiating concrete class\nshape.Draw();",
+        "output": "Concrete Implementation"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 4,
+      "tags": ["oop", "abstract-classes", "abstract-methods", "inheritance"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0003",
+      "question": "What will this C# interface implementation code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Interface Implementation\nInterface Implementation",
+          "explanation": "Correct! Both implicit and explicit interface access call the same implementation method."
+        },
+        {
+          "id": "b",
+          "text": "Interface Implementation\nCompilation error",
+          "explanation": "Incorrect. Explicit interface implementation requires casting to interface type for access."
+        },
+        {
+          "id": "c",
+          "text": "Compilation error\nInterface Implementation",
+          "explanation": "Incorrect. The first call works because the method is publicly accessible."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error on both lines",
+          "explanation": "Incorrect. Interface implementation can be accessed through the implementing class."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "When a class implements an interface implicitly (public method), the method can be called both through the class instance and through the interface reference.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public interface IDrawable\n{\n    void Draw();\n}\n\npublic class Rectangle : IDrawable\n{\n    public void Draw() => Console.WriteLine(\"Interface Implementation\");\n}\n\nRectangle rect = new Rectangle();\nIDrawable drawable = rect;\nrect.Draw();\ndrawable.Draw();",
+        "output": "Interface Implementation\nInterface Implementation"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 3,
+      "tags": ["oop", "interfaces", "implementation", "polymorphism"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0004",
+      "question": "What is the output of this C# property getter/setter with backing field?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Getting: 0\nSetting: 42\nGetting: 42",
+          "explanation": "Correct! Properties allow custom logic in getters and setters, and can access backing fields."
+        },
+        {
+          "id": "b",
+          "text": "42",
+          "explanation": "Incorrect. The custom getter and setter include Console.WriteLine statements."
+        },
+        {
+          "id": "c",
+          "text": "Getting: 42\nSetting: 42\nGetting: 42",
+          "explanation": "Incorrect. The initial value of the backing field is 0 (default for int)."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error - circular reference",
+          "explanation": "Incorrect. Properties using backing fields don't create circular references."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Properties can contain custom logic in getters and setters. The backing field holds the actual value, and properties provide controlled access to it.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Example\n{\n    private int _value;\n    public int Value\n    {\n        get\n        {\n            Console.WriteLine($\"Getting: {_value}\");\n            return _value;\n        }\n        set\n        {\n            Console.WriteLine($\"Setting: {value}\");\n            _value = value;\n        }\n    }\n}\n\nExample ex = new Example();\nint initial = ex.Value;\nex.Value = 42;\nint final = ex.Value;",
+        "output": "Getting: 0\nSetting: 42\nGetting: 42"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 3,
+      "tags": ["oop", "properties", "getters-setters", "backing-fields", "encapsulation"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0005",
+      "question": "What will this C# constructor chaining code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Default Constructor\nParameterized Constructor\nName: John, Age: 0",
+          "explanation": "Incorrect. Constructor chaining calls the target constructor first."
+        },
+        {
+          "id": "b",
+          "text": "Parameterized Constructor\nDefault Constructor\nName: John, Age: 25",
+          "explanation": "Incorrect. The this() call executes the parameterized constructor, not default."
+        },
+        {
+          "id": "c",
+          "text": "Parameterized Constructor\nName: John, Age: 25",
+          "explanation": "Correct! Constructor chaining with this(name, 25) calls the two-parameter constructor directly."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error - recursive constructor call",
+          "explanation": "Incorrect. This is valid constructor chaining, not recursion."
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "Constructor chaining using this() allows one constructor to call another. The chained constructor executes first, then any additional code in the calling constructor.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Person\n{\n    public string Name { get; set; }\n    public int Age { get; set; }\n    \n    public Person(string name, int age)\n    {\n        Console.WriteLine(\"Parameterized Constructor\");\n        Name = name; Age = age;\n    }\n    \n    public Person(string name) : this(name, 25)\n    {\n        // Additional initialization if needed\n    }\n}\n\nPerson p = new Person(\"John\");\nConsole.WriteLine($\"Name: {p.Name}, Age: {p.Age}\");",
+        "output": "Parameterized Constructor\nName: John, Age: 25"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 4,
+      "tags": ["oop", "constructors", "constructor-chaining", "this-keyword"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0006",
+      "question": "What happens in this C# method hiding vs overriding example?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Base Method\nHidden Method",
+          "explanation": "Correct! Method hiding (new) depends on the reference type, while overriding (virtual/override) uses runtime type."
+        },
+        {
+          "id": "b",
+          "text": "Hidden Method\nHidden Method",
+          "explanation": "Incorrect. Method hiding is compile-time binding based on reference type."
+        },
+        {
+          "id": "c",
+          "text": "Base Method\nBase Method",
+          "explanation": "Incorrect. The second call uses the derived class reference which accesses the hidden method."
+        },
+        {
+          "id": "d",
+          "text": "Compilation warning about hiding",
+          "explanation": "Incorrect. While there may be warnings, the code compiles and runs."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Method hiding (new keyword) creates a new method that shadows the base method. Which method is called depends on the reference type (compile-time), not the object type (runtime).",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Base\n{\n    public void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public new void Display() => Console.WriteLine(\"Hidden Method\");\n}\n\nDerived obj = new Derived();\nBase baseRef = obj;\nbaseRef.Display();  // Calls base version\nobj.Display();      // Calls derived version",
+        "output": "Base Method\nHidden Method"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 4,
+      "tags": ["oop", "method-hiding", "new-keyword", "polymorphism", "inheritance"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0007",
+      "question": "What will this C# static constructor code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Static Constructor\nInstance Constructor\nInstance Constructor",
+          "explanation": "Correct! Static constructor runs once before first use of the class, instance constructors run for each object creation."
+        },
+        {
+          "id": "b",
+          "text": "Static Constructor\nStatic Constructor\nInstance Constructor\nInstance Constructor",
+          "explanation": "Incorrect. Static constructor runs only once per application domain."
+        },
+        {
+          "id": "c",
+          "text": "Instance Constructor\nInstance Constructor\nStatic Constructor",
+          "explanation": "Incorrect. Static constructor always runs before any instance constructor."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error - static constructors cannot have parameters",
+          "explanation": "Incorrect. Static constructors are parameterless by definition."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Static constructors are called automatically before the first instance is created or any static members are referenced. They run only once per application domain.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class MyClass\n{\n    static MyClass()\n    {\n        Console.WriteLine(\"Static Constructor\");\n    }\n    \n    public MyClass()\n    {\n        Console.WriteLine(\"Instance Constructor\");\n    }\n}\n\nMyClass obj1 = new MyClass();\nMyClass obj2 = new MyClass();",
+        "output": "Static Constructor\nInstance Constructor\nInstance Constructor"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 4,
+      "tags": ["oop", "static-constructor", "constructors", "class-initialization"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0008",
+      "question": "What is the output of this C# sealed class and method example?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sealed Implementation",
+          "explanation": "Correct! Sealed methods can still be called normally; they just prevent further overriding in derived classes."
+        },
+        {
+          "id": "b",
+          "text": "Base Implementation",
+          "explanation": "Incorrect. The sealed method overrides the base virtual method."
+        },
+        {
+          "id": "c",
+          "text": "Compilation error - cannot override sealed method",
+          "explanation": "Incorrect. This code doesn't attempt to override the sealed method."
+        },
+        {
+          "id": "d",
+          "text": "Runtime exception",
+          "explanation": "Incorrect. Sealed methods work normally at runtime."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "The sealed keyword prevents further overriding of a virtual method in derived classes, but the sealed method itself works normally and can override base virtual methods.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Middle : Base\n{\n    public sealed override void Display() => Console.WriteLine(\"Sealed Implementation\");\n}\n\npublic class Derived : Middle\n{\n    // Cannot override Display() here - it's sealed\n}\n\nDerived obj = new Derived();\nobj.Display();",
+        "output": "Sealed Implementation"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 4,
+      "tags": ["oop", "sealed", "inheritance", "method-sealing", "virtual-methods"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0009",
+      "question": "What will this C# explicit interface implementation code output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Explicit Implementation\nPublic Implementation",
+          "explanation": "Correct! Explicit interface implementation is only accessible through interface reference, public method through class reference."
+        },
+        {
+          "id": "b",
+          "text": "Public Implementation\nPublic Implementation",
+          "explanation": "Incorrect. Interface reference calls the explicitly implemented method."
+        },
+        {
+          "id": "c",
+          "text": "Explicit Implementation\nExplicit Implementation",
+          "explanation": "Incorrect. Class reference calls the public method, not the explicit implementation."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error - ambiguous method call",
+          "explanation": "Incorrect. Explicit interface implementation resolves this ambiguity clearly."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Explicit interface implementation creates a method that's only accessible through the interface type. This allows a class to have different implementations for interface and class usage.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public interface ITest\n{\n    void Method();\n}\n\npublic class TestClass : ITest\n{\n    void ITest.Method() => Console.WriteLine(\"Explicit Implementation\");\n    public void Method() => Console.WriteLine(\"Public Implementation\");\n}\n\nTestClass obj = new TestClass();\nITest iobj = obj;\niobj.Method();\nobj.Method();",
+        "output": "Explicit Implementation\nPublic Implementation"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 5,
+      "tags": ["oop", "interfaces", "explicit-implementation", "interface-segregation"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0010",
+      "question": "What happens in this C# base keyword usage example?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Base Implementation\nDerived Implementation",
+          "explanation": "Correct! The base keyword explicitly calls the base class version, bypassing virtual method dispatch."
+        },
+        {
+          "id": "b",
+          "text": "Derived Implementation\nDerived Implementation",
+          "explanation": "Incorrect. The base keyword forces the call to the base class implementation."
+        },
+        {
+          "id": "c",
+          "text": "Base Implementation\nBase Implementation",
+          "explanation": "Incorrect. The second call uses normal virtual dispatch to the derived implementation."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error - cannot access base in static context",
+          "explanation": "Incorrect. This is instance context, and base keyword usage is valid."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "The base keyword allows access to base class members from derived classes, bypassing virtual method dispatch and accessing the base implementation directly.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Implementation\");\n    \n    public void CallBoth()\n    {\n        base.Display();  // Calls base version\n        this.Display();  // Calls derived version\n    }\n}\n\nDerived obj = new Derived();\nobj.CallBoth();",
+        "output": "Base Implementation\nDerived Implementation"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 3,
+      "tags": ["oop", "base-keyword", "inheritance", "method-calls", "polymorphism"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0011",
+      "question": "What will this C# access modifier demonstration output?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Public: 1\nInternal: 2\nProtected: 3",
+          "explanation": "Correct! All access modifiers work within the same assembly and inheritance hierarchy."
+        },
+        {
+          "id": "b",
+          "text": "Public: 1\nCompilation error on internal access",
+          "explanation": "Incorrect. Internal members are accessible within the same assembly."
+        },
+        {
+          "id": "c",
+          "text": "Public: 1\nInternal: 2\nCompilation error on protected access",
+          "explanation": "Incorrect. Protected members are accessible in derived classes."
+        },
+        {
+          "id": "d",
+          "text": "All compilation errors due to access restrictions",
+          "explanation": "Incorrect. This access pattern is valid within the same assembly and inheritance chain."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Access modifiers control visibility: public (everywhere), internal (same assembly), protected (derived classes), private (same class). This example shows valid access patterns.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Base\n{\n    public int PublicField = 1;\n    internal int InternalField = 2;\n    protected int ProtectedField = 3;\n    private int PrivateField = 4;  // Only accessible within Base\n}\n\npublic class Derived : Base\n{\n    public void DisplayFields()\n    {\n        Console.WriteLine($\"Public: {PublicField}\");\n        Console.WriteLine($\"Internal: {InternalField}\");\n        Console.WriteLine($\"Protected: {ProtectedField}\");\n        // Console.WriteLine($\"Private: {PrivateField}\");  // Error\n    }\n}\n\nDerived obj = new Derived();\nobj.DisplayFields();",
+        "output": "Public: 1\nInternal: 2\nProtected: 3"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 3,
+      "tags": ["oop", "access-modifiers", "encapsulation", "visibility", "inheritance"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    },
+    {
+      "id": "oop-0012",
+      "question": "What is the output of this C# partial class and method example?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Partial Method Called\nOther Method Called",
+          "explanation": "Correct! Partial methods with implementations are called normally, and other methods work as expected."
+        },
+        {
+          "id": "b",
+          "text": "Other Method Called",
+          "explanation": "Incorrect. The partial method has an implementation, so it will be called."
+        },
+        {
+          "id": "c",
+          "text": "Compilation error - partial method must be private",
+          "explanation": "Incorrect. In C# 9.0+, partial methods can have access modifiers and return types."
+        },
+        {
+          "id": "d",
+          "text": "Runtime exception - partial method not implemented",
+          "explanation": "Incorrect. This partial method has an implementation."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Partial classes allow splitting class definition across multiple files. Partial methods (with implementations) behave like normal methods. Without implementations, they're removed at compile time.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "// File 1:\npublic partial class MyClass\n{\n    partial void PartialMethod();\n    \n    public void CallMethods()\n    {\n        PartialMethod();\n        OtherMethod();\n    }\n}\n\n// File 2 (conceptually):\npublic partial class MyClass\n{\n    partial void PartialMethod() => Console.WriteLine(\"Partial Method Called\");\n    public void OtherMethod() => Console.WriteLine(\"Other Method Called\");\n}\n\nMyClass obj = new MyClass();\nobj.CallMethods();",
+        "output": "Partial Method Called\nOther Method Called"
+      },
+      "category": "intermediate",
+      "subcategory": "oop-fundamentals-mc",
+      "difficulty": 4,
+      "tags": ["oop", "partial-classes", "partial-methods", "code-organization"],
+      "createdAt": "2025-01-29T15:30:00Z",
+      "updatedAt": "2025-01-29T15:30:00Z",
+      "version": 1
+    }
+  ]
+}

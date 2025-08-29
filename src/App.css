@@ -15,12 +15,31 @@ html, body {
   height: 100%;
 }
 
+/* Allow scrolling on mobile devices */
+@media (max-width: 768px) {
+  html, body {
+    overflow: auto;
+    position: static;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
 /* Root App Container */
 .app {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   background: #1e1e1e;
+}
+
+/* Allow scrolling on mobile */
+@media (max-width: 768px) {
+  .app {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
 }
 
 /* Loading State */
@@ -125,6 +144,19 @@ html, body {
   overflow: hidden;
 }
 
+/* Mobile layout changes */
+@media (max-width: 768px) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
 /* Column Layouts */
 .app-left-column {
   display: flex;
@@ -142,6 +174,16 @@ html, body {
   background: #2a2d3a;
   border-radius: 8px;
   border: 1px solid #3a3f4b;
+}
+
+/* Mobile column adjustments */
+@media (max-width: 768px) {
+  .app-left-column,
+  .app-right-column {
+    overflow: visible;
+    height: auto;
+    flex: none;
+  }
 }
 
 .app-column-error {
