@@ -98,17 +98,17 @@
       "options": [
         {
           "id": "a",
-          "text": "HasValue: False, Value: 0, Result: 100",
+          "text": "HasValue: False\nValue: 0\nResult: 100",
           "explanation": "Correct! The nullable int has no value, so HasValue is false, accessing Value would throw but we use ??, and ?? returns 100."
         },
         {
           "id": "b",
-          "text": "HasValue: True, Value: 0, Result: 0",
+          "text": "HasValue: True\nValue: 0\nResult: 0",
           "explanation": "Incorrect. When a nullable type is null, HasValue is false, not true."
         },
         {
           "id": "c",
-          "text": "HasValue: False, Value: null, Result: 100",
+          "text": "HasValue: False\nValue: null\nResult: 100",
           "explanation": "Incorrect. You cannot print 'null' for Value - it would throw an exception."
         },
         {
@@ -139,17 +139,17 @@
       "options": [
         {
           "id": "a",
-          "text": "obj type: Int32, unboxed: 42, are equal: True",
+          "text": "obj type: Int32\nunboxed: 42\nare equal: True",
           "explanation": "Correct! Boxing converts value type to object, unboxing retrieves it, and values are equal."
         },
         {
           "id": "b",
-          "text": "obj type: System.Object, unboxed: 42, are equal: False",
+          "text": "obj type: System.Object\nunboxed: 42\nare equal: False",
           "explanation": "Incorrect. The runtime type is still Int32, and values are equal."
         },
         {
           "id": "c",
-          "text": "obj type: System.Int32, unboxed: 42, are equal: False",
+          "text": "obj type: Int32\nunboxed: 42\nare equal: False",
           "explanation": "Incorrect. The values are equal even though they're different instances."
         },
         {
@@ -180,17 +180,17 @@
       "options": [
         {
           "id": "a",
-          "text": "Double result: 0.3, Decimal result: 0.3, Are equal: True",
+          "text": "Double result: 0.3\nDecimal result: 0.3\nAre equal: True",
           "explanation": "Incorrect. Double has floating-point precision issues that make it not exactly 0.3."
         },
         {
           "id": "b",
-          "text": "Double result: 0.30000000000000004, Decimal result: 0.3, Are equal: False",
+          "text": "Double result: 0.30000000000000004\nDecimal result: 0.3\nAre equal: False",
           "explanation": "Correct! Double has floating-point precision issues, while decimal provides exact precision for financial calculations."
         },
         {
           "id": "c",
-          "text": "Double result: 0.3, Decimal result: 0.30000000000000004, Are equal: False",
+          "text": "Double result: 0.3\nDecimal result: 0.30000000000000004\nAre equal: False",
           "explanation": "Incorrect. Decimal is the one with exact precision, not double."
         },
         {

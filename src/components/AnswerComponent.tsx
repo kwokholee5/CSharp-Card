@@ -170,7 +170,12 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
             {String.fromCharCode(65 + index)} {/* A, B, C, D */}
           </div>
           <div className="answer-option-text">
-            {option.text}
+            {option.text.split('\n').map((line, lineIndex) => (
+              <React.Fragment key={lineIndex}>
+                {line}
+                {lineIndex < option.text.split('\n').length - 1 && <br />}
+              </React.Fragment>
+            ))}
           </div>
           {isSubmitted && isCorrect && (
             <div className="answer-option-status" aria-label="Correct answer">
@@ -184,7 +189,7 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
           )}
         </div>
         <div id={`option-${index}-description`} className="sr-only">
-          Option {String.fromCharCode(65 + index)}: {option.text}
+          Option {String.fromCharCode(65 + index)}: {option.text.replace(/\n/g, ' ')}
         </div>
       </button>
     );
