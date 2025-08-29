@@ -63,14 +63,31 @@ export class QuestionParser implements IQuestionParser {
       );
     }
     
-    // Parse options
-    const options = (rawQuestion.options || []).map((optionData, index) => 
-      new Option(
-        optionData.id || index.toString(),
-        optionData.text,
-        optionData.explanation
-      )
-    );
+    // Parse options differently based on question type
+    let options: Option[];
+    let correctAnswers: number[];
+    
+    if (rawQuestion.type === 'flip-card') {
+      // For flip-card questions, create a single option with the answer
+      options = [
+        new Option(
+          '0',
+          rawQuestion.answer || '',
+          'This is the correct answer for this flip-card question.'
+        )
+      ];
+      correctAnswers = [0]; // The single option is always correct
+    } else {
+      // For multiple-choice questions, parse normally
+      options = (rawQuestion.options || []).map((optionData, index) => 
+        new Option(
+          optionData.id || index.toString(),
+          optionData.text,
+          optionData.explanation
+        )
+      );
+      correctAnswers = this.parseCorrectAnswers(rawQuestion);
+    }
     
     // Parse code example if present
     let codeExample: CodeExample | undefined;
@@ -81,9 +98,6 @@ export class QuestionParser implements IQuestionParser {
         rawQuestion.codeExample.output
       );
     }
-    
-    // Determine correct answers
-    const correctAnswers = this.parseCorrectAnswers(rawQuestion);
     
     // Map difficulty number to enum
     const difficulty = this.mapDifficulty(rawQuestion.difficulty);
@@ -126,43 +140,53 @@ export class QuestionParser implements IQuestionParser {
       errors.push('Question category is required and must be a string');
     }
     
-    // Options validation
-    if (!Array.isArray(rawQuestion.options) || rawQuestion.options.length === 0) {
-      errors.push('Question must have at least one option');
-    } else {
-      rawQuestion.options.forEach((option, index) => {
-        if (!option.text || typeof option.text !== 'string') {
-          errors.push(`Option ${index} must have text`);
+    // Type-specific validation
+    if (rawQuestion.type === 'multiple-choice') {
+      // Multiple-choice questions need options and correct answers
+      if (!Array.isArray(rawQuestion.options) || rawQuestion.options.length === 0) {
+        errors.push('Question must have at least one option');
+      } else {
+        rawQuestion.options.forEach((option, index) => {
+          if (!option.text || typeof option.text !== 'string') {
+            errors.push(`Option ${index} must have text`);
+          }
+        });
+      }
+      
+      // Correct answer validation
+      const hasCorrectAnswerIndex = typeof rawQuestion.correctAnswerIndex === 'number';
+      const hasCorrectAnswerIndices = Array.isArray(rawQuestion.correctAnswerIndices);
+      
+      if (!hasCorrectAnswerIndex && !hasCorrectAnswerIndices) {
+        errors.push('Question must specify correct answer(s) using correctAnswerIndex or correctAnswerIndices');
+      }
+      
+      if (hasCorrectAnswerIndex && hasCorrectAnswerIndices) {
+        warnings.push('Question has both correctAnswerIndex and correctAnswerIndices; correctAnswerIndices will be used');
+      }
+      
+      // Validate correct answer indices are within bounds
+      if (hasCorrectAnswerIndices && rawQuestion.options) {
+        const invalidIndices = rawQuestion.correctAnswerIndices!.filter(
+          index => index < 0 || index >= (rawQuestion.options?.length || 0)
+        );
+        if (invalidIndices.length > 0) {
+          errors.push(`Correct answer indices out of bounds: ${invalidIndices.join(', ')}`);
         }
-      });
-    }
-    
-    // Correct answer validation
-    const hasCorrectAnswerIndex = typeof rawQuestion.correctAnswerIndex === 'number';
-    const hasCorrectAnswerIndices = Array.isArray(rawQuestion.correctAnswerIndices);
-    
-    if (!hasCorrectAnswerIndex && !hasCorrectAnswerIndices) {
-      errors.push('Question must specify correct answer(s) using correctAnswerIndex or correctAnswerIndices');
-    }
-    
-    if (hasCorrectAnswerIndex && hasCorrectAnswerIndices) {
-      warnings.push('Question has both correctAnswerIndex and correctAnswerIndices; correctAnswerIndices will be used');
-    }
-    
-    // Validate correct answer indices are within bounds
-    if (hasCorrectAnswerIndices && rawQuestion.options) {
-      const invalidIndices = rawQuestion.correctAnswerIndices!.filter(
-        index => index < 0 || index >= (rawQuestion.options?.length || 0)
-      );
-      if (invalidIndices.length > 0) {
-        errors.push(`Correct answer indices out of bounds: ${invalidIndices.join(', ')}`);
       }
-    }
-    
-    if (hasCorrectAnswerIndex && rawQuestion.options) {
-      if (rawQuestion.correctAnswerIndex! < 0 || rawQuestion.correctAnswerIndex! >= rawQuestion.options.length) {
-        errors.push(`Correct answer index out of bounds: ${rawQuestion.correctAnswerIndex}`);
+      
+      if (hasCorrectAnswerIndex && rawQuestion.options) {
+        if (rawQuestion.correctAnswerIndex! < 0 || rawQuestion.correctAnswerIndex! >= rawQuestion.options.length) {
+          errors.push(`Correct answer index out of bounds: ${rawQuestion.correctAnswerIndex}`);
+        }
       }
+    } else if (rawQuestion.type === 'flip-card') {
+      // Flip-card questions need an answer field
+      if (!rawQuestion.answer || typeof rawQuestion.answer !== 'string') {
+        errors.push('Flip-card question must have an answer field');
+      }
+    } else {
+      errors.push(`Unsupported question type: ${rawQuestion.type}`);
     }
     
     // Difficulty validation

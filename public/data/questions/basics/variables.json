@@ -96,6 +96,7 @@
       "question": "Can you declare multiple variables of the same type in one line in C#?",
       "type": "flip-card",
       "answer": "Yes, you can declare multiple variables of the same type in one line by separating them with commas.",
+      "explanation": "This syntax allows for more compact variable declarations when multiple variables of the same type are needed. However, this cannot be used with the 'var' keyword as the compiler needs explicit type information.",
       "codeExample": {
         "language": "csharp",
         "code": "int x = 5, y = 10, z;  // Three int variables\nstring firstName = \"John\", lastName = \"Doe\";  // Two string variables\n// var a = 1, b = 2;  // Error: Cannot use var for multiple declarations",
