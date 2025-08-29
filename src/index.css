@@ -43,18 +43,26 @@ html {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   
-  /* Smooth scrolling */
-  scroll-behavior: smooth;
+  /* Disable smooth scrolling for viewport-constrained design */
+  scroll-behavior: auto;
   
   /* Prevent overscroll bounce on iOS */
+  overscroll-behavior: none;
   overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
   
-  /* Full height on mobile browsers */
+  /* Full height on mobile browsers - viewport constrained */
   height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height */
+  
+  /* Prevent any scrolling */
+  overflow: hidden;
 }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -64,19 +72,27 @@ body {
   background: var(--background-secondary);
   line-height: 1.6;
   
-  /* Full height on mobile browsers */
-  min-height: 100%;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  /* Viewport constrained - no scrolling */
+  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height */
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
   
-  /* Prevent pull-to-refresh on mobile */
-  overscroll-behavior-y: contain;
+  /* Prevent pull-to-refresh and overscroll on mobile */
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
   
   /* Prevent text selection on UI elements */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
+  /* Prevent zoom on double tap */
+  touch-action: manipulation;
 }
 
 /* Allow text selection in content areas */
@@ -248,10 +264,27 @@ body.no-scroll {
   }
 }
 
-/* Landscape mode adjustments */
+/* Root element - ensure proper viewport handling */
+#root {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Landscape mode adjustments - optimize for mobile landscape */
 @media (orientation: landscape) and (max-height: 500px) {
   :root {
     font-size: 14px; /* Smaller base font size in landscape */
+  }
+}
+
+/* Very small landscape screens */
+@media (orientation: landscape) and (max-height: 400px) {
+  :root {
+    font-size: 12px; /* Even smaller for very constrained screens */
   }
 }
 

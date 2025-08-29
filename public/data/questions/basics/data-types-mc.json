@@ -1,0 +1,218 @@
+{
+  "$schema": "../../metadata/schema.json",
+  "metadata": {
+    "category": "basics",
+    "subcategory": "data-types-mc",
+    "fileVersion": 2,
+    "lastUpdated": "2025-01-29T12:00:00Z",
+    "questionCount": 5,
+    "avgDifficulty": 3
+  },
+  "questions": [
+    {
+      "id": "csharp-001",
+      "question": "What will be the output of this C# code that demonstrates string immutability?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Original: Hello World, Modified: Hello World",
+          "explanation": "Incorrect. The Append method on StringBuilder modifies the original value."
+        },
+        {
+          "id": "b",
+          "text": "Original: Hello, Modified: Hello World",
+          "explanation": "Correct! String concatenation creates a new string object, leaving the original unchanged."
+        },
+        {
+          "id": "c",
+          "text": "Original: Hello World, Modified: Hello",
+          "explanation": "Incorrect. This would be backwards."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error",
+          "explanation": "Incorrect. This code compiles and runs successfully."
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Strings in C# are immutable. The += operation creates a new string object and assigns it to 'modified', but 'original' remains unchanged. This is a fundamental concept in C# string handling.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "string original = \"Hello\";\nstring modified = original;\nmodified += \" World\";\n\nConsole.WriteLine($\"Original: {original}\");\nConsole.WriteLine($\"Modified: {modified}\");",
+        "output": "Original: Hello\nModified: Hello World"
+      },
+      "category": "basics",
+      "subcategory": "data-types-mc",
+      "difficulty": 2,
+      "tags": ["string", "immutability", "reference-types"],
+      "createdAt": "2025-01-29T12:00:00Z",
+      "updatedAt": "2025-01-29T12:00:00Z",
+      "version": 1
+    },
+    {
+      "id": "csharp-002",
+      "question": "What will this C# code output when demonstrating value type vs reference type behavior?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "x: 10, y: 20, arr1[0]: 10, arr2[0]: 20",
+          "explanation": "Incorrect. Arrays are reference types, so both variables point to the same object."
+        },
+        {
+          "id": "b",
+          "text": "x: 10, y: 10, arr1[0]: 20, arr2[0]: 20",
+          "explanation": "Correct! Value types are copied, but reference types share the same object in memory."
+        },
+        {
+          "id": "c",
+          "text": "x: 20, y: 20, arr1[0]: 10, arr2[0]: 10",
+          "explanation": "Incorrect. This would mean reference types are copied and value types are shared."
+        },
+        {
+          "id": "d",
+          "text": "x: 20, y: 20, arr1[0]: 20, arr2[0]: 20",
+          "explanation": "Incorrect. Value types don't affect each other when one is modified."
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "This demonstrates the key difference between value types (int) and reference types (arrays). Value types are copied when assigned, while reference types share the same memory location.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "// Value type behavior\nint x = 10;\nint y = x;\ny = 20;\n\n// Reference type behavior\nint[] arr1 = {10};\nint[] arr2 = arr1;\narr2[0] = 20;\n\nConsole.WriteLine($\"x: {x}, y: {y}\");\nConsole.WriteLine($\"arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}\");",
+        "output": "x: 10, y: 20\narr1[0]: 20, arr2[0]: 20"
+      },
+      "category": "basics",
+      "subcategory": "data-types-mc",
+      "difficulty": 3,
+      "tags": ["value-types", "reference-types", "memory", "arrays"],
+      "createdAt": "2025-01-29T12:00:00Z",
+      "updatedAt": "2025-01-29T12:00:00Z",
+      "version": 1
+    },
+    {
+      "id": "csharp-003",
+      "question": "What will be the result of this C# code that demonstrates nullable value types and the null-coalescing operator?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "HasValue: False, Value: 0, Result: 100",
+          "explanation": "Correct! The nullable int has no value, so HasValue is false, accessing Value would throw but we use ??, and ?? returns 100."
+        },
+        {
+          "id": "b",
+          "text": "HasValue: True, Value: 0, Result: 0",
+          "explanation": "Incorrect. When a nullable type is null, HasValue is false, not true."
+        },
+        {
+          "id": "c",
+          "text": "HasValue: False, Value: null, Result: 100",
+          "explanation": "Incorrect. You cannot print 'null' for Value - it would throw an exception."
+        },
+        {
+          "id": "d",
+          "text": "Runtime exception",
+          "explanation": "Incorrect. The null-coalescing operator prevents the exception."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Nullable value types have HasValue property to check for null. The null-coalescing operator (??) provides a default value when the nullable type is null, avoiding exceptions.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "int? nullableInt = null;\n\nConsole.WriteLine($\"HasValue: {nullableInt.HasValue}\");\nConsole.WriteLine($\"Value: {nullableInt.GetValueOrDefault()}\");\nConsole.WriteLine($\"Result: {nullableInt ?? 100}\");",
+        "output": "HasValue: False\nValue: 0\nResult: 100"
+      },
+      "category": "basics",
+      "subcategory": "data-types-mc",
+      "difficulty": 3,
+      "tags": ["nullable", "null-coalescing", "value-types", "operators"],
+      "createdAt": "2025-01-29T12:00:00Z",
+      "updatedAt": "2025-01-29T12:00:00Z",
+      "version": 1
+    },
+    {
+      "id": "csharp-004",
+      "question": "What will this C# code output when demonstrating boxing and unboxing behavior?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "obj type: System.Int32, unboxed: 42, are equal: True",
+          "explanation": "Correct! Boxing converts value type to object, unboxing retrieves it, and values are equal."
+        },
+        {
+          "id": "b",
+          "text": "obj type: System.Object, unboxed: 42, are equal: False",
+          "explanation": "Incorrect. The runtime type is still Int32, and values are equal."
+        },
+        {
+          "id": "c",
+          "text": "obj type: System.Int32, unboxed: 42, are equal: False",
+          "explanation": "Incorrect. The values are equal even though they're different instances."
+        },
+        {
+          "id": "d",
+          "text": "InvalidCastException during unboxing",
+          "explanation": "Incorrect. Unboxing to the correct type (int) works fine."
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Boxing converts a value type to an object reference. The boxed object retains its original type (Int32). Unboxing retrieves the value, and value equality comparison returns true.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "int value = 42;\nobject obj = value;  // Boxing\nint unboxed = (int)obj;  // Unboxing\n\nConsole.WriteLine($\"obj type: {obj.GetType().Name}\");\nConsole.WriteLine($\"unboxed: {unboxed}\");\nConsole.WriteLine($\"are equal: {value == unboxed}\");",
+        "output": "obj type: Int32\nunboxed: 42\nare equal: True"
+      },
+      "category": "basics",
+      "subcategory": "data-types-mc",
+      "difficulty": 4,
+      "tags": ["boxing", "unboxing", "value-types", "object", "casting"],
+      "createdAt": "2025-01-29T12:00:00Z",
+      "updatedAt": "2025-01-29T12:00:00Z",
+      "version": 1
+    },
+    {
+      "id": "csharp-005",
+      "question": "What will be the output of this C# code that demonstrates decimal precision vs double precision?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Double result: 0.3, Decimal result: 0.3, Are equal: True",
+          "explanation": "Incorrect. Double has floating-point precision issues that make it not exactly 0.3."
+        },
+        {
+          "id": "b",
+          "text": "Double result: 0.30000000000000004, Decimal result: 0.3, Are equal: False",
+          "explanation": "Correct! Double has floating-point precision issues, while decimal provides exact precision for financial calculations."
+        },
+        {
+          "id": "c",
+          "text": "Double result: 0.3, Decimal result: 0.30000000000000004, Are equal: False",
+          "explanation": "Incorrect. Decimal is the one with exact precision, not double."
+        },
+        {
+          "id": "d",
+          "text": "Compilation error due to type mismatch",
+          "explanation": "Incorrect. The code compiles fine with proper type suffixes."
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "This demonstrates why decimal should be used for financial calculations. Double uses binary floating-point which can't exactly represent 0.1, leading to precision errors. Decimal uses base-10 arithmetic for exact precision.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "double doubleResult = 0.1 + 0.2;\ndecimal decimalResult = 0.1m + 0.2m;\n\nConsole.WriteLine($\"Double result: {doubleResult}\");\nConsole.WriteLine($\"Decimal result: {decimalResult}\");\nConsole.WriteLine($\"Are equal: {(double)decimalResult == doubleResult}\");",
+        "output": "Double result: 0.30000000000000004\nDecimal result: 0.3\nAre equal: False"
+      },
+      "category": "basics",
+      "subcategory": "data-types-mc",
+      "difficulty": 3,
+      "tags": ["decimal", "double", "precision", "floating-point", "financial"],
+      "createdAt": "2025-01-29T12:00:00Z",
+      "updatedAt": "2025-01-29T12:00:00Z",
+      "version": 1
+    }
+  ]
+}

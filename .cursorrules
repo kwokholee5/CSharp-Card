@@ -1,0 +1,72 @@
+## Cursor Rules for CSharp-Card
+
+These rules guide automated edits and assistant behavior in this repo.
+
+### Assistant behavior
+- **Be concise by default**; prioritize clarity and skimmability.
+- **Use markdown sparingly**: bullets, short code fences when essential.
+- **Status updates**: 1–2 sentences on what just happened/next step.
+- **Summaries**: brief, high-signal bullets after meaningful changes.
+- **Ask only if blocked**; otherwise proceed with sensible defaults.
+
+### Editing rules
+- **Preserve existing formatting**: do not reformat unrelated code.
+- **Keep diffs minimal** and scoped to the task.
+- **Add all necessary imports/exports** when introducing code.
+- **No commented-out code**; remove dead code unless explicitly kept.
+- **Prefer multi-line clarity** over clever one-liners.
+
+### TypeScript & React
+- **Strict typing**: avoid `any`; prefer explicit function signatures for exports.
+- **Functional components**; follow Hooks rules; avoid unnecessary state.
+- **State is immutable**; derive state when possible.
+- **Early returns**; avoid deep nesting and broad try/catch blocks.
+- **Meaningful names**: descriptive, full words over abbreviations.
+
+### Tests
+- **Keep tests green**. After substantive edits, run tests and fix failures.
+- **Add/adjust tests** when changing validators, factories, or business logic.
+- Prefer **unit tests** for `services/study-modes` and **component tests** for cards.
+
+### Project-specific conventions
+- Study modes live in `src/components/study-modes` with factories/registrations in `src/components/study-modes/*` and services in `src/services/study-modes/*`.
+- Validators implement `IAnswerValidator` and are selected via `ValidatorFactory`.
+- Progress tracking uses `LocalStorageProgressTracker`; keep side effects isolated.
+- Components under `components/cards` should remain **presentation-first**; business logic in hooks/services.
+
+### Linting & style
+- Respect existing ESLint configuration; fix introduced lints before finishing.
+- Keep lines readable; wrap long expressions; avoid broad file-wide disables.
+
+### Git hygiene
+- Commit focused changes with clear, imperative messages (e.g., "Add FlipCard validator edge-case for blanks").
+- Do not mix refactors with feature changes unless necessary; if so, separate commits.
+
+### Security & privacy
+- Do not introduce external network calls without discussion.
+- Avoid storing sensitive data in localStorage beyond simple study progress.
+
+### When unsure
+- Prefer small, reversible edits and add a brief note explaining intent.
+
+
+### Object-Oriented design
+- Develop using Object-Oriented Programming; model domain with cohesive classes/objects.
+- Follow SOLID principles across modules/components.
+
+### Review & quality gates
+- All substantive changes must be examined by frontend, backend, QA, and a code reviewer to validate OOP design and SOLID adherence.
+
+### Code hygiene
+- Remove old and unused code proactively.
+- Prefer modifying existing classes/objects; avoid creating new ones merely to bypass design issues. Creating as a "fix" is discouraged unless justified by OOP design.
+
+### Project structure & docs
+- Respect the existing project folder structure when adding/moving code.
+- Place Markdown docs thoughtfully: use `docs/` for architecture/decisions, `README.md` for top-level guidance, and feature notes near their modules when appropriate.
+
+### Post-fix verification
+- After changes, re-evaluate that the application remains OOP and follows SOLID principles.
+- Review the project folder structure for organization and consistency.
+
+
