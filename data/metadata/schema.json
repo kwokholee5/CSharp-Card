@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "C# Interview Questions Schema",
+  "description": "Schema for C# technical interview revision card questions",
+  "definitions": {
+    "question": {
+      "type": "object",
+      "required": ["id", "question", "answer", "category", "difficulty", "tags"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]+-[0-9]{4}$",
+          "description": "Unique identifier in format: category-0001"
+        },
+        "question": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500,
+          "description": "The question text"
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 5,
+          "description": "The answer to the question"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Detailed explanation of the answer (optional)"
+        },
+        "codeExample": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": ["csharp"],
+              "default": "csharp"
+            },
+            "code": {
+              "type": "string",
+              "description": "Example code snippet"
+            },
+            "output": {
+              "type": "string",
+              "description": "Expected output or result"
+            }
+          },
+          "required": ["code"]
+        },
+        "category": {
+          "type": "string",
+          "enum": ["basics", "intermediate", "advanced", "expert"],
+          "description": "Main category of the question"
+        },
+        "subcategory": {
+          "type": "string",
+          "description": "Specific topic within the category",
+          "examples": ["variables", "data-types", "oop-fundamentals", "linq", "async-programming"]
+        },
+        "difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Difficulty level from 1 (easiest) to 10 (hardest)"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 30
+          },
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "description": "Keywords for searching and filtering"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "Reference title"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL to the reference material"
+              }
+            },
+            "required": ["title", "url"]
+          },
+          "description": "External references for further reading"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "Version number of the question"
+        }
+      }
+    },
+    "questionFile": {
+      "type": "object",
+      "required": ["metadata", "questions"],
+      "properties": {
+        "$schema": {
+          "type": "string",
+          "const": "../metadata/schema.json"
+        },
+        "metadata": {
+          "type": "object",
+          "required": ["category", "subcategory", "fileVersion", "lastUpdated", "questionCount"],
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": ["basics", "intermediate", "advanced", "expert"]
+            },
+            "subcategory": {
+              "type": "string"
+            },
+            "fileVersion": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "lastUpdated": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "questionCount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "avgDifficulty": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 10
+            }
+          }
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/question"
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/questionFile"
+    }
+  ]
+}

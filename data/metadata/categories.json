@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "lastUpdated": "2025-08-29T10:00:00Z",
+  "categories": {
+    "basics": {
+      "name": "C# Basics",
+      "description": "Fundamental C# concepts including variables, data types, operators, and control flow",
+      "icon": "📘",
+      "color": "#4CAF50",
+      "difficultyRange": [1, 4],
+      "estimatedTimeMinutes": 30,
+      "subcategories": {
+        "variables": {
+          "name": "Variables and Data Types",
+          "description": "Variable declaration, types, and type inference",
+          "file": "questions/basics/variables.json",
+          "questionCount": 0,
+          "avgDifficulty": 2.0
+        },
+        "data-types": {
+          "name": "Primitive Data Types",
+          "description": "int, string, bool, double, and other primitive types",
+          "file": "questions/basics/data-types.json",
+          "questionCount": 0,
+          "avgDifficulty": 2.0
+        },
+        "operators": {
+          "name": "Operators",
+          "description": "Arithmetic, logical, and comparison operators",
+          "file": "questions/basics/operators.json",
+          "questionCount": 0,
+          "avgDifficulty": 2.5
+        },
+        "control-flow": {
+          "name": "Control Flow",
+          "description": "if-else, switch, loops, and branching",
+          "file": "questions/basics/control-flow.json",
+          "questionCount": 0,
+          "avgDifficulty": 3.0
+        }
+      }
+    },
+    "intermediate": {
+      "name": "Intermediate C#",
+      "description": "Object-oriented programming, collections, LINQ, and exception handling",
+      "icon": "📗",
+      "color": "#2196F3",
+      "difficultyRange": [4, 7],
+      "estimatedTimeMinutes": 60,
+      "subcategories": {
+        "oop-fundamentals": {
+          "name": "Object-Oriented Programming",
+          "description": "Classes, objects, inheritance, polymorphism, encapsulation",
+          "file": "questions/intermediate/oop-fundamentals.json",
+          "questionCount": 0,
+          "avgDifficulty": 5.0
+        },
+        "collections": {
+          "name": "Collections",
+          "description": "Lists, Arrays, Dictionaries, HashSets, and other collections",
+          "file": "questions/intermediate/collections.json",
+          "questionCount": 0,
+          "avgDifficulty": 5.5
+        },
+        "linq": {
+          "name": "LINQ",
+          "description": "Language Integrated Query for data manipulation",
+          "file": "questions/intermediate/linq.json",
+          "questionCount": 0,
+          "avgDifficulty": 6.0
+        },
+        "exceptions": {
+          "name": "Exception Handling",
+          "description": "try-catch, custom exceptions, and error handling",
+          "file": "questions/intermediate/exceptions.json",
+          "questionCount": 0,
+          "avgDifficulty": 5.0
+        }
+      }
+    },
+    "advanced": {
+      "name": "Advanced C#",
+      "description": "Async programming, generics, delegates, events, and advanced patterns",
+      "icon": "📕",
+      "color": "#FF9800",
+      "difficultyRange": [7, 9],
+      "estimatedTimeMinutes": 90,
+      "subcategories": {
+        "async-programming": {
+          "name": "Async/Await",
+          "description": "Asynchronous programming with async/await, Tasks, and threading",
+          "file": "questions/advanced/async-programming.json",
+          "questionCount": 0,
+          "avgDifficulty": 7.5
+        },
+        "generics": {
+          "name": "Generics",
+          "description": "Generic types, methods, and constraints",
+          "file": "questions/advanced/generics.json",
+          "questionCount": 0,
+          "avgDifficulty": 7.0
+        },
+        "delegates-events": {
+          "name": "Delegates and Events",
+          "description": "Delegates, events, Action, Func, and Predicate",
+          "file": "questions/advanced/delegates-events.json",
+          "questionCount": 0,
+          "avgDifficulty": 8.0
+        },
+        "reflection": {
+          "name": "Reflection",
+          "description": "Runtime type inspection and manipulation",
+          "file": "questions/advanced/reflection.json",
+          "questionCount": 0,
+          "avgDifficulty": 8.5
+        }
+      }
+    },
+    "expert": {
+      "name": "Expert C#",
+      "description": "Performance optimization, memory management, design patterns, and architecture",
+      "icon": "📙",
+      "color": "#9C27B0",
+      "difficultyRange": [9, 10],
+      "estimatedTimeMinutes": 120,
+      "subcategories": {
+        "performance": {
+          "name": "Performance Optimization",
+          "description": "Memory management, garbage collection, and performance tuning",
+          "file": "questions/expert/performance.json",
+          "questionCount": 0,
+          "avgDifficulty": 9.0
+        },
+        "design-patterns": {
+          "name": "Design Patterns",
+          "description": "SOLID principles, Gang of Four patterns, and architectural patterns",
+          "file": "questions/expert/design-patterns.json",
+          "questionCount": 0,
+          "avgDifficulty": 9.5
+        },
+        "architecture": {
+          "name": "Architecture",
+          "description": "Clean architecture, microservices, and system design",
+          "file": "questions/expert/architecture.json",
+          "questionCount": 0,
+          "avgDifficulty": 10.0
+        }
+      }
+    }
+  }
+}
