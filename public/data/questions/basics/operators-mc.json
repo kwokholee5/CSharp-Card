@@ -550,17 +550,17 @@
         {
           "id": "a",
           "text": "Hello\nHello",
-          "explanation": "Correct! ??= only assigns if the left operand is null. Since str1 has a value, it's unchanged."
+          "explanation": "Incorrect. str2 was null, so ??= assigns 'Default' to it. The output should be Hello and Default."
         },
         {
           "id": "b",
           "text": "Default\nDefault",
-          "explanation": "Incorrect. The operator only assigns when the variable is null."
+          "explanation": "Incorrect. str1 was not null, so ??= doesn't change it. str1 remains 'Hello'."
         },
         {
           "id": "c",
           "text": "Hello\nDefault",
-          "explanation": "Incorrect. str2 gets assigned 'Default' because it was null, so both should show the same pattern."
+          "explanation": "Correct! str1 is not null so remains 'Hello', str2 was null so gets assigned 'Default'."
         },
         {
           "id": "d",
@@ -568,7 +568,7 @@
           "explanation": "Incorrect. ??= is valid C# syntax introduced in C# 8.0."
         }
       ],
-      "correctAnswerIndex": 0,
+      "correctAnswerIndex": 2,
       "explanation": "The null-coalescing assignment operator (??=) assigns the right operand to the left operand only if the left operand is null.",
       "codeExample": {
         "language": "csharp",
