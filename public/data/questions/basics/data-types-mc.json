@@ -57,31 +57,31 @@
       "options": [
         {
           "id": "a",
-          "text": "x: 10, y: 20, arr1[0]: 10, arr2[0]: 20",
+          "text": "x: 10, y: 20, arr1[0]: 10, arr2[0]: 20\nx: 10, y: 20, arr1[0]: 10, arr2[0]: 20",
           "explanation": "Incorrect. Arrays are reference types, so both variables point to the same object."
         },
         {
           "id": "b",
-          "text": "x: 10, y: 10, arr1[0]: 20, arr2[0]: 20",
+          "text": "x: 10, y: 20, arr1[0]: 20, arr2[0]: 20\nx: 10, y: 20, arr1[0]: 20, arr2[0]: 20",
           "explanation": "Correct! Value types are copied, but reference types share the same object in memory."
         },
         {
           "id": "c",
-          "text": "x: 20, y: 20, arr1[0]: 10, arr2[0]: 10",
+          "text": "x: 10, y: 20, arr1[0]: 10, arr2[0]: 10\nx: 10, y: 20, arr1[0]: 10, arr2[0]: 10",
           "explanation": "Incorrect. This would mean reference types are copied and value types are shared."
         },
         {
           "id": "d",
-          "text": "x: 20, y: 20, arr1[0]: 20, arr2[0]: 20",
-          "explanation": "Incorrect. Value types don't affect each other when one is modified."
+          "text": "Compilation error",
+          "explanation": "Incorrect. This code compiles and runs successfully."
         }
       ],
       "correctAnswerIndex": 1,
       "explanation": "This demonstrates the key difference between value types (int) and reference types (arrays). Value types are copied when assigned, while reference types share the same memory location.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Value type behavior\nint x = 10;\nint y = x;\ny = 20;\n\n// Reference type behavior\nint[] arr1 = {10};\nint[] arr2 = arr1;\narr2[0] = 20;\n\nConsole.WriteLine($\"x: {x}, y: {y}\");\nConsole.WriteLine($\"arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}\");",
-        "output": "x: 10, y: 20\narr1[0]: 20, arr2[0]: 20"
+        "code": "// Value type behavior\nint x = 10;\nint y = x;\ny = 20;\n\n// Reference type behavior\nint[] arr1 = {10};\nint[] arr2 = arr1;\narr2[0] = 20;\n\nConsole.WriteLine($\"x: {x}, y: {y}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}\");\nConsole.WriteLine($\"arr2[0]: {arr2[0]}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}, x: {x}\");",
+        "output": "x: 10, y: 20, arr1[0]: 20, arr2[0]: 20\narr2[0]: 20, arr1[0]: 20, arr2[0]: 20, x: 10"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -139,7 +139,7 @@
       "options": [
         {
           "id": "a",
-          "text": "obj type: System.Int32, unboxed: 42, are equal: True",
+          "text": "obj type: Int32, unboxed: 42, are equal: True",
           "explanation": "Correct! Boxing converts value type to object, unboxing retrieves it, and values are equal."
         },
         {

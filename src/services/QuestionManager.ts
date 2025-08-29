@@ -1,12 +1,14 @@
 import type { IQuestion } from '../interfaces/domain/IQuestion';
-import type { IQuestionManager } from '../interfaces/services/IQuestionManager';
+import type { IQuestionManager, QuestionManagerInitOptions } from '../interfaces/services/IQuestionManager';
 import type { IQuestionRepository } from '../interfaces/repositories/IQuestionRepository';
+import type { IShuffleService } from '../interfaces/services/IShuffleService';
 import type { IStateManager } from '../interfaces/services/IStateManager';
 
 /**
  * Manages question navigation and retrieval operations.
  * Follows Single Responsibility Principle by focusing only on question management.
  * Implements proper error handling for invalid navigation scenarios.
+ * Supports randomization of question order and options.
  */
 export class QuestionManager implements IQuestionManager {
   private questions: IQuestion[] = [];
@@ -14,25 +16,46 @@ export class QuestionManager implements IQuestionManager {
 
   constructor(
     private readonly questionRepository: IQuestionRepository,
+    private readonly shuffleService: IShuffleService,
     private readonly stateManager: IStateManager
   ) {}
 
   /**
    * Initializes the question manager by loading questions from the repository
+   * @param options - Initialization options including randomization settings
    * @throws Error if questions cannot be loaded or if already initialized
    */
-  async initialize(): Promise<void> {
+  async initialize(options?: QuestionManagerInitOptions): Promise<void> {
     if (this.isInitializedFlag) {
       throw new Error('QuestionManager is already initialized');
     }
 
+    const config = {
+      shuffleQuestions: true,
+      shuffleOptions: true,
+      ...options
+    };
+
     try {
-      this.questions = await this.questionRepository.loadQuestions();
+      // Load questions from repository
+      let questions = await this.questionRepository.loadQuestions();
       
-      if (this.questions.length === 0) {
+      if (questions.length === 0) {
         throw new Error('No questions available to load');
       }
 
+      // Apply randomization if enabled
+      if (config.shuffleQuestions) {
+        questions = this.shuffleService.shuffleQuestions(questions);
+      }
+
+      if (config.shuffleOptions) {
+        questions = questions.map(question => 
+          this.shuffleService.shuffleQuestionOptions(question)
+        );
+      }
+
+      this.questions = questions;
       this.stateManager.setTotalQuestions(this.questions.length);
       this.stateManager.setInitialized(true);
       this.isInitializedFlag = true;

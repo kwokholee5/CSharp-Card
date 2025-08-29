@@ -266,12 +266,40 @@ html, body {
 /* Landscape orientation optimization */
 @media (max-height: 500px) and (orientation: landscape) {
   .app-container {
-    padding: 8px;
-    gap: 8px;
+    padding: 6px;
+    gap: 6px;
   }
   
   .app-loading-content {
     transform: scale(0.9);
+  }
+}
+
+/* Mobile landscape specific optimizations */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .app-container {
+    padding: 8px;
+    gap: 8px;
+    grid-template-columns: 50% 50%;
+  }
+  
+  .app-left-column,
+  .app-right-column {
+    padding: 8px;
+  }
+}
+
+/* Very small mobile landscape */
+@media screen and (max-width: 640px) and (orientation: landscape) and (max-height: 480px) {
+  .app-container {
+    padding: 4px;
+    gap: 4px;
+    grid-template-columns: 48% 52%;
+  }
+  
+  .app-left-column,
+  .app-right-column {
+    padding: 6px;
   }
 }
 

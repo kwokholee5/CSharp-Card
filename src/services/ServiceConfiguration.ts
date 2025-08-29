@@ -9,6 +9,7 @@ import { DIContainer } from './DIContainer';
 // Import interfaces
 import type { IQuestionManager } from '../interfaces/services/IQuestionManager';
 import type { IAnswerManager } from '../interfaces/services/IAnswerManager';
+import type { IShuffleService } from '../interfaces/services/IShuffleService';
 import type { IStateManager } from '../interfaces/services/IStateManager';
 import type { IQuestionRepository } from '../interfaces/repositories/IQuestionRepository';
 import type { IQuestionLoader } from '../interfaces/repositories/IQuestionLoader';
@@ -20,6 +21,7 @@ import type { IApplicationBootstrap } from '../interfaces/services/IApplicationB
 // Import concrete implementations
 import { QuestionManager } from './QuestionManager';
 import { AnswerManager } from './AnswerManager';
+import { ShuffleService } from './ShuffleService';
 import { StateManager } from './StateManager';
 import { JsonQuestionRepository } from '../repositories/JsonQuestionRepository';
 import { QuestionLoader } from '../repositories/QuestionLoader';
@@ -35,6 +37,7 @@ export const ServiceIdentifiers = {
   // Services
   QuestionManager: Symbol('IQuestionManager'),
   AnswerManager: Symbol('IAnswerManager'),
+  ShuffleService: Symbol('IShuffleService'),
   StateManager: Symbol('IStateManager'),
   ApplicationBootstrap: Symbol('IApplicationBootstrap'),
   
@@ -150,14 +153,21 @@ function registerBusinessLogicServices(container: DIContainer): void {
     () => new StateManager()
   );
 
+  // Register ShuffleService as singleton
+  container.registerSingleton<IShuffleService>(
+    ServiceIdentifiers.ShuffleService,
+    () => new ShuffleService()
+  );
+
   // Register QuestionManager as singleton with dependencies
   container.registerSingleton<IQuestionManager>(
     ServiceIdentifiers.QuestionManager,
     (container: DIContainer) => {
       const questionRepository = container.resolve<IQuestionRepository>(ServiceIdentifiers.QuestionRepository);
+      const shuffleService = container.resolve<IShuffleService>(ServiceIdentifiers.ShuffleService);
       const stateManager = container.resolve<IStateManager>(ServiceIdentifiers.StateManager);
       
-      return new QuestionManager(questionRepository, stateManager);
+      return new QuestionManager(questionRepository, shuffleService, stateManager);
     }
   );
 

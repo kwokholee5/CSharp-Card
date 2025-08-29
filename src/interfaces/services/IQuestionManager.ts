@@ -3,6 +3,7 @@ import type { IQuestion } from '../domain/IQuestion';
 /**
  * Interface for managing question navigation and retrieval.
  * Follows Single Responsibility Principle by focusing only on question management.
+ * Supports randomization of question order and individual question options.
  */
 export interface IQuestionManager {
   /**
@@ -43,7 +44,19 @@ export interface IQuestionManager {
   
   /**
    * Initializes the question manager with question data
+   * @param options - Initialization options including randomization settings
    * @returns Promise that resolves when initialization is complete
    */
-  initialize(): Promise<void>;
+  initialize(options?: QuestionManagerInitOptions): Promise<void>;
+}
+
+/**
+ * Options for initializing the QuestionManager with randomization capabilities
+ */
+export interface QuestionManagerInitOptions {
+  /** Whether to shuffle the order of questions (default: true) */
+  shuffleQuestions?: boolean;
+  
+  /** Whether to shuffle options within each question (default: true) */
+  shuffleOptions?: boolean;
 }

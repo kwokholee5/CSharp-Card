@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi, type Mock } from 'vitest';
 import { QuestionManager } from '../../src/services/QuestionManager';
 import type { IQuestionRepository } from '../../src/interfaces/repositories/IQuestionRepository';
+import type { IShuffleService } from '../../src/interfaces/services/IShuffleService';
 import type { IStateManager } from '../../src/interfaces/services/IStateManager';
 import type { IQuestion } from '../../src/interfaces/domain/IQuestion';
 import { MultipleChoiceQuestion } from '../../src/models/MultipleChoiceQuestion';
@@ -9,6 +10,7 @@ import { Option } from '../../src/models/Option';
 describe('QuestionManager', () => {
   let questionManager: QuestionManager;
   let mockQuestionRepository: jest.Mocked<IQuestionRepository>;
+  let mockShuffleService: jest.Mocked<IShuffleService>;
   let mockStateManager: jest.Mocked<IStateManager>;
   let mockQuestions: IQuestion[];
 
@@ -19,6 +21,14 @@ describe('QuestionManager', () => {
       getQuestionById: vi.fn(),
       getQuestionsByCategory: vi.fn()
     } as jest.Mocked<IQuestionRepository>;
+
+    // Create mock shuffle service
+    mockShuffleService = {
+      shuffleQuestions: vi.fn(),
+      shuffleQuestionOptions: vi.fn(),
+      shuffleOptionsWithMapping: vi.fn(),
+      mapAnswerIndices: vi.fn()
+    } as jest.Mocked<IShuffleService>;
 
     // Create mock state manager
     mockStateManager = {
@@ -80,8 +90,12 @@ describe('QuestionManager', () => {
     // Set up default mock behavior
     mockQuestionRepository.loadQuestions.mockResolvedValue(mockQuestions);
     mockStateManager.getCurrentQuestionIndex.mockReturnValue(0);
+    
+    // Set up shuffle service mock behavior (return questions unchanged for most tests)
+    mockShuffleService.shuffleQuestions.mockImplementation((questions) => [...questions]);
+    mockShuffleService.shuffleQuestionOptions.mockImplementation((question) => question);
 
-    questionManager = new QuestionManager(mockQuestionRepository, mockStateManager);
+    questionManager = new QuestionManager(mockQuestionRepository, mockShuffleService, mockStateManager);
   });
 
   describe('initialization', () => {
@@ -432,6 +446,23 @@ describe('QuestionManager', () => {
       
       // Verify question loading is delegated to repository
       expect(mockQuestionRepository.loadQuestions).toHaveBeenCalledOnce();
+    });
+  });
+
+  describe('randomization functionality', () => {
+    it('should call shuffle service when randomization is enabled', async () => {
+      await questionManager.initialize({ shuffleQuestions: true, shuffleOptions: true });
+      
+      expect(mockShuffleService.shuffleQuestions).toHaveBeenCalledWith(mockQuestions);
+      expect(mockShuffleService.shuffleQuestionOptions).toHaveBeenCalledTimes(mockQuestions.length);
+    });
+
+    it('should not call shuffle service when randomization is disabled', async () => {
+      vi.clearAllMocks();
+      await questionManager.initialize({ shuffleQuestions: false, shuffleOptions: false });
+      
+      expect(mockShuffleService.shuffleQuestions).not.toHaveBeenCalled();
+      expect(mockShuffleService.shuffleQuestionOptions).not.toHaveBeenCalled();
     });
   });
 });

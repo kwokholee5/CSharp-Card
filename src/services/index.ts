@@ -2,6 +2,7 @@
 export { QuestionManager } from './QuestionManager';
 export { AnswerManager } from './AnswerManager';
 export { AnswerValidator } from './AnswerValidator';
+export { ShuffleService } from './ShuffleService';
 export { StateManager } from './StateManager';
 export { ApplicationErrorHandler, GlobalErrorHandler } from './ErrorHandler';
 
