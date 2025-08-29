@@ -1,52 +1,46 @@
-import type { 
-  Question, 
-  FlipCardQuestion, 
-  MultipleChoiceQuestion, 
-  Category, 
-  CategoryInfo, 
-  QuestionFile
-} from '../utils/types';
-import { isFlipCardQuestion, isMultipleChoiceQuestion, getAnswerText } from '../utils/types';
+// Service for loading and managing questions
+// Uses direct imports instead of fetch to work with Cloudflare Pages
+
+import type { Question } from '../utils/types';
+import { getQuestions, getAllQuestions, getCategories } from '../data/questions';
+
+interface Categories {
+  [key: string]: {
+    name: string;
+    subcategories: string[];
+  };
+}
 
 class QuestionService {
-  private cache = new Map<string, any>();
-  private baseUrl = '/data';
+  private cache: Map<string, any> = new Map();
 
-  async loadCategories(): Promise<Record<Category, CategoryInfo>> {
-    const cacheKey = 'categories';
-    if (this.cache.has(cacheKey)) {
-      return this.cache.get(cacheKey);
+  async loadCategories(): Promise<Categories> {
+    if (this.cache.has('categories')) {
+      return this.cache.get('categories');
     }
 
     try {
-      const response = await fetch(`${this.baseUrl}/metadata/categories.json`);
-      const data = await response.json();
-      this.cache.set(cacheKey, data.categories);
-      return data.categories;
+      const categories = getCategories();
+      this.cache.set('categories', categories);
+      return categories;
     } catch (error) {
       console.error('Failed to load categories:', error);
       throw error;
     }
   }
 
-  async loadQuestions(category: Category, subcategory: string): Promise<Question[]> {
+  async loadQuestions(category: string, subcategory: string): Promise<Question[]> {
     const cacheKey = `${category}-${subcategory}`;
     if (this.cache.has(cacheKey)) {
       return this.cache.get(cacheKey);
     }
 
     try {
-      const response = await fetch(`${this.baseUrl}/questions/${category}/${subcategory}.json`);
-      const data: QuestionFile = await response.json();
+      const questions = getQuestions(category, subcategory);
       
-      // Ensure backward compatibility by adding type discriminator if missing
-      const questions = data.questions.map(q => {
-        if (!(q as any).type) {
-          // Legacy questions are flip cards - add type discriminator
-          return { ...q, type: 'flip-card' as const } as Question;
-        }
-        return q;
-      });
+      if (!questions) {
+        throw new Error(`No questions found for ${category}/${subcategory}`);
+      }
       
       this.cache.set(cacheKey, questions);
       return questions;
@@ -63,20 +57,7 @@ class QuestionService {
     }
 
     try {
-      const categories = await this.loadCategories();
-      const allQuestions: Question[] = [];
-
-      for (const [categoryKey, categoryInfo] of Object.entries(categories)) {
-        for (const subcategoryKey of Object.keys(categoryInfo.subcategories)) {
-          try {
-            const questions = await this.loadQuestions(categoryKey as Category, subcategoryKey);
-            allQuestions.push(...questions);
-          } catch (error) {
-            console.warn(`Skipping ${categoryKey}/${subcategoryKey}:`, error);
-          }
-        }
-      }
-
+      const allQuestions = getAllQuestions();
       this.cache.set(cacheKey, allQuestions);
       return allQuestions;
     } catch (error) {
@@ -85,48 +66,55 @@ class QuestionService {
     }
   }
 
-  searchQuestionsLegacy(questions: Question[], query: string): Question[] {
-    const lowerQuery = query.toLowerCase();
+  // Search for questions by query
+  searchQuestions(questions: Question[], query: string): Question[] {
+    const lowercaseQuery = query.toLowerCase();
+    
     return questions.filter(q => {
-      const basicMatch = 
-        q.question.toLowerCase().includes(lowerQuery) ||
-        q.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
-        q.category.toLowerCase().includes(lowerQuery) ||
-        q.subcategory.toLowerCase().includes(lowerQuery);
+      const questionText = q.question.toLowerCase();
+      const answerText = 'answer' in q ? q.answer.toLowerCase() : '';
+      const explanationText = q.explanation?.toLowerCase() || '';
+      const tags = q.tags.join(' ').toLowerCase();
       
-      // Use polymorphic answer access
-      const answerText = getAnswerText(q);
-      return basicMatch || answerText.toLowerCase().includes(lowerQuery);
+      return questionText.includes(lowercaseQuery) ||
+             answerText.includes(lowercaseQuery) ||
+             explanationText.includes(lowercaseQuery) ||
+             tags.includes(lowercaseQuery);
     });
   }
 
-  filterQuestions(
-    questions: Question[],
-    filters: {
-      categories?: Category[];
-      difficulties?: number[];
-      tags?: string[];
-    }
-  ): Question[] {
-    let filtered = [...questions];
-
-    if (filters.categories && filters.categories.length > 0) {
-      filtered = filtered.filter(q => filters.categories!.includes(q.category));
-    }
-
-    if (filters.difficulties && filters.difficulties.length > 0) {
-      filtered = filtered.filter(q => filters.difficulties!.includes(q.difficulty));
-    }
-
-    if (filters.tags && filters.tags.length > 0) {
-      filtered = filtered.filter(q => 
-        filters.tags!.some(tag => q.tags.includes(tag))
-      );
-    }
-
-    return filtered;
+  // Filter questions by difficulty
+  filterByDifficulty(questions: Question[], minDifficulty: number, maxDifficulty: number): Question[] {
+    return questions.filter(q => q.difficulty >= minDifficulty && q.difficulty <= maxDifficulty);
   }
 
+  // Filter questions by tags
+  filterByTags(questions: Question[], tags: string[]): Question[] {
+    if (tags.length === 0) return questions;
+    
+    return questions.filter(q => 
+      tags.some(tag => q.tags.includes(tag))
+    );
+  }
+
+  // Get unique tags from questions
+  getUniqueTags(questions: Question[]): string[] {
+    const tagSet = new Set<string>();
+    questions.forEach(q => q.tags.forEach(tag => tagSet.add(tag)));
+    return Array.from(tagSet).sort();
+  }
+
+  // Get questions that are flip cards
+  getFlipCardQuestions(questions: Question[]): Question[] {
+    return questions.filter(q => !q.type || q.type === 'flip-card');
+  }
+
+  // Get questions that are multiple choice
+  getMultipleChoiceQuestions(questions: Question[]): Question[] {
+    return questions.filter(q => q.type === 'multiple-choice');
+  }
+
+  // Shuffle questions array
   shuffleQuestions(questions: Question[]): Question[] {
     const shuffled = [...questions];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -136,76 +124,35 @@ class QuestionService {
     return shuffled;
   }
 
-  getQuestionsByDifficulty(questions: Question[], minDifficulty: number, maxDifficulty: number): Question[] {
-    return questions.filter(q => q.difficulty >= minDifficulty && q.difficulty <= maxDifficulty);
+  // Filter questions with multiple criteria
+  filterQuestions(
+    questions: Question[],
+    options: {
+      difficulty?: { min: number; max: number };
+      tags?: string[];
+      search?: string;
+    }
+  ): Question[] {
+    let filtered = questions;
+
+    if (options.difficulty) {
+      filtered = this.filterByDifficulty(filtered, options.difficulty.min, options.difficulty.max);
+    }
+
+    if (options.tags && options.tags.length > 0) {
+      filtered = this.filterByTags(filtered, options.tags);
+    }
+
+    if (options.search) {
+      filtered = this.searchQuestions(filtered, options.search);
+    }
+
+    return filtered;
   }
 
+  // Clear the cache
   clearCache(): void {
     this.cache.clear();
-  }
-
-  // Helper methods for working with polymorphic questions
-  getFlipCardQuestions(questions: Question[]): FlipCardQuestion[] {
-    return questions.filter(isFlipCardQuestion);
-  }
-
-  getMultipleChoiceQuestions(questions: Question[]): MultipleChoiceQuestion[] {
-    return questions.filter(isMultipleChoiceQuestion);
-  }
-
-  // Enhanced search that works with both question types
-  searchQuestions(questions: Question[], query: string): Question[] {
-    const lowerQuery = query.toLowerCase();
-    return questions.filter(q => {
-      // Common fields
-      const matchesCommon = 
-        q.question.toLowerCase().includes(lowerQuery) ||
-        q.tags.some(tag => tag.toLowerCase().includes(lowerQuery)) ||
-        q.category.toLowerCase().includes(lowerQuery) ||
-        q.subcategory.toLowerCase().includes(lowerQuery) ||
-        (q.explanation && q.explanation.toLowerCase().includes(lowerQuery));
-
-      // Type-specific fields
-      if (isFlipCardQuestion(q)) {
-        return matchesCommon || q.answer.toLowerCase().includes(lowerQuery);
-      } else {
-        // For multiple choice, search in options text
-        return matchesCommon || 
-          q.options.some(option => 
-            option.text.toLowerCase().includes(lowerQuery) ||
-            (option.explanation && option.explanation.toLowerCase().includes(lowerQuery))
-          );
-      }
-    });
-  }
-
-  // Get answer text that works for both question types
-  getQuestionAnswer(question: Question): string {
-    return getAnswerText(question);
-  }
-
-  // Validate question structure
-  validateQuestion(question: any): question is Question {
-    if (!question.id || !question.question || !question.type) {
-      return false;
-    }
-
-    if (question.type === 'flip-card') {
-      return typeof question.answer === 'string';
-    } else if (question.type === 'multiple-choice') {
-      return Array.isArray(question.options) && 
-             typeof question.correctAnswerIndex === 'number' &&
-             question.options.length > 0 &&
-             question.correctAnswerIndex >= 0 && 
-             question.correctAnswerIndex < question.options.length;
-    }
-
-    return false;
-  }
-
-  // Filter questions by type
-  filterByType(questions: Question[], type: 'flip-card' | 'multiple-choice'): Question[] {
-    return questions.filter(q => q.type === type);
   }
 }
 
