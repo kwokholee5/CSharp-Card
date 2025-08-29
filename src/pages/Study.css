@@ -106,18 +106,124 @@
   margin-bottom: 0.5rem;
 }
 
-/* Responsive Design */
+/* Swipe hint */
+.swipe-hint {
+  text-align: center;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  color: #6b7280;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Mobile Responsive Design - Improved */
 @media (max-width: 768px) {
   .study-page {
-    padding: 1rem;
+    min-height: 100vh;
+    align-items: flex-start; /* Don't center vertically on mobile */
+    padding: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 180px; /* Space for fixed buttons */
+  }
+  
+  .study-container {
+    padding-top: 0;
+  }
+  
+  .study-header {
+    margin-bottom: 1rem;
+  }
+  
+  .study-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   
   .study-stats {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .stat {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .completion-message {
+    margin-top: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .completion-message h2 {
+    font-size: 1.25rem;
+  }
+  
+  .swipe-hint {
     display: block;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 375px) {
+  .study-page {
+    padding: 0.25rem;
+    padding-top: 0.5rem;
+  }
+  
+  .study-header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .stat {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Landscape mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  .study-page {
+    padding: 0.5rem;
+    padding-bottom: 80px;
+    align-items: center;
+  }
+  
+  .study-header {
+    display: none; /* Hide header in landscape to save space */
+  }
+  
+  .swipe-hint {
+    display: none;
+  }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 769px) {
+  .swipe-hint {
+    display: none;
+  }
+}
+
+/* iOS bounce scroll prevention */
+@supports (-webkit-touch-callout: none) {
+  .study-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Safe area support */
+@supports (padding: max(0px)) {
+  .study-page {
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+    padding-top: max(1rem, env(safe-area-inset-top));
   }
 }

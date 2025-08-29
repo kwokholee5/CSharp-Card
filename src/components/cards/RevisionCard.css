@@ -8,6 +8,8 @@
   margin: 0 auto;
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .card-inner {
@@ -27,6 +29,7 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -34,6 +37,7 @@
   padding: 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  overflow: hidden;
 }
 
 .card-face.card-front {
@@ -52,6 +56,7 @@
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .card-category {
@@ -86,6 +91,24 @@
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  padding-right: 0.5rem;
+}
+
+.card-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
 }
 
 .card-question {
@@ -119,6 +142,7 @@
   font-family: 'Courier New', monospace;
   font-size: 0.875rem;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .code-example pre {
@@ -133,6 +157,7 @@
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 1rem;
+  flex-shrink: 0;
 }
 
 .tag {
@@ -150,6 +175,7 @@
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .flip-hint {
@@ -160,41 +186,132 @@
   gap: 0.5rem;
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design - Improved */
 @media (max-width: 768px) {
   .card-container {
     max-width: 100%;
-    height: 500px;
+    height: calc(100vh - 200px); /* Dynamic height based on viewport */
+    min-height: 400px;
+    max-height: 600px;
   }
   
   .card-face {
-    padding: 1.5rem;
+    padding: 1.25rem;
+  }
+  
+  .card-header {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  
+  .card-category {
+    font-size: 0.75rem;
+  }
+  
+  .difficulty-dot {
+    width: 6px;
+    height: 6px;
   }
   
   .card-question {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
   }
   
   .card-answer {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .card-explanation {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+  
+  .code-example {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .card-tags {
+    padding-top: 0.75rem;
+  }
+  
+  .tag {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+  }
+  
+  .card-footer {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+  
+  .flip-hint {
+    font-size: 0.75rem;
   }
 }
 
-/* Animations */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
+/* Small mobile devices */
+@media (max-width: 375px) {
+  .card-container {
+    height: calc(100vh - 180px);
+    min-height: 350px;
   }
-  50% {
-    transform: scale(1.05);
+  
+  .card-face {
+    padding: 1rem;
   }
-  100% {
-    transform: scale(1);
+  
+  .card-question {
+    font-size: 1rem;
+  }
+  
+  .card-answer {
+    font-size: 0.875rem;
   }
 }
 
-.card-container:hover .card-inner {
-  animation: pulse 2s infinite;
+/* Landscape mode optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .card-container {
+    height: calc(100vh - 120px);
+    min-height: 300px;
+    max-height: 400px;
+  }
+  
+  .card-face {
+    padding: 0.75rem;
+  }
+  
+  .card-header {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .card-question {
+    font-size: 1rem;
+  }
+  
+  .card-answer {
+    font-size: 0.875rem;
+  }
+  
+  .flip-hint {
+    display: none;
+  }
+}
+
+/* Remove hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .card-container:hover .card-inner {
+    animation: none;
+  }
+  
+  .card-container:active {
+    transform: scale(0.98);
+  }
 }
 
 /* Accessibility */
@@ -230,4 +347,12 @@
 .card-error h3 {
   margin-bottom: 1rem;
   color: #ff6b6b;
+}
+
+/* iOS Safe Areas */
+@supports (padding: max(0px)) {
+  .card-face {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
 }

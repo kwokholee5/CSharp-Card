@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { RevisionCard } from '../components/cards/RevisionCard';
 import { CardActions } from '../components/cards/CardActions';
 import { useQuestions } from '../hooks/useQuestions';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSwipeGesture } from '../hooks/useSwipeGesture';
 import type { UserProgress, Category } from '../utils/types';
 import './Study.css';
 
@@ -15,7 +16,8 @@ export const Study: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [progress, setProgress] = useLocalStorage<Record<string, UserProgress>>('study-progress', {});
-
+  
+  const studyContainerRef = useRef<HTMLDivElement>(null);
   const currentQuestion = questions[currentIndex];
 
   const handleNext = () => {
@@ -31,6 +33,12 @@ export const Study: React.FC = () => {
       setIsFlipped(false);
     }
   };
+
+  // Use swipe gestures for navigation
+  useSwipeGesture(studyContainerRef, {
+    onSwipeLeft: handleNext,
+    onSwipeRight: handlePrevious,
+  });
 
   const handleKnown = () => {
     if (!currentQuestion) return;
@@ -120,7 +128,7 @@ export const Study: React.FC = () => {
   }
 
   return (
-    <div className="study-page">
+    <div className="study-page" ref={studyContainerRef}>
       <div className="study-container">
         <div className="study-header">
           <h1>Study Mode</h1>
@@ -157,6 +165,10 @@ export const Study: React.FC = () => {
             <p>You've completed all questions in this session.</p>
           </div>
         )}
+        
+        <div className="swipe-hint">
+          <span>← Swipe for next/previous →</span>
+        </div>
       </div>
     </div>
   );

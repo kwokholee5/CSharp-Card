@@ -20,16 +20,37 @@
   
   --border-radius: 0.75rem;
   --transition: all 0.3s ease;
+  
+  /* Safe area variables */
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-right: env(safe-area-inset-right);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   font-size: 16px;
+  /* Prevent font size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Prevent overscroll bounce on iOS */
+  overscroll-behavior-y: none;
+  
+  /* Full height on mobile browsers */
+  height: 100%;
 }
 
 body {
@@ -42,6 +63,32 @@ body {
   color: var(--text-primary);
   background: var(--background-secondary);
   line-height: 1.6;
+  
+  /* Full height on mobile browsers */
+  min-height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior-y: contain;
+  
+  /* Prevent text selection on UI elements */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection in content areas */
+.card-content,
+.card-question,
+.card-answer,
+.card-explanation,
+.code-example {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 code {
@@ -56,6 +103,10 @@ h1, h2, h3, h4, h5, h6 {
 button {
   font-family: inherit;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button:disabled {
@@ -66,10 +117,21 @@ button:disabled {
 a {
   color: var(--primary-color);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Input and textarea improvements for mobile */
+input,
+textarea,
+select {
+  font-size: 16px; /* Prevents zoom on iOS */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* Utility Classes */
@@ -91,6 +153,38 @@ a:hover {
   border-width: 0;
 }
 
+/* Mobile-specific utilities */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* Safe area padding utilities */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-right {
+  padding-right: env(safe-area-inset-right);
+}
+
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 8px;
@@ -108,4 +202,86 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-primary);
+}
+
+/* Mobile scrollbar - thinner */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* Prevent scroll when modal is open */
+body.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific styles */
+  body {
+    /* Fix for iOS Safari viewport height */
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Prevent bounce scrolling */
+  .app-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Android specific fixes */
+@media screen and (max-width: 768px) {
+  /* Prevent text size adjustment */
+  * {
+    max-height: 999999px;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  :root {
+    font-size: 14px; /* Smaller base font size in landscape */
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-sm: 0 0 0 1px currentColor;
+    --shadow-md: 0 0 0 2px currentColor;
+    --shadow-lg: 0 0 0 3px currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
 }
