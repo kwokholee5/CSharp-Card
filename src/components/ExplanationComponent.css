@@ -752,3 +752,26 @@ button.navigation-button.navigation-button--redo {
   height: 25px !important;
   width: auto !important;
 }
+
+
+/* Fix button container layout to prevent wrapping */
+.explanation-navigation,
+.navigation-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 4px !important;
+  width: 100% !important;
+  max-width: 200px !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Ensure buttons don't wrap */
+button.explanation-button,
+button.navigation-button {
+  flex-shrink: 1 !important;
+  flex-grow: 0 !important;
+  flex-basis: auto !important;
+  white-space: nowrap !important;
+}
