@@ -211,7 +211,8 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
       );
     }
     
-    const options = question.options;
+    // Limit to first 3 options only
+    const options = question.options.slice(0, 3);
     
     return (
       <div className="answer-options-grid" role="radiogroup" aria-label="Answer options">
@@ -290,7 +291,10 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
     <div className={`answer-component ${className}`}>
       <div className="answer-component-content">
         {renderInstructions()}
-        {renderOptionsGrid()}
+        {/* Temporarily hide MC options on mobile to test submit button */}
+        <div className="mobile-mc-options-hidden">
+          {renderOptionsGrid()}
+        </div>
         <div className="answer-desktop-submit">
           {renderSubmitButton()}
         </div>

@@ -34,7 +34,7 @@
     margin: 0 !important;
   }
   
-  /* Make MC options grid ultra compact */
+  /* Make MC options grid ultra compact (3 options) */
   .answer-options-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;

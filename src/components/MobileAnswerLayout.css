@@ -1,5 +1,12 @@
 /* Mobile-First Answer Layout - Complete Redesign */
 
+/* TEMPORARY: Hide MC options on mobile to test submit button */
+@media (max-width: 768px) {
+  .mobile-mc-options-hidden {
+    display: none !important;
+  }
+}
+
 /* Mobile Layout - Primary Design - ULTRA AGGRESSIVE OVERRIDES */
 @media (max-width: 768px) {
   /* Reset everything for mobile - MAXIMUM SPECIFICITY */
@@ -42,7 +49,7 @@
     text-align: center !important;
   }
   
-  /* MC Options Grid - Take remaining space */
+  /* MC Options Grid - Take remaining space (3 options) */
   .answer-options-grid {
     flex: 1 !important;
     display: grid !important;
@@ -103,14 +110,14 @@
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    height: 80px !important; /* Fixed height */
+    height: 120px !important; /* Larger height for testing */
     background: #ff0000 !important; /* DEBUG: Red background to see if CSS is applied */
-    border-top: 2px solid #0d6efd !important;
+    border-top: 5px solid #00ff00 !important; /* Green border for visibility */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     z-index: 999999 !important;
-    padding: 8px !important;
+    padding: 16px !important;
     
     /* iOS safe area support */
     padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
@@ -130,19 +137,19 @@
     justify-content: center !important;
   }
   
-  /* Submit Button - Prominent and always visible */
+  /* Submit Button - HUGE and always visible for testing */
   .answer-footer .answer-submit-button {
-    background-color: #0d6efd !important;
-    color: #ffffff !important;
-    border: none !important;
-    padding: 12px 24px !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    border-radius: 8px !important;
-    min-width: 120px !important;
+    background-color: #00ff00 !important; /* Bright green for visibility */
+    color: #000000 !important; /* Black text for contrast */
+    border: 3px solid #ffffff !important; /* White border */
+    padding: 20px 40px !important; /* Much larger padding */
+    font-size: 1.5rem !important; /* Larger font */
+    font-weight: 700 !important; /* Bolder font */
+    border-radius: 12px !important;
+    min-width: 200px !important; /* Much wider */
     width: 100% !important;
-    max-width: 200px !important;
-    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3) !important;
+    max-width: 300px !important;
+    box-shadow: 0 4px 16px rgba(0, 255, 0, 0.5) !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
   }
