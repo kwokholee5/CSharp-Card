@@ -10,7 +10,7 @@
   },
   "questions": [
     {
-      "id": "csharp-001",
+      "id": "csharp-001", 
       "question": "What will be the output of this C# code that demonstrates string immutability?",
       "type": "multiple-choice",
       "options": [
@@ -52,7 +52,7 @@
     },
     {
       "id": "csharp-002",
-      "question": "What will this C# code output when demonstrating value type vs reference type behavior?",
+      "question": "What will this C# code output?",
       "type": "multiple-choice",
       "options": [
         {
@@ -93,7 +93,7 @@
     },
     {
       "id": "csharp-003",
-      "question": "What will be the result of this C# code that demonstrates nullable value types and the null-coalescing operator?",
+      "question": "What will be the result of this C# code?",
       "type": "multiple-choice",
       "options": [
         {
@@ -134,7 +134,7 @@
     },
     {
       "id": "csharp-004",
-      "question": "What will this C# code output when demonstrating boxing and unboxing behavior?",
+      "question": "What will this C# code output?",
       "type": "multiple-choice",
       "options": [
         {
@@ -175,7 +175,7 @@
     },
     {
       "id": "csharp-005",
-      "question": "What will be the output of this C# code that demonstrates decimal precision vs double precision?",
+      "question": "What will be the output of this C# code?",
       "type": "multiple-choice",
       "options": [
         {
