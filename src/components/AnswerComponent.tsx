@@ -3,6 +3,7 @@ import type { IQuestion } from '../interfaces/domain/IQuestion';
 import type { IAnswerManager } from '../interfaces/services/IAnswerManager';
 import type { IQuestionState } from '../interfaces/domain/types';
 import './AnswerComponent.css';
+import './iPhoneSubmitFix.css';
 
 /**
  * Props interface for AnswerComponent following Interface Segregation Principle
@@ -257,18 +258,32 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
       return null;
     }
 
-    // Only show selection count if options are selected
-    if (selectedOptions.length > 0) {
+    try {
+      const instructionText = question.hasMultipleCorrectAnswers()
+        ? 'Select all correct answers'
+        : 'Select the correct answer';
+
       return (
         <div className="answer-instructions">
-          <p className="answer-selection-count">
-            {selectedOptions.length} option{selectedOptions.length !== 1 ? 's' : ''} selected
-          </p>
+          <p className="answer-instructions-text">{instructionText}</p>
+          {selectedOptions.length > 0 && (
+            <p className="answer-selection-count">
+              {selectedOptions.length} option{selectedOptions.length !== 1 ? 's' : ''} selected
+            </p>
+          )}
+        </div>
+      );
+    } catch (err) {
+      const error = err instanceof Error ? err : new Error('Failed to render instructions');
+      if (onError) {
+        onError(error);
+      }
+      return (
+        <div className="answer-instructions">
+          <p className="answer-instructions-text">Select an answer</p>
         </div>
       );
     }
-
-    return null;
   };
 
   return (
