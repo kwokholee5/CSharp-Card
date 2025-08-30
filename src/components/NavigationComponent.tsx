@@ -154,7 +154,7 @@ export const NavigationComponent: React.FC<NavigationComponentProps> = ({
       >
         <span className="navigation-button-icon">↻</span>
         <span className="navigation-button-text">
-          {isResetting ? 'Resetting...' : 'Redo Question'}
+          {isResetting ? 'Resetting...' : 'Redo'}
         </span>
       </button>
     );
@@ -175,7 +175,7 @@ export const NavigationComponent: React.FC<NavigationComponentProps> = ({
         aria-describedby="next-button-description"
       >
         <span className="navigation-button-text">
-          {isNavigating ? 'Loading...' : getQuestionInfo.isLastQuestion ? 'Last Question' : 'Next Question'}
+          {isNavigating ? 'Loading...' : getQuestionInfo.isLastQuestion ? 'Last Question' : 'Next'}
         </span>
         <span className="navigation-button-icon">→</span>
       </button>

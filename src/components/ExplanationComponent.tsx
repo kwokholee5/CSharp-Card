@@ -195,7 +195,7 @@ export const ExplanationComponent: React.FC<ExplanationComponentProps> = ({
           aria-label="Redo this question"
         >
           <span className="explanation-button-icon">↻</span>
-          <span className="explanation-button-text">Redo Question</span>
+          <span className="explanation-button-text">Redo</span>
         </button>
         
         <button
@@ -204,7 +204,7 @@ export const ExplanationComponent: React.FC<ExplanationComponentProps> = ({
           disabled={!onNextQuestion}
           aria-label="Move to next question"
         >
-          <span className="explanation-button-text">Next Question</span>
+          <span className="explanation-button-text">Next</span>
           <span className="explanation-button-icon">→</span>
         </button>
       </div>

@@ -326,7 +326,8 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  min-width: clamp(120px, 25vw, 140px);
+  flex: 1;
+  max-width: 200px;
   justify-content: center;
 }
 
