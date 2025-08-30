@@ -137,19 +137,19 @@
     justify-content: center !important;
   }
   
-  /* Submit Button - HUGE and always visible for testing */
+  /* Submit Button - ULTRA COMPACT for mobile */
   .answer-footer .answer-submit-button {
-    background-color: #00ff00 !important; /* Bright green for visibility */
-    color: #000000 !important; /* Black text for contrast */
-    border: 3px solid #ffffff !important; /* White border */
-    padding: 20px 40px !important; /* Much larger padding */
-    font-size: 1.5rem !important; /* Larger font */
-    font-weight: 700 !important; /* Bolder font */
-    border-radius: 12px !important;
-    min-width: 200px !important; /* Much wider */
-    width: 100% !important;
-    max-width: 300px !important;
-    box-shadow: 0 4px 16px rgba(0, 255, 0, 0.5) !important;
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 4px 6px !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
+    min-width: 50px !important;
+    max-width: 70px !important;
+    width: auto !important;
+    height: 40px !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
   }
@@ -168,6 +168,22 @@
   .answer-footer .answer-submit-button:hover:not(:disabled) {
     background-color: #0b5ed7 !important;
     transform: translateY(-1px) !important;
+  }
+  
+  /* Mobile Button Fixes for Redo and Next buttons */
+  .explanation-footer .explanation-button,
+  .navigation-button {
+    min-width: 50px !important;
+    max-width: 70px !important;
+    padding: 4px 6px !important;
+    font-size: 0.65rem !important;
+    height: 40px !important;
+  }
+  
+  .explanation-footer .explanation-navigation,
+  .navigation-buttons {
+    gap: 6px !important;
+    max-width: 280px !important;
   }
 }
 
