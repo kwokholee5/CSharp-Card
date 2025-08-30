@@ -175,7 +175,7 @@ export const NavigationComponent: React.FC<NavigationComponentProps> = ({
         aria-describedby="next-button-description"
       >
         <span className="navigation-button-text">
-          {isNavigating ? 'Loading...' : getQuestionInfo.isLastQuestion ? 'Last Question' : 'NEXT TINY'}
+          {isNavigating ? 'Loading...' : getQuestionInfo.isLastQuestion ? 'Last Question' : 'Next'}
         </span>
         <span className="navigation-button-icon">→</span>
       </button>

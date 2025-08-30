@@ -775,3 +775,9 @@ button.navigation-button {
   flex-basis: auto !important;
   white-space: nowrap !important;
 }
+
+
+/* Hide stats sections */
+.explanation-summary {
+  display: none !important;
+}
