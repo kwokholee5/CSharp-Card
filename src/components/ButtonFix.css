@@ -1,0 +1,19 @@
+/* Button Fix CSS - Direct approach */
+
+.explanation-button--next,
+.navigation-button--next {
+  min-width: 40px !important;
+  max-width: 60px !important;
+  padding: 3px 5px !important;
+  font-size: 0.6rem !important;
+  height: 30px !important;
+}
+
+.explanation-button--redo,
+.navigation-button--redo {
+  min-width: 40px !important;
+  max-width: 60px !important;
+  padding: 3px 5px !important;
+  font-size: 0.6rem !important;
+  height: 30px !important;
+}
