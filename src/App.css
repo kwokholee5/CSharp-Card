@@ -390,3 +390,18 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
+/* TEST: Change Next button color to bright red */
+@media (max-width: 768px) {
+  .explanation-button--next {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+    border-color: #ff0000 !important;
+  }
+  
+  .navigation-button--next {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+    border-color: #ff0000 !important;
+  }
+}
