@@ -1,18 +1,19 @@
 /* Mobile-First Answer Layout - Complete Redesign */
 
-/* Mobile Layout - Primary Design */
+/* Mobile Layout - Primary Design - ULTRA AGGRESSIVE OVERRIDES */
 @media (max-width: 768px) {
-  /* Reset everything for mobile */
-  .answer-component {
+  /* Reset everything for mobile - MAXIMUM SPECIFICITY */
+  .app-right-column .answer-component {
     height: 100vh !important;
     height: 100dvh !important;
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
     position: relative !important;
+    background: #2a2d3a !important;
   }
   
-  .answer-component-content {
+  .app-right-column .answer-component .answer-component-content {
     flex: 1 !important;
     display: flex !important;
     flex-direction: column !important;
@@ -97,13 +98,13 @@
   }
   
   /* Mobile Footer - Fixed at bottom with guaranteed space */
-  .answer-footer {
+  .app-right-column .answer-component .answer-footer {
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
     height: 80px !important; /* Fixed height */
-    background: #2a2d3a !important;
+    background: #ff0000 !important; /* DEBUG: Red background to see if CSS is applied */
     border-top: 2px solid #0d6efd !important;
     display: flex !important;
     align-items: center !important;
