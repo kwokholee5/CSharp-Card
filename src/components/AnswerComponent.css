@@ -17,18 +17,24 @@
   min-height: 0;
 }
 
-/* Mobile adjustments for scrollable content */
+/* Mobile adjustments for viewport-constrained layout */
 @media (max-width: 768px) {
   .answer-component {
-    height: auto;
-    overflow: visible;
-    min-height: 400px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
   
   .answer-component-content {
-    height: auto;
-    overflow: visible;
+    height: 100%;
+    overflow: hidden;
     gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    padding-bottom: 80px; /* Space for sticky submit button */
   }
 }
 
@@ -66,13 +72,19 @@
   align-items: start;
 }
 
-/* Mobile grid adjustments */
+/* Mobile grid adjustments - scrollable if needed */
 @media (max-width: 768px) {
   .answer-options-grid {
-    height: auto;
-    min-height: 280px;
+    flex: 1 1 auto;
+    min-height: 0;
     gap: 0.5rem;
-    overflow: visible;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    /* Ensure grid items are visible */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(80px, auto);
   }
 }
 
@@ -196,6 +208,22 @@
   padding-top: 1rem;
 }
 
+/* Mobile submit button - sticky at bottom */
+@media (max-width: 768px) {
+  .answer-submit-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    background: linear-gradient(to top, #2a2d3a 95%, rgba(42, 45, 58, 0.9) 85%, transparent);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(74, 85, 104, 0.3);
+  }
+}
+
 .answer-submit-button {
   padding: 0.75rem 2rem;
   border: none;
@@ -242,39 +270,41 @@
   border: 0;
 }
 
-/* Mobile-first responsive design */
+/* Mobile-first responsive design - optimized for portrait */
 @media (max-width: 768px) {
-  .answer-component-content {
-    gap: 0.5rem;
-  }
-  
-  .answer-options-grid {
-    gap: 0.5rem;
-    grid-template-rows: auto auto;
-  }
-  
-  .answer-option {
-    padding: 0.5rem;
-    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
-    border-radius: 6px;
-    min-height: 80px;
-    height: auto;
-    align-items: flex-start;
-  }
-  
-  .answer-instructions-text {
-    font-size: 1rem;
+  .answer-instructions {
+    flex-shrink: 0;
     margin-bottom: 0.25rem;
   }
   
+  .answer-instructions-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+  
   .answer-selection-count {
+    font-size: 0.75rem;
+  }
+  
+  .answer-options-grid {
+    gap: 0.4rem;
+    grid-template-rows: 1fr 1fr;
+  }
+  
+  .answer-option {
+    padding: 0.6rem;
     font-size: 0.8rem;
+    border-radius: 6px;
+    min-height: 70px;
+    max-height: 120px;
+    align-items: flex-start;
   }
   
   .answer-submit-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    margin-top: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    width: 90%;
+    max-width: 200px;
   }
 }
 

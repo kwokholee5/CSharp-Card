@@ -15,13 +15,13 @@ html, body {
   height: 100%;
 }
 
-/* Allow scrolling on mobile devices */
+/* Mobile viewport handling */
 @media (max-width: 768px) {
   html, body {
-    overflow: auto;
-    position: static;
-    height: auto;
-    min-height: 100vh;
+    height: 100vh;
+    height: -webkit-fill-available;
+    width: 100vw;
+    overflow: hidden;
   }
 }
 
@@ -33,12 +33,15 @@ html, body {
   background: #1e1e1e;
 }
 
-/* Allow scrolling on mobile */
+/* Mobile app container */
 @media (max-width: 768px) {
   .app {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
+    height: 100vh;
+    height: -webkit-fill-available;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -149,11 +152,11 @@ html, body {
   .app-container {
     display: flex;
     flex-direction: column;
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
-    gap: 12px;
-    padding: 12px;
+    flex: 1;
+    overflow: hidden;
+    gap: 8px;
+    padding: 8px;
+    min-height: 0;
   }
 }
 
@@ -178,11 +181,20 @@ html, body {
 
 /* Mobile column adjustments */
 @media (max-width: 768px) {
-  .app-left-column,
+  .app-left-column {
+    flex: 0 0 auto;
+    max-height: 40vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
   .app-right-column {
-    overflow: visible;
-    height: auto;
-    flex: none;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
 }
 

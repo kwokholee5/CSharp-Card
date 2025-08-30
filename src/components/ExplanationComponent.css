@@ -310,7 +310,8 @@
   gap: 1rem;
   justify-content: center;
   margin-top: auto;
-  padding-top: 1rem;
+  padding: 1rem;
+  flex-shrink: 0;
 }
 
 .explanation-button {
@@ -391,8 +392,18 @@
 
 /* Mobile-first responsive design */
 @media (max-width: 768px) {
+  .explanation-component {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+  
   .explanation-component-content {
     gap: 0.5rem;
+    padding-bottom: 80px; /* Space for sticky navigation */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
   }
   
   .explanation-header {
@@ -430,7 +441,17 @@
   }
   
   .explanation-navigation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     gap: 0.5rem;
+    padding: 0.75rem;
+    background: linear-gradient(to top, #2a2d3a 95%, rgba(42, 45, 58, 0.9) 85%, transparent);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(74, 85, 104, 0.3);
   }
   
   .explanation-details-title {
