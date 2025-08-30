@@ -257,9 +257,6 @@ export const ExplanationComponent: React.FC<ExplanationComponentProps> = ({
     }
   };
 
-  // Check if we're on mobile
-  const isMobile = window.innerWidth <= 768;
-
   return (
     <div className={`explanation-component ${className}`}>
       <div className="explanation-component-content">
@@ -268,13 +265,13 @@ export const ExplanationComponent: React.FC<ExplanationComponentProps> = ({
         {renderAnswerOptions()}
         {renderCodeOutput()}
         {renderExplanation()}
-        {!isMobile && renderNavigationButtons()}
-      </div>
-      {isMobile && (
-        <div className="explanation-footer">
+        <div className="explanation-desktop-nav">
           {renderNavigationButtons()}
         </div>
-      )}
+      </div>
+      <div className="explanation-footer">
+        {renderNavigationButtons()}
+      </div>
     </div>
   );
 };
