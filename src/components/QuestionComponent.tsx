@@ -109,8 +109,10 @@ export const QuestionComponent: React.FC<QuestionComponentProps> = ({
               borderRadius: '8px',
               fontSize: '16px',
               lineHeight: '1.4',
-              maxHeight: '300px',
+              height: '100%',
+              maxHeight: 'none',
               overflow: 'auto',
+              flex: 1,
               fontFamily: "'Consolas', 'Monaco', 'Courier New', monospace"
             }}
             showLineNumbers={true}
