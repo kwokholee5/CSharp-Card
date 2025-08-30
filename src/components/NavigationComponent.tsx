@@ -2,6 +2,7 @@ import React from 'react';
 import type { IQuestionManager } from '../interfaces/services/IQuestionManager';
 import type { IAnswerManager } from '../interfaces/services/IAnswerManager';
 import './NavigationComponent.css';
+import './MobileButtonFix.css';
 
 /**
  * Props interface for NavigationComponent following Interface Segregation Principle

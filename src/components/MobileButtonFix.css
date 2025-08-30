@@ -1,0 +1,49 @@
+/* Mobile Button Fixes for Redo and Next buttons */
+
+@media (max-width: 768px) {
+  /* Explanation Component Mobile Footer Buttons */
+  .explanation-footer .explanation-navigation {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+  
+  .explanation-footer .explanation-button {
+    flex: 1 !important;
+    max-width: 140px !important;
+    min-width: 100px !important;
+    padding: 8px 12px !important;
+    font-size: 0.85rem !important;
+    gap: 0.25rem !important;
+  }
+  
+  .explanation-footer .explanation-button-text {
+    font-size: 0.85rem !important;
+  }
+  
+  .explanation-footer .explanation-button-icon {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Navigation Component Mobile Buttons */
+  .navigation-buttons {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+  
+  .navigation-button {
+    flex: 1 !important;
+    max-width: 140px !important;
+    min-width: 100px !important;
+    padding: 8px 12px !important;
+    font-size: 0.85rem !important;
+    gap: 0.25rem !important;
+  }
+  
+  .navigation-button-text {
+    font-size: 0.85rem !important;
+  }
+  
+  .navigation-button-icon {
+    font-size: 0.9rem !important;
+  }
+}
