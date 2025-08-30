@@ -97,7 +97,12 @@ export class ApplicationBootstrap {
    * @returns Promise resolving to bootstrap result
    */
   async initialize(options: BootstrapOptions = {}): Promise<BootstrapResult> {
-    const config = { ...this.defaultOptions, ...options };
+    const config = { 
+      ...this.defaultOptions, 
+      ...options,
+      // Ensure onProgress is always a function, even if undefined is passed
+      onProgress: options.onProgress || this.defaultOptions.onProgress
+    };
     const startTime = Date.now();
     const errors: Error[] = [];
     let questionsLoaded = 0;
