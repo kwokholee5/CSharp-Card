@@ -39,7 +39,7 @@
       "explanation": "Generic constraints restrict type parameters to specific capabilities. The 'new()' constraint requires a parameterless constructor, while interface constraints allow calling interface methods.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static T CreateAndProcess<T>() where T : new(), IFormattable\n{\n    T instance = new T();\n    Console.WriteLine($\"Value: {instance.ToString(null, null)}\");\n    return instance;\n}\n\npublic static void ProcessString<T>(T value) where T : class\n{\n    Console.WriteLine($\"Length: {(value as string)?.Length ?? 0}\");\n}\n\n// Usage:\nCreateAndProcess<int>();  // int has parameterless constructor and implements IFormattable\nProcessString(\"Hello\");   // string is a reference type (class constraint)",
+        "code": "public static T CreateAndProcess<T>() where T : new(), IFormattable\n{\n    T instance = new T();\n    Console.WriteLine($\"Value: {instance.ToString(null, null)}\");\n    return instance;\n}\n\npublic static void ProcessString<T>(T value) where T : class\n{\n    Console.WriteLine($\"Length: {(value as string)?.Length ?? 0}\");\n}\n\n// Usage:\nCreateAndProcess<int>();  // int has parameterless constructor and implements IFormattable\nProcessString(\"Hello\");   // string is a reference type (class constraint)"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -79,7 +79,7 @@
       "explanation": "Covariance (out) allows derived-to-base conversions for output positions. Contravariance (in) allows base-to-derived conversions for input positions. This enables safe generic type conversions.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Covariance example - IEnumerable<out T>\nIEnumerable<string> strings = new List<string> {\"hello\", \"world\"};\nIEnumerable<object> objects = strings;  // string -> object (covariant)\nConsole.WriteLine($\"Covariance works: {objects != null}\");\n\n// Contravariance example - Action<in T>\nAction<object> objectAction = obj => Console.WriteLine(\"Processing object\");\nAction<string> stringAction = objectAction;  // object -> string (contravariant)\nConsole.WriteLine($\"Contravariance works: {stringAction != null}\");\n\n// Note: \n// - Covariance: can return more derived types\n// - Contravariance: can accept more base types",
+        "code": "// Covariance example - IEnumerable<out T>\nIEnumerable<string> strings = new List<string> {\"hello\", \"world\"};\nIEnumerable<object> objects = strings;  // string -> object (covariant)\nConsole.WriteLine($\"Covariance works: {objects != null}\");\n\n// Contravariance example - Action<in T>\nAction<object> objectAction = obj => Console.WriteLine(\"Processing object\");\nAction<string> stringAction = objectAction;  // object -> string (contravariant)\nConsole.WriteLine($\"Contravariance works: {stringAction != null}\");\n\n// Note: \n// - Covariance: can return more derived types\n// - Contravariance: can accept more base types"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -119,7 +119,7 @@
       "explanation": "In C# overload resolution, non-generic methods are preferred over generic methods when both are applicable. This avoids ambiguity and provides predictable behavior.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static void Process<T>(T value)\n{\n    Console.WriteLine($\"Generic method: {value}\");\n}\n\npublic static void Process(string value)\n{\n    Console.WriteLine($\"Non-generic method: {value}\");\n}\n\npublic static void Main()\n{\n    Process(42);      // Calls generic method (no specific overload for int)\n    Process(\"Hello\"); // Calls non-generic method (specific string overload exists)\n}\n\n// Overload resolution preference:\n// 1. Exact type match (non-generic)\n// 2. Generic method\n// 3. Implicit conversions",
+        "code": "public static void Process<T>(T value)\n{\n    Console.WriteLine($\"Generic method: {value}\");\n}\n\npublic static void Process(string value)\n{\n    Console.WriteLine($\"Non-generic method: {value}\");\n}\n\npublic static void Main()\n{\n    Process(42);      // Calls generic method (no specific overload for int)\n    Process(\"Hello\"); // Calls non-generic method (specific string overload exists)\n}\n\n// Overload resolution preference:\n// 1. Exact type match (non-generic)\n// 2. Generic method\n// 3. Implicit conversions"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -159,7 +159,7 @@
       "explanation": "Generic delegates provide type-safe function pointers. Func<T, TResult> is a built-in generic delegate, while custom generic delegates offer more semantic meaning.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Custom generic delegate\npublic delegate TResult Calculator<T, TResult>(T input);\n\npublic static void Main()\n{\n    // Custom generic delegate\n    Calculator<int, int> customCalc = x => x * x;\n    int result1 = customCalc(5);\n    Console.WriteLine($\"Custom delegate: {result1}\");\n    \n    // Built-in Func delegate (equivalent functionality)\n    Func<int, int> funcCalc = x => x * x;\n    int result2 = funcCalc(6);\n    Console.WriteLine($\"Func delegate: {result2}\");\n}\n\n// Benefits of generic delegates:\n// - Type safety\n// - Reusability across different types\n// - IntelliSense support",
+        "code": "// Custom generic delegate\npublic delegate TResult Calculator<T, TResult>(T input);\n\npublic static void Main()\n{\n    // Custom generic delegate\n    Calculator<int, int> customCalc = x => x * x;\n    int result1 = customCalc(5);\n    Console.WriteLine($\"Custom delegate: {result1}\");\n    \n    // Built-in Func delegate (equivalent functionality)\n    Func<int, int> funcCalc = x => x * x;\n    int result2 = funcCalc(6);\n    Console.WriteLine($\"Func delegate: {result2}\");\n}\n\n// Benefits of generic delegates:\n// - Type safety\n// - Reusability across different types\n// - IntelliSense support"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -199,7 +199,7 @@
       "explanation": "Generic type parameter constraints can specify inheritance relationships, enabling polymorphic method calls within generic methods while maintaining type safety.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Animal\n{\n    public virtual void MakeSound() => Console.WriteLine(\"Base method called\");\n}\n\npublic class Dog : Animal\n{\n    public override void MakeSound() => Console.WriteLine(\"Derived method called\");\n}\n\npublic static void ProcessAnimal<T>(T animal) where T : Animal\n{\n    animal.MakeSound();  // Polymorphic call through constraint\n}\n\npublic static void Main()\n{\n    ProcessAnimal(new Animal());\n    ProcessAnimal(new Dog());\n}\n\n// The constraint 'where T : Animal' ensures:\n// 1. T has all Animal members\n// 2. Polymorphic behavior works\n// 3. Type safety at compile time",
+        "code": "public class Animal\n{\n    public virtual void MakeSound() => Console.WriteLine(\"Base method called\");\n}\n\npublic class Dog : Animal\n{\n    public override void MakeSound() => Console.WriteLine(\"Derived method called\");\n}\n\npublic static void ProcessAnimal<T>(T animal) where T : Animal\n{\n    animal.MakeSound();  // Polymorphic call through constraint\n}\n\npublic static void Main()\n{\n    ProcessAnimal(new Animal());\n    ProcessAnimal(new Dog());\n}\n\n// The constraint 'where T : Animal' ensures:\n// 1. T has all Animal members\n// 2. Polymorphic behavior works\n// 3. Type safety at compile time"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -239,7 +239,7 @@
       "explanation": "Generic types have different representations in reflection. Open generics have unbound type parameters, while closed generics are bound to specific types. GetGenericTypeDefinition() returns the open generic form.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Repository<T>\n{\n    public T GetData() => default(T);\n}\n\npublic static void Main()\n{\n    // Open generic type (unbound)\n    Type openGeneric = typeof(Repository<>);\n    Console.WriteLine($\"Open generic: {openGeneric.Name}\");\n    \n    // Closed generic type (bound to string)\n    Type closedGeneric = typeof(Repository<string>);\n    Console.WriteLine($\"Closed generic: {closedGeneric.Name}\");\n    \n    // Compare generic type definitions\n    bool sameDefinition = openGeneric == closedGeneric.GetGenericTypeDefinition();\n    Console.WriteLine($\"Same definition: {sameDefinition}\");\n}\n\n// Uses for generic reflection:\n// - Generic factory patterns\n// - Dynamic type creation\n// - Framework development",
+        "code": "public class Repository<T>\n{\n    public T GetData() => default(T);\n}\n\npublic static void Main()\n{\n    // Open generic type (unbound)\n    Type openGeneric = typeof(Repository<>);\n    Console.WriteLine($\"Open generic: {openGeneric.Name}\");\n    \n    // Closed generic type (bound to string)\n    Type closedGeneric = typeof(Repository<string>);\n    Console.WriteLine($\"Closed generic: {closedGeneric.Name}\");\n    \n    // Compare generic type definitions\n    bool sameDefinition = openGeneric == closedGeneric.GetGenericTypeDefinition();\n    Console.WriteLine($\"Same definition: {sameDefinition}\");\n}\n\n// Uses for generic reflection:\n// - Generic factory patterns\n// - Dynamic type creation\n// - Framework development"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -279,7 +279,7 @@
       "explanation": "The default(T) expression returns the default value for type T: default values for value types, null for reference types, and null for nullable types.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static T GetDefault<T>()\n{\n    return default(T);\n}\n\npublic static void Main()\n{\n    // Value type default\n    int intDefault = GetDefault<int>();\n    Console.WriteLine($\"Value type default: {intDefault}\");\n    \n    // Reference type default\n    string stringDefault = GetDefault<string>();\n    Console.WriteLine($\"Reference type default: {stringDefault ?? \"null\"}\");\n    \n    // Nullable type default\n    int? nullableDefault = GetDefault<int?>();\n    Console.WriteLine($\"Nullable default: {nullableDefault?.ToString() ?? \"null\"}\");\n}\n\n// default(T) is useful for:\n// - Initializing generic fields\n// - Providing fallback values\n// - Generic factory methods",
+        "code": "public static T GetDefault<T>()\n{\n    return default(T);\n}\n\npublic static void Main()\n{\n    // Value type default\n    int intDefault = GetDefault<int>();\n    Console.WriteLine($\"Value type default: {intDefault}\");\n    \n    // Reference type default\n    string stringDefault = GetDefault<string>();\n    Console.WriteLine($\"Reference type default: {stringDefault ?? \"null\"}\");\n    \n    // Nullable type default\n    int? nullableDefault = GetDefault<int?>();\n    Console.WriteLine($\"Nullable default: {nullableDefault?.ToString() ?? \"null\"}\");\n}\n\n// default(T) is useful for:\n// - Initializing generic fields\n// - Providing fallback values\n// - Generic factory methods"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -319,7 +319,7 @@
       "explanation": "C# compiler can infer generic type parameters from method arguments. When type parameters are explicitly specified, they override the inference mechanism.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static void PrintType<T>(T value)\n{\n    Console.WriteLine($\"Type: {typeof(T)}\");\n}\n\npublic static void Main()\n{\n    // Type inference from argument\n    PrintType(42);  // T inferred as int\n    Console.WriteLine(\"Inferred type: System.Int32\");\n    \n    // Explicit type parameter\n    PrintType<string>(\"Hello\");  // T explicitly specified as string\n    Console.WriteLine(\"Explicit type: System.String\");\n}\n\n// Type inference works when:\n// - Method arguments provide sufficient type information\n// - No ambiguity exists\n// - Type constraints are satisfied\n\n// Explicit types are needed when:\n// - Inference is ambiguous\n// - Return type differs from argument types\n// - No arguments provide type information",
+        "code": "public static void PrintType<T>(T value)\n{\n    Console.WriteLine($\"Type: {typeof(T)}\");\n}\n\npublic static void Main()\n{\n    // Type inference from argument\n    PrintType(42);  // T inferred as int\n    Console.WriteLine(\"Inferred type: System.Int32\");\n    \n    // Explicit type parameter\n    PrintType<string>(\"Hello\");  // T explicitly specified as string\n    Console.WriteLine(\"Explicit type: System.String\");\n}\n\n// Type inference works when:\n// - Method arguments provide sufficient type information\n// - No ambiguity exists\n// - Type constraints are satisfied\n\n// Explicit types are needed when:\n// - Inference is ambiguous\n// - Return type differs from argument types\n// - No arguments provide type information"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -359,7 +359,7 @@
       "explanation": "Generic interfaces enable type-safe contracts that can be implemented multiple times with different type parameters, providing polymorphic behavior with type safety.",
       "codeExample": {
         "language": "csharp",
-        "code": "public interface IComparer<T>\n{\n    void Compare(T first, T second);\n}\n\npublic class MultiComparer : IComparer<string>, IComparer<int>\n{\n    public void Compare(string first, string second)\n    {\n        Console.WriteLine($\"String comparison: {first} vs {second}\");\n    }\n    \n    public void Compare(int first, int second)\n    {\n        Console.WriteLine($\"Int comparison: {first} vs {second}\");\n    }\n}\n\npublic static void Main()\n{\n    var comparer = new MultiComparer();\n    \n    IComparer<string> stringComparer = comparer;\n    stringComparer.Compare(\"Hello\", \"World\");\n    \n    IComparer<int> intComparer = comparer;\n    intComparer.Compare(5, 3);\n}",
+        "code": "public interface IComparer<T>\n{\n    void Compare(T first, T second);\n}\n\npublic class MultiComparer : IComparer<string>, IComparer<int>\n{\n    public void Compare(string first, string second)\n    {\n        Console.WriteLine($\"String comparison: {first} vs {second}\");\n    }\n    \n    public void Compare(int first, int second)\n    {\n        Console.WriteLine($\"Int comparison: {first} vs {second}\");\n    }\n}\n\npublic static void Main()\n{\n    var comparer = new MultiComparer();\n    \n    IComparer<string> stringComparer = comparer;\n    stringComparer.Compare(\"Hello\", \"World\");\n    \n    IComparer<int> intComparer = comparer;\n    intComparer.Compare(5, 3);\n}"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -399,7 +399,7 @@
       "explanation": "Each closed generic type (generic type with specific type parameters) has its own set of static members. Container<int> and Container<string> have separate static fields.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Container<T>\n{\n    private static int counter = 0;\n    \n    public static void Increment()\n    {\n        counter++;\n        Console.WriteLine($\"Static {typeof(T).Name} counter: {counter}\");\n    }\n}\n\npublic static void Main()\n{\n    Container<int>.Increment();     // Increments Container<int>.counter\n    Container<string>.Increment();  // Increments Container<string>.counter (separate)\n    Container<int>.Increment();     // Increments Container<int>.counter again\n}\n\n// Key insight: Each generic type instantiation\n// (Container<int>, Container<string>, etc.)\n// has its own copy of static members.\n// This enables type-specific static state.",
+        "code": "public class Container<T>\n{\n    private static int counter = 0;\n    \n    public static void Increment()\n    {\n        counter++;\n        Console.WriteLine($\"Static {typeof(T).Name} counter: {counter}\");\n    }\n}\n\npublic static void Main()\n{\n    Container<int>.Increment();     // Increments Container<int>.counter\n    Container<string>.Increment();  // Increments Container<string>.counter (separate)\n    Container<int>.Increment();     // Increments Container<int>.counter again\n}\n\n// Key insight: Each generic type instantiation\n// (Container<int>, Container<string>, etc.)\n// has its own copy of static members.\n// This enables type-specific static state."
       },
       "category": "advanced",
       "subcategory": "generics-mc",

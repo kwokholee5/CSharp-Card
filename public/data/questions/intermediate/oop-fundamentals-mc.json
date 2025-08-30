@@ -39,7 +39,7 @@
       "explanation": "Virtual methods enable runtime polymorphism. When a derived class overrides a virtual method, the derived implementation is called regardless of the reference type used to access it.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Method\");\n}\n\nBase obj1 = new Derived();\nDerived obj2 = new Derived();\nobj1.Display();\nobj2.Display();",
+        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Method\");\n}\n\nBase obj1 = new Derived();\nDerived obj2 = new Derived();\nobj1.Display();\nobj2.Display();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -79,7 +79,7 @@
       "explanation": "Abstract classes cannot be instantiated directly, but their concrete derived classes can be. Abstract methods must be implemented in the first concrete derived class.",
       "codeExample": {
         "language": "csharp",
-        "code": "public abstract class Shape\n{\n    public abstract void Draw();\n}\n\npublic class Circle : Shape\n{\n    public override void Draw() => Console.WriteLine(\"Concrete Implementation\");\n}\n\nShape shape = new Circle();  // Valid - instantiating concrete class\nshape.Draw();",
+        "code": "public abstract class Shape\n{\n    public abstract void Draw();\n}\n\npublic class Circle : Shape\n{\n    public override void Draw() => Console.WriteLine(\"Concrete Implementation\");\n}\n\nShape shape = new Circle();  // Valid - instantiating concrete class\nshape.Draw();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -119,7 +119,7 @@
       "explanation": "When a class implements an interface implicitly (public method), the method can be called both through the class instance and through the interface reference.",
       "codeExample": {
         "language": "csharp",
-        "code": "public interface IDrawable\n{\n    void Draw();\n}\n\npublic class Rectangle : IDrawable\n{\n    public void Draw() => Console.WriteLine(\"Interface Implementation\");\n}\n\nRectangle rect = new Rectangle();\nIDrawable drawable = rect;\nrect.Draw();\ndrawable.Draw();",
+        "code": "public interface IDrawable\n{\n    void Draw();\n}\n\npublic class Rectangle : IDrawable\n{\n    public void Draw() => Console.WriteLine(\"Interface Implementation\");\n}\n\nRectangle rect = new Rectangle();\nIDrawable drawable = rect;\nrect.Draw();\ndrawable.Draw();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -159,7 +159,7 @@
       "explanation": "Properties can contain custom logic in getters and setters. The backing field holds the actual value, and properties provide controlled access to it.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Example\n{\n    private int _value;\n    public int Value\n    {\n        get\n        {\n            Console.WriteLine($\"Getting: {_value}\");\n            return _value;\n        }\n        set\n        {\n            Console.WriteLine($\"Setting: {value}\");\n            _value = value;\n        }\n    }\n}\n\nExample ex = new Example();\nint initial = ex.Value;\nex.Value = 42;\nint final = ex.Value;",
+        "code": "public class Example\n{\n    private int _value;\n    public int Value\n    {\n        get\n        {\n            Console.WriteLine($\"Getting: {_value}\");\n            return _value;\n        }\n        set\n        {\n            Console.WriteLine($\"Setting: {value}\");\n            _value = value;\n        }\n    }\n}\n\nExample ex = new Example();\nint initial = ex.Value;\nex.Value = 42;\nint final = ex.Value;"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -199,7 +199,7 @@
       "explanation": "Constructor chaining using this() allows one constructor to call another. The chained constructor executes first, then any additional code in the calling constructor.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Person\n{\n    public string Name { get; set; }\n    public int Age { get; set; }\n    \n    public Person(string name, int age)\n    {\n        Console.WriteLine(\"Parameterized Constructor\");\n        Name = name; Age = age;\n    }\n    \n    public Person(string name) : this(name, 25)\n    {\n        // Additional initialization if needed\n    }\n}\n\nPerson p = new Person(\"John\");\nConsole.WriteLine($\"Name: {p.Name}, Age: {p.Age}\");",
+        "code": "public class Person\n{\n    public string Name { get; set; }\n    public int Age { get; set; }\n    \n    public Person(string name, int age)\n    {\n        Console.WriteLine(\"Parameterized Constructor\");\n        Name = name; Age = age;\n    }\n    \n    public Person(string name) : this(name, 25)\n    {\n        // Additional initialization if needed\n    }\n}\n\nPerson p = new Person(\"John\");\nConsole.WriteLine($\"Name: {p.Name}, Age: {p.Age}\");"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -239,7 +239,7 @@
       "explanation": "Method hiding (new keyword) creates a new method that shadows the base method. Which method is called depends on the reference type (compile-time), not the object type (runtime).",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Base\n{\n    public void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public new void Display() => Console.WriteLine(\"Hidden Method\");\n}\n\nDerived obj = new Derived();\nBase baseRef = obj;\nbaseRef.Display();  // Calls base version\nobj.Display();      // Calls derived version",
+        "code": "public class Base\n{\n    public void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public new void Display() => Console.WriteLine(\"Hidden Method\");\n}\n\nDerived obj = new Derived();\nBase baseRef = obj;\nbaseRef.Display();  // Calls base version\nobj.Display();      // Calls derived version"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -279,7 +279,7 @@
       "explanation": "Static constructors are called automatically before the first instance is created or any static members are referenced. They run only once per application domain.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class MyClass\n{\n    static MyClass()\n    {\n        Console.WriteLine(\"Static Constructor\");\n    }\n    \n    public MyClass()\n    {\n        Console.WriteLine(\"Instance Constructor\");\n    }\n}\n\nMyClass obj1 = new MyClass();\nMyClass obj2 = new MyClass();",
+        "code": "public class MyClass\n{\n    static MyClass()\n    {\n        Console.WriteLine(\"Static Constructor\");\n    }\n    \n    public MyClass()\n    {\n        Console.WriteLine(\"Instance Constructor\");\n    }\n}\n\nMyClass obj1 = new MyClass();\nMyClass obj2 = new MyClass();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -319,7 +319,7 @@
       "explanation": "The sealed keyword prevents further overriding of a virtual method in derived classes, but the sealed method itself works normally and can override base virtual methods.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Middle : Base\n{\n    public sealed override void Display() => Console.WriteLine(\"Sealed Implementation\");\n}\n\npublic class Derived : Middle\n{\n    // Cannot override Display() here - it's sealed\n}\n\nDerived obj = new Derived();\nobj.Display();",
+        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Middle : Base\n{\n    public sealed override void Display() => Console.WriteLine(\"Sealed Implementation\");\n}\n\npublic class Derived : Middle\n{\n    // Cannot override Display() here - it's sealed\n}\n\nDerived obj = new Derived();\nobj.Display();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -359,7 +359,7 @@
       "explanation": "Explicit interface implementation creates a method that's only accessible through the interface type. This allows a class to have different implementations for interface and class usage.",
       "codeExample": {
         "language": "csharp",
-        "code": "public interface ITest\n{\n    void Method();\n}\n\npublic class TestClass : ITest\n{\n    void ITest.Method() => Console.WriteLine(\"Explicit Implementation\");\n    public void Method() => Console.WriteLine(\"Public Implementation\");\n}\n\nTestClass obj = new TestClass();\nITest iobj = obj;\niobj.Method();\nobj.Method();",
+        "code": "public interface ITest\n{\n    void Method();\n}\n\npublic class TestClass : ITest\n{\n    void ITest.Method() => Console.WriteLine(\"Explicit Implementation\");\n    public void Method() => Console.WriteLine(\"Public Implementation\");\n}\n\nTestClass obj = new TestClass();\nITest iobj = obj;\niobj.Method();\nobj.Method();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -399,7 +399,7 @@
       "explanation": "The base keyword allows access to base class members from derived classes, bypassing virtual method dispatch and accessing the base implementation directly.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Implementation\");\n    \n    public void CallBoth()\n    {\n        base.Display();  // Calls base version\n        this.Display();  // Calls derived version\n    }\n}\n\nDerived obj = new Derived();\nobj.CallBoth();",
+        "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Implementation\");\n    \n    public void CallBoth()\n    {\n        base.Display();  // Calls base version\n        this.Display();  // Calls derived version\n    }\n}\n\nDerived obj = new Derived();\nobj.CallBoth();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -439,7 +439,7 @@
       "explanation": "Access modifiers control visibility: public (everywhere), internal (same assembly), protected (derived classes), private (same class). This example shows valid access patterns.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class Base\n{\n    public int PublicField = 1;\n    internal int InternalField = 2;\n    protected int ProtectedField = 3;\n    private int PrivateField = 4;  // Only accessible within Base\n}\n\npublic class Derived : Base\n{\n    public void DisplayFields()\n    {\n        Console.WriteLine($\"Public: {PublicField}\");\n        Console.WriteLine($\"Internal: {InternalField}\");\n        Console.WriteLine($\"Protected: {ProtectedField}\");\n        // Console.WriteLine($\"Private: {PrivateField}\");  // Error\n    }\n}\n\nDerived obj = new Derived();\nobj.DisplayFields();",
+        "code": "public class Base\n{\n    public int PublicField = 1;\n    internal int InternalField = 2;\n    protected int ProtectedField = 3;\n    private int PrivateField = 4;  // Only accessible within Base\n}\n\npublic class Derived : Base\n{\n    public void DisplayFields()\n    {\n        Console.WriteLine($\"Public: {PublicField}\");\n        Console.WriteLine($\"Internal: {InternalField}\");\n        Console.WriteLine($\"Protected: {ProtectedField}\");\n        // Console.WriteLine($\"Private: {PrivateField}\");  // Error\n    }\n}\n\nDerived obj = new Derived();\nobj.DisplayFields();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -479,7 +479,7 @@
       "explanation": "Partial classes allow splitting class definition across multiple files. Partial methods (with implementations) behave like normal methods. Without implementations, they're removed at compile time.",
       "codeExample": {
         "language": "csharp",
-        "code": "// File 1:\npublic partial class MyClass\n{\n    partial void PartialMethod();\n    \n    public void CallMethods()\n    {\n        PartialMethod();\n        OtherMethod();\n    }\n}\n\n// File 2 (conceptually):\npublic partial class MyClass\n{\n    partial void PartialMethod() => Console.WriteLine(\"Partial Method Called\");\n    public void OtherMethod() => Console.WriteLine(\"Other Method Called\");\n}\n\nMyClass obj = new MyClass();\nobj.CallMethods();",
+        "code": "// File 1:\npublic partial class MyClass\n{\n    partial void PartialMethod();\n    \n    public void CallMethods()\n    {\n        PartialMethod();\n        OtherMethod();\n    }\n}\n\n// File 2 (conceptually):\npublic partial class MyClass\n{\n    partial void PartialMethod() => Console.WriteLine(\"Partial Method Called\");\n    public void OtherMethod() => Console.WriteLine(\"Other Method Called\");\n}\n\nMyClass obj = new MyClass();\nobj.CallMethods();"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",

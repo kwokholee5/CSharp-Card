@@ -39,7 +39,7 @@
       "explanation": "List<T>.RemoveAt(index) removes the element at the specified zero-based index. Elements after the removed element shift down by one position.",
       "codeExample": {
         "language": "csharp",
-        "code": "List<int> numbers = new List<int> {1, 2, 3, 4, 5};\nnumbers.RemoveAt(2);  // Removes element at index 2 (value 3)\nConsole.WriteLine(string.Join(\", \", numbers));",
+        "code": "List<int> numbers = new List<int> {1, 2, 3, 4, 5};\nnumbers.RemoveAt(2);  // Removes element at index 2 (value 3)\nConsole.WriteLine(string.Join(\", \", numbers));"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -79,7 +79,7 @@
       "explanation": "Dictionary indexer (dict[key]) throws KeyNotFoundException when accessing non-existent keys. Use TryGetValue() or ContainsKey() for safe access.",
       "codeExample": {
         "language": "csharp",
-        "code": "Dictionary<char, string> dict = new Dictionary<char, string>\n{\n    {'A', \"Alice\"},\n    {'B', \"Bob\"}\n};\n\nConsole.WriteLine(dict['A']);\ntry\n{\n    Console.WriteLine(dict['C']);  // Key doesn't exist\n}\ncatch (KeyNotFoundException)\n{\n    Console.WriteLine(\"KeyNotFoundException\");\n}",
+        "code": "Dictionary<char, string> dict = new Dictionary<char, string>\n{\n    {'A', \"Alice\"},\n    {'B', \"Bob\"}\n};\n\nConsole.WriteLine(dict['A']);\ntry\n{\n    Console.WriteLine(dict['C']);  // Key doesn't exist\n}\ncatch (KeyNotFoundException)\n{\n    Console.WriteLine(\"KeyNotFoundException\");\n}"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -119,7 +119,7 @@
       "explanation": "HashSet<T> maintains unique elements. The Add method returns true if the element was added, false if it already existed. Duplicates are automatically ignored.",
       "codeExample": {
         "language": "csharp",
-        "code": "HashSet<int> set = new HashSet<int> {1, 2, 3};\nbool added1 = set.Add(4);     // New element\nbool added2 = set.Add(3);     // Duplicate element\nset.Add(5);\n\nConsole.WriteLine(added1);\nConsole.WriteLine(added2);\nConsole.WriteLine(string.Join(\", \", set.OrderBy(x => x)));",
+        "code": "HashSet<int> set = new HashSet<int> {1, 2, 3};\nbool added1 = set.Add(4);     // New element\nbool added2 = set.Add(3);     // Duplicate element\nset.Add(5);\n\nConsole.WriteLine(added1);\nConsole.WriteLine(added2);\nConsole.WriteLine(string.Join(\", \", set.OrderBy(x => x)));"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -159,7 +159,7 @@
       "explanation": "Queue<T> follows FIFO (First In, First Out) principle using Enqueue/Dequeue. Stack<T> follows LIFO (Last In, First Out) principle using Push/Pop.",
       "codeExample": {
         "language": "csharp",
-        "code": "Queue<string> queue = new Queue<string>();\nqueue.Enqueue(\"A\"); queue.Enqueue(\"B\"); queue.Enqueue(\"C\");\nstring q1 = queue.Dequeue(); string q2 = queue.Dequeue();\n\nStack<string> stack = new Stack<string>();\nstack.Push(\"A\"); stack.Push(\"B\"); stack.Push(\"C\");\nstring s1 = stack.Pop(); string s2 = stack.Pop();\n\nConsole.WriteLine($\"Queue: {q1}, {q2}\");\nConsole.WriteLine($\"Stack: {s1}, {s2}\");",
+        "code": "Queue<string> queue = new Queue<string>();\nqueue.Enqueue(\"A\"); queue.Enqueue(\"B\"); queue.Enqueue(\"C\");\nstring q1 = queue.Dequeue(); string q2 = queue.Dequeue();\n\nStack<string> stack = new Stack<string>();\nstack.Push(\"A\"); stack.Push(\"B\"); stack.Push(\"C\");\nstring s1 = stack.Pop(); string s2 = stack.Pop();\n\nConsole.WriteLine($\"Queue: {q1}, {q2}\");\nConsole.WriteLine($\"Stack: {s1}, {s2}\");"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -199,7 +199,7 @@
       "explanation": "SortedDictionary<TKey, TValue> automatically maintains elements in sorted order by key. For string keys, this means alphabetical order.",
       "codeExample": {
         "language": "csharp",
-        "code": "SortedDictionary<string, int> ages = new SortedDictionary<string, int>\n{\n    {\"Charlie\", 35},\n    {\"Alice\", 25},\n    {\"Bob\", 30}\n};\n\nforeach (var kvp in ages)\n{\n    Console.WriteLine($\"{kvp.Key}: {kvp.Value}\");\n}",
+        "code": "SortedDictionary<string, int> ages = new SortedDictionary<string, int>\n{\n    {\"Charlie\", 35},\n    {\"Alice\", 25},\n    {\"Bob\", 30}\n};\n\nforeach (var kvp in ages)\n{\n    Console.WriteLine($\"{kvp.Key}: {kvp.Value}\");\n}"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -239,7 +239,7 @@
       "explanation": "List<T> automatically manages capacity (internal array size) which is usually larger than count (actual elements). Elements can be accessed and modified by index.",
       "codeExample": {
         "language": "csharp",
-        "code": "List<int> numbers = new List<int> {1, 2, 3};\nConsole.WriteLine($\"Count: {numbers.Count}\");\nConsole.WriteLine($\"Capacity: {numbers.Capacity}\");\n\nnumbers[1] = 20;  // Modify element at index 1\nConsole.WriteLine($\"Modified: {string.Join(\", \", numbers)}\");",
+        "code": "List<int> numbers = new List<int> {1, 2, 3};\nConsole.WriteLine($\"Count: {numbers.Count}\");\nConsole.WriteLine($\"Capacity: {numbers.Capacity}\");\n\nnumbers[1] = 20;  // Modify element at index 1\nConsole.WriteLine($\"Modified: {string.Join(\", \", numbers)}\");"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -279,7 +279,7 @@
       "explanation": "LinkedList<T> provides efficient insertion/deletion at any position. Each node has references to previous and next nodes, allowing bidirectional navigation.",
       "codeExample": {
         "language": "csharp",
-        "code": "LinkedList<string> list = new LinkedList<string>();\nlist.AddLast(\"A\");\nlist.AddLast(\"B\");\nlist.AddLast(\"C\");\n\nConsole.WriteLine($\"First: {list.First.Value}\");\nConsole.WriteLine($\"Last: {list.Last.Value}\");\nConsole.WriteLine($\"After A: {list.First.Next.Value}\");",
+        "code": "LinkedList<string> list = new LinkedList<string>();\nlist.AddLast(\"A\");\nlist.AddLast(\"B\");\nlist.AddLast(\"C\");\n\nConsole.WriteLine($\"First: {list.First.Value}\");\nConsole.WriteLine($\"Last: {list.Last.Value}\");\nConsole.WriteLine($\"After A: {list.First.Next.Value}\");"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -319,7 +319,7 @@
       "explanation": "ArrayList stores elements as object type, causing boxing for value types. List<T> is generic and maintains type safety, avoiding boxing overhead.",
       "codeExample": {
         "language": "csharp",
-        "code": "ArrayList arrayList = new ArrayList {10};\nList<int> genericList = new List<int> {10};\n\nConsole.WriteLine($\"ArrayList: {arrayList[0].GetType()}\");\nConsole.WriteLine($\"List<T>: {genericList[0].GetType()}\");\n\n// ArrayList requires casting:\n// int value = (int)arrayList[0];\n// List<T> is type-safe:\n// int value = genericList[0];",
+        "code": "ArrayList arrayList = new ArrayList {10};\nList<int> genericList = new List<int> {10};\n\nConsole.WriteLine($\"ArrayList: {arrayList[0].GetType()}\");\nConsole.WriteLine($\"List<T>: {genericList[0].GetType()}\");\n\n// ArrayList requires casting:\n// int value = (int)arrayList[0];\n// List<T> is type-safe:\n// int value = genericList[0];"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -359,7 +359,7 @@
       "explanation": "Modifying a collection during foreach iteration invalidates the enumerator and throws InvalidOperationException. Use for loop or create a copy for safe modification.",
       "codeExample": {
         "language": "csharp",
-        "code": "List<int> numbers = new List<int> {1, 2, 3, 4};\n\ntry\n{\n    foreach (int num in numbers)\n    {\n        Console.WriteLine(num);\n        if (num == 2)\n        {\n            numbers.Add(5);  // Modifies collection during iteration\n        }\n    }\n}\ncatch (InvalidOperationException)\n{\n    Console.WriteLine(\"InvalidOperationException\");\n}",
+        "code": "List<int> numbers = new List<int> {1, 2, 3, 4};\n\ntry\n{\n    foreach (int num in numbers)\n    {\n        Console.WriteLine(num);\n        if (num == 2)\n        {\n            numbers.Add(5);  // Modifies collection during iteration\n        }\n    }\n}\ncatch (InvalidOperationException)\n{\n    Console.WriteLine(\"InvalidOperationException\");\n}"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -399,7 +399,7 @@
       "explanation": "ReadOnlyCollection<T> is a wrapper around an existing collection. It prevents modification through the wrapper but reflects changes made to the underlying collection.",
       "codeExample": {
         "language": "csharp",
-        "code": "List<int> original = new List<int> {1, 2, 3};\nReadOnlyCollection<int> readOnly = new ReadOnlyCollection<int>(original);\n\noriginal[2] = 10;  // Modify underlying collection\n\nConsole.WriteLine($\"Original: {string.Join(\", \", original)}\");\nConsole.WriteLine($\"ReadOnly: {string.Join(\", \", readOnly)}\");\n// readOnly[0] = 5;  // Would cause compilation error\nConsole.WriteLine($\"Modified: {string.Join(\", \", original)}\");",
+        "code": "List<int> original = new List<int> {1, 2, 3};\nReadOnlyCollection<int> readOnly = new ReadOnlyCollection<int>(original);\n\noriginal[2] = 10;  // Modify underlying collection\n\nConsole.WriteLine($\"Original: {string.Join(\", \", original)}\");\nConsole.WriteLine($\"ReadOnly: {string.Join(\", \", readOnly)}\");\n// readOnly[0] = 5;  // Would cause compilation error\nConsole.WriteLine($\"Modified: {string.Join(\", \", original)}\");"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -439,7 +439,7 @@
       "explanation": "SortedSet<T> combines the uniqueness of HashSet with automatic sorting. It provides efficient Min and Max properties for accessing extremes.",
       "codeExample": {
         "language": "csharp",
-        "code": "SortedSet<int> sortedSet = new SortedSet<int> {5, 3, 1, 2, 4, 3};\n\nConsole.WriteLine(string.Join(\", \", sortedSet));\nConsole.WriteLine($\"Min: {sortedSet.Min}, Max: {sortedSet.Max}\");",
+        "code": "SortedSet<int> sortedSet = new SortedSet<int> {5, 3, 1, 2, 4, 3};\n\nConsole.WriteLine(string.Join(\", \", sortedSet));\nConsole.WriteLine($\"Min: {sortedSet.Min}, Max: {sortedSet.Max}\");"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -479,7 +479,7 @@
       "explanation": "ConcurrentDictionary provides thread-safe operations. AddOrUpdate adds or updates atomically, GetOrAdd retrieves existing or adds new value atomically.",
       "codeExample": {
         "language": "csharp",
-        "code": "ConcurrentDictionary<string, object> dict = new ConcurrentDictionary<string, object>();\ndict[\"A\"] = 5;\ndict[\"B\"] = \"World\";\n\n// AddOrUpdate: if key exists, update; if not, add\nvar result1 = dict.AddOrUpdate(\"A\", 0, (key, oldValue) => (int)oldValue + 5);\n\n// GetOrAdd: if key exists, get; if not, add\nvar result2 = dict.GetOrAdd(\"C\", \"Hello\");\n\nConsole.WriteLine($\"AddOrUpdate: {result1}\");\nConsole.WriteLine($\"GetOrAdd: {result2}\");",
+        "code": "ConcurrentDictionary<string, object> dict = new ConcurrentDictionary<string, object>();\ndict[\"A\"] = 5;\ndict[\"B\"] = \"World\";\n\n// AddOrUpdate: if key exists, update; if not, add\nvar result1 = dict.AddOrUpdate(\"A\", 0, (key, oldValue) => (int)oldValue + 5);\n\n// GetOrAdd: if key exists, get; if not, add\nvar result2 = dict.GetOrAdd(\"C\", \"Hello\");\n\nConsole.WriteLine($\"AddOrUpdate: {result1}\");\nConsole.WriteLine($\"GetOrAdd: {result2}\");"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -519,7 +519,7 @@
       "explanation": "Custom IComparer<T> allows defining custom sorting logic. This comparer sorts by string length first, then maintains original order for equal-length strings (stable sort).",
       "codeExample": {
         "language": "csharp",
-        "code": "public class LengthComparer : IComparer<string>\n{\n    public int Compare(string x, string y)\n    {\n        return x.Length.CompareTo(y.Length);\n    }\n}\n\nList<string> fruits = new List<string> {\"banana\", \"apple\", \"orange\"};\nfruits.Sort(new LengthComparer());\n\nConsole.WriteLine(string.Join(\", \", fruits));",
+        "code": "public class LengthComparer : IComparer<string>\n{\n    public int Compare(string x, string y)\n    {\n        return x.Length.CompareTo(y.Length);\n    }\n}\n\nList<string> fruits = new List<string> {\"banana\", \"apple\", \"orange\"};\nfruits.Sort(new LengthComparer());\n\nConsole.WriteLine(string.Join(\", \", fruits));"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",

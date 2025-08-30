@@ -39,7 +39,7 @@
       "explanation": "Console.WriteLine() automatically appends Environment.NewLine to the output, while Console.Write() outputs text exactly as provided without adding line terminators.",
       "codeExample": {
         "language": "csharp",
-        "code": "Console.Write(\"Hello \");\nConsole.Write(\"World!\");\nConsole.WriteLine();\nConsole.WriteLine(\"Next line\");\nConsole.WriteLine(\"Another line\");",
+        "code": "Console.Write(\"Hello \");\nConsole.Write(\"World!\");\nConsole.WriteLine();\nConsole.WriteLine(\"Next line\");\nConsole.WriteLine(\"Another line\");"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -79,7 +79,7 @@
       "explanation": "String interpolation (introduced in C# 6.0) uses the $ prefix to embed expressions directly in string literals. The {value} expression is evaluated and converted to string.",
       "codeExample": {
         "language": "csharp",
-        "code": "int value = 42;\nConsole.WriteLine($\"The value is {value}\");",
+        "code": "int value = 42;\nConsole.WriteLine($\"The value is {value}\");"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -119,7 +119,7 @@
       "explanation": "Composite formatting uses numbered placeholders {0}, {1}, etc. The F2 format specifier formats the double with exactly 2 decimal places.",
       "codeExample": {
         "language": "csharp",
-        "code": "string name = \"John\";\nint age = 25;\ndouble score = 95.5;\nConsole.WriteLine(\"Name: {0}, Age: {1}, Score: {2:F2}\", name, age, score);",
+        "code": "string name = \"John\";\nint age = 25;\ndouble score = 95.5;\nConsole.WriteLine(\"Name: {0}, Age: {1}, Score: {2:F2}\", name, age, score);"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -159,7 +159,7 @@
       "explanation": "Console.WriteLine(null) is treated the same as Console.WriteLine() with no arguments, which outputs just a line terminator (empty line).",
       "codeExample": {
         "language": "csharp",
-        "code": "string nullString = null;\nConsole.WriteLine(\"Before\");\nConsole.WriteLine(nullString);\nConsole.WriteLine(\"After\");",
+        "code": "string nullString = null;\nConsole.WriteLine(\"Before\");\nConsole.WriteLine(nullString);\nConsole.WriteLine(\"After\");"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -199,7 +199,7 @@
       "explanation": "Arrays inherit the default Object.ToString() behavior which returns the type name. To display array contents, use string.Join() or loop through elements.",
       "codeExample": {
         "language": "csharp",
-        "code": "int[] numbers = {1, 2, 3, 4, 5};\nConsole.WriteLine(numbers);\nConsole.WriteLine(numbers.ToString());\nConsole.WriteLine(string.Join(\", \", numbers));",
+        "code": "int[] numbers = {1, 2, 3, 4, 5};\nConsole.WriteLine(numbers);\nConsole.WriteLine(numbers.ToString());\nConsole.WriteLine(string.Join(\", \", numbers));"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -239,7 +239,7 @@
       "explanation": "Escape sequences in string literals are processed at compile time. \\n becomes a newline character, \\t becomes a tab character.",
       "codeExample": {
         "language": "csharp",
-        "code": "Console.WriteLine(\"Hello\\nWorld\\tTab\");\n// Equivalent to:\nConsole.WriteLine(\"Hello\");\nConsole.Write(\"World\");\nConsole.Write(\"\\t\");\nConsole.WriteLine(\"Tab\");",
+        "code": "Console.WriteLine(\"Hello\\nWorld\\tTab\");\n// Equivalent to:\nConsole.WriteLine(\"Hello\");\nConsole.Write(\"World\");\nConsole.Write(\"\\t\");\nConsole.WriteLine(\"Tab\");"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -279,7 +279,7 @@
       "explanation": "In C#, Boolean.ToString() returns 'True' or 'False' with capital first letters, which differs from some other languages that use lowercase.",
       "codeExample": {
         "language": "csharp",
-        "code": "bool isValid = 5 > 3;\nConsole.WriteLine(isValid);",
+        "code": "bool isValid = 5 > 3;\nConsole.WriteLine(isValid);"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -319,7 +319,7 @@
       "explanation": "C# method overload resolution chooses the most specific applicable method. WriteLine(int) is more specific than WriteLine(object) for an int argument.",
       "codeExample": {
         "language": "csharp",
-        "code": "int number = 42;\nConsole.WriteLine(number);  // Calls WriteLine(int)\n// Available overloads:\n// WriteLine(int)\n// WriteLine(object)\n// WriteLine(string)\n// etc.",
+        "code": "int number = 42;\nConsole.WriteLine(number);  // Calls WriteLine(int)\n// Available overloads:\n// WriteLine(int)\n// WriteLine(object)\n// WriteLine(string)\n// etc."
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -359,7 +359,7 @@
       "explanation": "The C format specifier formats numbers as currency using the current culture's currency format (symbol, decimal places, grouping).",
       "codeExample": {
         "language": "csharp",
-        "code": "double price = 1234.567;\nConsole.WriteLine($\"{price:C}\");\nConsole.WriteLine(price.ToString(\"C\"));\n// Both produce the same result",
+        "code": "double price = 1234.567;\nConsole.WriteLine($\"{price:C}\");\nConsole.WriteLine(price.ToString(\"C\"));\n// Both produce the same result"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -399,7 +399,7 @@
       "explanation": "When console output is redirected (to file, pipe, etc.), the .NET runtime may change buffering behavior from line-buffered to fully-buffered for better performance.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Normal execution:\nConsole.WriteLine(\"Hello\");  // Appears immediately\n\n// Redirected execution (myapp.exe > output.txt):\nConsole.WriteLine(\"Hello\");  // May be buffered\nConsole.Out.Flush();         // Forces immediate output",
+        "code": "// Normal execution:\nConsole.WriteLine(\"Hello\");  // Appears immediately\n\n// Redirected execution (myapp.exe > output.txt):\nConsole.WriteLine(\"Hello\");  // May be buffered\nConsole.Out.Flush();         // Forces immediate output"
       },
       "category": "basics",
       "subcategory": "console-output-mc",

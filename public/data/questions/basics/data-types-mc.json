@@ -39,7 +39,7 @@
       "explanation": "Strings in C# are immutable. The += operation creates a new string object and assigns it to 'modified', but 'original' remains unchanged. This is a fundamental concept in C# string handling.",
       "codeExample": {
         "language": "csharp",
-        "code": "string original = \"Hello\";\nstring modified = original;\nmodified += \" World\";\n\nConsole.WriteLine($\"Original: {original}\");\nConsole.WriteLine($\"Modified: {modified}\");",
+        "code": "string original = \"Hello\";\nstring modified = original;\nmodified += \" World\";\n\nConsole.WriteLine($\"Original: {original}\");\nConsole.WriteLine($\"Modified: {modified}\");"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -79,7 +79,7 @@
       "explanation": "This demonstrates the key difference between value types (int) and reference types (arrays). Value types are copied when assigned, while reference types share the same memory location.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Value type behavior\nint x = 10;\nint y = x;\ny = 20;\n\n// Reference type behavior\nint[] arr1 = {10};\nint[] arr2 = arr1;\narr2[0] = 20;\n\nConsole.WriteLine($\"x: {x}, y: {y}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}\");\nConsole.WriteLine($\"arr2[0]: {arr2[0]}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}, x: {x}\");",
+        "code": "// Value type behavior\nint x = 10;\nint y = x;\ny = 20;\n\n// Reference type behavior\nint[] arr1 = {10};\nint[] arr2 = arr1;\narr2[0] = 20;\n\nConsole.WriteLine($\"x: {x}, y: {y}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}\");\nConsole.WriteLine($\"arr2[0]: {arr2[0]}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}, x: {x}\");"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -119,7 +119,7 @@
       "explanation": "Nullable value types have HasValue property to check for null. The null-coalescing operator (??) provides a default value when the nullable type is null, avoiding exceptions.",
       "codeExample": {
         "language": "csharp",
-        "code": "int? nullableInt = null;\n\nConsole.WriteLine($\"HasValue: {nullableInt.HasValue}\");\nConsole.WriteLine($\"Value: {nullableInt.GetValueOrDefault()}\");\nConsole.WriteLine($\"Result: {nullableInt ?? 100}\");",
+        "code": "int? nullableInt = null;\n\nConsole.WriteLine($\"HasValue: {nullableInt.HasValue}\");\nConsole.WriteLine($\"Value: {nullableInt.GetValueOrDefault()}\");\nConsole.WriteLine($\"Result: {nullableInt ?? 100}\");"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -159,7 +159,7 @@
       "explanation": "Boxing converts a value type to an object reference. The boxed object retains its original type (Int32). Unboxing retrieves the value, and value equality comparison returns true.",
       "codeExample": {
         "language": "csharp",
-        "code": "int value = 42;\nobject obj = value;  // Boxing\nint unboxed = (int)obj;  // Unboxing\n\nConsole.WriteLine($\"obj type: {obj.GetType().Name}\");\nConsole.WriteLine($\"unboxed: {unboxed}\");\nConsole.WriteLine($\"are equal: {value == unboxed}\");",
+        "code": "int value = 42;\nobject obj = value;  // Boxing\nint unboxed = (int)obj;  // Unboxing\n\nConsole.WriteLine($\"obj type: {obj.GetType().Name}\");\nConsole.WriteLine($\"unboxed: {unboxed}\");\nConsole.WriteLine($\"are equal: {value == unboxed}\");"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -199,7 +199,7 @@
       "explanation": "This demonstrates why decimal should be used for financial calculations. Double uses binary floating-point which can't exactly represent 0.1, leading to precision errors. Decimal uses base-10 arithmetic for exact precision.",
       "codeExample": {
         "language": "csharp",
-        "code": "double doubleResult = 0.1 + 0.2;\ndecimal decimalResult = 0.1m + 0.2m;\n\nConsole.WriteLine($\"Double result: {doubleResult}\");\nConsole.WriteLine($\"Decimal result: {decimalResult}\");\nConsole.WriteLine($\"Are equal: {(double)decimalResult == doubleResult}\");",
+        "code": "double doubleResult = 0.1 + 0.2;\ndecimal decimalResult = 0.1m + 0.2m;\n\nConsole.WriteLine($\"Double result: {doubleResult}\");\nConsole.WriteLine($\"Decimal result: {decimalResult}\");\nConsole.WriteLine($\"Are equal: {(double)decimalResult == doubleResult}\");"
       },
       "category": "basics",
       "subcategory": "data-types-mc",

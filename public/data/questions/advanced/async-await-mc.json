@@ -39,7 +39,7 @@
       "explanation": "Async methods execute synchronously until the first await. The await keyword waits for the task to complete before continuing execution of the method.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    Console.WriteLine(\"Start\");\n    await ExampleAsync();\n    Console.WriteLine(\"End\");\n}\n\npublic static async Task ExampleAsync()\n{\n    Console.WriteLine(\"Before await\");\n    await Task.Delay(1);  // Minimal delay\n    Console.WriteLine(\"After await\");\n}",
+        "code": "public static async Task Main()\n{\n    Console.WriteLine(\"Start\");\n    await ExampleAsync();\n    Console.WriteLine(\"End\");\n}\n\npublic static async Task ExampleAsync()\n{\n    Console.WriteLine(\"Before await\");\n    await Task.Delay(1);  // Minimal delay\n    Console.WriteLine(\"After await\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -79,7 +79,7 @@
       "explanation": "Task.Result blocks the calling thread and can cause deadlocks in synchronization contexts. await properly yields control and doesn't block the UI thread.",
       "codeExample": {
         "language": "csharp",
-        "code": "// In a GUI application context:\npublic async Task SafeMethod()\n{\n    var result = await GetValueAsync();  // Safe - doesn't block\n    Console.WriteLine($\"Await result: {result}\");\n}\n\npublic void DeadlockMethod()\n{\n    var result = GetValueAsync().Result;  // Dangerous - can deadlock\n    Console.WriteLine($\"Sync result: {result}\");\n}\n\npublic async Task<int> GetValueAsync()\n{\n    await Task.Delay(100);\n    return 42;\n}",
+        "code": "// In a GUI application context:\npublic async Task SafeMethod()\n{\n    var result = await GetValueAsync();  // Safe - doesn't block\n    Console.WriteLine($\"Await result: {result}\");\n}\n\npublic void DeadlockMethod()\n{\n    var result = GetValueAsync().Result;  // Dangerous - can deadlock\n    Console.WriteLine($\"Sync result: {result}\");\n}\n\npublic async Task<int> GetValueAsync()\n{\n    await Task.Delay(100);\n    return 42;\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -119,7 +119,7 @@
       "explanation": "ConfigureAwait(false) prevents capturing the synchronization context, allowing the continuation to run on any available thread instead of marshalling back to the original context.",
       "codeExample": {
         "language": "csharp",
-        "code": "// In UI application:\npublic async Task WithoutConfigureAwait()\n{\n    await Task.Delay(100);  // Captures sync context\n    // Continues on UI thread\n    Console.WriteLine($\"Thread: {Thread.CurrentThread.ManagedThreadId}\");\n}\n\npublic async Task WithConfigureAwait()\n{\n    await Task.Delay(100).ConfigureAwait(false);  // No sync context\n    // Continues on thread pool thread\n    Console.WriteLine($\"Thread: {Thread.CurrentThread.ManagedThreadId}\");\n}",
+        "code": "// In UI application:\npublic async Task WithoutConfigureAwait()\n{\n    await Task.Delay(100);  // Captures sync context\n    // Continues on UI thread\n    Console.WriteLine($\"Thread: {Thread.CurrentThread.ManagedThreadId}\");\n}\n\npublic async Task WithConfigureAwait()\n{\n    await Task.Delay(100).ConfigureAwait(false);  // No sync context\n    // Continues on thread pool thread\n    Console.WriteLine($\"Thread: {Thread.CurrentThread.ManagedThreadId}\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -159,7 +159,7 @@
       "explanation": "Exceptions in async methods are captured and stored in the returned Task. They can be caught using try-catch when the task is awaited.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    try\n    {\n        await ThrowExceptionAsync();\n    }\n    catch (Exception ex)\n    {\n        Console.WriteLine($\"Exception caught: {ex.Message}\");\n    }\n    Console.WriteLine(\"Task completed\");\n}\n\npublic static async Task ThrowExceptionAsync()\n{\n    await Task.Delay(1);\n    throw new Exception(\"Test exception\");\n}",
+        "code": "public static async Task Main()\n{\n    try\n    {\n        await ThrowExceptionAsync();\n    }\n    catch (Exception ex)\n    {\n        Console.WriteLine($\"Exception caught: {ex.Message}\");\n    }\n    Console.WriteLine(\"Task completed\");\n}\n\npublic static async Task ThrowExceptionAsync()\n{\n    await Task.Delay(1);\n    throw new Exception(\"Test exception\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -199,7 +199,7 @@
       "explanation": "Task.WhenAll allows tasks to run concurrently, completing in the time of the longest task. Sequential await waits for each task to complete before starting the next.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task SequentialExample()\n{\n    var sw = Stopwatch.StartNew();\n    await Task.Delay(100);\n    await Task.Delay(100);\n    await Task.Delay(100);\n    Console.WriteLine($\"Sequential: {sw.ElapsedMilliseconds}ms\");\n}\n\npublic static async Task ParallelExample()\n{\n    var sw = Stopwatch.StartNew();\n    await Task.WhenAll(\n        Task.Delay(100),\n        Task.Delay(100),\n        Task.Delay(100)\n    );\n    Console.WriteLine($\"Parallel: {sw.ElapsedMilliseconds}ms\");\n}",
+        "code": "public static async Task SequentialExample()\n{\n    var sw = Stopwatch.StartNew();\n    await Task.Delay(100);\n    await Task.Delay(100);\n    await Task.Delay(100);\n    Console.WriteLine($\"Sequential: {sw.ElapsedMilliseconds}ms\");\n}\n\npublic static async Task ParallelExample()\n{\n    var sw = Stopwatch.StartNew();\n    await Task.WhenAll(\n        Task.Delay(100),\n        Task.Delay(100),\n        Task.Delay(100)\n    );\n    Console.WriteLine($\"Parallel: {sw.ElapsedMilliseconds}ms\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -239,7 +239,7 @@
       "explanation": "Async void methods should only be used for event handlers. They don't return a Task, so exceptions can't be caught by the caller and become unhandled exceptions.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    try\n    {\n        await AsyncTaskMethod();  // Exception can be caught\n    }\n    catch (Exception)\n    {\n        Console.WriteLine(\"Async Task: Exception caught\");\n    }\n    \n    AsyncVoidMethod();  // Exception cannot be caught - becomes unhandled\n    await Task.Delay(100);  // Give time for async void to complete\n}\n\npublic static async Task AsyncTaskMethod()\n{\n    await Task.Delay(1);\n    throw new Exception();\n}\n\npublic static async void AsyncVoidMethod()\n{\n    await Task.Delay(1);\n    throw new Exception();  // Unhandled exception!\n}",
+        "code": "public static async Task Main()\n{\n    try\n    {\n        await AsyncTaskMethod();  // Exception can be caught\n    }\n    catch (Exception)\n    {\n        Console.WriteLine(\"Async Task: Exception caught\");\n    }\n    \n    AsyncVoidMethod();  // Exception cannot be caught - becomes unhandled\n    await Task.Delay(100);  // Give time for async void to complete\n}\n\npublic static async Task AsyncTaskMethod()\n{\n    await Task.Delay(1);\n    throw new Exception();\n}\n\npublic static async void AsyncVoidMethod()\n{\n    await Task.Delay(1);\n    throw new Exception();  // Unhandled exception!\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -279,7 +279,7 @@
       "explanation": "CancellationToken enables cooperative cancellation. Operations can check the token and throw OperationCanceledException when cancellation is requested.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    var cts = new CancellationTokenSource();\n    cts.CancelAfter(50);  // Cancel after 50ms\n    \n    try\n    {\n        await LongRunningOperation(cts.Token);\n    }\n    catch (OperationCanceledException)\n    {\n        Console.WriteLine(\"Operation was cancelled\");\n    }\n}\n\npublic static async Task LongRunningOperation(CancellationToken token)\n{\n    Console.WriteLine(\"Starting operation\");\n    for (int i = 0; i < 10; i++)\n    {\n        token.ThrowIfCancellationRequested();\n        await Task.Delay(20, token);\n    }\n    Console.WriteLine(\"Operation completed\");\n}",
+        "code": "public static async Task Main()\n{\n    var cts = new CancellationTokenSource();\n    cts.CancelAfter(50);  // Cancel after 50ms\n    \n    try\n    {\n        await LongRunningOperation(cts.Token);\n    }\n    catch (OperationCanceledException)\n    {\n        Console.WriteLine(\"Operation was cancelled\");\n    }\n}\n\npublic static async Task LongRunningOperation(CancellationToken token)\n{\n    Console.WriteLine(\"Starting operation\");\n    for (int i = 0; i < 10; i++)\n    {\n        token.ThrowIfCancellationRequested();\n        await Task.Delay(20, token);\n    }\n    Console.WriteLine(\"Operation completed\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -319,7 +319,7 @@
       "explanation": "Async methods execute on the calling thread until the first await. Task.Run immediately schedules work on a thread pool thread for CPU-bound operations.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Called from UI thread:\npublic async Task AsyncMethod()\n{\n    // Runs on UI thread initially\n    Console.WriteLine($\"Async method: {GetThreadType()}\");\n    await SomeAsyncOperation();\n}\n\npublic async Task TaskRunMethod()\n{\n    await Task.Run(() =>\n    {\n        // Runs on thread pool thread\n        Console.WriteLine($\"Task.Run: {GetThreadType()}\");\n    });\n}\n\npublic string GetThreadType()\n{\n    return Thread.CurrentThread.IsThreadPoolThread ? \"ThreadPool Thread\" : \"UI Thread\";\n}",
+        "code": "// Called from UI thread:\npublic async Task AsyncMethod()\n{\n    // Runs on UI thread initially\n    Console.WriteLine($\"Async method: {GetThreadType()}\");\n    await SomeAsyncOperation();\n}\n\npublic async Task TaskRunMethod()\n{\n    await Task.Run(() =>\n    {\n        // Runs on thread pool thread\n        Console.WriteLine($\"Task.Run: {GetThreadType()}\");\n    });\n}\n\npublic string GetThreadType()\n{\n    return Thread.CurrentThread.IsThreadPoolThread ? \"ThreadPool Thread\" : \"UI Thread\";\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -359,7 +359,7 @@
       "explanation": "ValueTask is optimized for scenarios where the result might be immediately available (like caching), avoiding Task allocation overhead in synchronous completion paths.",
       "codeExample": {
         "language": "csharp",
-        "code": "private static readonly Dictionary<int, string> _cache = new();\n\npublic static ValueTask<string> GetValueWithValueTask(int key)\n{\n    if (_cache.TryGetValue(key, out string value))\n    {\n        return new ValueTask<string>(value);  // No Task allocation\n    }\n    return new ValueTask<string>(FetchFromDatabaseAsync(key));\n}\n\npublic static Task<string> GetValueWithTask(int key)\n{\n    if (_cache.TryGetValue(key, out string value))\n    {\n        return Task.FromResult(value);  // Task allocation required\n    }\n    return FetchFromDatabaseAsync(key);\n}\n\npublic static async Task<string> FetchFromDatabaseAsync(int key)\n{\n    await Task.Delay(100);  // Simulate database call\n    return $\"Value{key}\";\n}",
+        "code": "private static readonly Dictionary<int, string> _cache = new();\n\npublic static ValueTask<string> GetValueWithValueTask(int key)\n{\n    if (_cache.TryGetValue(key, out string value))\n    {\n        return new ValueTask<string>(value);  // No Task allocation\n    }\n    return new ValueTask<string>(FetchFromDatabaseAsync(key));\n}\n\npublic static Task<string> GetValueWithTask(int key)\n{\n    if (_cache.TryGetValue(key, out string value))\n    {\n        return Task.FromResult(value);  // Task allocation required\n    }\n    return FetchFromDatabaseAsync(key);\n}\n\npublic static async Task<string> FetchFromDatabaseAsync(int key)\n{\n    await Task.Delay(100);  // Simulate database call\n    return $\"Value{key}\";\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -399,7 +399,7 @@
       "explanation": "IAsyncEnumerable<T> enables asynchronous streaming of data. Each item is yielded asynchronously and can be consumed with await foreach.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    await foreach (var item in GenerateItemsAsync())\n    {\n        Console.WriteLine($\"Item: {item}\");\n    }\n}\n\npublic static async IAsyncEnumerable<int> GenerateItemsAsync()\n{\n    for (int i = 0; i < 3; i++)\n    {\n        await Task.Delay(100);  // Simulate async work\n        yield return i;\n    }\n}",
+        "code": "public static async Task Main()\n{\n    await foreach (var item in GenerateItemsAsync())\n    {\n        Console.WriteLine($\"Item: {item}\");\n    }\n}\n\npublic static async IAsyncEnumerable<int> GenerateItemsAsync()\n{\n    for (int i = 0; i < 3; i++)\n    {\n        await Task.Delay(100);  // Simulate async work\n        yield return i;\n    }\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -439,7 +439,7 @@
       "explanation": "Local functions can be async and provide a way to create async helper methods within the scope of another method, useful for avoiding code duplication.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task OuterMethod()\n{\n    Console.WriteLine(\"Outer method start\");\n    \n    // Local async function\n    async Task<int> LocalAsyncFunction()\n    {\n        await Task.Delay(1);\n        return 42;\n    }\n    \n    var result = await LocalAsyncFunction();\n    Console.WriteLine($\"Local function: {result}\");\n    \n    Console.WriteLine(\"Outer method end\");\n}",
+        "code": "public static async Task OuterMethod()\n{\n    Console.WriteLine(\"Outer method start\");\n    \n    // Local async function\n    async Task<int> LocalAsyncFunction()\n    {\n        await Task.Delay(1);\n        return 42;\n    }\n    \n    var result = await LocalAsyncFunction();\n    Console.WriteLine($\"Local function: {result}\");\n    \n    Console.WriteLine(\"Outer method end\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -479,7 +479,7 @@
       "explanation": "Task.Yield() creates a task that completes asynchronously, forcing the async method to yield control and continue on a thread pool thread.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    await YieldExample();\n    Console.WriteLine(\"Main continues\");\n}\n\npublic static async Task YieldExample()\n{\n    Console.WriteLine(\"Before yield\");\n    await Task.Yield();  // Forces async continuation\n    Console.WriteLine(\"After yield\");\n}\n\n// Task.Yield() is useful when you want to:\n// 1. Ensure a method is asynchronous\n// 2. Yield control in a compute-bound operation\n// 3. Avoid blocking the calling thread",
+        "code": "public static async Task Main()\n{\n    await YieldExample();\n    Console.WriteLine(\"Main continues\");\n}\n\npublic static async Task YieldExample()\n{\n    Console.WriteLine(\"Before yield\");\n    await Task.Yield();  // Forces async continuation\n    Console.WriteLine(\"After yield\");\n}\n\n// Task.Yield() is useful when you want to:\n// 1. Ensure a method is asynchronous\n// 2. Yield control in a compute-bound operation\n// 3. Avoid blocking the calling thread"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -519,7 +519,7 @@
       "explanation": "SemaphoreSlim controls the number of threads that can access a resource concurrently. With count=2, only 2 operations can run simultaneously.",
       "codeExample": {
         "language": "csharp",
-        "code": "private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(2, 2);\n\npublic static async Task Main()\n{\n    var tasks = new List<Task>();\n    for (int i = 1; i <= 3; i++)\n    {\n        tasks.Add(Worker(i));\n    }\n    await Task.WhenAll(tasks);\n}\n\npublic static async Task Worker(int id)\n{\n    await semaphore.WaitAsync();\n    try\n    {\n        Console.WriteLine($\"Worker {id} started\");\n        await Task.Delay(1000);  // Simulate work\n        Console.WriteLine($\"Worker {id} completed\");\n    }\n    finally\n    {\n        semaphore.Release();\n    }\n}",
+        "code": "private static readonly SemaphoreSlim semaphore = new SemaphoreSlim(2, 2);\n\npublic static async Task Main()\n{\n    var tasks = new List<Task>();\n    for (int i = 1; i <= 3; i++)\n    {\n        tasks.Add(Worker(i));\n    }\n    await Task.WhenAll(tasks);\n}\n\npublic static async Task Worker(int id)\n{\n    await semaphore.WaitAsync();\n    try\n    {\n        Console.WriteLine($\"Worker {id} started\");\n        await Task.Delay(1000);  // Simulate work\n        Console.WriteLine($\"Worker {id} completed\");\n    }\n    finally\n    {\n        semaphore.Release();\n    }\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -559,7 +559,7 @@
       "explanation": "TaskCompletionSource<T> allows creating a Task<T> that can be manually completed, useful for wrapping callback-based APIs into async/await patterns.",
       "codeExample": {
         "language": "csharp",
-        "code": "public static async Task Main()\n{\n    var tcs = new TaskCompletionSource<string>();\n    \n    // Simulate async completion after delay\n    _ = Task.Run(async () =>\n    {\n        await Task.Delay(100);\n        tcs.SetResult(\"Manual completion\");\n    });\n    \n    Console.WriteLine(\"Waiting for result...\");\n    var result = await tcs.Task;\n    Console.WriteLine($\"Result received: {result}\");\n}\n\n// TaskCompletionSource is useful for:\n// - Converting callback-based APIs to async/await\n// - Creating custom awaitable operations\n// - Implementing timeout patterns",
+        "code": "public static async Task Main()\n{\n    var tcs = new TaskCompletionSource<string>();\n    \n    // Simulate async completion after delay\n    _ = Task.Run(async () =>\n    {\n        await Task.Delay(100);\n        tcs.SetResult(\"Manual completion\");\n    });\n    \n    Console.WriteLine(\"Waiting for result...\");\n    var result = await tcs.Task;\n    Console.WriteLine($\"Result received: {result}\");\n}\n\n// TaskCompletionSource is useful for:\n// - Converting callback-based APIs to async/await\n// - Creating custom awaitable operations\n// - Implementing timeout patterns"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
@@ -599,7 +599,7 @@
       "explanation": "IAsyncDisposable enables asynchronous resource cleanup. The 'await using' statement ensures DisposeAsync is called and awaited when the scope ends.",
       "codeExample": {
         "language": "csharp",
-        "code": "public class AsyncResource : IAsyncDisposable\n{\n    public AsyncResource()\n    {\n        Console.WriteLine(\"Resource created\");\n    }\n    \n    public async ValueTask DisposeAsync()\n    {\n        await Task.Delay(10);  // Simulate async cleanup\n        Console.WriteLine(\"Async cleanup completed\");\n    }\n}\n\npublic static async Task Main()\n{\n    await using (var resource = new AsyncResource())\n    {\n        // Use resource\n    }  // DisposeAsync called here\n    \n    Console.WriteLine(\"Using block exited\");\n}",
+        "code": "public class AsyncResource : IAsyncDisposable\n{\n    public AsyncResource()\n    {\n        Console.WriteLine(\"Resource created\");\n    }\n    \n    public async ValueTask DisposeAsync()\n    {\n        await Task.Delay(10);  // Simulate async cleanup\n        Console.WriteLine(\"Async cleanup completed\");\n    }\n}\n\npublic static async Task Main()\n{\n    await using (var resource = new AsyncResource())\n    {\n        // Use resource\n    }  // DisposeAsync called here\n    \n    Console.WriteLine(\"Using block exited\");\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",

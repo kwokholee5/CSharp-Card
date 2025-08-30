@@ -39,7 +39,7 @@
       "explanation": "Multiplication (*) has higher precedence than addition (+), so 3 * 4 is evaluated first, then the additions are performed left to right.",
       "codeExample": {
         "language": "csharp",
-        "code": "int result = 2 + 3 * 4 + 3;\nConsole.WriteLine(result);",
+        "code": "int result = 2 + 3 * 4 + 3;\nConsole.WriteLine(result);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -79,7 +79,7 @@
       "explanation": "Pre-increment (++x) increments the variable first, then returns the new value. The assignment gets the incremented value (6).",
       "codeExample": {
         "language": "csharp",
-        "code": "int x = 5;\nint y = ++x;\nConsole.WriteLine($\"x: {x}, y: {y}\");",
+        "code": "int x = 5;\nint y = ++x;\nConsole.WriteLine($\"x: {x}, y: {y}\");"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -119,7 +119,7 @@
       "explanation": "The logical OR operator (||) uses short-circuit evaluation. When the left operand is true, the right operand is not evaluated because the result is already determined.",
       "codeExample": {
         "language": "csharp",
-        "code": "static bool CallMethod()\n{\n    Console.WriteLine(\"Method called\");\n    return false;\n}\n\nstatic void Main()\n{\n    bool result = true || CallMethod();\n    Console.WriteLine($\"Result: {result}\");\n}",
+        "code": "static bool CallMethod()\n{\n    Console.WriteLine(\"Method called\");\n    return false;\n}\n\nstatic void Main()\n{\n    bool result = true || CallMethod();\n    Console.WriteLine($\"Result: {result}\");\n}"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -159,7 +159,7 @@
       "explanation": "The null-coalescing operator (??) returns the left operand if it's not null, otherwise returns the right operand. It's useful for providing default values.",
       "codeExample": {
         "language": "csharp",
-        "code": "string str1 = null;\nstring str2 = \"Hello World\";\n\nstring result1 = str1 ?? \"Default\";\nstring result2 = str2 ?? \"Default\";\n\nConsole.WriteLine(result1);\nConsole.WriteLine(result2);",
+        "code": "string str1 = null;\nstring str2 = \"Hello World\";\n\nstring result1 = str1 ?? \"Default\";\nstring result2 = str2 ?? \"Default\";\n\nConsole.WriteLine(result1);\nConsole.WriteLine(result2);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -199,7 +199,7 @@
       "explanation": "The ternary operator (condition ? trueValue : falseValue) evaluates the condition. Since 7 % 2 equals 1 (not 0), the condition is false, so 'Odd' is returned.",
       "codeExample": {
         "language": "csharp",
-        "code": "int number = 7;\nstring result = (number % 2 == 0) ? \"Even\" : \"Odd\";\nConsole.WriteLine(result);",
+        "code": "int number = 7;\nstring result = (number % 2 == 0) ? \"Even\" : \"Odd\";\nConsole.WriteLine(result);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -239,7 +239,7 @@
       "explanation": "Compound assignment operators perform the operation and assign the result. x %= 10 is equivalent to x = x % 10, calculating the remainder of division.",
       "codeExample": {
         "language": "csharp",
-        "code": "int x = 10;\nx += 5;\nx %= 10;\nConsole.WriteLine(x);",
+        "code": "int x = 10;\nx += 5;\nx %= 10;\nConsole.WriteLine(x);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -279,7 +279,7 @@
       "explanation": "Bitwise AND (&) compares each bit position. 12 in binary is 1100, 6 is 0110. AND operation: 1&0=0, 1&1=1, 0&1=0, 0&0=0, resulting in 0100 (4).",
       "codeExample": {
         "language": "csharp",
-        "code": "int a = 12;\nint b = 6;\nint result = a & b;\nConsole.WriteLine(result);",
+        "code": "int a = 12;\nint b = 6;\nint result = a & b;\nConsole.WriteLine(result);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -319,7 +319,7 @@
       "explanation": "The 'is' operator checks if an object is compatible with a type. The 'as' operator performs a safe cast, returning the object if successful or null if not.",
       "codeExample": {
         "language": "csharp",
-        "code": "object obj = \"Hello\";\nbool isString = obj is string;\nstring str = obj as string;\n\nConsole.WriteLine(isString);\nConsole.WriteLine(str ?? \"null\");",
+        "code": "object obj = \"Hello\";\nbool isString = obj is string;\nstring str = obj as string;\n\nConsole.WriteLine(isString);\nConsole.WriteLine(str ?? \"null\");"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -359,7 +359,7 @@
       "explanation": "Due to operator precedence, parentheses force numeric addition first (5 + 10 = 15), then string concatenation occurs (\"Hello\" + 15 = \"Hello15\").",
       "codeExample": {
         "language": "csharp",
-        "code": "string result = \"Hello\" + (5 + 10);\nConsole.WriteLine(result);",
+        "code": "string result = \"Hello\" + (5 + 10);\nConsole.WriteLine(result);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -399,7 +399,7 @@
       "explanation": "The sizeof operator returns the size in bytes of a value type. For built-in types like int, it can be used in safe context and returns 4 bytes.",
       "codeExample": {
         "language": "csharp",
-        "code": "int size = sizeof(int);\nConsole.WriteLine(size);",
+        "code": "int size = sizeof(int);\nConsole.WriteLine(size);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -439,7 +439,7 @@
       "explanation": "The null-conditional operator (?.) safely accesses members, returning null if the object is null instead of throwing NullReferenceException.",
       "codeExample": {
         "language": "csharp",
-        "code": "string str1 = \"Hello\";\nstring str2 = null;\n\nConsole.WriteLine(str1?.Length);\nConsole.WriteLine(str2?.Length);",
+        "code": "string str1 = \"Hello\";\nstring str2 = null;\n\nConsole.WriteLine(str1?.Length);\nConsole.WriteLine(str2?.Length);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -479,7 +479,7 @@
       "explanation": "The nameof operator returns the string name of a variable, type, or member. It's evaluated at compile-time and is useful for refactoring-safe code.",
       "codeExample": {
         "language": "csharp",
-        "code": "string myVariable = \"Hello\";\nConsole.WriteLine(nameof(myVariable));\nConsole.WriteLine(nameof(string.Length));",
+        "code": "string myVariable = \"Hello\";\nConsole.WriteLine(nameof(myVariable));\nConsole.WriteLine(nameof(string.Length));"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -519,7 +519,7 @@
       "explanation": "The checked keyword forces overflow checking, throwing OverflowException. The unchecked keyword disables overflow checking, allowing wraparound behavior.",
       "codeExample": {
         "language": "csharp",
-        "code": "int maxInt = int.MaxValue;\n\ntry\n{\n    int result1 = checked(maxInt + 1);  // Throws OverflowException\n}\ncatch (OverflowException)\n{\n    Console.WriteLine(\"OverflowException\");\n}\n\nint result2 = unchecked(maxInt + 1);  // Wraps to int.MinValue\nConsole.WriteLine(result2);",
+        "code": "int maxInt = int.MaxValue;\n\ntry\n{\n    int result1 = checked(maxInt + 1);  // Throws OverflowException\n}\ncatch (OverflowException)\n{\n    Console.WriteLine(\"OverflowException\");\n}\n\nint result2 = unchecked(maxInt + 1);  // Wraps to int.MinValue\nConsole.WriteLine(result2);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -559,7 +559,7 @@
       "explanation": "The null-coalescing assignment operator (??=) assigns the right operand to the left operand only if the left operand is null.",
       "codeExample": {
         "language": "csharp",
-        "code": "string str1 = \"Hello\";\nstring str2 = null;\n\nstr1 ??= \"Default\";\nstr2 ??= \"Default\";\n\nConsole.WriteLine(str1);\nConsole.WriteLine(str2);",
+        "code": "string str1 = \"Hello\";\nstring str2 = null;\n\nstr1 ??= \"Default\";\nstr2 ??= \"Default\";\n\nConsole.WriteLine(str1);\nConsole.WriteLine(str2);"
       },
       "category": "basics",
       "subcategory": "operators-mc",
@@ -599,7 +599,7 @@
       "explanation": "The range operator (..) creates a Range struct. [start..end] includes start index but excludes end index, following standard half-open interval convention.",
       "codeExample": {
         "language": "csharp",
-        "code": "int[] numbers = {1, 2, 3, 4, 5, 6};\nint[] slice = numbers[1..4];\n\nforeach (int num in slice)\n{\n    Console.Write(num + \", \");\n}",
+        "code": "int[] numbers = {1, 2, 3, 4, 5, 6};\nint[] slice = numbers[1..4];\n\nforeach (int num in slice)\n{\n    Console.Write(num + \", \");\n}"
       },
       "category": "basics",
       "subcategory": "operators-mc",
