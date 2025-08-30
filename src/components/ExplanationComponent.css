@@ -781,3 +781,9 @@ button.navigation-button {
 .explanation-summary {
   display: none !important;
 }
+
+
+/* Hide answer options section after answered */
+.explanation-options {
+  display: none !important;
+}
