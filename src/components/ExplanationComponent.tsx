@@ -2,6 +2,7 @@ import React from 'react';
 import type { IQuestion } from '../interfaces/domain/IQuestion';
 import type { IAnswerResult } from '../interfaces/domain/types';
 import './ExplanationComponent.css';
+import './MobileAnswerLayout.css';
 
 /**
  * Props interface for ExplanationComponent following Interface Segregation Principle
