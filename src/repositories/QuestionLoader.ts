@@ -30,7 +30,13 @@ export class QuestionLoader implements IQuestionLoader {
         throw new Error('Invalid JSON structure: missing or invalid questions array');
       }
       
-      return jsonData.questions;
+      // Filter to only include multiple-choice questions
+      const multipleChoiceQuestions = jsonData.questions.filter(q => 
+        q.type === 'multiple-choice' || 
+        (q.options && Array.isArray(q.options) && q.options.length > 0)
+      );
+      
+      return multipleChoiceQuestions;
     } catch (error) {
       throw new DataLoadError(filePath, error as Error);
     }
@@ -73,9 +79,9 @@ export class QuestionLoader implements IQuestionLoader {
     // In a browser environment, we need to know the file names in advance
     // Updated to match actual files in the project including new 100 questions
     const knownFiles = [
-      // Existing files
+      // Existing files - ONLY multiple-choice files
       'data-types-mc.json',
-      'variables.json',
+      // 'variables.json', // REMOVED: This is flip-card type, not multiple-choice
       'control-flow-mc.json',
       'oop-mc.json',
       'collections-mc.json',
@@ -124,7 +130,7 @@ export class QuestionLoader implements IQuestionLoader {
   async discoverQuestionFiles(basePath: string): Promise<string[]> {
     const knownFiles = [
       'data-types-mc.json',
-      'variables.json',
+      // 'variables.json', // REMOVED: This is flip-card type, not multiple-choice
       'control-flow-mc.json',
       'oop-mc.json',
       'collections-mc.json',

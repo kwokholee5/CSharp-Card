@@ -196,6 +196,20 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
    * Renders the options grid
    */
   const renderOptionsGrid = (): React.ReactElement => {
+    // Type guard: Check if question has options array
+    if (!question.options || !Array.isArray(question.options) || question.options.length === 0) {
+      const errorMsg = `Question ${question.id} is not a multiple-choice question or has no options`;
+      if (onError) {
+        onError(new Error(errorMsg));
+      }
+      return (
+        <div className="answer-error">
+          <p>Error: This question does not have multiple choice options.</p>
+          <p>Question type may be incompatible with this view.</p>
+        </div>
+      );
+    }
+    
     const options = question.options;
     
     return (
