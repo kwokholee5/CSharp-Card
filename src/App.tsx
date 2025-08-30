@@ -7,7 +7,6 @@ import { NavigationComponent } from './components/NavigationComponent';
 import type { IQuestion } from './interfaces/domain/IQuestion';
 import type { IAnswerResult } from './interfaces/domain/types';
 import './App.css';
-import './components/MobileButtonFix.css';
 
 /**
  * Application view state enumeration
