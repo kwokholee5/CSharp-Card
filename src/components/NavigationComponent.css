@@ -212,9 +212,9 @@
   }
   
   .navigation-button {
-    padding: 0.625rem 1rem;
-    min-width: 80px;
-    max-width: 120px;
+    padding: 4px 6px;
+    min-width: 50px;
+    max-width: 70px;
     font-size: 0.8125rem;
   }
   
