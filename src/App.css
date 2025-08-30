@@ -181,6 +181,17 @@ html, body {
   position: relative; /* Allow fixed positioned children to escape */
 }
 
+/* Mobile: Remove border radius and padding for full screen usage */
+@media (max-width: 768px) {
+  .app-right-column {
+    border-radius: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
 /* Mobile column adjustments */
 @media (max-width: 768px) and (orientation: portrait) {
   .app-left-column {

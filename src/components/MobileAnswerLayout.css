@@ -1,0 +1,175 @@
+/* Mobile-First Answer Layout - Complete Redesign */
+
+/* Mobile Layout - Primary Design */
+@media (max-width: 768px) {
+  /* Reset everything for mobile */
+  .answer-component {
+    height: 100vh !important;
+    height: 100dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+  
+  .answer-component-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    padding: 8px !important;
+    padding-bottom: 0 !important; /* No bottom padding - footer handles it */
+  }
+  
+  /* Instructions - Minimal space */
+  .answer-instructions {
+    flex-shrink: 0 !important;
+    margin: 0 0 4px 0 !important;
+    padding: 0 !important;
+  }
+  
+  .answer-instructions-text {
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+  
+  .answer-selection-count {
+    font-size: 0.7rem !important;
+    margin: 2px 0 0 0 !important;
+    text-align: center !important;
+  }
+  
+  /* MC Options Grid - Take remaining space */
+  .answer-options-grid {
+    flex: 1 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr !important; /* Equal height rows */
+    gap: 4px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Individual Options - Fill available space */
+  .answer-option {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4px !important;
+    border: 1px solid #495057 !important;
+    border-radius: 4px !important;
+    background-color: #343a40 !important;
+    color: #f8f9fa !important;
+    cursor: pointer !important;
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    transition: all 0.2s ease !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  .answer-option:hover:not(:disabled) {
+    border-color: #0d6efd !important;
+    background-color: #495057 !important;
+  }
+  
+  .answer-option--selected {
+    border-color: #0d6efd !important;
+    background-color: #1e3a8a !important;
+    color: #93c5fd !important;
+  }
+  
+  .answer-option-text {
+    font-size: 0.7rem !important;
+    line-height: 1.2 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* Hide desktop submit button */
+  .answer-desktop-submit {
+    display: none !important;
+  }
+  
+  /* Mobile Footer - Fixed at bottom with guaranteed space */
+  .answer-footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 80px !important; /* Fixed height */
+    background: #2a2d3a !important;
+    border-top: 2px solid #0d6efd !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999 !important;
+    padding: 8px !important;
+    
+    /* iOS safe area support */
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(8px + constant(safe-area-inset-bottom, 0px)) !important;
+    
+    /* Force hardware acceleration */
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+  }
+  
+  .answer-footer .answer-submit-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  /* Submit Button - Prominent and always visible */
+  .answer-footer .answer-submit-button {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    min-width: 120px !important;
+    width: 100% !important;
+    max-width: 200px !important;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .answer-footer .answer-submit-button--enabled {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+  }
+  
+  .answer-footer .answer-submit-button--disabled {
+    background-color: #6c757d !important;
+    color: #adb5bd !important;
+    cursor: not-allowed !important;
+  }
+  
+  .answer-footer .answer-submit-button:hover:not(:disabled) {
+    background-color: #0b5ed7 !important;
+    transform: translateY(-1px) !important;
+  }
+}
+
+/* Desktop Layout - Keep existing design */
+@media (min-width: 769px) {
+  .answer-footer {
+    display: none !important;
+  }
+  
+  .answer-desktop-submit {
+    display: block !important;
+  }
+}

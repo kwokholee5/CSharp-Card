@@ -3,7 +3,7 @@ import type { IQuestion } from '../interfaces/domain/IQuestion';
 import type { IAnswerManager } from '../interfaces/services/IAnswerManager';
 import type { IQuestionState } from '../interfaces/domain/types';
 import './AnswerComponent.css';
-import './iPhoneSubmitFix.css';
+import './MobileAnswerLayout.css';
 
 /**
  * Props interface for AnswerComponent following Interface Segregation Principle
