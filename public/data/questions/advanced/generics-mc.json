@@ -17,22 +17,22 @@
         {
           "id": "a",
           "text": "Value: 42\nLength: 5",
-          "explanation": "Correct! Generic constraints allow calling specific methods. new() constraint enables parameterless constructor, IFormattable enables ToString formatting."
+          "explanation": "Generic constraints allow calling specific methods. new() constraint enables parameterless constructor, IFormattable enables ToString formatting."
         },
         {
           "id": "b",
           "text": "Compilation error - constraints not satisfied",
-          "explanation": "Incorrect. Both int and string satisfy their respective constraints."
+          "explanation": "Both int and string satisfy their respective constraints."
         },
         {
           "id": "c",
           "text": "Value: 0\nLength: 0",
-          "explanation": "Incorrect. The constraints are properly satisfied and methods work as expected."
+          "explanation": "The constraints are properly satisfied and methods work as expected."
         },
         {
           "id": "d",
           "text": "Runtime exception due to constraint violation",
-          "explanation": "Incorrect. Constraint violations are compile-time errors, not runtime exceptions."
+          "explanation": "Constraint violations are compile-time errors, not runtime exceptions."
         }
       ],
       "correctAnswerIndex": 0,
@@ -44,7 +44,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 5,
-      "tags": ["generics", "constraints", "new-constraint", "interface-constraint", "class-constraint"],
+      "tags": [
+        "generics",
+        "constraints",
+        "new-constraint",
+        "interface-constraint",
+        "class-constraint"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -57,22 +63,22 @@
         {
           "id": "a",
           "text": "Covariance works: True\nContravariance works: True",
-          "explanation": "Correct! IEnumerable<T> is covariant (out T), Action<T> is contravariant (in T), enabling safe type conversions."
+          "explanation": "IEnumerable<T> is covariant (out T), Action<T> is contravariant (in T), enabling safe type conversions."
         },
         {
           "id": "b",
           "text": "Both conversions fail",
-          "explanation": "Incorrect. Generic variance allows these safe conversions when properly declared."
+          "explanation": "Generic variance allows these safe conversions when properly declared."
         },
         {
           "id": "c",
           "text": "Only covariance works",
-          "explanation": "Incorrect. Both covariance and contravariance work with the correct generic types."
+          "explanation": "Both covariance and contravariance work with the correct generic types."
         },
         {
           "id": "d",
           "text": "Compilation error - invalid cast",
-          "explanation": "Incorrect. These are valid variance conversions supported by the type system."
+          "explanation": "These are valid variance conversions supported by the type system."
         }
       ],
       "correctAnswerIndex": 0,
@@ -84,7 +90,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 7,
-      "tags": ["generics", "covariance", "contravariance", "variance", "out-in-keywords"],
+      "tags": [
+        "generics",
+        "covariance",
+        "contravariance",
+        "variance",
+        "out-in-keywords"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -97,22 +109,22 @@
         {
           "id": "a",
           "text": "Generic method: 42\nNon-generic method: Hello",
-          "explanation": "Correct! C# compiler prefers non-generic methods over generic ones when both are applicable."
+          "explanation": "C# compiler prefers non-generic methods over generic ones when both are applicable."
         },
         {
           "id": "b",
           "text": "Generic method: 42\nGeneric method: Hello",
-          "explanation": "Incorrect. Non-generic methods have higher precedence in overload resolution."
+          "explanation": "Non-generic methods have higher precedence in overload resolution."
         },
         {
           "id": "c",
           "text": "Compilation error - ambiguous call",
-          "explanation": "Incorrect. Overload resolution rules clearly prefer non-generic methods."
+          "explanation": "Overload resolution rules clearly prefer non-generic methods."
         },
         {
           "id": "d",
           "text": "Both calls use generic method",
-          "explanation": "Incorrect. The string call uses the non-generic overload."
+          "explanation": "The string call uses the non-generic overload."
         }
       ],
       "correctAnswerIndex": 0,
@@ -124,7 +136,12 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 6,
-      "tags": ["generics", "overload-resolution", "method-precedence", "type-inference"],
+      "tags": [
+        "generics",
+        "overload-resolution",
+        "method-precedence",
+        "type-inference"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -137,22 +154,22 @@
         {
           "id": "a",
           "text": "Custom delegate: 25\nFunc delegate: 36",
-          "explanation": "Correct! Generic delegates provide type safety and reusability. Custom and built-in delegates work similarly."
+          "explanation": "Generic delegates provide type safety and reusability. Custom and built-in delegates work similarly."
         },
         {
           "id": "b",
           "text": "Type mismatch error",
-          "explanation": "Incorrect. Generic delegates ensure type safety at compile time."
+          "explanation": "Generic delegates ensure type safety at compile time."
         },
         {
           "id": "c",
           "text": "Both return the same value",
-          "explanation": "Incorrect. Different lambda expressions produce different results (5²=25, 6²=36)."
+          "explanation": "Different lambda expressions produce different results (5²=25, 6²=36)."
         },
         {
           "id": "d",
           "text": "Compilation error - delegate type mismatch",
-          "explanation": "Incorrect. Both delegates have compatible signatures for their respective lambda expressions."
+          "explanation": "Both delegates have compatible signatures for their respective lambda expressions."
         }
       ],
       "correctAnswerIndex": 0,
@@ -164,7 +181,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 5,
-      "tags": ["generics", "delegates", "func-delegate", "lambda-expressions", "type-safety"],
+      "tags": [
+        "generics",
+        "delegates",
+        "func-delegate",
+        "lambda-expressions",
+        "type-safety"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -177,22 +200,22 @@
         {
           "id": "a",
           "text": "Base method called\nDerived method called",
-          "explanation": "Correct! Generic type parameters can have inheritance constraints, allowing polymorphic behavior within generic contexts."
+          "explanation": "Generic type parameters can have inheritance constraints, allowing polymorphic behavior within generic contexts."
         },
         {
           "id": "b",
           "text": "Both call base method",
-          "explanation": "Incorrect. The second call uses a derived type that overrides the virtual method."
+          "explanation": "The second call uses a derived type that overrides the virtual method."
         },
         {
           "id": "c",
           "text": "Compilation error - constraint violation",
-          "explanation": "Incorrect. Both Animal and Dog satisfy the 'where T : Animal' constraint."
+          "explanation": "Both Animal and Dog satisfy the 'where T : Animal' constraint."
         },
         {
           "id": "d",
           "text": "Runtime type checking required",
-          "explanation": "Incorrect. Generic constraints provide compile-time type safety."
+          "explanation": "Generic constraints provide compile-time type safety."
         }
       ],
       "correctAnswerIndex": 0,
@@ -204,7 +227,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 6,
-      "tags": ["generics", "inheritance-constraints", "polymorphism", "virtual-methods", "type-parameters"],
+      "tags": [
+        "generics",
+        "inheritance-constraints",
+        "polymorphism",
+        "virtual-methods",
+        "type-parameters"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -217,22 +246,22 @@
         {
           "id": "a",
           "text": "Open generic: Repository`1[T]\nClosed generic: Repository`1[System.String]\nSame definition: True",
-          "explanation": "Correct! Open generics have unbound type parameters, closed generics have specific types. GetGenericTypeDefinition returns the open form."
+          "explanation": "Open generics have unbound type parameters, closed generics have specific types. GetGenericTypeDefinition returns the open form."
         },
         {
           "id": "b",
           "text": "Both show the same type information",
-          "explanation": "Incorrect. Open and closed generic types have different representations."
+          "explanation": "Open and closed generic types have different representations."
         },
         {
           "id": "c",
           "text": "Cannot get type information for generics",
-          "explanation": "Incorrect. Reflection works with both open and closed generic types."
+          "explanation": "Reflection works with both open and closed generic types."
         },
         {
           "id": "d",
           "text": "Type comparison always returns false",
-          "explanation": "Incorrect. GetGenericTypeDefinition allows comparing the underlying generic structure."
+          "explanation": "GetGenericTypeDefinition allows comparing the underlying generic structure."
         }
       ],
       "correctAnswerIndex": 0,
@@ -244,7 +273,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 6,
-      "tags": ["generics", "reflection", "typeof", "open-generics", "closed-generics"],
+      "tags": [
+        "generics",
+        "reflection",
+        "typeof",
+        "open-generics",
+        "closed-generics"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -257,22 +292,22 @@
         {
           "id": "a",
           "text": "Value type default: 0\nReference type default: \nNullable default: ",
-          "explanation": "Correct! default(T) returns type-specific defaults: 0 for int, null for string (prints empty), null for nullable types."
+          "explanation": "default(T) returns type-specific defaults: 0 for int, null for string (prints empty), null for nullable types."
         },
         {
           "id": "b",
           "text": "All defaults are null",
-          "explanation": "Incorrect. Value types have non-null defaults (0 for int)."
+          "explanation": "Value types have non-null defaults (0 for int)."
         },
         {
           "id": "c",
           "text": "Compilation error with default(T)",
-          "explanation": "Incorrect. default(T) is valid for all types in generic contexts."
+          "explanation": "default(T) is valid for all types in generic contexts."
         },
         {
           "id": "d",
           "text": "Runtime exception for value types",
-          "explanation": "Incorrect. default(T) safely returns appropriate defaults for all types."
+          "explanation": "default(T) safely returns appropriate defaults for all types."
         }
       ],
       "correctAnswerIndex": 0,
@@ -284,7 +319,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 5,
-      "tags": ["generics", "default-operator", "value-types", "reference-types", "nullable-types"],
+      "tags": [
+        "generics",
+        "default-operator",
+        "value-types",
+        "reference-types",
+        "nullable-types"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -297,22 +338,22 @@
         {
           "id": "a",
           "text": "Inferred type: System.Int32\nExplicit type: System.String",
-          "explanation": "Correct! C# can infer generic type parameters from method arguments, but explicit type parameters override inference."
+          "explanation": "C# can infer generic type parameters from method arguments, but explicit type parameters override inference."
         },
         {
           "id": "b",
           "text": "Both use the same inferred type",
-          "explanation": "Incorrect. Explicit type specification overrides type inference."
+          "explanation": "Explicit type specification overrides type inference."
         },
         {
           "id": "c",
           "text": "Type inference fails",
-          "explanation": "Incorrect. Type inference works when sufficient information is available from arguments."
+          "explanation": "Type inference works when sufficient information is available from arguments."
         },
         {
           "id": "d",
           "text": "Compilation error - ambiguous types",
-          "explanation": "Incorrect. Type inference and explicit types both work correctly here."
+          "explanation": "Type inference and explicit types both work correctly here."
         }
       ],
       "correctAnswerIndex": 0,
@@ -324,7 +365,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 5,
-      "tags": ["generics", "type-inference", "explicit-types", "method-calls", "compiler"],
+      "tags": [
+        "generics",
+        "type-inference",
+        "explicit-types",
+        "method-calls",
+        "compiler"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -337,22 +384,22 @@
         {
           "id": "a",
           "text": "String comparison: Hello vs World\nInt comparison: 5 vs 3",
-          "explanation": "Correct! Generic interfaces allow type-specific implementations while maintaining common behavior patterns."
+          "explanation": "Generic interfaces allow type-specific implementations while maintaining common behavior patterns."
         },
         {
           "id": "b",
           "text": "All comparisons use same implementation",
-          "explanation": "Incorrect. Different generic implementations can have type-specific behavior."
+          "explanation": "Different generic implementations can have type-specific behavior."
         },
         {
           "id": "c",
           "text": "Compilation error - generic interface conflict",
-          "explanation": "Incorrect. A class can implement generic interfaces with different type parameters."
+          "explanation": "A class can implement generic interfaces with different type parameters."
         },
         {
           "id": "d",
           "text": "Runtime type checking required",
-          "explanation": "Incorrect. Generic interfaces provide compile-time type safety."
+          "explanation": "Generic interfaces provide compile-time type safety."
         }
       ],
       "correctAnswerIndex": 0,
@@ -364,7 +411,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 6,
-      "tags": ["generics", "interfaces", "multiple-implementations", "polymorphism", "type-safety"],
+      "tags": [
+        "generics",
+        "interfaces",
+        "multiple-implementations",
+        "polymorphism",
+        "type-safety"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -377,22 +430,22 @@
         {
           "id": "a",
           "text": "Static int counter: 1\nStatic string counter: 1\nStatic int counter: 2",
-          "explanation": "Correct! Each closed generic type has its own set of static members, providing type-specific static state."
+          "explanation": "Each closed generic type has its own set of static members, providing type-specific static state."
         },
         {
           "id": "b",
           "text": "All counters share the same value",
-          "explanation": "Incorrect. Each generic instantiation has separate static members."
+          "explanation": "Each generic instantiation has separate static members."
         },
         {
           "id": "c",
           "text": "Static members are not allowed in generics",
-          "explanation": "Incorrect. Generic types can have static members, with separate instances per type parameter."
+          "explanation": "Generic types can have static members, with separate instances per type parameter."
         },
         {
           "id": "d",
           "text": "Counter resets for each type",
-          "explanation": "Incorrect. Static members persist per generic type instantiation."
+          "explanation": "Static members persist per generic type instantiation."
         }
       ],
       "correctAnswerIndex": 0,
@@ -404,7 +457,13 @@
       "category": "advanced",
       "subcategory": "generics-mc",
       "difficulty": 6,
-      "tags": ["generics", "static-members", "type-instantiation", "separate-state", "closed-generics"],
+      "tags": [
+        "generics",
+        "static-members",
+        "type-instantiation",
+        "separate-state",
+        "closed-generics"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1

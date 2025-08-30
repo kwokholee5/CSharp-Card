@@ -17,22 +17,22 @@
         {
           "id": "a",
           "text": "Base Method\nBase Method",
-          "explanation": "Incorrect. Virtual methods enable polymorphism, so the derived class method is called."
+          "explanation": "Virtual methods enable polymorphism, so the derived class method is called."
         },
         {
           "id": "b",
           "text": "Derived Method\nDerived Method",
-          "explanation": "Correct! Virtual method dispatch calls the most derived implementation, even when accessed through base class reference."
+          "explanation": "Virtual method dispatch calls the most derived implementation, even when accessed through base class reference."
         },
         {
           "id": "c",
           "text": "Base Method\nDerived Method",
-          "explanation": "Incorrect. Both calls use the same polymorphic dispatch mechanism."
+          "explanation": "Both calls use the same polymorphic dispatch mechanism."
         },
         {
           "id": "d",
           "text": "Compilation error due to method hiding",
-          "explanation": "Incorrect. Override is the correct way to implement virtual method polymorphism."
+          "explanation": "Override is the correct way to implement virtual method polymorphism."
         }
       ],
       "correctAnswerIndex": 1,
@@ -44,7 +44,13 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 3,
-      "tags": ["oop", "inheritance", "polymorphism", "virtual", "override"],
+      "tags": [
+        "oop",
+        "inheritance",
+        "polymorphism",
+        "virtual",
+        "override"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -57,22 +63,22 @@
         {
           "id": "a",
           "text": "Concrete Implementation",
-          "explanation": "Correct! Abstract methods must be implemented in derived classes, and the implementation is called."
+          "explanation": "Abstract methods must be implemented in derived classes, and the implementation is called."
         },
         {
           "id": "b",
           "text": "Abstract Method",
-          "explanation": "Incorrect. Abstract methods have no implementation in the abstract class."
+          "explanation": "Abstract methods have no implementation in the abstract class."
         },
         {
           "id": "c",
           "text": "Runtime exception",
-          "explanation": "Incorrect. Properly implemented abstract methods work normally."
+          "explanation": "Properly implemented abstract methods work normally."
         },
         {
           "id": "d",
           "text": "Cannot instantiate abstract class",
-          "explanation": "Incorrect. While you can't instantiate abstract classes directly, you can instantiate concrete derived classes."
+          "explanation": "While you can't instantiate abstract classes directly, you can instantiate concrete derived classes."
         }
       ],
       "correctAnswerIndex": 0,
@@ -84,7 +90,12 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 4,
-      "tags": ["oop", "abstract-classes", "abstract-methods", "inheritance"],
+      "tags": [
+        "oop",
+        "abstract-classes",
+        "abstract-methods",
+        "inheritance"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -97,22 +108,22 @@
         {
           "id": "a",
           "text": "Interface Implementation\nInterface Implementation",
-          "explanation": "Correct! Both implicit and explicit interface access call the same implementation method."
+          "explanation": "Both implicit and explicit interface access call the same implementation method."
         },
         {
           "id": "b",
           "text": "Interface Implementation\nCompilation error",
-          "explanation": "Incorrect. Explicit interface implementation requires casting to interface type for access."
+          "explanation": "Explicit interface implementation requires casting to interface type for access."
         },
         {
           "id": "c",
           "text": "Compilation error\nInterface Implementation",
-          "explanation": "Incorrect. The first call works because the method is publicly accessible."
+          "explanation": "The first call works because the method is publicly accessible."
         },
         {
           "id": "d",
           "text": "Compilation error on both lines",
-          "explanation": "Incorrect. Interface implementation can be accessed through the implementing class."
+          "explanation": "Interface implementation can be accessed through the implementing class."
         }
       ],
       "correctAnswerIndex": 0,
@@ -124,7 +135,12 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 3,
-      "tags": ["oop", "interfaces", "implementation", "polymorphism"],
+      "tags": [
+        "oop",
+        "interfaces",
+        "implementation",
+        "polymorphism"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -137,22 +153,22 @@
         {
           "id": "a",
           "text": "Getting: 0\nSetting: 42\nGetting: 42",
-          "explanation": "Correct! Properties allow custom logic in getters and setters, and can access backing fields."
+          "explanation": "Properties allow custom logic in getters and setters, and can access backing fields."
         },
         {
           "id": "b",
           "text": "42",
-          "explanation": "Incorrect. The custom getter and setter include Console.WriteLine statements."
+          "explanation": "The custom getter and setter include Console.WriteLine statements."
         },
         {
           "id": "c",
           "text": "Getting: 42\nSetting: 42\nGetting: 42",
-          "explanation": "Incorrect. The initial value of the backing field is 0 (default for int)."
+          "explanation": "The initial value of the backing field is 0 (default for int)."
         },
         {
           "id": "d",
           "text": "Compilation error - circular reference",
-          "explanation": "Incorrect. Properties using backing fields don't create circular references."
+          "explanation": "Properties using backing fields don't create circular references."
         }
       ],
       "correctAnswerIndex": 0,
@@ -164,7 +180,13 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 3,
-      "tags": ["oop", "properties", "getters-setters", "backing-fields", "encapsulation"],
+      "tags": [
+        "oop",
+        "properties",
+        "getters-setters",
+        "backing-fields",
+        "encapsulation"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -177,22 +199,22 @@
         {
           "id": "a",
           "text": "Default Constructor\nParameterized Constructor\nName: John, Age: 0",
-          "explanation": "Incorrect. Constructor chaining calls the target constructor first."
+          "explanation": "Constructor chaining calls the target constructor first."
         },
         {
           "id": "b",
           "text": "Parameterized Constructor\nDefault Constructor\nName: John, Age: 25",
-          "explanation": "Incorrect. The this() call executes the parameterized constructor, not default."
+          "explanation": "The this() call executes the parameterized constructor, not default."
         },
         {
           "id": "c",
           "text": "Parameterized Constructor\nName: John, Age: 25",
-          "explanation": "Correct! Constructor chaining with this(name, 25) calls the two-parameter constructor directly."
+          "explanation": "Constructor chaining with this(name, 25) calls the two-parameter constructor directly."
         },
         {
           "id": "d",
           "text": "Compilation error - recursive constructor call",
-          "explanation": "Incorrect. This is valid constructor chaining, not recursion."
+          "explanation": "This is valid constructor chaining, not recursion."
         }
       ],
       "correctAnswerIndex": 2,
@@ -204,7 +226,12 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 4,
-      "tags": ["oop", "constructors", "constructor-chaining", "this-keyword"],
+      "tags": [
+        "oop",
+        "constructors",
+        "constructor-chaining",
+        "this-keyword"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -217,22 +244,22 @@
         {
           "id": "a",
           "text": "Base Method\nHidden Method",
-          "explanation": "Correct! Method hiding (new) depends on the reference type, while overriding (virtual/override) uses runtime type."
+          "explanation": "Method hiding (new) depends on the reference type, while overriding (virtual/override) uses runtime type."
         },
         {
           "id": "b",
           "text": "Hidden Method\nHidden Method",
-          "explanation": "Incorrect. Method hiding is compile-time binding based on reference type."
+          "explanation": "Method hiding is compile-time binding based on reference type."
         },
         {
           "id": "c",
           "text": "Base Method\nBase Method",
-          "explanation": "Incorrect. The second call uses the derived class reference which accesses the hidden method."
+          "explanation": "The second call uses the derived class reference which accesses the hidden method."
         },
         {
           "id": "d",
           "text": "Compilation warning about hiding",
-          "explanation": "Incorrect. While there may be warnings, the code compiles and runs."
+          "explanation": "While there may be warnings, the code compiles and runs."
         }
       ],
       "correctAnswerIndex": 0,
@@ -244,7 +271,13 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 4,
-      "tags": ["oop", "method-hiding", "new-keyword", "polymorphism", "inheritance"],
+      "tags": [
+        "oop",
+        "method-hiding",
+        "new-keyword",
+        "polymorphism",
+        "inheritance"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -257,22 +290,22 @@
         {
           "id": "a",
           "text": "Static Constructor\nInstance Constructor\nInstance Constructor",
-          "explanation": "Correct! Static constructor runs once before first use of the class, instance constructors run for each object creation."
+          "explanation": "Static constructor runs once before first use of the class, instance constructors run for each object creation."
         },
         {
           "id": "b",
           "text": "Static Constructor\nStatic Constructor\nInstance Constructor\nInstance Constructor",
-          "explanation": "Incorrect. Static constructor runs only once per application domain."
+          "explanation": "Static constructor runs only once per application domain."
         },
         {
           "id": "c",
           "text": "Instance Constructor\nInstance Constructor\nStatic Constructor",
-          "explanation": "Incorrect. Static constructor always runs before any instance constructor."
+          "explanation": "Static constructor always runs before any instance constructor."
         },
         {
           "id": "d",
           "text": "Compilation error - static constructors cannot have parameters",
-          "explanation": "Incorrect. Static constructors are parameterless by definition."
+          "explanation": "Static constructors are parameterless by definition."
         }
       ],
       "correctAnswerIndex": 0,
@@ -284,7 +317,12 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 4,
-      "tags": ["oop", "static-constructor", "constructors", "class-initialization"],
+      "tags": [
+        "oop",
+        "static-constructor",
+        "constructors",
+        "class-initialization"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -297,22 +335,22 @@
         {
           "id": "a",
           "text": "Sealed Implementation",
-          "explanation": "Correct! Sealed methods can still be called normally; they just prevent further overriding in derived classes."
+          "explanation": "Sealed methods can still be called normally; they just prevent further overriding in derived classes."
         },
         {
           "id": "b",
           "text": "Base Implementation",
-          "explanation": "Incorrect. The sealed method overrides the base virtual method."
+          "explanation": "The sealed method overrides the base virtual method."
         },
         {
           "id": "c",
           "text": "Compilation error - cannot override sealed method",
-          "explanation": "Incorrect. This code doesn't attempt to override the sealed method."
+          "explanation": "This code doesn't attempt to override the sealed method."
         },
         {
           "id": "d",
           "text": "Runtime exception",
-          "explanation": "Incorrect. Sealed methods work normally at runtime."
+          "explanation": "Sealed methods work normally at runtime."
         }
       ],
       "correctAnswerIndex": 0,
@@ -324,7 +362,13 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 4,
-      "tags": ["oop", "sealed", "inheritance", "method-sealing", "virtual-methods"],
+      "tags": [
+        "oop",
+        "sealed",
+        "inheritance",
+        "method-sealing",
+        "virtual-methods"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -337,22 +381,22 @@
         {
           "id": "a",
           "text": "Explicit Implementation\nPublic Implementation",
-          "explanation": "Correct! Explicit interface implementation is only accessible through interface reference, public method through class reference."
+          "explanation": "Explicit interface implementation is only accessible through interface reference, public method through class reference."
         },
         {
           "id": "b",
           "text": "Public Implementation\nPublic Implementation",
-          "explanation": "Incorrect. Interface reference calls the explicitly implemented method."
+          "explanation": "Interface reference calls the explicitly implemented method."
         },
         {
           "id": "c",
           "text": "Explicit Implementation\nExplicit Implementation",
-          "explanation": "Incorrect. Class reference calls the public method, not the explicit implementation."
+          "explanation": "Class reference calls the public method, not the explicit implementation."
         },
         {
           "id": "d",
           "text": "Compilation error - ambiguous method call",
-          "explanation": "Incorrect. Explicit interface implementation resolves this ambiguity clearly."
+          "explanation": "Explicit interface implementation resolves this ambiguity clearly."
         }
       ],
       "correctAnswerIndex": 0,
@@ -364,7 +408,12 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 5,
-      "tags": ["oop", "interfaces", "explicit-implementation", "interface-segregation"],
+      "tags": [
+        "oop",
+        "interfaces",
+        "explicit-implementation",
+        "interface-segregation"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -377,22 +426,22 @@
         {
           "id": "a",
           "text": "Base Implementation\nDerived Implementation",
-          "explanation": "Correct! The base keyword explicitly calls the base class version, bypassing virtual method dispatch."
+          "explanation": "The base keyword explicitly calls the base class version, bypassing virtual method dispatch."
         },
         {
           "id": "b",
           "text": "Derived Implementation\nDerived Implementation",
-          "explanation": "Incorrect. The base keyword forces the call to the base class implementation."
+          "explanation": "The base keyword forces the call to the base class implementation."
         },
         {
           "id": "c",
           "text": "Base Implementation\nBase Implementation",
-          "explanation": "Incorrect. The second call uses normal virtual dispatch to the derived implementation."
+          "explanation": "The second call uses normal virtual dispatch to the derived implementation."
         },
         {
           "id": "d",
           "text": "Compilation error - cannot access base in static context",
-          "explanation": "Incorrect. This is instance context, and base keyword usage is valid."
+          "explanation": "This is instance context, and base keyword usage is valid."
         }
       ],
       "correctAnswerIndex": 0,
@@ -404,7 +453,13 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 3,
-      "tags": ["oop", "base-keyword", "inheritance", "method-calls", "polymorphism"],
+      "tags": [
+        "oop",
+        "base-keyword",
+        "inheritance",
+        "method-calls",
+        "polymorphism"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -417,22 +472,22 @@
         {
           "id": "a",
           "text": "Public: 1\nInternal: 2\nProtected: 3",
-          "explanation": "Correct! All access modifiers work within the same assembly and inheritance hierarchy."
+          "explanation": "All access modifiers work within the same assembly and inheritance hierarchy."
         },
         {
           "id": "b",
           "text": "Public: 1\nCompilation error on internal access",
-          "explanation": "Incorrect. Internal members are accessible within the same assembly."
+          "explanation": "Internal members are accessible within the same assembly."
         },
         {
           "id": "c",
           "text": "Public: 1\nInternal: 2\nCompilation error on protected access",
-          "explanation": "Incorrect. Protected members are accessible in derived classes."
+          "explanation": "Protected members are accessible in derived classes."
         },
         {
           "id": "d",
           "text": "All compilation errors due to access restrictions",
-          "explanation": "Incorrect. This access pattern is valid within the same assembly and inheritance chain."
+          "explanation": "This access pattern is valid within the same assembly and inheritance chain."
         }
       ],
       "correctAnswerIndex": 0,
@@ -444,7 +499,13 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 3,
-      "tags": ["oop", "access-modifiers", "encapsulation", "visibility", "inheritance"],
+      "tags": [
+        "oop",
+        "access-modifiers",
+        "encapsulation",
+        "visibility",
+        "inheritance"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1
@@ -457,22 +518,22 @@
         {
           "id": "a",
           "text": "Partial Method Called\nOther Method Called",
-          "explanation": "Correct! Partial methods with implementations are called normally, and other methods work as expected."
+          "explanation": "Partial methods with implementations are called normally, and other methods work as expected."
         },
         {
           "id": "b",
           "text": "Other Method Called",
-          "explanation": "Incorrect. The partial method has an implementation, so it will be called."
+          "explanation": "The partial method has an implementation, so it will be called."
         },
         {
           "id": "c",
           "text": "Compilation error - partial method must be private",
-          "explanation": "Incorrect. In C# 9.0+, partial methods can have access modifiers and return types."
+          "explanation": "In C# 9.0+, partial methods can have access modifiers and return types."
         },
         {
           "id": "d",
           "text": "Runtime exception - partial method not implemented",
-          "explanation": "Incorrect. This partial method has an implementation."
+          "explanation": "This partial method has an implementation."
         }
       ],
       "correctAnswerIndex": 0,
@@ -484,7 +545,12 @@
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
       "difficulty": 4,
-      "tags": ["oop", "partial-classes", "partial-methods", "code-organization"],
+      "tags": [
+        "oop",
+        "partial-classes",
+        "partial-methods",
+        "code-organization"
+      ],
       "createdAt": "2025-01-29T15:30:00Z",
       "updatedAt": "2025-01-29T15:30:00Z",
       "version": 1

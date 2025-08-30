@@ -10,29 +10,29 @@
   },
   "questions": [
     {
-      "id": "csharp-001", 
+      "id": "csharp-001",
       "question": "What will be the output of this C# code that demonstrates string immutability?",
       "type": "multiple-choice",
       "options": [
         {
           "id": "a",
           "text": "Original: Hello World, Modified: Hello World",
-          "explanation": "Incorrect. The Append method on StringBuilder modifies the original value."
+          "explanation": "The Append method on StringBuilder modifies the original value."
         },
         {
           "id": "b",
           "text": "Original: Hello, Modified: Hello World",
-          "explanation": "Correct! String concatenation creates a new string object, leaving the original unchanged."
+          "explanation": "String concatenation creates a new string object, leaving the original unchanged."
         },
         {
           "id": "c",
           "text": "Original: Hello World, Modified: Hello",
-          "explanation": "Incorrect. This would be backwards."
+          "explanation": "This would be backwards."
         },
         {
           "id": "d",
           "text": "Compilation error",
-          "explanation": "Incorrect. This code compiles and runs successfully."
+          "explanation": "This code compiles and runs successfully."
         }
       ],
       "correctAnswerIndex": 1,
@@ -44,7 +44,11 @@
       "category": "basics",
       "subcategory": "data-types-mc",
       "difficulty": 2,
-      "tags": ["string", "immutability", "reference-types"],
+      "tags": [
+        "string",
+        "immutability",
+        "reference-types"
+      ],
       "createdAt": "2025-01-29T12:00:00Z",
       "updatedAt": "2025-01-29T12:00:00Z",
       "version": 1
@@ -57,22 +61,22 @@
         {
           "id": "a",
           "text": "x: 10, y: 20, arr1[0]: 10, arr2[0]: 20\nx: 10, y: 20, arr1[0]: 10, arr2[0]: 20",
-          "explanation": "Incorrect. Arrays are reference types, so both variables point to the same object."
+          "explanation": "Arrays are reference types, so both variables point to the same object."
         },
         {
           "id": "b",
           "text": "x: 10, y: 20, arr1[0]: 20, arr2[0]: 20\nx: 10, y: 20, arr1[0]: 20, arr2[0]: 20",
-          "explanation": "Correct! Value types are copied, but reference types share the same object in memory."
+          "explanation": "Value types are copied, but reference types share the same object in memory."
         },
         {
           "id": "c",
           "text": "x: 10, y: 20, arr1[0]: 10, arr2[0]: 10\nx: 10, y: 20, arr1[0]: 10, arr2[0]: 10",
-          "explanation": "Incorrect. This would mean reference types are copied and value types are shared."
+          "explanation": "This would mean reference types are copied and value types are shared."
         },
         {
           "id": "d",
           "text": "Compilation error",
-          "explanation": "Incorrect. This code compiles and runs successfully."
+          "explanation": "This code compiles and runs successfully."
         }
       ],
       "correctAnswerIndex": 1,
@@ -84,7 +88,12 @@
       "category": "basics",
       "subcategory": "data-types-mc",
       "difficulty": 3,
-      "tags": ["value-types", "reference-types", "memory", "arrays"],
+      "tags": [
+        "value-types",
+        "reference-types",
+        "memory",
+        "arrays"
+      ],
       "createdAt": "2025-01-29T12:00:00Z",
       "updatedAt": "2025-01-29T12:00:00Z",
       "version": 1
@@ -97,22 +106,22 @@
         {
           "id": "a",
           "text": "HasValue: False\nValue: 0\nResult: 100",
-          "explanation": "Correct! The nullable int has no value, so HasValue is false, accessing Value would throw but we use ??, and ?? returns 100."
+          "explanation": "The nullable int has no value, so HasValue is false, accessing Value would throw but we use ??, and ?? returns 100."
         },
         {
           "id": "b",
           "text": "HasValue: True\nValue: 0\nResult: 0",
-          "explanation": "Incorrect. When a nullable type is null, HasValue is false, not true."
+          "explanation": "When a nullable type is null, HasValue is false, not true."
         },
         {
           "id": "c",
           "text": "HasValue: False\nValue: null\nResult: 100",
-          "explanation": "Incorrect. You cannot print 'null' for Value - it would throw an exception."
+          "explanation": "You cannot print 'null' for Value - it would throw an exception."
         },
         {
           "id": "d",
           "text": "Runtime exception",
-          "explanation": "Incorrect. The null-coalescing operator prevents the exception."
+          "explanation": "The null-coalescing operator prevents the exception."
         }
       ],
       "correctAnswerIndex": 0,
@@ -124,7 +133,12 @@
       "category": "basics",
       "subcategory": "data-types-mc",
       "difficulty": 3,
-      "tags": ["nullable", "null-coalescing", "value-types", "operators"],
+      "tags": [
+        "nullable",
+        "null-coalescing",
+        "value-types",
+        "operators"
+      ],
       "createdAt": "2025-01-29T12:00:00Z",
       "updatedAt": "2025-01-29T12:00:00Z",
       "version": 1
@@ -137,22 +151,22 @@
         {
           "id": "a",
           "text": "obj type: Int32\nunboxed: 42\nare equal: True",
-          "explanation": "Correct! Boxing converts value type to object, unboxing retrieves it, and values are equal."
+          "explanation": "Boxing converts value type to object, unboxing retrieves it, and values are equal."
         },
         {
           "id": "b",
           "text": "obj type: System.Object\nunboxed: 42\nare equal: False",
-          "explanation": "Incorrect. The runtime type is still Int32, and values are equal."
+          "explanation": "The runtime type is still Int32, and values are equal."
         },
         {
           "id": "c",
           "text": "obj type: Int32\nunboxed: 42\nare equal: False",
-          "explanation": "Incorrect. The values are equal even though they're different instances."
+          "explanation": "The values are equal even though they're different instances."
         },
         {
           "id": "d",
           "text": "InvalidCastException during unboxing",
-          "explanation": "Incorrect. Unboxing to the correct type (int) works fine."
+          "explanation": "Unboxing to the correct type (int) works fine."
         }
       ],
       "correctAnswerIndex": 0,
@@ -164,7 +178,13 @@
       "category": "basics",
       "subcategory": "data-types-mc",
       "difficulty": 4,
-      "tags": ["boxing", "unboxing", "value-types", "object", "casting"],
+      "tags": [
+        "boxing",
+        "unboxing",
+        "value-types",
+        "object",
+        "casting"
+      ],
       "createdAt": "2025-01-29T12:00:00Z",
       "updatedAt": "2025-01-29T12:00:00Z",
       "version": 1
@@ -177,22 +197,22 @@
         {
           "id": "a",
           "text": "Double result: 0.3\nDecimal result: 0.3\nAre equal: True",
-          "explanation": "Incorrect. Double has floating-point precision issues that make it not exactly 0.3."
+          "explanation": "Double has floating-point precision issues that make it not exactly 0.3."
         },
         {
           "id": "b",
           "text": "Double result: 0.30000000000000004\nDecimal result: 0.3\nAre equal: False",
-          "explanation": "Correct! Double has floating-point precision issues, while decimal provides exact precision for financial calculations."
+          "explanation": "Double has floating-point precision issues, while decimal provides exact precision for financial calculations."
         },
         {
           "id": "c",
           "text": "Double result: 0.3\nDecimal result: 0.30000000000000004\nAre equal: False",
-          "explanation": "Incorrect. Decimal is the one with exact precision, not double."
+          "explanation": "Decimal is the one with exact precision, not double."
         },
         {
           "id": "d",
           "text": "Compilation error due to type mismatch",
-          "explanation": "Incorrect. The code compiles fine with proper type suffixes."
+          "explanation": "The code compiles fine with proper type suffixes."
         }
       ],
       "correctAnswerIndex": 1,
@@ -204,7 +224,13 @@
       "category": "basics",
       "subcategory": "data-types-mc",
       "difficulty": 3,
-      "tags": ["decimal", "double", "precision", "floating-point", "financial"],
+      "tags": [
+        "decimal",
+        "double",
+        "precision",
+        "floating-point",
+        "financial"
+      ],
       "createdAt": "2025-01-29T12:00:00Z",
       "updatedAt": "2025-01-29T12:00:00Z",
       "version": 1

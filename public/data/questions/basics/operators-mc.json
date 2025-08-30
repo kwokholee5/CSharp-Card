@@ -17,22 +17,22 @@
         {
           "id": "a",
           "text": "23",
-          "explanation": "Incorrect. This would be the result of left-to-right evaluation: ((2 + 3) * 4) + 3."
+          "explanation": "This would be the result of left-to-right evaluation: ((2 + 3) * 4) + 3."
         },
         {
           "id": "b",
           "text": "14",
-          "explanation": "Correct! Operator precedence: 2 + (3 * 4) + 3 = 2 + 12 + 3 = 17. Wait, let me recalculate: 2 + 12 + 3 = 17, not 14."
+          "explanation": "This would be the result if evaluated differently."
         },
         {
           "id": "c",
           "text": "17",
-          "explanation": "Correct! Multiplication has higher precedence: 2 + (3 * 4) + 3 = 2 + 12 + 3 = 17."
+          "explanation": "Multiplication has higher precedence: 2 + (3 * 4) + 3 = 2 + 12 + 3 = 17."
         },
         {
           "id": "d",
           "text": "35",
-          "explanation": "Incorrect. This would be (2 + 3 + 3) * 4 if addition had higher precedence."
+          "explanation": "This would be (2 + 3 + 3) * 4 if addition had higher precedence."
         }
       ],
       "correctAnswerIndex": 2,
@@ -44,7 +44,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 2,
-      "tags": ["operators", "precedence", "arithmetic", "multiplication", "addition"],
+      "tags": [
+        "operators",
+        "precedence",
+        "arithmetic",
+        "multiplication",
+        "addition"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -57,22 +63,22 @@
         {
           "id": "a",
           "text": "x: 5, y: 5",
-          "explanation": "Incorrect. Pre-increment (++x) increments x before returning the value."
+          "explanation": "Pre-increment (++x) increments x before returning the value."
         },
         {
           "id": "b",
           "text": "x: 6, y: 5",
-          "explanation": "Incorrect. Post-increment (x++) returns the original value, then increments."
+          "explanation": "Post-increment (x++) returns the original value, then increments."
         },
         {
           "id": "c",
           "text": "x: 6, y: 6",
-          "explanation": "Correct! Pre-increment increments x to 6, then assigns 6 to y."
+          "explanation": "Pre-increment increments x to 6, then assigns 6 to y."
         },
         {
           "id": "d",
           "text": "x: 5, y: 6",
-          "explanation": "Incorrect. This would be the result if using post-increment instead."
+          "explanation": "This would be the result if using post-increment instead."
         }
       ],
       "correctAnswerIndex": 2,
@@ -84,7 +90,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "increment", "pre-increment", "post-increment", "assignment"],
+      "tags": [
+        "operators",
+        "increment",
+        "pre-increment",
+        "post-increment",
+        "assignment"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -97,22 +109,22 @@
         {
           "id": "a",
           "text": "Method called\nResult: True",
-          "explanation": "Incorrect. Due to short-circuiting, the method is never called."
+          "explanation": "Due to short-circuiting, the method is never called."
         },
         {
           "id": "b",
           "text": "Result: True",
-          "explanation": "Correct! Short-circuiting means the second operand (method call) is not evaluated when the first is true."
+          "explanation": "Short-circuiting means the second operand (method call) is not evaluated when the first is true."
         },
         {
           "id": "c",
           "text": "Result: False",
-          "explanation": "Incorrect. true || anything is always true."
+          "explanation": "true || anything is always true."
         },
         {
           "id": "d",
           "text": "Compilation error",
-          "explanation": "Incorrect. This code compiles and runs successfully."
+          "explanation": "This code compiles and runs successfully."
         }
       ],
       "correctAnswerIndex": 1,
@@ -124,7 +136,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "logical-operators", "short-circuiting", "or-operator", "evaluation"],
+      "tags": [
+        "operators",
+        "logical-operators",
+        "short-circuiting",
+        "or-operator",
+        "evaluation"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -137,22 +155,22 @@
         {
           "id": "a",
           "text": "null\nHello World",
-          "explanation": "Incorrect. Null-coalescing provides a default value when the left operand is null."
+          "explanation": "Null-coalescing provides a default value when the left operand is null."
         },
         {
           "id": "b",
           "text": "Default\nHello World",
-          "explanation": "Correct! ?? returns the right operand when the left is null, otherwise returns the left operand."
+          "explanation": "?? returns the right operand when the left is null, otherwise returns the left operand."
         },
         {
           "id": "c",
           "text": "Default\nDefault",
-          "explanation": "Incorrect. The second variable is not null, so ?? returns the original value."
+          "explanation": "The second variable is not null, so ?? returns the original value."
         },
         {
           "id": "d",
           "text": "NullReferenceException",
-          "explanation": "Incorrect. The null-coalescing operator prevents null reference exceptions."
+          "explanation": "The null-coalescing operator prevents null reference exceptions."
         }
       ],
       "correctAnswerIndex": 1,
@@ -164,7 +182,12 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 2,
-      "tags": ["operators", "null-coalescing", "null-handling", "default-values"],
+      "tags": [
+        "operators",
+        "null-coalescing",
+        "null-handling",
+        "default-values"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -177,22 +200,22 @@
         {
           "id": "a",
           "text": "Even",
-          "explanation": "Incorrect. 7 % 2 equals 1, which is not 0, so the condition is false."
+          "explanation": "7 % 2 equals 1, which is not 0, so the condition is false."
         },
         {
           "id": "b",
           "text": "Odd",
-          "explanation": "Correct! 7 % 2 == 0 is false, so the ternary operator returns 'Odd'."
+          "explanation": "7 % 2 == 0 is false, so the ternary operator returns 'Odd'."
         },
         {
           "id": "c",
           "text": "7",
-          "explanation": "Incorrect. The ternary operator returns one of the two string values, not the number."
+          "explanation": "The ternary operator returns one of the two string values, not the number."
         },
         {
           "id": "d",
           "text": "true",
-          "explanation": "Incorrect. The ternary operator returns the string results, not the boolean condition."
+          "explanation": "The ternary operator returns the string results, not the boolean condition."
         }
       ],
       "correctAnswerIndex": 1,
@@ -204,7 +227,12 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 2,
-      "tags": ["operators", "ternary-operator", "conditional-operator", "modulo"],
+      "tags": [
+        "operators",
+        "ternary-operator",
+        "conditional-operator",
+        "modulo"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -217,22 +245,22 @@
         {
           "id": "a",
           "text": "15",
-          "explanation": "Incorrect. This would be the result of just addition, not the modulo operation."
+          "explanation": "This would be the result of just addition, not the modulo operation."
         },
         {
           "id": "b",
           "text": "5",
-          "explanation": "Correct! x %= 10 is equivalent to x = x % 10, so 15 % 10 = 5."
+          "explanation": "x %= 10 is equivalent to x = x % 10, so 15 % 10 = 5."
         },
         {
           "id": "c",
           "text": "1.5",
-          "explanation": "Incorrect. Modulo operator with integers returns an integer result."
+          "explanation": "Modulo operator with integers returns an integer result."
         },
         {
           "id": "d",
           "text": "0",
-          "explanation": "Incorrect. 15 divided by 10 has a remainder of 5, not 0."
+          "explanation": "15 divided by 10 has a remainder of 5, not 0."
         }
       ],
       "correctAnswerIndex": 1,
@@ -244,7 +272,12 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 2,
-      "tags": ["operators", "compound-assignment", "modulo", "assignment-operators"],
+      "tags": [
+        "operators",
+        "compound-assignment",
+        "modulo",
+        "assignment-operators"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -257,22 +290,22 @@
         {
           "id": "a",
           "text": "12",
-          "explanation": "Incorrect. This would be the result of addition, not bitwise AND."
+          "explanation": "This would be the result of addition, not bitwise AND."
         },
         {
           "id": "b",
           "text": "4",
-          "explanation": "Correct! Bitwise AND: 12 (1100) & 6 (0110) = 4 (0100)."
+          "explanation": "Bitwise AND: 12 (1100) & 6 (0110) = 4 (0100)."
         },
         {
           "id": "c",
           "text": "14",
-          "explanation": "Incorrect. This would be the result of bitwise OR: 12 | 6 = 14."
+          "explanation": "This would be the result of bitwise OR: 12 | 6 = 14."
         },
         {
           "id": "d",
           "text": "10",
-          "explanation": "Incorrect. This would be the result of bitwise XOR: 12 ^ 6 = 10."
+          "explanation": "This would be the result of bitwise XOR: 12 ^ 6 = 10."
         }
       ],
       "correctAnswerIndex": 1,
@@ -284,7 +317,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "bitwise", "bitwise-and", "binary", "bit-manipulation"],
+      "tags": [
+        "operators",
+        "bitwise",
+        "bitwise-and",
+        "binary",
+        "bit-manipulation"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -297,22 +336,22 @@
         {
           "id": "a",
           "text": "True\nHello",
-          "explanation": "Correct! 'is' checks type compatibility, 'as' performs safe casting, returning the object or null."
+          "explanation": "'is' checks type compatibility, 'as' performs safe casting, returning the object or null."
         },
         {
           "id": "b",
           "text": "False\nnull",
-          "explanation": "Incorrect. A string object is compatible with the object type."
+          "explanation": "A string object is compatible with the object type."
         },
         {
           "id": "c",
           "text": "True\nnull",
-          "explanation": "Incorrect. Since the object is actually a string, the 'as' cast succeeds."
+          "explanation": "Since the object is actually a string, the 'as' cast succeeds."
         },
         {
           "id": "d",
           "text": "InvalidCastException",
-          "explanation": "Incorrect. The 'as' operator returns null instead of throwing exceptions for invalid casts."
+          "explanation": "The 'as' operator returns null instead of throwing exceptions for invalid casts."
         }
       ],
       "correctAnswerIndex": 0,
@@ -324,7 +363,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "is-operator", "as-operator", "type-checking", "safe-casting"],
+      "tags": [
+        "operators",
+        "is-operator",
+        "as-operator",
+        "type-checking",
+        "safe-casting"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -337,22 +382,22 @@
         {
           "id": "a",
           "text": "15Hello",
-          "explanation": "Incorrect. String concatenation with + is left-associative, but type conversion affects the result."
+          "explanation": "String concatenation with + is left-associative, but type conversion affects the result."
         },
         {
           "id": "b",
           "text": "Hello15",
-          "explanation": "Incorrect. The numbers are added first due to operator precedence and left-to-right evaluation."
+          "explanation": "The numbers are added first due to operator precedence and left-to-right evaluation."
         },
         {
           "id": "c",
           "text": "Hello510",
-          "explanation": "Incorrect. Numeric addition occurs before string concatenation."
+          "explanation": "Numeric addition occurs before string concatenation."
         },
         {
           "id": "d",
           "text": "Hello15",
-          "explanation": "Correct! The expression is evaluated left-to-right: \"Hello\" + (5 + 10) = \"Hello\" + 15 = \"Hello15\"."
+          "explanation": "The expression is evaluated left-to-right: \"Hello\" + (5 + 10) = \"Hello\" + 15 = \"Hello15\"."
         }
       ],
       "correctAnswerIndex": 3,
@@ -364,7 +409,12 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "string-concatenation", "operator-precedence", "type-conversion"],
+      "tags": [
+        "operators",
+        "string-concatenation",
+        "operator-precedence",
+        "type-conversion"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -377,22 +427,22 @@
         {
           "id": "a",
           "text": "4",
-          "explanation": "Correct! sizeof(int) returns 4 bytes on most modern systems (.NET)."
+          "explanation": "sizeof(int) returns 4 bytes on most modern systems (.NET)."
         },
         {
           "id": "b",
           "text": "8",
-          "explanation": "Incorrect. This would be the size of long or double."
+          "explanation": "This would be the size of long or double."
         },
         {
           "id": "c",
           "text": "2",
-          "explanation": "Incorrect. This would be the size of short."
+          "explanation": "This would be the size of short."
         },
         {
           "id": "d",
           "text": "Compilation error - sizeof requires unsafe context",
-          "explanation": "Incorrect. sizeof works with built-in value types without unsafe context."
+          "explanation": "sizeof works with built-in value types without unsafe context."
         }
       ],
       "correctAnswerIndex": 0,
@@ -404,7 +454,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 2,
-      "tags": ["operators", "sizeof", "value-types", "memory", "bytes"],
+      "tags": [
+        "operators",
+        "sizeof",
+        "value-types",
+        "memory",
+        "bytes"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -417,22 +473,22 @@
         {
           "id": "a",
           "text": "5\nNullReferenceException",
-          "explanation": "Incorrect. The null-conditional operator prevents NullReferenceException."
+          "explanation": "The null-conditional operator prevents NullReferenceException."
         },
         {
           "id": "b",
           "text": "5\n",
-          "explanation": "Correct! Null-conditional operator returns null when the object is null, preventing exceptions."
+          "explanation": "Null-conditional operator returns null when the object is null, preventing exceptions."
         },
         {
           "id": "c",
           "text": "5\n0",
-          "explanation": "Incorrect. The null-conditional operator returns null (which prints as empty), not 0."
+          "explanation": "The null-conditional operator returns null (which prints as empty), not 0."
         },
         {
           "id": "d",
           "text": "Compilation error",
-          "explanation": "Incorrect. Null-conditional operator is valid C# syntax."
+          "explanation": "Null-conditional operator is valid C# syntax."
         }
       ],
       "correctAnswerIndex": 1,
@@ -444,7 +500,12 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "null-conditional", "null-safety", "member-access"],
+      "tags": [
+        "operators",
+        "null-conditional",
+        "null-safety",
+        "member-access"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -457,22 +518,22 @@
         {
           "id": "a",
           "text": "myVariable\nLength",
-          "explanation": "Correct! nameof returns the string name of the identifier, useful for refactoring-safe code."
+          "explanation": "nameof returns the string name of the identifier, useful for refactoring-safe code."
         },
         {
           "id": "b",
           "text": "System.String\nSystem.Int32",
-          "explanation": "Incorrect. nameof returns the identifier name, not the type."
+          "explanation": "nameof returns the identifier name, not the type."
         },
         {
           "id": "c",
           "text": "Hello\n5",
-          "explanation": "Incorrect. nameof returns the variable/member name, not its value."
+          "explanation": "nameof returns the variable/member name, not its value."
         },
         {
           "id": "d",
           "text": "Compilation error - unknown operator",
-          "explanation": "Incorrect. nameof is a valid operator introduced in C# 6.0."
+          "explanation": "nameof is a valid operator introduced in C# 6.0."
         }
       ],
       "correctAnswerIndex": 0,
@@ -484,7 +545,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "nameof", "compile-time", "refactoring", "identifiers"],
+      "tags": [
+        "operators",
+        "nameof",
+        "compile-time",
+        "refactoring",
+        "identifiers"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -497,22 +564,22 @@
         {
           "id": "a",
           "text": "2147483647\n-2147483648",
-          "explanation": "Incorrect. In checked context, overflow would throw an exception."
+          "explanation": "In checked context, overflow would throw an exception."
         },
         {
           "id": "b",
           "text": "OverflowException\n-2147483648",
-          "explanation": "Correct! Checked context throws on overflow, unchecked allows wraparound."
+          "explanation": "Checked context throws on overflow, unchecked allows wraparound."
         },
         {
           "id": "c",
           "text": "-2147483648\n-2147483648",
-          "explanation": "Incorrect. The checked context prevents silent overflow."
+          "explanation": "The checked context prevents silent overflow."
         },
         {
           "id": "d",
           "text": "OverflowException\nOverflowException",
-          "explanation": "Incorrect. Unchecked context allows overflow without exceptions."
+          "explanation": "Unchecked context allows overflow without exceptions."
         }
       ],
       "correctAnswerIndex": 1,
@@ -524,7 +591,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 4,
-      "tags": ["operators", "checked", "unchecked", "overflow", "exceptions"],
+      "tags": [
+        "operators",
+        "checked",
+        "unchecked",
+        "overflow",
+        "exceptions"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -537,22 +610,22 @@
         {
           "id": "a",
           "text": "Hello\nHello",
-          "explanation": "Incorrect. str2 was null, so ??= assigns 'Default' to it. The output should be Hello and Default."
+          "explanation": "str2 was null, so ??= assigns 'Default' to it. The output should be Hello and Default."
         },
         {
           "id": "b",
           "text": "Default\nDefault",
-          "explanation": "Incorrect. str1 was not null, so ??= doesn't change it. str1 remains 'Hello'."
+          "explanation": "str1 was not null, so ??= doesn't change it. str1 remains 'Hello'."
         },
         {
           "id": "c",
           "text": "Hello\nDefault",
-          "explanation": "Correct! str1 is not null so remains 'Hello', str2 was null so gets assigned 'Default'."
+          "explanation": "str1 is not null so remains 'Hello', str2 was null so gets assigned 'Default'."
         },
         {
           "id": "d",
           "text": "Compilation error - unknown operator",
-          "explanation": "Incorrect. ??= is valid C# syntax introduced in C# 8.0."
+          "explanation": "??= is valid C# syntax introduced in C# 8.0."
         }
       ],
       "correctAnswerIndex": 2,
@@ -564,7 +637,12 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "null-coalescing-assignment", "assignment", "null-handling"],
+      "tags": [
+        "operators",
+        "null-coalescing-assignment",
+        "assignment",
+        "null-handling"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -577,22 +655,22 @@
         {
           "id": "a",
           "text": "2, 3, 4",
-          "explanation": "Correct! Range [1..4] starts at index 1 (inclusive) and ends before index 4 (exclusive)."
+          "explanation": "Range [1..4] starts at index 1 (inclusive) and ends before index 4 (exclusive)."
         },
         {
           "id": "b",
           "text": "1, 2, 3, 4",
-          "explanation": "Incorrect. Range end index is exclusive, so index 4 is not included."
+          "explanation": "Range end index is exclusive, so index 4 is not included."
         },
         {
           "id": "c",
           "text": "2, 3, 4, 5",
-          "explanation": "Incorrect. The range is [1..4], which doesn't include index 4."
+          "explanation": "The range is [1..4], which doesn't include index 4."
         },
         {
           "id": "d",
           "text": "Compilation error - invalid syntax",
-          "explanation": "Incorrect. Range operator is valid C# 8.0+ syntax."
+          "explanation": "Range operator is valid C# 8.0+ syntax."
         }
       ],
       "correctAnswerIndex": 0,
@@ -604,7 +682,13 @@
       "category": "basics",
       "subcategory": "operators-mc",
       "difficulty": 3,
-      "tags": ["operators", "range-operator", "arrays", "slicing", "indexing"],
+      "tags": [
+        "operators",
+        "range-operator",
+        "arrays",
+        "slicing",
+        "indexing"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1

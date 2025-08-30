@@ -17,22 +17,22 @@
         {
           "id": "a",
           "text": "Start\nBefore await\nAfter await\nEnd",
-          "explanation": "Correct! Async methods execute synchronously until the first await, then continue asynchronously."
+          "explanation": "Async methods execute synchronously until the first await, then continue asynchronously."
         },
         {
           "id": "b",
           "text": "Start\nAfter await\nBefore await\nEnd",
-          "explanation": "Incorrect. Code before await executes before the await statement."
+          "explanation": "Code before await executes before the await statement."
         },
         {
           "id": "c",
           "text": "Start\nEnd\nBefore await\nAfter await",
-          "explanation": "Incorrect. The await keyword waits for completion before continuing."
+          "explanation": "The await keyword waits for completion before continuing."
         },
         {
           "id": "d",
           "text": "All lines execute simultaneously",
-          "explanation": "Incorrect. Async doesn't mean parallel; it's about non-blocking operations."
+          "explanation": "Async doesn't mean parallel; it's about non-blocking operations."
         }
       ],
       "correctAnswerIndex": 0,
@@ -44,7 +44,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 4,
-      "tags": ["async", "await", "task", "execution-order", "asynchronous"],
+      "tags": [
+        "async",
+        "await",
+        "task",
+        "execution-order",
+        "asynchronous"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -57,34 +63,40 @@
         {
           "id": "a",
           "text": "Await result: 42\nDeadlock on Task.Result",
-          "explanation": "Correct! In certain contexts (like WinForms/WPF), Task.Result can cause deadlocks while await doesn't."
+          "explanation": "In certain contexts (like WinForms/WPF), Task.Result can cause deadlocks while await doesn't."
         },
         {
           "id": "b",
           "text": "Await result: 42\nSync result: 42",
-          "explanation": "Incorrect. Task.Result can cause deadlocks in synchronization contexts."
+          "explanation": "Task.Result can cause deadlocks in synchronization contexts."
         },
         {
           "id": "c",
           "text": "Both cause deadlock",
-          "explanation": "Incorrect. Await properly handles synchronization context."
+          "explanation": "Await properly handles synchronization context."
         },
         {
           "id": "d",
           "text": "Both return 42 without issues",
-          "explanation": "Incorrect. Task.Result can block and cause deadlocks in GUI applications."
+          "explanation": "Task.Result can block and cause deadlocks in GUI applications."
         }
       ],
       "correctAnswerIndex": 0,
       "explanation": "Task.Result blocks the calling thread and can cause deadlocks in synchronization contexts. await properly yields control and doesn't block the UI thread.",
       "codeExample": {
         "language": "csharp",
-        "code": "// In a GUI application context:\npublic async Task SafeMethod()\n{\n    var result = await GetValueAsync();  // Safe - doesn't block\n    Console.WriteLine($\"Await result: {result}\");\n}\n\npublic void DeadlockMethod()\n{\n    var result = GetValueAsync().Result;  // Dangerous - can deadlock\n    Console.WriteLine($\"Sync result: {result}\");\n}\n\npublic async Task<int> GetValueAsync()\n{\n    await Task.Delay(100);\n    return 42;\n}"
+        "code": "// In a GUI application context:\npublic async Task SafeMethod()\n{\n    Console.WriteLine($\"Await result: {result}\");\n}\n\npublic void DeadlockMethod()\n{\n    Console.WriteLine($\"Sync result: {result}\");\n}\n\npublic async Task<int> GetValueAsync()\n{\n    await Task.Delay(100);\n    return 42;\n}"
       },
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "await", "task-result", "deadlock", "synchronization-context"],
+      "tags": [
+        "async",
+        "await",
+        "task-result",
+        "deadlock",
+        "synchronization-context"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -97,22 +109,22 @@
         {
           "id": "a",
           "text": "Without ConfigureAwait: UI Thread\nWith ConfigureAwait: ThreadPool Thread",
-          "explanation": "Correct! ConfigureAwait(false) prevents capturing the synchronization context, allowing continuation on any thread."
+          "explanation": "ConfigureAwait(false) prevents capturing the synchronization context, allowing continuation on any thread."
         },
         {
           "id": "b",
           "text": "Both execute on UI Thread",
-          "explanation": "Incorrect. ConfigureAwait(false) specifically avoids capturing the synchronization context."
+          "explanation": "ConfigureAwait(false) specifically avoids capturing the synchronization context."
         },
         {
           "id": "c",
           "text": "Both execute on ThreadPool Thread",
-          "explanation": "Incorrect. Without ConfigureAwait(false), await captures the synchronization context."
+          "explanation": "Without ConfigureAwait(false), await captures the synchronization context."
         },
         {
           "id": "d",
           "text": "No difference in thread behavior",
-          "explanation": "Incorrect. ConfigureAwait(false) significantly changes where continuation executes."
+          "explanation": "ConfigureAwait(false) significantly changes where continuation executes."
         }
       ],
       "correctAnswerIndex": 0,
@@ -124,7 +136,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "configureawait", "synchronization-context", "threading", "performance"],
+      "tags": [
+        "async",
+        "configureawait",
+        "synchronization-context",
+        "threading",
+        "performance"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -137,22 +155,22 @@
         {
           "id": "a",
           "text": "Exception caught: Test exception\nTask completed",
-          "explanation": "Correct! Exceptions in async methods are captured and can be caught when the task is awaited."
+          "explanation": "Exceptions in async methods are captured and can be caught when the task is awaited."
         },
         {
           "id": "b",
           "text": "Unhandled exception crashes application",
-          "explanation": "Incorrect. Async method exceptions are captured in the returned Task."
+          "explanation": "Async method exceptions are captured in the returned Task."
         },
         {
           "id": "c",
           "text": "Exception is silently ignored",
-          "explanation": "Incorrect. The exception is properly caught by the try-catch block."
+          "explanation": "The exception is properly caught by the try-catch block."
         },
         {
           "id": "d",
           "text": "Compilation error - cannot catch async exceptions",
-          "explanation": "Incorrect. Async exceptions can be caught with standard try-catch when awaited."
+          "explanation": "Async exceptions can be caught with standard try-catch when awaited."
         }
       ],
       "correctAnswerIndex": 0,
@@ -164,7 +182,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 5,
-      "tags": ["async", "await", "exception-handling", "task-exceptions", "try-catch"],
+      "tags": [
+        "async",
+        "await",
+        "exception-handling",
+        "task-exceptions",
+        "try-catch"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -177,22 +201,22 @@
         {
           "id": "a",
           "text": "Sequential: ~300ms\nParallel: ~100ms",
-          "explanation": "Correct! Task.WhenAll runs tasks concurrently, while sequential await runs them one after another."
+          "explanation": "Task.WhenAll runs tasks concurrently, while sequential await runs them one after another."
         },
         {
           "id": "b",
           "text": "Sequential: ~100ms\nParallel: ~300ms",
-          "explanation": "Incorrect. Sequential execution takes longer than parallel execution."
+          "explanation": "Sequential execution takes longer than parallel execution."
         },
         {
           "id": "c",
           "text": "Both take ~100ms",
-          "explanation": "Incorrect. Sequential execution waits for each task to complete before starting the next."
+          "explanation": "Sequential execution waits for each task to complete before starting the next."
         },
         {
           "id": "d",
           "text": "Both take ~300ms",
-          "explanation": "Incorrect. Parallel execution with Task.WhenAll is much faster."
+          "explanation": "Parallel execution with Task.WhenAll is much faster."
         }
       ],
       "correctAnswerIndex": 0,
@@ -204,7 +228,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 5,
-      "tags": ["async", "task-whenall", "parallel-execution", "performance", "concurrency"],
+      "tags": [
+        "async",
+        "task-whenall",
+        "parallel-execution",
+        "performance",
+        "concurrency"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -217,22 +247,22 @@
         {
           "id": "a",
           "text": "Async Task: Exception caught\nAsync void: Unhandled exception",
-          "explanation": "Correct! Async void exceptions cannot be caught by the caller and become unhandled exceptions."
+          "explanation": "Async void exceptions cannot be caught by the caller and become unhandled exceptions."
         },
         {
           "id": "b",
           "text": "Both exceptions are caught properly",
-          "explanation": "Incorrect. Async void methods don't return a Task to capture exceptions."
+          "explanation": "Async void methods don't return a Task to capture exceptions."
         },
         {
           "id": "c",
           "text": "Both cause unhandled exceptions",
-          "explanation": "Incorrect. Async Task methods return a Task that can be awaited and exceptions caught."
+          "explanation": "Async Task methods return a Task that can be awaited and exceptions caught."
         },
         {
           "id": "d",
           "text": "No difference in exception behavior",
-          "explanation": "Incorrect. There's a significant difference in how exceptions are handled."
+          "explanation": "There's a significant difference in how exceptions are handled."
         }
       ],
       "correctAnswerIndex": 0,
@@ -244,7 +274,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "async-void", "async-task", "exception-handling", "unhandled-exceptions"],
+      "tags": [
+        "async",
+        "async-void",
+        "async-task",
+        "exception-handling",
+        "unhandled-exceptions"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -257,22 +293,22 @@
         {
           "id": "a",
           "text": "Starting operation\nOperation was cancelled",
-          "explanation": "Correct! CancellationToken allows cooperative cancellation of async operations."
+          "explanation": "CancellationToken allows cooperative cancellation of async operations."
         },
         {
           "id": "b",
           "text": "Starting operation\nOperation completed",
-          "explanation": "Incorrect. The cancellation token is triggered before the operation completes."
+          "explanation": "The cancellation token is triggered before the operation completes."
         },
         {
           "id": "c",
           "text": "Operation runs without cancellation",
-          "explanation": "Incorrect. The CancelAfter method triggers cancellation."
+          "explanation": "The CancelAfter method triggers cancellation."
         },
         {
           "id": "d",
           "text": "Immediate cancellation without starting",
-          "explanation": "Incorrect. The operation starts before cancellation is triggered."
+          "explanation": "The operation starts before cancellation is triggered."
         }
       ],
       "correctAnswerIndex": 0,
@@ -284,7 +320,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 5,
-      "tags": ["async", "cancellationtoken", "cancellation", "operationcanceledexception", "cooperative-cancellation"],
+      "tags": [
+        "async",
+        "cancellationtoken",
+        "cancellation",
+        "operationcanceledexception",
+        "cooperative-cancellation"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -297,22 +339,22 @@
         {
           "id": "a",
           "text": "Async method: UI Thread\nTask.Run: ThreadPool Thread",
-          "explanation": "Correct! Async methods run on the calling thread until first await, Task.Run immediately switches to thread pool."
+          "explanation": "Async methods run on the calling thread until first await, Task.Run immediately switches to thread pool."
         },
         {
           "id": "b",
           "text": "Both run on UI Thread",
-          "explanation": "Incorrect. Task.Run specifically schedules work on the thread pool."
+          "explanation": "Task.Run specifically schedules work on the thread pool."
         },
         {
           "id": "c",
           "text": "Both run on ThreadPool Thread",
-          "explanation": "Incorrect. Async methods start on the calling thread."
+          "explanation": "Async methods start on the calling thread."
         },
         {
           "id": "d",
           "text": "Thread assignment is random",
-          "explanation": "Incorrect. Thread assignment follows specific rules for async methods and Task.Run."
+          "explanation": "Thread assignment follows specific rules for async methods and Task.Run."
         }
       ],
       "correctAnswerIndex": 0,
@@ -324,7 +366,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 5,
-      "tags": ["async", "task-run", "threading", "ui-thread", "thread-pool"],
+      "tags": [
+        "async",
+        "task-run",
+        "threading",
+        "ui-thread",
+        "thread-pool"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -337,22 +385,22 @@
         {
           "id": "a",
           "text": "ValueTask: No allocation when result is available\nTask: Always allocates Task object",
-          "explanation": "Correct! ValueTask avoids allocation when the result is immediately available, improving performance for hot paths."
+          "explanation": "ValueTask avoids allocation when the result is immediately available, improving performance for hot paths."
         },
         {
           "id": "b",
           "text": "No performance difference between them",
-          "explanation": "Incorrect. ValueTask can avoid allocations in synchronous completion scenarios."
+          "explanation": "ValueTask can avoid allocations in synchronous completion scenarios."
         },
         {
           "id": "c",
           "text": "Task is always faster than ValueTask",
-          "explanation": "Incorrect. ValueTask can be more efficient when results are cached or immediately available."
+          "explanation": "ValueTask can be more efficient when results are cached or immediately available."
         },
         {
           "id": "d",
           "text": "ValueTask always requires more memory",
-          "explanation": "Incorrect. ValueTask is designed to reduce allocations in specific scenarios."
+          "explanation": "ValueTask is designed to reduce allocations in specific scenarios."
         }
       ],
       "correctAnswerIndex": 0,
@@ -364,7 +412,14 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "valuetask", "task", "performance", "allocations", "caching"],
+      "tags": [
+        "async",
+        "valuetask",
+        "task",
+        "performance",
+        "allocations",
+        "caching"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -377,22 +432,22 @@
         {
           "id": "a",
           "text": "Item: 0\nItem: 1\nItem: 2",
-          "explanation": "Correct! IAsyncEnumerable allows asynchronous iteration with await foreach, yielding items one at a time."
+          "explanation": "IAsyncEnumerable allows asynchronous iteration with await foreach, yielding items one at a time."
         },
         {
           "id": "b",
           "text": "All items are yielded simultaneously",
-          "explanation": "Incorrect. Async enumerable yields items one at a time as they become available."
+          "explanation": "Async enumerable yields items one at a time as they become available."
         },
         {
           "id": "c",
           "text": "Compilation error - invalid syntax",
-          "explanation": "Incorrect. IAsyncEnumerable and await foreach are valid C# 8.0+ features."
+          "explanation": "IAsyncEnumerable and await foreach are valid C# 8.0+ features."
         },
         {
           "id": "d",
           "text": "No output due to lazy evaluation",
-          "explanation": "Incorrect. The await foreach loop triggers enumeration and consumption."
+          "explanation": "The await foreach loop triggers enumeration and consumption."
         }
       ],
       "correctAnswerIndex": 0,
@@ -404,7 +459,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "iasyncenumerable", "await-foreach", "yield-return", "streaming"],
+      "tags": [
+        "async",
+        "iasyncenumerable",
+        "await-foreach",
+        "yield-return",
+        "streaming"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -417,22 +478,22 @@
         {
           "id": "a",
           "text": "Outer method start\nLocal function: 42\nOuter method end",
-          "explanation": "Correct! Local functions can be async and are useful for async helper methods within a method scope."
+          "explanation": "Local functions can be async and are useful for async helper methods within a method scope."
         },
         {
           "id": "b",
           "text": "Local function executes before outer method",
-          "explanation": "Incorrect. Local functions execute when called, following normal execution flow."
+          "explanation": "Local functions execute when called, following normal execution flow."
         },
         {
           "id": "c",
           "text": "Compilation error - local functions cannot be async",
-          "explanation": "Incorrect. Local functions can be async since C# 7.0."
+          "explanation": "Local functions can be async since C# 7.0."
         },
         {
           "id": "d",
           "text": "Deadlock due to nested async calls",
-          "explanation": "Incorrect. Properly awaited local functions don't cause deadlocks."
+          "explanation": "Properly awaited local functions don't cause deadlocks."
         }
       ],
       "correctAnswerIndex": 0,
@@ -444,7 +505,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 5,
-      "tags": ["async", "local-functions", "nested-async", "helper-methods", "scope"],
+      "tags": [
+        "async",
+        "local-functions",
+        "nested-async",
+        "helper-methods",
+        "scope"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -457,22 +524,22 @@
         {
           "id": "a",
           "text": "Before yield\nAfter yield\nMain continues",
-          "explanation": "Correct! Task.Yield() forces the method to yield control and continue asynchronously."
+          "explanation": "Task.Yield() forces the method to yield control and continue asynchronously."
         },
         {
           "id": "b",
           "text": "All lines execute synchronously",
-          "explanation": "Incorrect. Task.Yield() forces asynchronous continuation."
+          "explanation": "Task.Yield() forces asynchronous continuation."
         },
         {
           "id": "c",
           "text": "Main continues before 'After yield'",
-          "explanation": "Incorrect. Task.Yield() doesn't change the awaiting behavior."
+          "explanation": "Task.Yield() doesn't change the awaiting behavior."
         },
         {
           "id": "d",
           "text": "Exception thrown by Task.Yield()",
-          "explanation": "Incorrect. Task.Yield() is a valid operation that returns a completed task."
+          "explanation": "Task.Yield() is a valid operation that returns a completed task."
         }
       ],
       "correctAnswerIndex": 0,
@@ -484,7 +551,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 5,
-      "tags": ["async", "task-yield", "yielding-control", "asynchronous-continuation", "thread-pool"],
+      "tags": [
+        "async",
+        "task-yield",
+        "yielding-control",
+        "asynchronous-continuation",
+        "thread-pool"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -497,22 +570,22 @@
         {
           "id": "a",
           "text": "Worker 1 started\nWorker 2 started\nWorker 1 completed\nWorker 2 completed\nWorker 3 started\nWorker 3 completed",
-          "explanation": "Correct! SemaphoreSlim limits concurrent access. Only 2 workers run simultaneously due to the semaphore count of 2."
+          "explanation": "SemaphoreSlim limits concurrent access. Only 2 workers run simultaneously due to the semaphore count of 2."
         },
         {
           "id": "b",
           "text": "All workers start simultaneously",
-          "explanation": "Incorrect. SemaphoreSlim limits the number of concurrent operations."
+          "explanation": "SemaphoreSlim limits the number of concurrent operations."
         },
         {
           "id": "c",
           "text": "Workers execute sequentially one by one",
-          "explanation": "Incorrect. SemaphoreSlim allows up to the specified count (2) to execute concurrently."
+          "explanation": "SemaphoreSlim allows up to the specified count (2) to execute concurrently."
         },
         {
           "id": "d",
           "text": "Deadlock occurs with semaphore",
-          "explanation": "Incorrect. SemaphoreSlim is properly released, preventing deadlock."
+          "explanation": "SemaphoreSlim is properly released, preventing deadlock."
         }
       ],
       "correctAnswerIndex": 0,
@@ -524,7 +597,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "semaphoreslim", "concurrency-control", "resource-limiting", "synchronization"],
+      "tags": [
+        "async",
+        "semaphoreslim",
+        "concurrency-control",
+        "resource-limiting",
+        "synchronization"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -537,22 +616,22 @@
         {
           "id": "a",
           "text": "Waiting for result...\nResult received: Manual completion",
-          "explanation": "Correct! TaskCompletionSource allows manual control over task completion, useful for bridging callback-based APIs."
+          "explanation": "TaskCompletionSource allows manual control over task completion, useful for bridging callback-based APIs."
         },
         {
           "id": "b",
           "text": "Task never completes",
-          "explanation": "Incorrect. The SetResult call completes the task."
+          "explanation": "The SetResult call completes the task."
         },
         {
           "id": "c",
           "text": "Exception thrown during task creation",
-          "explanation": "Incorrect. TaskCompletionSource creates tasks that can be manually completed."
+          "explanation": "TaskCompletionSource creates tasks that can be manually completed."
         },
         {
           "id": "d",
           "text": "Immediate completion without waiting",
-          "explanation": "Incorrect. The task waits until SetResult is called."
+          "explanation": "The task waits until SetResult is called."
         }
       ],
       "correctAnswerIndex": 0,
@@ -564,7 +643,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "taskcompletionsource", "manual-completion", "callback-bridge", "custom-tasks"],
+      "tags": [
+        "async",
+        "taskcompletionsource",
+        "manual-completion",
+        "callback-bridge",
+        "custom-tasks"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1
@@ -577,22 +662,22 @@
         {
           "id": "a",
           "text": "Resource created\nAsync cleanup completed\nUsing block exited",
-          "explanation": "Correct! IAsyncDisposable enables asynchronous cleanup with 'await using' statement."
+          "explanation": "IAsyncDisposable enables asynchronous cleanup with 'await using' statement."
         },
         {
           "id": "b",
           "text": "Synchronous disposal occurs",
-          "explanation": "Incorrect. IAsyncDisposable performs asynchronous disposal operations."
+          "explanation": "IAsyncDisposable performs asynchronous disposal operations."
         },
         {
           "id": "c",
           "text": "Compilation error - invalid await using",
-          "explanation": "Incorrect. 'await using' is valid C# 8.0+ syntax for async disposal."
+          "explanation": "'await using' is valid C# 8.0+ syntax for async disposal."
         },
         {
           "id": "d",
           "text": "Resource is not properly disposed",
-          "explanation": "Incorrect. The 'await using' ensures proper asynchronous disposal."
+          "explanation": "The 'await using' ensures proper asynchronous disposal."
         }
       ],
       "correctAnswerIndex": 0,
@@ -604,7 +689,13 @@
       "category": "advanced",
       "subcategory": "async-await-mc",
       "difficulty": 6,
-      "tags": ["async", "iasyncdisposable", "await-using", "async-disposal", "resource-management"],
+      "tags": [
+        "async",
+        "iasyncdisposable",
+        "await-using",
+        "async-disposal",
+        "resource-management"
+      ],
       "createdAt": "2025-01-29T16:00:00Z",
       "updatedAt": "2025-01-29T16:00:00Z",
       "version": 1

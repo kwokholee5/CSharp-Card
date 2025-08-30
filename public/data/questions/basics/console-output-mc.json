@@ -17,22 +17,22 @@
         {
           "id": "a",
           "text": "Console.WriteLine() prints text, Console.Write() prints numbers only",
-          "explanation": "Incorrect. Both methods can print any object type."
+          "explanation": "Both methods can print any object type."
         },
         {
           "id": "b",
           "text": "Console.WriteLine() adds a newline character after output, Console.Write() does not",
-          "explanation": "Correct! WriteLine adds a line terminator (\\r\\n on Windows), Write outputs without it."
+          "explanation": "WriteLine adds a line terminator (\\r\\n on Windows), Write outputs without it."
         },
         {
           "id": "c",
           "text": "Console.WriteLine() is faster than Console.Write()",
-          "explanation": "Incorrect. Performance difference is negligible and depends on buffering."
+          "explanation": "Performance difference is negligible and depends on buffering."
         },
         {
           "id": "d",
           "text": "There is no functional difference between them",
-          "explanation": "Incorrect. The key difference is the automatic line terminator in WriteLine."
+          "explanation": "The key difference is the automatic line terminator in WriteLine."
         }
       ],
       "correctAnswerIndex": 1,
@@ -44,7 +44,13 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 1,
-      "tags": ["console", "output", "writeline", "write", "newline"],
+      "tags": [
+        "console",
+        "output",
+        "writeline",
+        "write",
+        "newline"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -57,22 +63,22 @@
         {
           "id": "a",
           "text": "The value is {value}",
-          "explanation": "Incorrect. This would be the output without the $ prefix."
+          "explanation": "This would be the output without the $ prefix."
         },
         {
           "id": "b",
           "text": "The value is 42",
-          "explanation": "Correct! The $ prefix enables string interpolation, replacing {value} with the variable's value."
+          "explanation": "The $ prefix enables string interpolation, replacing {value} with the variable's value."
         },
         {
           "id": "c",
           "text": "Compilation error",
-          "explanation": "Incorrect. String interpolation syntax is valid C#."
+          "explanation": "String interpolation syntax is valid C#."
         },
         {
           "id": "d",
           "text": "The value is System.Int32",
-          "explanation": "Incorrect. String interpolation calls ToString() on the value, not GetType()."
+          "explanation": "String interpolation calls ToString() on the value, not GetType()."
         }
       ],
       "correctAnswerIndex": 1,
@@ -84,7 +90,12 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 2,
-      "tags": ["console", "string-interpolation", "writeline", "variables"],
+      "tags": [
+        "console",
+        "string-interpolation",
+        "writeline",
+        "variables"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -97,22 +108,22 @@
         {
           "id": "a",
           "text": "Name: John, Age: 25, Score: 95.50",
-          "explanation": "Correct! Composite formatting uses {index:format} syntax with positional arguments."
+          "explanation": "Composite formatting uses {index:format} syntax with positional arguments."
         },
         {
           "id": "b",
           "text": "Name: {0}, Age: {1}, Score: {2:F2}",
-          "explanation": "Incorrect. This would be the literal string without argument substitution."
+          "explanation": "This would be the literal string without argument substitution."
         },
         {
           "id": "c",
           "text": "Name: John, Age: 25, Score: 95.5",
-          "explanation": "Incorrect. The F2 format specifier ensures exactly 2 decimal places."
+          "explanation": "The F2 format specifier ensures exactly 2 decimal places."
         },
         {
           "id": "d",
           "text": "FormatException at runtime",
-          "explanation": "Incorrect. The format string and arguments are properly matched."
+          "explanation": "The format string and arguments are properly matched."
         }
       ],
       "correctAnswerIndex": 0,
@@ -124,7 +135,12 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 3,
-      "tags": ["console", "composite-formatting", "format-strings", "placeholders"],
+      "tags": [
+        "console",
+        "composite-formatting",
+        "format-strings",
+        "placeholders"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -137,22 +153,22 @@
         {
           "id": "a",
           "text": "Prints 'null'",
-          "explanation": "Incorrect. Console.WriteLine doesn't print the literal string 'null'."
+          "explanation": "Console.WriteLine doesn't print the literal string 'null'."
         },
         {
           "id": "b",
           "text": "Prints an empty line",
-          "explanation": "Correct! Console.WriteLine(null) is equivalent to Console.WriteLine() with no arguments."
+          "explanation": "Console.WriteLine(null) is equivalent to Console.WriteLine() with no arguments."
         },
         {
           "id": "c",
           "text": "Throws NullReferenceException",
-          "explanation": "Incorrect. Console.WriteLine handles null gracefully."
+          "explanation": "Console.WriteLine handles null gracefully."
         },
         {
           "id": "d",
           "text": "Throws ArgumentNullException",
-          "explanation": "Incorrect. Console.WriteLine accepts null as a valid argument."
+          "explanation": "Console.WriteLine accepts null as a valid argument."
         }
       ],
       "correctAnswerIndex": 1,
@@ -164,7 +180,12 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 2,
-      "tags": ["console", "null-handling", "writeline", "empty-line"],
+      "tags": [
+        "console",
+        "null-handling",
+        "writeline",
+        "empty-line"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -177,22 +198,22 @@
         {
           "id": "a",
           "text": "1, 2, 3, 4, 5",
-          "explanation": "Incorrect. Arrays don't override ToString() to display elements."
+          "explanation": "Arrays don't override ToString() to display elements."
         },
         {
           "id": "b",
           "text": "System.Int32[]",
-          "explanation": "Correct! Array.ToString() returns the type name, not the element values."
+          "explanation": "Array.ToString() returns the type name, not the element values."
         },
         {
           "id": "c",
           "text": "[1, 2, 3, 4, 5]",
-          "explanation": "Incorrect. This would require string.Join() or custom formatting."
+          "explanation": "This would require string.Join() or custom formatting."
         },
         {
           "id": "d",
           "text": "Runtime exception",
-          "explanation": "Incorrect. The code runs successfully, just doesn't show array contents."
+          "explanation": "The code runs successfully, just doesn't show array contents."
         }
       ],
       "correctAnswerIndex": 1,
@@ -204,7 +225,12 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 3,
-      "tags": ["console", "arrays", "tostring", "object-behavior"],
+      "tags": [
+        "console",
+        "arrays",
+        "tostring",
+        "object-behavior"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -216,35 +242,41 @@
       "options": [
         {
           "id": "a",
-          "text": "Hello\\nWorld\\tTab",
-          "explanation": "Incorrect. Escape sequences are interpreted, not printed literally."
+          "text": "Hello\nWorld\tTab",
+          "explanation": "Escape sequences are interpreted, not printed literally."
         },
         {
           "id": "b",
           "text": "Hello\nWorld\tTab",
-          "explanation": "Correct! \\n creates a newline and \\t creates a tab character."
+          "explanation": "\\n creates a newline and \\t creates a tab character."
         },
         {
           "id": "c",
           "text": "HelloWorld    Tab",
-          "explanation": "Incorrect. This doesn't show the newline effect."
+          "explanation": "This doesn't show the newline effect."
         },
         {
           "id": "d",
           "text": "Compilation error due to invalid escape sequences",
-          "explanation": "Incorrect. \\n and \\t are valid escape sequences."
+          "explanation": "\\n and \\t are valid escape sequences."
         }
       ],
       "correctAnswerIndex": 1,
       "explanation": "Escape sequences in string literals are processed at compile time. \\n becomes a newline character, \\t becomes a tab character.",
       "codeExample": {
         "language": "csharp",
-        "code": "Console.WriteLine(\"Hello\\nWorld\\tTab\");\n// Equivalent to:\nConsole.WriteLine(\"Hello\");\nConsole.Write(\"World\");\nConsole.Write(\"\\t\");\nConsole.WriteLine(\"Tab\");"
+        "code": "Console.WriteLine(\"Hello\\nWorld\\tTab\");\nConsole.WriteLine(\"Hello\");\nConsole.Write(\"World\");\nConsole.Write(\"\\t\");\nConsole.WriteLine(\"Tab\");"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 2,
-      "tags": ["console", "escape-sequences", "newline", "tab", "strings"],
+      "tags": [
+        "console",
+        "escape-sequences",
+        "newline",
+        "tab",
+        "strings"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -257,22 +289,22 @@
         {
           "id": "a",
           "text": "True",
-          "explanation": "Correct! Boolean.ToString() returns 'True' for true values (note the capital T)."
+          "explanation": "Boolean.ToString() returns 'True' for true values (note the capital T)."
         },
         {
           "id": "b",
           "text": "true",
-          "explanation": "Incorrect. C# Boolean.ToString() uses PascalCase, not lowercase."
+          "explanation": "C# Boolean.ToString() uses PascalCase, not lowercase."
         },
         {
           "id": "c",
           "text": "1",
-          "explanation": "Incorrect. C# doesn't convert bool to int for string representation."
+          "explanation": "C# doesn't convert bool to int for string representation."
         },
         {
           "id": "d",
           "text": "YES",
-          "explanation": "Incorrect. Boolean.ToString() uses 'True'/'False', not other representations."
+          "explanation": "Boolean.ToString() uses 'True'/'False', not other representations."
         }
       ],
       "correctAnswerIndex": 0,
@@ -284,7 +316,12 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 2,
-      "tags": ["console", "boolean", "tostring", "true-false"],
+      "tags": [
+        "console",
+        "boolean",
+        "tostring",
+        "true-false"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -297,22 +334,22 @@
         {
           "id": "a",
           "text": "42System.Int32",
-          "explanation": "Incorrect. The compiler chooses the most specific overload."
+          "explanation": "The compiler chooses the most specific overload."
         },
         {
           "id": "b",
           "text": "42",
-          "explanation": "Correct! WriteLine(int) is more specific than WriteLine(object), so it's chosen."
+          "explanation": "WriteLine(int) is more specific than WriteLine(object), so it's chosen."
         },
         {
           "id": "c",
           "text": "Compilation error due to ambiguous method call",
-          "explanation": "Incorrect. The compiler can resolve this based on parameter types."
+          "explanation": "The compiler can resolve this based on parameter types."
         },
         {
           "id": "d",
           "text": "System.Int32",
-          "explanation": "Incorrect. This would happen if only WriteLine(object) existed."
+          "explanation": "This would happen if only WriteLine(object) existed."
         }
       ],
       "correctAnswerIndex": 1,
@@ -324,7 +361,12 @@
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 3,
-      "tags": ["console", "method-overloads", "overload-resolution", "specificity"],
+      "tags": [
+        "console",
+        "method-overloads",
+        "overload-resolution",
+        "specificity"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -337,34 +379,40 @@
         {
           "id": "a",
           "text": "$1,234.57",
-          "explanation": "Correct! The C format specifier displays currency format with the current culture's currency symbol."
+          "explanation": "The C format specifier displays currency format with the current culture's currency symbol."
         },
         {
           "id": "b",
           "text": "1234.57C",
-          "explanation": "Incorrect. The C format doesn't append 'C' to the number."
+          "explanation": "The C format doesn't append 'C' to the number."
         },
         {
           "id": "c",
           "text": "1,234.57",
-          "explanation": "Incorrect. This would be the N (Number) format, not C (Currency)."
+          "explanation": "This would be the N (Number) format, not C (Currency)."
         },
         {
           "id": "d",
           "text": "1234.567",
-          "explanation": "Incorrect. The C format adds currency symbol and proper grouping."
+          "explanation": "The C format adds currency symbol and proper grouping."
         }
       ],
       "correctAnswerIndex": 0,
       "explanation": "The C format specifier formats numbers as currency using the current culture's currency format (symbol, decimal places, grouping).",
       "codeExample": {
         "language": "csharp",
-        "code": "double price = 1234.567;\nConsole.WriteLine($\"{price:C}\");\nConsole.WriteLine(price.ToString(\"C\"));\n// Both produce the same result"
+        "code": "double price = 1234.567;\nConsole.WriteLine($\"{price:C}\");\nConsole.WriteLine(price.ToString(\"C\"));"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 3,
-      "tags": ["console", "numeric-formatting", "currency", "culture", "format-specifiers"],
+      "tags": [
+        "console",
+        "numeric-formatting",
+        "currency",
+        "culture",
+        "format-specifiers"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
@@ -377,34 +425,40 @@
         {
           "id": "a",
           "text": "Throws InvalidOperationException",
-          "explanation": "Incorrect. Console.WriteLine handles redirection gracefully."
+          "explanation": "Console.WriteLine handles redirection gracefully."
         },
         {
           "id": "b",
           "text": "Output is buffered differently and sent to the redirect target",
-          "explanation": "Correct! When redirected, console output may be fully buffered instead of line-buffered."
+          "explanation": "When redirected, console output may be fully buffered instead of line-buffered."
         },
         {
           "id": "c",
           "text": "No output is produced",
-          "explanation": "Incorrect. Output is still produced, just sent to the redirect target."
+          "explanation": "Output is still produced, just sent to the redirect target."
         },
         {
           "id": "d",
           "text": "Behavior is identical to normal console output",
-          "explanation": "Incorrect. Buffering behavior can change when output is redirected."
+          "explanation": "Buffering behavior can change when output is redirected."
         }
       ],
       "correctAnswerIndex": 1,
       "explanation": "When console output is redirected (to file, pipe, etc.), the .NET runtime may change buffering behavior from line-buffered to fully-buffered for better performance.",
       "codeExample": {
         "language": "csharp",
-        "code": "// Normal execution:\nConsole.WriteLine(\"Hello\");  // Appears immediately\n\n// Redirected execution (myapp.exe > output.txt):\nConsole.WriteLine(\"Hello\");  // May be buffered\nConsole.Out.Flush();         // Forces immediate output"
+        "code": "// Normal execution:\n\n// Redirected execution (myapp.exe > output.txt):"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
       "difficulty": 4,
-      "tags": ["console", "redirection", "buffering", "streams", "output"],
+      "tags": [
+        "console",
+        "redirection",
+        "buffering",
+        "streams",
+        "output"
+      ],
       "createdAt": "2025-01-29T15:00:00Z",
       "updatedAt": "2025-01-29T15:00:00Z",
       "version": 1
