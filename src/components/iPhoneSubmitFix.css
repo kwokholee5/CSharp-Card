@@ -1,7 +1,71 @@
-/* iPhone Submit Button Fix - Ensure footer is always visible */
+/* iPhone Submit Button Fix - Make MC options ultra compact to fit submit button */
 
 @media (max-width: 768px) {
-  /* Override the mobile footer to ensure it's always visible */
+  /* Make the entire component more compact */
+  .answer-component {
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .answer-component-content {
+    height: 100% !important;
+    overflow: hidden !important;
+    padding: 1px !important;
+    gap: 1px !important;
+    padding-bottom: 80px !important; /* More space for submit button */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Make instructions ultra compact */
+  .answer-instructions {
+    margin-bottom: 2px !important;
+    padding: 0 !important;
+  }
+  
+  .answer-instructions-text {
+    font-size: 0.7rem !important;
+    margin: 0 0 2px 0 !important;
+    line-height: 1.1 !important;
+  }
+  
+  .answer-selection-count {
+    font-size: 0.6rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Make MC options grid ultra compact */
+  .answer-options-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: repeat(2, 40px) !important; /* Much smaller height */
+    gap: 1px !important;
+    padding: 0 !important;
+    flex: 1 !important;
+    margin: 0 !important;
+  }
+  
+  /* Make individual options ultra compact */
+  .answer-option {
+    padding: 2px !important;
+    font-size: 0.6rem !important;
+    line-height: 1.1 !important;
+    border-radius: 2px !important;
+    border-width: 1px !important;
+    min-height: auto !important;
+    height: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  .answer-option-text {
+    font-size: 0.6rem !important;
+    line-height: 1.1 !important;
+    padding: 0 !important;
+  }
+  
+  /* Make the mobile footer more compact but visible */
   .answer-footer {
     position: fixed !important;
     bottom: 0 !important;
@@ -10,8 +74,8 @@
     z-index: 999999 !important;
     background: #2a2d3a !important;
     border-top: 2px solid #0d6efd !important;
-    padding: 12px !important;
-    min-height: 70px !important;
+    padding: 8px !important;
+    min-height: 60px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -25,20 +89,20 @@
     isolation: isolate;
     
     /* iOS safe area support */
-    padding-bottom: calc(12px + env(safe-area-inset-bottom, 20px)) !important;
-    padding-bottom: calc(12px + constant(safe-area-inset-bottom, 20px)) !important;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 15px)) !important;
+    padding-bottom: calc(8px + constant(safe-area-inset-bottom, 15px)) !important;
   }
   
-  /* Make the submit button more prominent */
+  /* Make the submit button more prominent but compact */
   .answer-footer .answer-submit-button {
     background-color: #0d6efd !important;
     color: #ffffff !important;
     border: none !important;
-    padding: 12px 24px !important;
-    font-size: 1rem !important;
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
     font-weight: 600 !important;
-    border-radius: 8px !important;
-    min-width: 120px !important;
+    border-radius: 6px !important;
+    min-width: 100px !important;
     box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3) !important;
     cursor: pointer !important;
   }
