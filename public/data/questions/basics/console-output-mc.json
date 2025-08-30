@@ -279,7 +279,7 @@
       "explanation": "In C#, Boolean.ToString() returns 'True' or 'False' with capital first letters, which differs from some other languages that use lowercase.",
       "codeExample": {
         "language": "csharp",
-        "code": "bool isValid = 5 > 3;\nConsole.WriteLine(isValid);\nConsole.WriteLine(true);\nConsole.WriteLine(false);",
+        "code": "bool isValid = 5 > 3;\nConsole.WriteLine(isValid);",
       },
       "category": "basics",
       "subcategory": "console-output-mc",
