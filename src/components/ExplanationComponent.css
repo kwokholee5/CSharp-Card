@@ -738,3 +738,17 @@
   font-size: 0.6rem !important;
   height: 30px !important;
 }
+
+
+/* Ultra-specific button size fixes */
+button.explanation-button.explanation-button--next,
+button.explanation-button.explanation-button--redo,
+button.navigation-button.navigation-button--next,
+button.navigation-button.navigation-button--redo {
+  min-width: 30px !important;
+  max-width: 50px !important;
+  padding: 2px 4px !important;
+  font-size: 0.5rem !important;
+  height: 25px !important;
+  width: auto !important;
+}
