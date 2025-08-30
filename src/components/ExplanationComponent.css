@@ -686,3 +686,21 @@
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+
+/* Ultra-compact mobile buttons */
+@media (max-width: 768px) {
+  .explanation-button {
+    min-width: 40px !important;
+    max-width: 60px !important;
+    padding: 3px 5px !important;
+    font-size: 0.6rem !important;
+  }
+  
+  .navigation-button {
+    min-width: 40px !important;
+    max-width: 60px !important;
+    padding: 3px 5px !important;
+    font-size: 0.6rem !important;
+  }
+}
