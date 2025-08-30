@@ -33,7 +33,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding-bottom: 60px; /* Space for footer */
+    padding-bottom: 80px; /* Increased space for footer */
   }
 }
 
@@ -284,13 +284,15 @@
     right: 0;
     background: #2a2d3a;
     border-top: 1px solid #4a5568;
-    padding: 6px;
-    z-index: 9999;
+    padding: 8px;
+    z-index: 10000; /* Increased z-index */
     justify-content: center;
     align-items: center;
-    height: 50px;
-    /* iOS safe area */
-    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0));
+    min-height: 60px; /* Minimum height for touch targets */
+    /* Enhanced iOS safe area support */
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 12px));
+    /* Fallback for older iOS versions */
+    padding-bottom: calc(8px + constant(safe-area-inset-bottom, 12px));
   }
   
   .answer-footer .answer-submit-section {
@@ -302,6 +304,7 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    max-width: 320px; /* Prevent button from being too wide */
   }
 }
 
