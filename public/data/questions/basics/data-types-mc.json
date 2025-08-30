@@ -40,7 +40,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "string original = \"Hello\";\nstring modified = original;\nmodified += \" World\";\n\nConsole.WriteLine($\"Original: {original}\");\nConsole.WriteLine($\"Modified: {modified}\");",
-        "output": "Original: Hello\nModified: Hello World"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -81,7 +80,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "// Value type behavior\nint x = 10;\nint y = x;\ny = 20;\n\n// Reference type behavior\nint[] arr1 = {10};\nint[] arr2 = arr1;\narr2[0] = 20;\n\nConsole.WriteLine($\"x: {x}, y: {y}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}\");\nConsole.WriteLine($\"arr2[0]: {arr2[0]}, arr1[0]: {arr1[0]}, arr2[0]: {arr2[0]}, x: {x}\");",
-        "output": "x: 10, y: 20, arr1[0]: 20, arr2[0]: 20\narr2[0]: 20, arr1[0]: 20, arr2[0]: 20, x: 10"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -122,7 +120,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "int? nullableInt = null;\n\nConsole.WriteLine($\"HasValue: {nullableInt.HasValue}\");\nConsole.WriteLine($\"Value: {nullableInt.GetValueOrDefault()}\");\nConsole.WriteLine($\"Result: {nullableInt ?? 100}\");",
-        "output": "HasValue: False\nValue: 0\nResult: 100"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -163,7 +160,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "int value = 42;\nobject obj = value;  // Boxing\nint unboxed = (int)obj;  // Unboxing\n\nConsole.WriteLine($\"obj type: {obj.GetType().Name}\");\nConsole.WriteLine($\"unboxed: {unboxed}\");\nConsole.WriteLine($\"are equal: {value == unboxed}\");",
-        "output": "obj type: Int32\nunboxed: 42\nare equal: True"
       },
       "category": "basics",
       "subcategory": "data-types-mc",
@@ -204,7 +200,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "double doubleResult = 0.1 + 0.2;\ndecimal decimalResult = 0.1m + 0.2m;\n\nConsole.WriteLine($\"Double result: {doubleResult}\");\nConsole.WriteLine($\"Decimal result: {decimalResult}\");\nConsole.WriteLine($\"Are equal: {(double)decimalResult == doubleResult}\");",
-        "output": "Double result: 0.30000000000000004\nDecimal result: 0.3\nAre equal: False"
       },
       "category": "basics",
       "subcategory": "data-types-mc",

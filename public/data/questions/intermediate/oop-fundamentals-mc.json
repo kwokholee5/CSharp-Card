@@ -40,7 +40,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Method\");\n}\n\nBase obj1 = new Derived();\nDerived obj2 = new Derived();\nobj1.Display();\nobj2.Display();",
-        "output": "Derived Method\nDerived Method"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -81,7 +80,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public abstract class Shape\n{\n    public abstract void Draw();\n}\n\npublic class Circle : Shape\n{\n    public override void Draw() => Console.WriteLine(\"Concrete Implementation\");\n}\n\nShape shape = new Circle();  // Valid - instantiating concrete class\nshape.Draw();",
-        "output": "Concrete Implementation"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -122,7 +120,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public interface IDrawable\n{\n    void Draw();\n}\n\npublic class Rectangle : IDrawable\n{\n    public void Draw() => Console.WriteLine(\"Interface Implementation\");\n}\n\nRectangle rect = new Rectangle();\nIDrawable drawable = rect;\nrect.Draw();\ndrawable.Draw();",
-        "output": "Interface Implementation\nInterface Implementation"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -163,7 +160,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Example\n{\n    private int _value;\n    public int Value\n    {\n        get\n        {\n            Console.WriteLine($\"Getting: {_value}\");\n            return _value;\n        }\n        set\n        {\n            Console.WriteLine($\"Setting: {value}\");\n            _value = value;\n        }\n    }\n}\n\nExample ex = new Example();\nint initial = ex.Value;\nex.Value = 42;\nint final = ex.Value;",
-        "output": "Getting: 0\nSetting: 42\nGetting: 42"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -204,7 +200,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Person\n{\n    public string Name { get; set; }\n    public int Age { get; set; }\n    \n    public Person(string name, int age)\n    {\n        Console.WriteLine(\"Parameterized Constructor\");\n        Name = name; Age = age;\n    }\n    \n    public Person(string name) : this(name, 25)\n    {\n        // Additional initialization if needed\n    }\n}\n\nPerson p = new Person(\"John\");\nConsole.WriteLine($\"Name: {p.Name}, Age: {p.Age}\");",
-        "output": "Parameterized Constructor\nName: John, Age: 25"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -245,7 +240,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Base\n{\n    public void Display() => Console.WriteLine(\"Base Method\");\n}\n\npublic class Derived : Base\n{\n    public new void Display() => Console.WriteLine(\"Hidden Method\");\n}\n\nDerived obj = new Derived();\nBase baseRef = obj;\nbaseRef.Display();  // Calls base version\nobj.Display();      // Calls derived version",
-        "output": "Base Method\nHidden Method"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -286,7 +280,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class MyClass\n{\n    static MyClass()\n    {\n        Console.WriteLine(\"Static Constructor\");\n    }\n    \n    public MyClass()\n    {\n        Console.WriteLine(\"Instance Constructor\");\n    }\n}\n\nMyClass obj1 = new MyClass();\nMyClass obj2 = new MyClass();",
-        "output": "Static Constructor\nInstance Constructor\nInstance Constructor"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -327,7 +320,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Middle : Base\n{\n    public sealed override void Display() => Console.WriteLine(\"Sealed Implementation\");\n}\n\npublic class Derived : Middle\n{\n    // Cannot override Display() here - it's sealed\n}\n\nDerived obj = new Derived();\nobj.Display();",
-        "output": "Sealed Implementation"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -368,7 +360,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public interface ITest\n{\n    void Method();\n}\n\npublic class TestClass : ITest\n{\n    void ITest.Method() => Console.WriteLine(\"Explicit Implementation\");\n    public void Method() => Console.WriteLine(\"Public Implementation\");\n}\n\nTestClass obj = new TestClass();\nITest iobj = obj;\niobj.Method();\nobj.Method();",
-        "output": "Explicit Implementation\nPublic Implementation"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -409,7 +400,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Base\n{\n    public virtual void Display() => Console.WriteLine(\"Base Implementation\");\n}\n\npublic class Derived : Base\n{\n    public override void Display() => Console.WriteLine(\"Derived Implementation\");\n    \n    public void CallBoth()\n    {\n        base.Display();  // Calls base version\n        this.Display();  // Calls derived version\n    }\n}\n\nDerived obj = new Derived();\nobj.CallBoth();",
-        "output": "Base Implementation\nDerived Implementation"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -450,7 +440,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Base\n{\n    public int PublicField = 1;\n    internal int InternalField = 2;\n    protected int ProtectedField = 3;\n    private int PrivateField = 4;  // Only accessible within Base\n}\n\npublic class Derived : Base\n{\n    public void DisplayFields()\n    {\n        Console.WriteLine($\"Public: {PublicField}\");\n        Console.WriteLine($\"Internal: {InternalField}\");\n        Console.WriteLine($\"Protected: {ProtectedField}\");\n        // Console.WriteLine($\"Private: {PrivateField}\");  // Error\n    }\n}\n\nDerived obj = new Derived();\nobj.DisplayFields();",
-        "output": "Public: 1\nInternal: 2\nProtected: 3"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",
@@ -491,7 +480,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "// File 1:\npublic partial class MyClass\n{\n    partial void PartialMethod();\n    \n    public void CallMethods()\n    {\n        PartialMethod();\n        OtherMethod();\n    }\n}\n\n// File 2 (conceptually):\npublic partial class MyClass\n{\n    partial void PartialMethod() => Console.WriteLine(\"Partial Method Called\");\n    public void OtherMethod() => Console.WriteLine(\"Other Method Called\");\n}\n\nMyClass obj = new MyClass();\nobj.CallMethods();",
-        "output": "Partial Method Called\nOther Method Called"
       },
       "category": "intermediate",
       "subcategory": "oop-fundamentals-mc",

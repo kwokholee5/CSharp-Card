@@ -40,7 +40,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "List<int> numbers = new List<int> {1, 2, 3, 4, 5};\nnumbers.RemoveAt(2);  // Removes element at index 2 (value 3)\nConsole.WriteLine(string.Join(\", \", numbers));",
-        "output": "1, 2, 4, 5"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -81,7 +80,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "Dictionary<char, string> dict = new Dictionary<char, string>\n{\n    {'A', \"Alice\"},\n    {'B', \"Bob\"}\n};\n\nConsole.WriteLine(dict['A']);\ntry\n{\n    Console.WriteLine(dict['C']);  // Key doesn't exist\n}\ncatch (KeyNotFoundException)\n{\n    Console.WriteLine(\"KeyNotFoundException\");\n}",
-        "output": "Alice\nKeyNotFoundException"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -122,7 +120,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "HashSet<int> set = new HashSet<int> {1, 2, 3};\nbool added1 = set.Add(4);     // New element\nbool added2 = set.Add(3);     // Duplicate element\nset.Add(5);\n\nConsole.WriteLine(added1);\nConsole.WriteLine(added2);\nConsole.WriteLine(string.Join(\", \", set.OrderBy(x => x)));",
-        "output": "True\nFalse\n1, 2, 3, 4, 5"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -163,7 +160,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "Queue<string> queue = new Queue<string>();\nqueue.Enqueue(\"A\"); queue.Enqueue(\"B\"); queue.Enqueue(\"C\");\nstring q1 = queue.Dequeue(); string q2 = queue.Dequeue();\n\nStack<string> stack = new Stack<string>();\nstack.Push(\"A\"); stack.Push(\"B\"); stack.Push(\"C\");\nstring s1 = stack.Pop(); string s2 = stack.Pop();\n\nConsole.WriteLine($\"Queue: {q1}, {q2}\");\nConsole.WriteLine($\"Stack: {s1}, {s2}\");",
-        "output": "Queue: A, B\nStack: C, B"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -204,7 +200,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "SortedDictionary<string, int> ages = new SortedDictionary<string, int>\n{\n    {\"Charlie\", 35},\n    {\"Alice\", 25},\n    {\"Bob\", 30}\n};\n\nforeach (var kvp in ages)\n{\n    Console.WriteLine($\"{kvp.Key}: {kvp.Value}\");\n}",
-        "output": "Alice: 25\nBob: 30\nCharlie: 35"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -245,7 +240,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "List<int> numbers = new List<int> {1, 2, 3};\nConsole.WriteLine($\"Count: {numbers.Count}\");\nConsole.WriteLine($\"Capacity: {numbers.Capacity}\");\n\nnumbers[1] = 20;  // Modify element at index 1\nConsole.WriteLine($\"Modified: {string.Join(\", \", numbers)}\");",
-        "output": "Count: 3\nCapacity: 4\nModified: 1, 20, 3"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -286,7 +280,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "LinkedList<string> list = new LinkedList<string>();\nlist.AddLast(\"A\");\nlist.AddLast(\"B\");\nlist.AddLast(\"C\");\n\nConsole.WriteLine($\"First: {list.First.Value}\");\nConsole.WriteLine($\"Last: {list.Last.Value}\");\nConsole.WriteLine($\"After A: {list.First.Next.Value}\");",
-        "output": "First: A\nLast: C\nAfter A: B"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -327,7 +320,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "ArrayList arrayList = new ArrayList {10};\nList<int> genericList = new List<int> {10};\n\nConsole.WriteLine($\"ArrayList: {arrayList[0].GetType()}\");\nConsole.WriteLine($\"List<T>: {genericList[0].GetType()}\");\n\n// ArrayList requires casting:\n// int value = (int)arrayList[0];\n// List<T> is type-safe:\n// int value = genericList[0];",
-        "output": "ArrayList: System.Object\nList<T>: System.Int32"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -368,7 +360,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "List<int> numbers = new List<int> {1, 2, 3, 4};\n\ntry\n{\n    foreach (int num in numbers)\n    {\n        Console.WriteLine(num);\n        if (num == 2)\n        {\n            numbers.Add(5);  // Modifies collection during iteration\n        }\n    }\n}\ncatch (InvalidOperationException)\n{\n    Console.WriteLine(\"InvalidOperationException\");\n}",
-        "output": "1\n2\nInvalidOperationException"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -409,7 +400,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "List<int> original = new List<int> {1, 2, 3};\nReadOnlyCollection<int> readOnly = new ReadOnlyCollection<int>(original);\n\noriginal[2] = 10;  // Modify underlying collection\n\nConsole.WriteLine($\"Original: {string.Join(\", \", original)}\");\nConsole.WriteLine($\"ReadOnly: {string.Join(\", \", readOnly)}\");\n// readOnly[0] = 5;  // Would cause compilation error\nConsole.WriteLine($\"Modified: {string.Join(\", \", original)}\");",
-        "output": "Original: 1, 2, 10\nReadOnly: 1, 2, 10\nModified: 1, 2, 10"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -449,8 +439,7 @@
       "explanation": "SortedSet<T> combines the uniqueness of HashSet with automatic sorting. It provides efficient Min and Max properties for accessing extremes.",
       "codeExample": {
         "language": "csharp",
-        "code": "SortedSet<int> sortedSet = new SortedSet<int> {5, 3, 1, 2, 4, 3};\n\nConsole.WriteLine(string.Join(\", \", sortedSet));\nConsole.WriteLine($\"Min: {sortedSet.Min}, Max: {sortedSet.Max}\");\n\n// SortedSet automatically:\n// 1. Removes duplicates (3 appears only once)\n// 2. Maintains sorted order\n// 3. Provides O(1) Min/Max access",
-        "output": "1, 2, 3, 4, 5\nMin: 1, Max: 5"
+        "code": "SortedSet<int> sortedSet = new SortedSet<int> {5, 3, 1, 2, 4, 3};\n\nConsole.WriteLine(string.Join(\", \", sortedSet));\nConsole.WriteLine($\"Min: {sortedSet.Min}, Max: {sortedSet.Max}\");",
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -491,7 +480,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "ConcurrentDictionary<string, object> dict = new ConcurrentDictionary<string, object>();\ndict[\"A\"] = 5;\ndict[\"B\"] = \"World\";\n\n// AddOrUpdate: if key exists, update; if not, add\nvar result1 = dict.AddOrUpdate(\"A\", 0, (key, oldValue) => (int)oldValue + 5);\n\n// GetOrAdd: if key exists, get; if not, add\nvar result2 = dict.GetOrAdd(\"C\", \"Hello\");\n\nConsole.WriteLine($\"AddOrUpdate: {result1}\");\nConsole.WriteLine($\"GetOrAdd: {result2}\");",
-        "output": "AddOrUpdate: 10\nGetOrAdd: Hello"
       },
       "category": "intermediate",
       "subcategory": "collections-mc",
@@ -531,8 +519,7 @@
       "explanation": "Custom IComparer<T> allows defining custom sorting logic. This comparer sorts by string length first, then maintains original order for equal-length strings (stable sort).",
       "codeExample": {
         "language": "csharp",
-        "code": "public class LengthComparer : IComparer<string>\n{\n    public int Compare(string x, string y)\n    {\n        return x.Length.CompareTo(y.Length);\n    }\n}\n\nList<string> fruits = new List<string> {\"banana\", \"apple\", \"orange\"};\nfruits.Sort(new LengthComparer());\n\nConsole.WriteLine(string.Join(\", \", fruits));\n// Sorted by length: apple(5), then banana/orange(6 each, original order maintained)",
-        "output": "apple, banana, orange"
+        "code": "public class LengthComparer : IComparer<string>\n{\n    public int Compare(string x, string y)\n    {\n        return x.Length.CompareTo(y.Length);\n    }\n}\n\nList<string> fruits = new List<string> {\"banana\", \"apple\", \"orange\"};\nfruits.Sort(new LengthComparer());\n\nConsole.WriteLine(string.Join(\", \", fruits));",
       },
       "category": "intermediate",
       "subcategory": "collections-mc",

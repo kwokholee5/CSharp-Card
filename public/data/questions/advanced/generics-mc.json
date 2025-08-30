@@ -40,7 +40,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public static T CreateAndProcess<T>() where T : new(), IFormattable\n{\n    T instance = new T();\n    Console.WriteLine($\"Value: {instance.ToString(null, null)}\");\n    return instance;\n}\n\npublic static void ProcessString<T>(T value) where T : class\n{\n    Console.WriteLine($\"Length: {(value as string)?.Length ?? 0}\");\n}\n\n// Usage:\nCreateAndProcess<int>();  // int has parameterless constructor and implements IFormattable\nProcessString(\"Hello\");   // string is a reference type (class constraint)",
-        "output": "Value: 42\nLength: 5"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -81,7 +80,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "// Covariance example - IEnumerable<out T>\nIEnumerable<string> strings = new List<string> {\"hello\", \"world\"};\nIEnumerable<object> objects = strings;  // string -> object (covariant)\nConsole.WriteLine($\"Covariance works: {objects != null}\");\n\n// Contravariance example - Action<in T>\nAction<object> objectAction = obj => Console.WriteLine(\"Processing object\");\nAction<string> stringAction = objectAction;  // object -> string (contravariant)\nConsole.WriteLine($\"Contravariance works: {stringAction != null}\");\n\n// Note: \n// - Covariance: can return more derived types\n// - Contravariance: can accept more base types",
-        "output": "Covariance works: True\nContravariance works: True"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -122,7 +120,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public static void Process<T>(T value)\n{\n    Console.WriteLine($\"Generic method: {value}\");\n}\n\npublic static void Process(string value)\n{\n    Console.WriteLine($\"Non-generic method: {value}\");\n}\n\npublic static void Main()\n{\n    Process(42);      // Calls generic method (no specific overload for int)\n    Process(\"Hello\"); // Calls non-generic method (specific string overload exists)\n}\n\n// Overload resolution preference:\n// 1. Exact type match (non-generic)\n// 2. Generic method\n// 3. Implicit conversions",
-        "output": "Generic method: 42\nNon-generic method: Hello"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -163,7 +160,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "// Custom generic delegate\npublic delegate TResult Calculator<T, TResult>(T input);\n\npublic static void Main()\n{\n    // Custom generic delegate\n    Calculator<int, int> customCalc = x => x * x;\n    int result1 = customCalc(5);\n    Console.WriteLine($\"Custom delegate: {result1}\");\n    \n    // Built-in Func delegate (equivalent functionality)\n    Func<int, int> funcCalc = x => x * x;\n    int result2 = funcCalc(6);\n    Console.WriteLine($\"Func delegate: {result2}\");\n}\n\n// Benefits of generic delegates:\n// - Type safety\n// - Reusability across different types\n// - IntelliSense support",
-        "output": "Custom delegate: 25\nFunc delegate: 36"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -204,7 +200,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Animal\n{\n    public virtual void MakeSound() => Console.WriteLine(\"Base method called\");\n}\n\npublic class Dog : Animal\n{\n    public override void MakeSound() => Console.WriteLine(\"Derived method called\");\n}\n\npublic static void ProcessAnimal<T>(T animal) where T : Animal\n{\n    animal.MakeSound();  // Polymorphic call through constraint\n}\n\npublic static void Main()\n{\n    ProcessAnimal(new Animal());\n    ProcessAnimal(new Dog());\n}\n\n// The constraint 'where T : Animal' ensures:\n// 1. T has all Animal members\n// 2. Polymorphic behavior works\n// 3. Type safety at compile time",
-        "output": "Base method called\nDerived method called"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -245,7 +240,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Repository<T>\n{\n    public T GetData() => default(T);\n}\n\npublic static void Main()\n{\n    // Open generic type (unbound)\n    Type openGeneric = typeof(Repository<>);\n    Console.WriteLine($\"Open generic: {openGeneric.Name}\");\n    \n    // Closed generic type (bound to string)\n    Type closedGeneric = typeof(Repository<string>);\n    Console.WriteLine($\"Closed generic: {closedGeneric.Name}\");\n    \n    // Compare generic type definitions\n    bool sameDefinition = openGeneric == closedGeneric.GetGenericTypeDefinition();\n    Console.WriteLine($\"Same definition: {sameDefinition}\");\n}\n\n// Uses for generic reflection:\n// - Generic factory patterns\n// - Dynamic type creation\n// - Framework development",
-        "output": "Open generic: Repository`1[T]\nClosed generic: Repository`1[System.String]\nSame definition: True"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -286,7 +280,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public static T GetDefault<T>()\n{\n    return default(T);\n}\n\npublic static void Main()\n{\n    // Value type default\n    int intDefault = GetDefault<int>();\n    Console.WriteLine($\"Value type default: {intDefault}\");\n    \n    // Reference type default\n    string stringDefault = GetDefault<string>();\n    Console.WriteLine($\"Reference type default: {stringDefault ?? \"null\"}\");\n    \n    // Nullable type default\n    int? nullableDefault = GetDefault<int?>();\n    Console.WriteLine($\"Nullable default: {nullableDefault?.ToString() ?? \"null\"}\");\n}\n\n// default(T) is useful for:\n// - Initializing generic fields\n// - Providing fallback values\n// - Generic factory methods",
-        "output": "Value type default: 0\nReference type default: null\nNullable default: null"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -327,7 +320,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public static void PrintType<T>(T value)\n{\n    Console.WriteLine($\"Type: {typeof(T)}\");\n}\n\npublic static void Main()\n{\n    // Type inference from argument\n    PrintType(42);  // T inferred as int\n    Console.WriteLine(\"Inferred type: System.Int32\");\n    \n    // Explicit type parameter\n    PrintType<string>(\"Hello\");  // T explicitly specified as string\n    Console.WriteLine(\"Explicit type: System.String\");\n}\n\n// Type inference works when:\n// - Method arguments provide sufficient type information\n// - No ambiguity exists\n// - Type constraints are satisfied\n\n// Explicit types are needed when:\n// - Inference is ambiguous\n// - Return type differs from argument types\n// - No arguments provide type information",
-        "output": "Inferred type: System.Int32\nExplicit type: System.String"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -368,7 +360,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public interface IComparer<T>\n{\n    void Compare(T first, T second);\n}\n\npublic class MultiComparer : IComparer<string>, IComparer<int>\n{\n    public void Compare(string first, string second)\n    {\n        Console.WriteLine($\"String comparison: {first} vs {second}\");\n    }\n    \n    public void Compare(int first, int second)\n    {\n        Console.WriteLine($\"Int comparison: {first} vs {second}\");\n    }\n}\n\npublic static void Main()\n{\n    var comparer = new MultiComparer();\n    \n    IComparer<string> stringComparer = comparer;\n    stringComparer.Compare(\"Hello\", \"World\");\n    \n    IComparer<int> intComparer = comparer;\n    intComparer.Compare(5, 3);\n}",
-        "output": "String comparison: Hello vs World\nInt comparison: 5 vs 3"
       },
       "category": "advanced",
       "subcategory": "generics-mc",
@@ -409,7 +400,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "public class Container<T>\n{\n    private static int counter = 0;\n    \n    public static void Increment()\n    {\n        counter++;\n        Console.WriteLine($\"Static {typeof(T).Name} counter: {counter}\");\n    }\n}\n\npublic static void Main()\n{\n    Container<int>.Increment();     // Increments Container<int>.counter\n    Container<string>.Increment();  // Increments Container<string>.counter (separate)\n    Container<int>.Increment();     // Increments Container<int>.counter again\n}\n\n// Key insight: Each generic type instantiation\n// (Container<int>, Container<string>, etc.)\n// has its own copy of static members.\n// This enables type-specific static state.",
-        "output": "Static int counter: 1\nStatic string counter: 1\nStatic int counter: 2"
       },
       "category": "advanced",
       "subcategory": "generics-mc",

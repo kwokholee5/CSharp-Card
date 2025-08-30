@@ -40,7 +40,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "Console.Write(\"Hello \");\nConsole.Write(\"World!\");\nConsole.WriteLine();\nConsole.WriteLine(\"Next line\");\nConsole.WriteLine(\"Another line\");",
-        "output": "Hello World!\nNext line\nAnother line"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -81,7 +80,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "int value = 42;\nConsole.WriteLine($\"The value is {value}\");",
-        "output": "The value is 42"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -122,7 +120,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "string name = \"John\";\nint age = 25;\ndouble score = 95.5;\nConsole.WriteLine(\"Name: {0}, Age: {1}, Score: {2:F2}\", name, age, score);",
-        "output": "Name: John, Age: 25, Score: 95.50"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -163,7 +160,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "string nullString = null;\nConsole.WriteLine(\"Before\");\nConsole.WriteLine(nullString);\nConsole.WriteLine(\"After\");",
-        "output": "Before\n\nAfter"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -203,8 +199,7 @@
       "explanation": "Arrays inherit the default Object.ToString() behavior which returns the type name. To display array contents, use string.Join() or loop through elements.",
       "codeExample": {
         "language": "csharp",
-        "code": "int[] numbers = {1, 2, 3, 4, 5};\nConsole.WriteLine(numbers);\nConsole.WriteLine(numbers.ToString());\n// To display contents:\nConsole.WriteLine(string.Join(\", \", numbers));",
-        "output": "System.Int32[]\nSystem.Int32[]\n1, 2, 3, 4, 5"
+        "code": "int[] numbers = {1, 2, 3, 4, 5};\nConsole.WriteLine(numbers);\nConsole.WriteLine(numbers.ToString());\nConsole.WriteLine(string.Join(\", \", numbers));",
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -245,7 +240,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "Console.WriteLine(\"Hello\\nWorld\\tTab\");\n// Equivalent to:\nConsole.WriteLine(\"Hello\");\nConsole.Write(\"World\");\nConsole.Write(\"\\t\");\nConsole.WriteLine(\"Tab\");",
-        "output": "Hello\nWorld\tTab"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -286,7 +280,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "bool isValid = 5 > 3;\nConsole.WriteLine(isValid);\nConsole.WriteLine(true);\nConsole.WriteLine(false);",
-        "output": "True\nTrue\nFalse"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -327,7 +320,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "int number = 42;\nConsole.WriteLine(number);  // Calls WriteLine(int)\n// Available overloads:\n// WriteLine(int)\n// WriteLine(object)\n// WriteLine(string)\n// etc.",
-        "output": "42"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -368,7 +360,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "double price = 1234.567;\nConsole.WriteLine($\"{price:C}\");\nConsole.WriteLine(price.ToString(\"C\"));\n// Both produce the same result",
-        "output": "$1,234.57\n$1,234.57"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
@@ -409,7 +400,6 @@
       "codeExample": {
         "language": "csharp",
         "code": "// Normal execution:\nConsole.WriteLine(\"Hello\");  // Appears immediately\n\n// Redirected execution (myapp.exe > output.txt):\nConsole.WriteLine(\"Hello\");  // May be buffered\nConsole.Out.Flush();         // Forces immediate output",
-        "output": "Behavior depends on whether output is redirected"
       },
       "category": "basics",
       "subcategory": "console-output-mc",
