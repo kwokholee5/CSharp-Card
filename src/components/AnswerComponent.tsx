@@ -285,13 +285,21 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
     }
   };
 
+  // Check if we're on mobile
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <div className={`answer-component ${className}`}>
       <div className="answer-component-content">
         {renderInstructions()}
         {renderOptionsGrid()}
-        {renderSubmitButton()}
+        {!isMobile && renderSubmitButton()}
       </div>
+      {isMobile && (
+        <div className="answer-footer">
+          {renderSubmitButton()}
+        </div>
+      )}
     </div>
   );
 };
