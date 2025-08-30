@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "oop-0001",
-      "question": "What will this C# inheritance and method overriding code output?",
+      "question": "What do obj1.Display() and obj2.Display() output respectively?",
       "type": "multiple-choice",
       "options": [
         {
@@ -420,7 +420,7 @@
     },
     {
       "id": "oop-0010",
-      "question": "What happens in this C# base keyword usage example?",
+      "question": "What is the output sequence when CallBoth() is executed?",
       "type": "multiple-choice",
       "options": [
         {

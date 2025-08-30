@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "gen-0001",
-      "question": "What will this C# generic constraint code output?",
+      "question": "What does each method call output in the generic constraint example?",
       "type": "multiple-choice",
       "options": [
         {

@@ -149,7 +149,7 @@
     },
     {
       "id": "coll-0004",
-      "question": "What is the output of this C# Queue<T> and Stack<T> operations?",
+      "question": "What do both Console.WriteLine() statements output in order?",
       "type": "multiple-choice",
       "options": [
         {

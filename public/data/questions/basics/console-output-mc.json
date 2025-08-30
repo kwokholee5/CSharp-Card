@@ -147,7 +147,7 @@
     },
     {
       "id": "console-0004",
-      "question": "What happens when you call Console.WriteLine() with a null object?",
+      "question": "What does line 3 output when Console.WriteLine() is called with a null string?",
       "type": "multiple-choice",
       "options": [
         {
@@ -192,7 +192,7 @@
     },
     {
       "id": "console-0005",
-      "question": "What will this code output when using Console.WriteLine() with array ToString()?",
+      "question": "What do lines 2 and 3 output when calling Console.WriteLine() and ToString() on an array?",
       "type": "multiple-choice",
       "options": [
         {
@@ -237,18 +237,18 @@
     },
     {
       "id": "console-0006",
-      "question": "What is the output of this Console.WriteLine() code with escaped characters?",
+      "question": "What does the first Console.WriteLine() call (line 1) output?",
       "type": "multiple-choice",
       "options": [
         {
           "id": "a",
-          "text": "Hello\nWorld\tTab",
-          "explanation": "Escape sequences are interpreted, not printed literally."
+          "text": "Hello\\nWorld\\tTab",
+          "explanation": "This shows the escape sequences as literal text, not interpreted."
         },
         {
           "id": "b",
           "text": "Hello\nWorld\tTab",
-          "explanation": "\\n creates a newline and \\t creates a tab character."
+          "explanation": "\\n creates a newline and \\t creates a tab character - this is the actual output."
         },
         {
           "id": "c",

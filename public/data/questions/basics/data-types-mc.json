@@ -55,7 +55,7 @@
     },
     {
       "id": "csharp-002",
-      "question": "What will this C# code output?",
+      "question": "What does the first Console.WriteLine() output?",
       "type": "multiple-choice",
       "options": [
         {
@@ -145,7 +145,7 @@
     },
     {
       "id": "csharp-004",
-      "question": "What will this C# code output?",
+      "question": "What does the Console.WriteLine() output?",
       "type": "multiple-choice",
       "options": [
         {

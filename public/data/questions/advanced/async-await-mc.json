@@ -57,7 +57,7 @@
     },
     {
       "id": "async-0002",
-      "question": "What is the output of this C# Task.Result vs await comparison?",
+      "question": "What happens when using Task.Result in the synchronous context shown?",
       "type": "multiple-choice",
       "options": [
         {

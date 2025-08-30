@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "ref-0001",
-      "question": "What will this C# reflection dynamic method invocation code output?",
+      "question": "What do both reflection invocations output in sequence?",
       "type": "multiple-choice",
       "options": [
         {
