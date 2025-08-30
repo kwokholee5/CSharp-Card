@@ -16,7 +16,9 @@ export class QuestionLoader implements IQuestionLoader {
    */
   async loadFromJson(filePath: string): Promise<RawQuestionData[]> {
     try {
-      const response = await fetch(filePath);
+      // Ensure path starts with '/' for absolute URL
+      const absolutePath = filePath.startsWith('/') ? filePath : `/${filePath}`;
+      const response = await fetch(absolutePath);
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
