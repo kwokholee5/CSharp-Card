@@ -285,8 +285,8 @@ export class ApplicationBootstrap {
       const recoveryOptions: BootstrapOptions = {
         questionPaths: ['data/questions/basics'], // Try just the basics directory
         enableRetry: false,
-        maxRetries: 1,
-        onProgress: undefined
+        maxRetries: 1
+        // onProgress will use the default empty function
       };
 
       return await this.initialize(recoveryOptions);

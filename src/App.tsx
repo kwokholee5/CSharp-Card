@@ -55,7 +55,6 @@ class App extends React.Component<{}, AppState> {
       this.applicationContext = await ApplicationFactory.createApplication({
         autoInitialize: true,
         configureServiceLocator: true,
-        onLoadingProgress: undefined,
         bootstrapOptions: {
           enableRetry: true,
           maxRetries: 3,
