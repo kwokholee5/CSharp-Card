@@ -45,3 +45,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Cleanup/Archive folder
+/remove/

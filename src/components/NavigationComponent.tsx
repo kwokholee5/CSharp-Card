@@ -92,7 +92,6 @@ export const NavigationComponent: React.FC<NavigationComponentProps> = ({
       
       if (!moved) {
         // Could be at the end of questions - this is not necessarily an error
-        console.warn('Cannot move to next question - may be at end of question list');
       }
       
       if (onNextQuestion) {

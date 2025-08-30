@@ -223,7 +223,7 @@ export class DIContainer {
           try {
             disposable.dispose();
           } catch (error) {
-            console.error('Error disposing service:', error);
+            // Error disposing service
           }
         }
       }

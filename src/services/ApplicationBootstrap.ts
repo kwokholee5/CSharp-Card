@@ -262,7 +262,6 @@ export class ApplicationBootstrap {
         throw new Error('Invalid question structure detected');
       }
 
-      console.log(`Validation successful: ${totalCount} questions loaded`);
       
     } catch (error) {
       throw new Error(`Question validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -275,7 +274,6 @@ export class ApplicationBootstrap {
    * @returns Promise resolving to recovery result
    */
   async attemptRecovery(error: Error): Promise<BootstrapResult> {
-    console.log('Attempting recovery from initialization error:', error.message);
     
     try {
       // Try with minimal configuration
@@ -283,15 +281,12 @@ export class ApplicationBootstrap {
         questionPaths: ['data/questions/basics'], // Try just the basics directory
         enableRetry: false,
         maxRetries: 1,
-        onProgress: (progress) => {
-          console.log(`Recovery progress: ${progress.stage} - ${progress.message}`);
-        }
+        onProgress: undefined
       };
 
       return await this.initialize(recoveryOptions);
       
     } catch (recoveryError) {
-      console.error('Recovery attempt failed:', recoveryError);
       
       return {
         success: false,

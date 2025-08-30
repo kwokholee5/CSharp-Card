@@ -112,18 +112,14 @@ export class ApplicationFactory {
           throw new Error(`Failed to initialize application: ${errorMessage}`);
         }
 
-        console.log(`Application initialized successfully: ${result.questionsLoaded} questions loaded in ${result.duration}ms`);
         
       } catch (error) {
         errorHandler.handleError(error as Error);
         
         // Attempt recovery
-        console.log('Attempting recovery from initialization failure...');
         try {
           const recoveryResult = await applicationBootstrap.attemptRecovery(error as Error);
-          if (recoveryResult.success) {
-            console.log(`Recovery successful: ${recoveryResult.questionsLoaded} questions loaded`);
-          } else {
+          if (!recoveryResult.success) {
             throw new Error(`Recovery failed: ${recoveryResult.errors.map(e => e.message).join(', ')}`);
           }
         } catch (recoveryError) {
@@ -233,7 +229,7 @@ export class ApplicationFactory {
       // Dispose of the container (which will dispose singleton services)
       context.container.dispose();
     } catch (error) {
-      console.error('Error disposing application context:', error);
+      // Error disposing application context
     }
   }
 }

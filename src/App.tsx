@@ -55,10 +55,7 @@ class App extends React.Component<{}, AppState> {
       this.applicationContext = await ApplicationFactory.createApplication({
         autoInitialize: true,
         configureServiceLocator: true,
-        onLoadingProgress: (progress) => {
-          // Update loading state with progress information
-          console.log(`Loading progress: ${progress.stage} - ${progress.message} (${progress.progress}%)`);
-        },
+        onLoadingProgress: undefined,
         bootstrapOptions: {
           enableRetry: true,
           maxRetries: 3,
@@ -98,7 +95,6 @@ class App extends React.Component<{}, AppState> {
    * Centralized error handling following error boundary pattern
    */
   private handleError = (error: Error): void => {
-    console.error('Application error:', error);
     
     if (this.applicationContext?.errorHandler) {
       this.applicationContext.errorHandler.handleError(error);
@@ -188,7 +184,6 @@ class App extends React.Component<{}, AppState> {
         });
       } else {
         // At end of questions - could implement completion screen here
-        console.warn('Reached end of questions');
       }
     } catch (error) {
       this.handleError(error instanceof Error ? error : new Error('Failed to navigate to next question'));
@@ -351,7 +346,6 @@ class AppErrorBoundary extends React.Component<React.PropsWithChildren<{}>, Erro
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.error('Application error boundary caught error:', error, errorInfo);
   }
 
   render(): React.ReactNode {
