@@ -720,3 +720,21 @@
     border-color: #ff0000 !important;
   }
 }
+
+
+/* Button size fixes */
+.explanation-button {
+  min-width: 40px !important;
+  max-width: 60px !important;
+  padding: 3px 5px !important;
+  font-size: 0.6rem !important;
+  height: 30px !important;
+}
+
+.navigation-button {
+  min-width: 40px !important;
+  max-width: 60px !important;
+  padding: 3px 5px !important;
+  font-size: 0.6rem !important;
+  height: 30px !important;
+}
