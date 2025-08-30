@@ -178,6 +178,7 @@ html, body {
   background: #2a2d3a;
   border-radius: 8px;
   border: 1px solid #3a3f4b;
+  position: relative; /* Allow fixed positioned children to escape */
 }
 
 /* Mobile column adjustments */

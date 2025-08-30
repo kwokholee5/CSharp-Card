@@ -257,32 +257,18 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
       return null;
     }
 
-    try {
-      const instructionText = question.hasMultipleCorrectAnswers()
-        ? 'Select all correct answers'
-        : 'Select the correct answer';
-
+    // Only show selection count if options are selected
+    if (selectedOptions.length > 0) {
       return (
         <div className="answer-instructions">
-          <p className="answer-instructions-text">{instructionText}</p>
-          {selectedOptions.length > 0 && (
-            <p className="answer-selection-count">
-              {selectedOptions.length} option{selectedOptions.length !== 1 ? 's' : ''} selected
-            </p>
-          )}
-        </div>
-      );
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error('Failed to render instructions');
-      if (onError) {
-        onError(error);
-      }
-      return (
-        <div className="answer-instructions">
-          <p className="answer-instructions-text">Select an answer</p>
+          <p className="answer-selection-count">
+            {selectedOptions.length} option{selectedOptions.length !== 1 ? 's' : ''} selected
+          </p>
         </div>
       );
     }
+
+    return null;
   };
 
   return (
