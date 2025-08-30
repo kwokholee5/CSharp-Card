@@ -204,7 +204,7 @@ export const ExplanationComponent: React.FC<ExplanationComponentProps> = ({
           disabled={!onNextQuestion}
           aria-label="Move to next question"
         >
-          <span className="explanation-button-text">NEXT RED</span>
+          <span className="explanation-button-text">NEXT SMALL</span>
           <span className="explanation-button-icon">→</span>
         </button>
       </div>
