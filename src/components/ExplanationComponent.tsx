@@ -152,20 +152,11 @@ export const ExplanationComponent: React.FC<ExplanationComponentProps> = ({
 
   /**
    * Renders the code output section (revealed after submission)
+   * REMOVED: No longer shows expected output to preserve learning value
    */
   const renderCodeOutput = (): React.ReactElement | null => {
-    if (!question.codeExample?.output) {
-      return null;
-    }
-
-    return (
-      <div className="explanation-code-output">
-        <h4 className="explanation-code-output-title">Expected Output:</h4>
-        <div className="explanation-code-output-content">
-          <pre>{question.codeExample.output}</pre>
-        </div>
-      </div>
-    );
+    // Return null to completely remove the expected output section
+    return null;
   };
 
   /**
