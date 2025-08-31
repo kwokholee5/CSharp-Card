@@ -211,8 +211,7 @@ export const AnswerComponent: React.FC<AnswerComponentProps> = ({
       );
     }
     
-    // Limit to first 3 options only
-    const options = question.options.slice(0, 3);
+    const options = question.options;
     
     return (
       <div className="answer-options-grid" role="radiogroup" aria-label="Answer options">
