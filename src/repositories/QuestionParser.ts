@@ -102,9 +102,14 @@ export class QuestionParser implements IQuestionParser {
     // Map difficulty number to enum
     const difficulty = this.mapDifficulty(rawQuestion.difficulty);
     
+    const questionText = rawQuestion.text || rawQuestion.question;
+    if (!questionText) {
+      throw new Error('Question must have either "text" or "question" field');
+    }
+    
     return new MultipleChoiceQuestion(
       rawQuestion.id,
-      rawQuestion.question,
+      questionText,
       options,
       correctAnswers,
       rawQuestion.explanation,
@@ -128,8 +133,9 @@ export class QuestionParser implements IQuestionParser {
       errors.push('Question ID is required and must be a string');
     }
     
-    if (!rawQuestion.question || typeof rawQuestion.question !== 'string') {
-      errors.push('Question text is required and must be a string');
+    if ((!rawQuestion.text || typeof rawQuestion.text !== 'string') && 
+        (!rawQuestion.question || typeof rawQuestion.question !== 'string')) {
+      errors.push('Question text is required and must be a string (use either "text" or "question" field)');
     }
     
     if (!rawQuestion.explanation || typeof rawQuestion.explanation !== 'string') {

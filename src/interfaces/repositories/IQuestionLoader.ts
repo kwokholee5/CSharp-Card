@@ -5,7 +5,8 @@
  */
 export interface RawQuestionData {
   id: string;
-  question: string;
+  question?: string; // Optional for backward compatibility
+  text?: string;     // New field name
   type: string;
   
   // Multiple-choice specific fields
