@@ -659,21 +659,21 @@
   background-color: #2d3748;
   border: 1px solid #4a5568;
   border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  /* Remove hardcoded margin-bottom - spacing handled by parent gap */
 }
 
 .explanation-code-output-title {
   font-size: clamp(0.9rem, 2.2vw, 1.1rem);
   font-weight: 600;
   color: #e2e8f0;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 clamp(0.375rem, 1.5vw, 0.75rem) 0;
 }
 
 .explanation-code-output-content {
   background: #1a202c;
   border-radius: 6px;
-  padding: 0.75rem;
+  padding: clamp(0.5rem, 1.5vw, 0.75rem);
   overflow: auto;
 }
 
