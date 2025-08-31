@@ -357,3 +357,26 @@
     margin-bottom: 0.125rem;
   }
 }
+
+/* Auto-adjust code example text size to prevent horizontal scrolling */
+.code-example-container pre {
+  font-size: clamp(8px, 2vw, 13px) !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  max-width: 100% !important;
+}
+
+.code-example-container code {
+  font-size: clamp(8px, 2vw, 13px) !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  max-width: 100% !important;
+}
+
+.code-example-container .linenumber {
+  font-size: clamp(7px, 1.8vw, 12px) !important;
+  min-width: 1.5em !important;
+  padding-right: 0.3em !important;
+}
