@@ -1,17 +1,17 @@
 {
   "$schema": "../metadata/schema.json",
   "metadata": {
-    "category": "comprehensive",
+    "category": "intermediate",
     "subcategory": "csharp-interview-questions",
     "fileVersion": 1,
     "lastUpdated": "2025-01-27T12:00:00.000Z",
-    "questionCount": 7,
+    "questionCount": 17,
     "avgDifficulty": 4.5
   },
   "questions": [
     {
       "id": "basics-0001",
-      "text": "What will be displayed when this C# code executes?",
+      "question": "What will be displayed when this C# code executes?",
       "type": "multiple-choice",
       "options": [
         {
@@ -48,7 +48,7 @@
     },
     {
       "id": "basics-0002",
-      "text": "Which of the following is NOT a valid C# data type?",
+      "question": "Which of the following is NOT a valid C# data type?",
       "type": "multiple-choice",
       "options": [
         {
@@ -85,7 +85,7 @@
     },
     {
       "id": "basics-0003",
-      "text": "What will be the output of this loop?",
+      "question": "What will be the output of this loop?",
       "type": "multiple-choice",
       "options": [
         {
@@ -122,7 +122,7 @@
     },
     {
       "id": "intermediate-0001",
-      "text": "What is the difference between '==' and 'Equals()' in C#?",
+      "question": "What is the difference between '==' and 'Equals()' in C#?",
       "type": "multiple-choice",
       "options": [
         {
@@ -159,7 +159,7 @@
     },
     {
       "id": "advanced-0001",
-      "text": "What is the purpose of the 'async' keyword in C#?",
+      "question": "What is the purpose of the 'async' keyword in C#?",
       "type": "multiple-choice",
       "options": [
         {
@@ -196,7 +196,7 @@
     },
     {
       "id": "intermediate-0002",
-      "text": "What will happen when this code is compiled?",
+      "question": "What will happen when this code is compiled?",
       "type": "multiple-choice",
       "options": [
         {
@@ -230,6 +230,376 @@
       "subcategory": "method-overloading",
       "difficulty": 3,
       "tags": ["overloading", "null", "compilation", "type-resolution"]
+    },
+    {
+      "id": "oop-0001",
+      "question": "Which of the following best describes encapsulation in C#?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hiding the internal state of an object and requiring all interaction to be performed through an object's methods",
+          "explanation": "This is the correct definition of encapsulation - data hiding and controlled access through methods"
+        },
+        {
+          "id": "b",
+          "text": "Deriving a new class from an existing class",
+          "explanation": "This describes inheritance, not encapsulation"
+        },
+        {
+          "id": "c",
+          "text": "Defining multiple methods with the same name but different parameters",
+          "explanation": "This describes method overloading, not encapsulation"
+        },
+        {
+          "id": "d",
+          "text": "Making variables and methods static",
+          "explanation": "This describes static members, not encapsulation"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Encapsulation is one of the four pillars of OOP. It involves hiding the internal state and implementation details of an object, and providing controlled access through public methods or properties. This ensures data integrity and prevents external code from directly modifying internal state.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class BankAccount\n{\n    private decimal _balance; // Encapsulated field\n    \n    public decimal Balance // Controlled access\n    {\n        get { return _balance; }\n        private set { _balance = value; }\n    }\n    \n    public void Deposit(decimal amount) // Controlled interaction\n    {\n        if (amount > 0)\n            _balance += amount;\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "encapsulation",
+      "difficulty": 3,
+      "tags": ["encapsulation", "oop", "data-hiding", "access-control"]
+    },
+    {
+      "id": "oop-0002",
+      "question": "What is the purpose of the abstract keyword in C#?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "To create an object that can be instantiated multiple times",
+          "explanation": "Abstract classes cannot be instantiated directly - this is incorrect"
+        },
+        {
+          "id": "b",
+          "text": "To provide base class functionality that cannot be instantiated directly, but can be inherited",
+          "explanation": "This is correct - abstract classes provide a template for derived classes"
+        },
+        {
+          "id": "c",
+          "text": "To restrict access to a method or property",
+          "explanation": "This describes access modifiers like private, not abstract"
+        },
+        {
+          "id": "d",
+          "text": "To implement multiple interfaces",
+          "explanation": "This describes interface implementation, not abstract classes"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "The abstract keyword is used to create abstract classes and abstract methods. Abstract classes cannot be instantiated directly but serve as base classes that define a contract for derived classes. They can contain both abstract methods (which must be implemented by derived classes) and concrete methods with implementations.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public abstract class Shape\n{\n    public abstract double CalculateArea(); // Must be implemented\n    \n    public virtual void DisplayInfo() // Can be overridden\n    {\n        Console.WriteLine(\"This is a shape\");\n    }\n}\n\n// Cannot do: Shape shape = new Shape(); // Compilation error"
+      },
+      "category": "intermediate",
+      "subcategory": "abstract-classes",
+      "difficulty": 4,
+      "tags": ["abstract", "inheritance", "oop", "base-classes"]
+    },
+    {
+      "id": "oop-0003",
+      "question": "Which of the following correctly demonstrates polymorphism in C#?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Using method overloading within the same class",
+          "explanation": "Method overloading is compile-time polymorphism, but runtime polymorphism is more commonly associated with the term"
+        },
+        {
+          "id": "b",
+          "text": "Overriding a virtual method in a derived class",
+          "explanation": "This is runtime polymorphism - the same method call can behave differently based on the actual object type"
+        },
+        {
+          "id": "c",
+          "text": "Declaring a class as sealed to prevent inheritance",
+          "explanation": "This prevents polymorphism by stopping inheritance"
+        },
+        {
+          "id": "d",
+          "text": "Using constructor chaining to initialize an object",
+          "explanation": "This is about object initialization, not polymorphism"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Polymorphism allows objects of different types to be treated as objects of a common base type, with the actual method implementation being determined at runtime. Method overriding with virtual/override keywords is the classic example of runtime polymorphism in C#.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Animal\n{\n    public virtual void MakeSound()\n    {\n        Console.WriteLine(\"Some generic animal sound\");\n    }\n}\n\npublic class Dog : Animal\n{\n    public override void MakeSound()\n    {\n        Console.WriteLine(\"Woof!\");\n    }\n}\n\n// Polymorphism in action:\nAnimal animal = new Dog();\nanimal.MakeSound(); // Calls Dog.MakeSound()"
+      },
+      "category": "intermediate",
+      "subcategory": "polymorphism",
+      "difficulty": 4,
+      "tags": ["polymorphism", "virtual", "override", "runtime-binding"]
+    },
+    {
+      "id": "oop-0004",
+      "question": "In C#, what access modifier allows members to be accessible only within the same class and derived classes?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "public",
+          "explanation": "public allows access from anywhere - this is too permissive"
+        },
+        {
+          "id": "b",
+          "text": "private",
+          "explanation": "private only allows access within the same class, not derived classes"
+        },
+        {
+          "id": "c",
+          "text": "protected",
+          "explanation": "protected allows access within the same class and derived classes"
+        },
+        {
+          "id": "d",
+          "text": "internal",
+          "explanation": "internal allows access within the same assembly, not specifically derived classes"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "The protected access modifier allows access to members within the same class and any derived classes, but not from outside the inheritance hierarchy. This is useful for providing controlled access to base class functionality for derived classes.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class BaseClass\n{\n    private int _privateField;     // Only accessible in BaseClass\n    protected int _protectedField; // Accessible in BaseClass and derived classes\n    public int _publicField;       // Accessible everywhere\n}\n\npublic class DerivedClass : BaseClass\n{\n    public void AccessFields()\n    {\n        // _privateField = 1;  // Compilation error\n        _protectedField = 2;    // OK - accessible in derived class\n        _publicField = 3;       // OK - accessible everywhere\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "access-modifiers",
+      "difficulty": 2,
+      "tags": ["protected", "access-modifiers", "inheritance", "encapsulation"]
+    },
+    {
+      "id": "oop-0005",
+      "question": "What does the interface keyword define in C#?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "A class that provides implementation for its methods",
+          "explanation": "Interfaces don't provide implementations - they only define contracts"
+        },
+        {
+          "id": "b",
+          "text": "A contract that classes can implement, containing only method signatures but no implementations",
+          "explanation": "This is correct - interfaces define contracts without implementations"
+        },
+        {
+          "id": "c",
+          "text": "A base class that cannot be inherited",
+          "explanation": "This describes abstract classes, not interfaces"
+        },
+        {
+          "id": "d",
+          "text": "An attribute to mark methods obsolete",
+          "explanation": "This describes the Obsolete attribute, not interfaces"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "An interface in C# defines a contract that classes can implement. It contains only method signatures, properties, events, and indexers, but no implementations. Classes that implement an interface must provide implementations for all its members.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public interface IDrawable\n{\n    void Draw();\n    string Color { get; set; }\n}\n\npublic class Circle : IDrawable\n{\n    public string Color { get; set; }\n    \n    public void Draw()\n    {\n        Console.WriteLine($\"Drawing a {Color} circle\");\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "interfaces",
+      "difficulty": 3,
+      "tags": ["interfaces", "contracts", "implementation", "oop"]
+    },
+    {
+      "id": "oop-0006",
+      "question": "Which of the following statements about inheritance in C# is TRUE?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "A class can inherit from multiple classes simultaneously",
+          "explanation": "C# supports single inheritance only - a class can inherit from only one base class"
+        },
+        {
+          "id": "b",
+          "text": "A sealed class can be used as a base class",
+          "explanation": "sealed classes cannot be inherited from - they cannot be used as base classes"
+        },
+        {
+          "id": "c",
+          "text": "A derived class inherits members of the base class except constructors",
+          "explanation": "This is correct - constructors are not inherited, but other members are"
+        },
+        {
+          "id": "d",
+          "text": "Private members of the base class are accessible directly in the derived class",
+          "explanation": "Private members are not accessible in derived classes - only protected and public members are"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "In C# inheritance, derived classes inherit all non-private members from their base class, but constructors are not inherited. Derived classes must define their own constructors, though they can call base class constructors using the base keyword.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Vehicle\n{\n    protected string _brand; // Inherited by derived classes\n    private int _id;         // NOT accessible in derived classes\n    \n    public Vehicle(string brand) // Constructor not inherited\n    {\n        _brand = brand;\n    }\n}\n\npublic class Car : Vehicle\n{\n    public Car(string brand) : base(brand) // Must call base constructor\n    {\n        // _id = 123; // Compilation error - private member not accessible\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "inheritance",
+      "difficulty": 3,
+      "tags": ["inheritance", "constructors", "base-class", "derived-class"]
+    },
+    {
+      "id": "oop-0007",
+      "question": "What feature allows a derived class to provide a specific implementation of a method that is already defined in its base class?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Method overloading",
+          "explanation": "Method overloading creates multiple methods with the same name but different parameters"
+        },
+        {
+          "id": "b",
+          "text": "Method overriding",
+          "explanation": "Method overriding allows derived classes to provide new implementations of virtual methods"
+        },
+        {
+          "id": "c",
+          "text": "Constructor chaining",
+          "explanation": "Constructor chaining is about calling constructors, not method implementation"
+        },
+        {
+          "id": "d",
+          "text": "Abstract class",
+          "explanation": "Abstract classes define methods that must be implemented, but this question is about overriding existing implementations"
+        }
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Method overriding allows a derived class to provide a new implementation of a method that is already defined in its base class. The base class method must be marked as virtual, and the derived class method must be marked as override.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Animal\n{\n    public virtual void Move() // Virtual method - can be overridden\n    {\n        Console.WriteLine(\"Animal is moving\");\n    }\n}\n\npublic class Bird : Animal\n{\n    public override void Move() // Override provides new implementation\n    {\n        Console.WriteLine(\"Bird is flying\");\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "method-overriding",
+      "difficulty": 3,
+      "tags": ["override", "virtual", "method-overriding", "polymorphism"]
+    },
+    {
+      "id": "oop-0008",
+      "question": "In C#, what is the primary role of properties?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "To replace fields and allow controlled access to class data via get and set methods",
+          "explanation": "This is correct - properties provide controlled access to private fields through get/set accessors"
+        },
+        {
+          "id": "b",
+          "text": "To define methods in an interface",
+          "explanation": "Interfaces can define properties, but this is not their primary role"
+        },
+        {
+          "id": "c",
+          "text": "To prevent inheritance of classes",
+          "explanation": "This describes the sealed keyword, not properties"
+        },
+        {
+          "id": "d",
+          "text": "To manage memory allocation for objects",
+          "explanation": "This describes garbage collection and memory management, not properties"
+        }
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Properties in C# provide a way to encapsulate fields and control access to them. They allow you to add logic to get and set operations, validate data, and maintain data integrity while providing a clean interface for accessing class data.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public class Person\n{\n    private int _age; // Private field\n    \n    public int Age // Property with controlled access\n    {\n        get { return _age; }\n        set \n        {\n            if (value >= 0 && value <= 150) // Validation\n                _age = value;\n            else\n                throw new ArgumentException(\"Invalid age\");\n        }\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "properties",
+      "difficulty": 2,
+      "tags": ["properties", "get-set", "encapsulation", "data-validation"]
+    },
+    {
+      "id": "oop-0009",
+      "question": "Which keyword is used to explicitly implement an interface member in C#?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "override",
+          "explanation": "override is used for overriding virtual methods, not for explicit interface implementation"
+        },
+        {
+          "id": "b",
+          "text": "explicit",
+          "explanation": "explicit is not a keyword used for interface implementation"
+        },
+        {
+          "id": "c",
+          "text": "interface",
+          "explanation": "interface is used to define interfaces, not to implement them"
+        },
+        {
+          "id": "d",
+          "text": "This is done by specifying the interface name before the method name (e.g., IInterface.Method)",
+          "explanation": "This is correct - explicit interface implementation uses the interface name prefix"
+        }
+      ],
+      "correctAnswerIndex": 3,
+      "explanation": "Explicit interface implementation is done by prefixing the method name with the interface name. This is useful when a class implements multiple interfaces with conflicting method signatures, or when you want to hide interface methods from the public API of the class.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public interface IReadable\n{\n    void Read();\n}\n\npublic interface IWritable\n{\n    void Write();\n}\n\npublic class File : IReadable, IWritable\n{\n    public void Read() // Implicit implementation\n    {\n        Console.WriteLine(\"Reading file\");\n    }\n    \n    void IWritable.Write() // Explicit implementation\n    {\n        Console.WriteLine(\"Writing file\");\n    }\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "explicit-interface-implementation",
+      "difficulty": 4,
+      "tags": ["explicit-implementation", "interfaces", "multiple-interfaces", "interface-conflicts"]
+    },
+    {
+      "id": "oop-0010",
+      "question": "What will happen if you do not provide an implementation for an abstract method in a derived class?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "The derived class will inherit the abstract method as-is and can be instantiated",
+          "explanation": "Abstract methods cannot be inherited as-is - they must be implemented"
+        },
+        {
+          "id": "b",
+          "text": "The program will compile and run but throw an exception at runtime",
+          "explanation": "This would cause a compilation error, not a runtime exception"
+        },
+        {
+          "id": "c",
+          "text": "The derived class must be marked abstract or it will cause a compile-time error",
+          "explanation": "This is correct - abstract methods must be implemented or the class must be abstract"
+        },
+        {
+          "id": "d",
+          "text": "The base class will provide a default implementation automatically",
+          "explanation": "Abstract methods have no implementation - they must be implemented by derived classes"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "If a derived class does not implement all abstract methods from its base class, the derived class must also be marked as abstract. Otherwise, the compiler will generate an error because abstract methods must be implemented before a class can be instantiated.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public abstract class Shape\n{\n    public abstract double CalculateArea(); // Must be implemented\n    public abstract double CalculatePerimeter(); // Must be implemented\n}\n\n// This will cause compilation error:\n// public class Circle : Shape { } // Error: must implement abstract methods\n\n// This is correct:\npublic abstract class Circle : Shape\n{\n    public override double CalculateArea() { return 3.14 * Radius * Radius; }\n    // Still abstract because CalculatePerimeter() not implemented\n}"
+      },
+      "category": "intermediate",
+      "subcategory": "abstract-methods",
+      "difficulty": 4,
+      "tags": ["abstract-methods", "compilation-error", "implementation-required", "inheritance"]
     }
   ]
 }
