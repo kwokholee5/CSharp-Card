@@ -16,13 +16,13 @@
       "options": [
         {
           "id": "a",
-          "text": "Hello World",
-          "explanation": "Console.WriteLine() outputs the string followed by a newline"
+          "text": "Hello World\n",
+          "explanation": "Console.WriteLine() outputs the string followed by a newline character"
         },
         {
           "id": "b",
           "text": "HelloWorld",
-          "explanation": "This would be the result of Console.Write() without newline"
+          "explanation": "This would be the result of Console.Write() without newline character"
         },
         {
           "id": "c",
@@ -90,17 +90,17 @@
       "options": [
         {
           "id": "a",
-          "text": "0, 1, 2",
-          "explanation": "The loop starts at 0 and continues while i < 3, so it prints 0, 1, 2"
+          "text": "0\n1\n2",
+          "explanation": "Console.WriteLine() adds newlines, producing multi-line output: 0, then 1, then 2"
         },
         {
           "id": "b",
-          "text": "1, 2, 3",
+          "text": "1\n2\n3",
           "explanation": "The loop starts at 0, not 1, so it won't start with 1"
         },
         {
           "id": "c",
-          "text": "0, 1, 2, 3",
+          "text": "0\n1\n2\n3",
           "explanation": "The loop condition is i < 3, so it stops before reaching 3"
         },
         {
