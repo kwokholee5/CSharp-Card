@@ -5,42 +5,41 @@
     "subcategory": "csharp-interview-questions",
     "fileVersion": 1,
     "lastUpdated": "2025-01-27T12:00:00.000Z",
-    "questionCount": 6,
+    "questionCount": 7,
     "avgDifficulty": 4.5
   },
   "questions": [
     {
       "id": "basics-0001",
-      "text": "What is the output of the following C# code?",
+      "text": "What will be displayed when this C# code executes?",
       "type": "multiple-choice",
       "options": [
         {
           "id": "a",
           "text": "Hello World",
-          "explanation": "This is the correct output of Console.WriteLine(\"Hello World\")"
+          "explanation": "Console.WriteLine() outputs the string followed by a newline"
         },
         {
           "id": "b",
           "text": "HelloWorld",
-          "explanation": "This would be the output without a space between words"
+          "explanation": "This would be the result of Console.Write() without newline"
         },
         {
           "id": "c",
           "text": "Compilation error",
-          "explanation": "The code is syntactically correct and will compile"
+          "explanation": "The syntax is correct and will compile successfully"
         },
         {
           "id": "d",
           "text": "Runtime error",
-          "explanation": "There's nothing in the code that would cause a runtime error"
+          "explanation": "There's nothing in this code that would cause a runtime error"
         }
       ],
       "correctAnswerIndex": 0,
-      "explanation": "The Console.WriteLine() method outputs the string \"Hello World\" to the console, followed by a newline. This is a basic example of console output in C#.",
+      "explanation": "Console.WriteLine() outputs the provided string to the console and automatically adds a newline character at the end. This is the standard method for displaying text with line breaks in C# console applications.",
       "codeExample": {
         "language": "csharp",
-        "code": "Console.WriteLine(\"Hello World\");",
-        "output": "Hello World"
+        "code": "Console.WriteLine(\"Hello World\");"
       },
       "category": "basics",
       "subcategory": "console-output",
@@ -74,11 +73,10 @@
         }
       ],
       "correctAnswerIndex": 2,
-      "explanation": "In C#, the boolean type is called 'bool', not 'boolean'. 'boolean' is the Java equivalent. C# uses 'bool' as its boolean data type.",
+      "explanation": "In C#, the boolean type is called 'bool', not 'boolean'. 'boolean' is the Java equivalent. C# uses 'bool' as its boolean data type, which can hold true or false values.",
       "codeExample": {
         "language": "csharp",
-        "code": "bool isValid = true;\nint number = 42;\nstring text = \"Hello\";\ndouble value = 3.14;",
-        "output": "// All are valid C# data types except 'boolean'"
+        "code": "var isValid = true;\nvar number = 42;\nvar text = \"Hello\";\nvar value = 3.14;"
       },
       "category": "basics",
       "subcategory": "data-types",
@@ -112,11 +110,10 @@
         }
       ],
       "correctAnswerIndex": 0,
-      "explanation": "The for loop initializes i to 0, continues while i < 3, and increments i after each iteration. This means it will execute for i = 0, 1, and 2, printing each value.",
+      "explanation": "The for loop initializes i to 0, continues while i < 3, and increments i after each iteration. This means it will execute for i = 0, 1, and 2, printing each value. The loop terminates when i reaches 3 because the condition i < 3 becomes false.",
       "codeExample": {
         "language": "csharp",
-        "code": "for (int i = 0; i < 3; i++)\n{\n    Console.WriteLine(i);\n}",
-        "output": "0\n1\n2"
+        "code": "for (int i = 0; i < 3; i++)\n{\n    Console.WriteLine(i);\n}"
       },
       "category": "basics",
       "subcategory": "loops",
@@ -136,7 +133,7 @@
         {
           "id": "b",
           "text": "== compares references, Equals() compares values",
-          "explanation": "This is partially correct but oversimplified"
+          "explanation": "This is partially correct but oversimplified - it depends on the types involved"
         },
         {
           "id": "c",
@@ -153,8 +150,7 @@
       "explanation": "The '==' operator compares values for value types and references for reference types. 'Equals()' is a virtual method that can be overridden to provide custom comparison logic. For strings, == is overloaded to compare content, but for custom objects, you should override Equals() for meaningful comparisons.",
       "codeExample": {
         "language": "csharp",
-        "code": "string s1 = \"hello\";\nstring s2 = \"hello\";\n\nbool refEqual = ReferenceEquals(s1, s2); // false (different objects)\nbool valueEqual = s1 == s2;              // true (content comparison)\nbool equalsEqual = s1.Equals(s2);         // true (content comparison)",
-        "output": "false\ntrue\ntrue"
+        "code": "string s1 = \"hello\";\nstring s2 = \"hello\";\n\n// What would these comparisons return?\nbool refEqual = ReferenceEquals(s1, s2);\nbool valueEqual = s1 == s2;\nbool equalsEqual = s1.Equals(s2);"
       },
       "category": "intermediate",
       "subcategory": "comparison",
@@ -191,13 +187,49 @@
       "explanation": "The 'async' keyword enables asynchronous programming by allowing the use of 'await' within the method. This is particularly useful for I/O-bound operations like file access, network calls, or database queries, where the method can yield control while waiting for the operation to complete.",
       "codeExample": {
         "language": "csharp",
-        "code": "public async Task<string> ReadFileAsync(string path)\n{\n    using var reader = new StreamReader(path);\n    var content = await reader.ReadToEndAsync();\n    return content;\n}\n\n// Usage:\nvar result = await ReadFileAsync(\"file.txt\");",
-        "output": "// Method doesn't block while reading file\n// UI remains responsive during I/O operation"
+        "code": "public async Task<string> ReadFileAsync(string path)\n{\n    using var reader = new StreamReader(path);\n    var content = await reader.ReadToEndAsync();\n    return content;\n}\n\n// Usage:\nvar result = await ReadFileAsync(\"file.txt\");"
       },
       "category": "advanced",
       "subcategory": "async-await",
       "difficulty": 5,
       "tags": ["async", "await", "asynchronous", "Task", "I/O"]
+    },
+    {
+      "id": "intermediate-0002",
+      "text": "What will happen when this code is compiled?",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Compilation error - ambiguous method call",
+          "explanation": "The compiler cannot determine which overload to call when null is passed"
+        },
+        {
+          "id": "b",
+          "text": "Compilation error - null cannot be passed to string parameter",
+          "explanation": "null can be passed to string parameters in C#"
+        },
+        {
+          "id": "c",
+          "text": "Compiles successfully, calls Process(string) at runtime",
+          "explanation": "null can be implicitly converted to string, so the string overload is chosen"
+        },
+        {
+          "id": "d",
+          "text": "Compiles successfully, calls Process(object) at runtime",
+          "explanation": "The string overload is more specific than the object overload"
+        }
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "When null is passed to an overloaded method, the compiler chooses the most specific type that can accept null. Since string can be null and is more specific than object, the Process(string) overload is selected.",
+      "codeExample": {
+        "language": "csharp",
+        "code": "public void Process(string value) { }\npublic void Process(object value) { }\n\n// Method call:\nProcess(null);"
+      },
+      "category": "intermediate",
+      "subcategory": "method-overloading",
+      "difficulty": 3,
+      "tags": ["overloading", "null", "compilation", "type-resolution"]
     }
   ]
 }
